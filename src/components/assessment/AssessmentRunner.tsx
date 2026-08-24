@@ -88,7 +88,7 @@ export function AssessmentRunner({ assessment, attempt, responses }: AssessmentR
   );
 
   function handleAnswer(value: AnswerValue) {
-    if (!question) return;
+    if (!question || !currentSection) return;
     setAnswers((prev) => ({ ...prev, [question.id]: value }));
     persist(question.id, currentSection.id, value);
   }
@@ -117,6 +117,7 @@ export function AssessmentRunner({ assessment, attempt, responses }: AssessmentR
     }
     if (sectionIndex > 0) {
       const prevSection = sections[sectionIndex - 1];
+      if (!prevSection) return;
       setSectionIndex((i) => i - 1);
       setQuestionIndex((questionsBySection.get(prevSection.id)?.length ?? 1) - 1);
     }

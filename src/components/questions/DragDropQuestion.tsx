@@ -15,8 +15,14 @@ export function DragDropQuestion({ question, value, onChange }: QuestionComponen
   const [activeItem, setActiveItem] = useState<string | null>(null);
 
   const options = question.options ?? [];
-  const items = options.map((o) => o.value.split("::")[0]).filter((v, i, arr) => arr.indexOf(v) === i);
-  const zones = [...new Map(options.map((o) => [o.value.split("::")[1], o.label])).entries()];
+  const splitPair = (value: string): [string, string] => {
+    const [item = "", zone = ""] = value.split("::");
+    return [item, zone];
+  };
+  const items = options
+    .map((o) => splitPair(o.value)[0])
+    .filter((v, i, arr) => arr.indexOf(v) === i);
+  const zones = [...new Map(options.map((o) => [splitPair(o.value)[1], o.label])).entries()];
 
   function place(zone: string) {
     if (!activeItem) return;

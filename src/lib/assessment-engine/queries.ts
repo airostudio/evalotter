@@ -80,7 +80,6 @@ export async function getAssessmentWithVersionById(
   return hydrateVersion(assessmentRow, versionId);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function hydrateVersion(assessmentRow: any, versionIdOverride?: string): Promise<AssessmentWithVersion | null> {
   const supabase = await createClient();
   const versionId = versionIdOverride ?? assessmentRow.current_version_id;

@@ -13,8 +13,12 @@ export function MatchingQuestion({ question, value, onChange }: QuestionComponen
   const [activeLeft, setActiveLeft] = useState<string | null>(null);
 
   const options = question.options ?? [];
-  const lefts = options.map((o) => o.value.split("::")[0]).filter((v, i, arr) => arr.indexOf(v) === i);
-  const rights = options.map((o) => o.value.split("::")[1]).filter((v, i, arr) => arr.indexOf(v) === i);
+  const splitPair = (value: string): [string, string] => {
+    const [left = "", right = ""] = value.split("::");
+    return [left, right];
+  };
+  const lefts = options.map((o) => splitPair(o.value)[0]).filter((v, i, arr) => arr.indexOf(v) === i);
+  const rights = options.map((o) => splitPair(o.value)[1]).filter((v, i, arr) => arr.indexOf(v) === i);
 
   function selectRight(right: string) {
     if (!activeLeft) return;

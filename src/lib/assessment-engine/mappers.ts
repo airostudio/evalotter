@@ -17,7 +17,6 @@ import type {
 // (currently loosely-typed) Supabase client doesn't leak `any` shapes
 // into the rest of the app.
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Row = any;
 
 export function mapCategory(row: Row): AssessmentCategory {
