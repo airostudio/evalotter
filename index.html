@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evalotter — Tests</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">
+        <span class="brand-mark">EO</span>
+        <span class="brand-name">Evalotter</span>
+      </div>
+      <p class="tagline">All of our tests, in one place.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search tests..." aria-label="Search tests">
+      <div id="category-filters" class="filters" role="group" aria-label="Filter by category"></div>
+    </div>
+
+    <p id="count" class="count"></p>
+
+    <section id="grid" class="grid" aria-live="polite"></section>
+
+    <p id="empty" class="empty" hidden>No tests match your search.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>To add a new test, add an entry to <code>data/tests.json</code>. See <code>README.md</code>.</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

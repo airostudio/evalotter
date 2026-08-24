@@ -1,0 +1,72 @@
+[
+  {
+    "id": "brainyak",
+    "name": "Brainyak",
+    "category": "General Cognition",
+    "description": "A general brain-teaser assessment covering a broad mix of quick-fire cognitive challenges.",
+    "color": "#6366f1"
+  },
+  {
+    "id": "logical-reasoning",
+    "name": "Logical Reasoning",
+    "category": "Reasoning",
+    "description": "Evaluates deductive and inductive reasoning through puzzles, sequences, and logic problems.",
+    "color": "#0ea5e9"
+  },
+  {
+    "id": "memory-recall",
+    "name": "Memory Recall",
+    "category": "Memory",
+    "description": "Tests short-term and working memory through recall and pattern-retention exercises.",
+    "color": "#f59e0b"
+  },
+  {
+    "id": "verbal-reasoning",
+    "name": "Verbal Reasoning",
+    "category": "Reasoning",
+    "description": "Measures the ability to understand, analyze, and draw conclusions from written information.",
+    "color": "#0ea5e9"
+  },
+  {
+    "id": "palmistry",
+    "name": "Palmistry",
+    "category": "Novelty",
+    "description": "A lighthearted assessment exploring palm-reading style pattern interpretation.",
+    "color": "#ec4899"
+  },
+  {
+    "id": "emotional-intelligence",
+    "name": "Emotional Intelligence",
+    "category": "Social",
+    "description": "Assesses the ability to recognize, understand, and manage emotions in yourself and others.",
+    "color": "#f43f5e"
+  },
+  {
+    "id": "metrics",
+    "name": "Metrics",
+    "category": "Quantitative",
+    "description": "Evaluates comfort with numerical data, measurement, and quantitative interpretation.",
+    "color": "#10b981"
+  },
+  {
+    "id": "spacial-intelligence",
+    "name": "Spacial Intelligence",
+    "category": "Reasoning",
+    "description": "Tests the ability to visualize, rotate, and manipulate objects and spaces mentally.",
+    "color": "#0ea5e9"
+  },
+  {
+    "id": "verbal-intelligence",
+    "name": "Verbal Intelligence",
+    "category": "Language",
+    "description": "Measures vocabulary, comprehension, and command of language.",
+    "color": "#8b5cf6"
+  },
+  {
+    "id": "creative-assessment",
+    "name": "Creative Assessment",
+    "category": "Creativity",
+    "description": "Explores divergent thinking and original problem-solving ability.",
+    "color": "#eab308"
+  }
+]
