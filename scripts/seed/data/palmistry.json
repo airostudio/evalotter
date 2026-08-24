@@ -1,0 +1,43 @@
+{
+  "slug": "palmistry",
+  "title": "Palmistry",
+  "shortDescription": "Photograph both palms and receive a personalised, AI-generated reading. Entertainment and self-reflection only.",
+  "longDescription": "Palmistry works differently from a standard questionnaire: you photograph both palms with an on-screen hand-position guide, answer a few contextual questions, and receive a personalised AI-generated reading covering your heart line, head line, life line, fate line, hand shape, finger proportions, palm mounts, and other visible markers. This is offered purely for entertainment and self-reflection — it carries no scientific validity claim, is not a psychological or medical assessment, and never contributes to your EvalOtter cognitive score.",
+  "icon": "hand",
+  "categoryKey": "self-discovery",
+  "engineType": "vision_analysis",
+  "difficulty": "easy",
+  "estimatedDurationMinutes": 5,
+  "access": "free",
+  "sourceNote": "No existing repo covers palmistry (it needs vision-model integration this platform doesn't have live keys for yet). Built fresh per spec: capture flow + a handful of context questions that feed the AI reading. No scoring dimensions, result ranges, or brain-profile contribution — Palmistry is deliberately excluded from the cognitive score.",
+
+  "sections": [
+    { "key": "context", "name": "About You", "description": "A few questions to personalise your reading.", "instructions": "These help tailor the AI-generated reading to you — there are no right or wrong answers.", "timeLimitSeconds": null, "weight": 1, "order": 1 }
+  ],
+
+  "scoringDimensions": [],
+  "scoringRules": [],
+  "resultRanges": [],
+  "brainProfileContributions": [],
+
+  "questions": [
+    { "key": "palmistry-01", "sectionKey": "context", "questionType": "multiple_choice", "questionText": "Which hand do you write with?", "instructions": "Traditionally the dominant hand is read for present/future tendencies, and the other for innate traits.", "difficulty": "easy", "required": true, "options": [
+      { "label": "Right hand", "value": "right" },
+      { "label": "Left hand", "value": "left" },
+      { "label": "Both / ambidextrous", "value": "both" }
+    ]},
+    { "key": "palmistry-02", "sectionKey": "context", "questionType": "multiple_choice", "questionText": "What are you most curious about right now?", "difficulty": "easy", "required": true, "options": [
+      { "label": "Career and ambition", "value": "career" },
+      { "label": "Relationships and connection", "value": "relationships" },
+      { "label": "Personal growth and self-understanding", "value": "growth" },
+      { "label": "Just curious — no particular focus", "value": "open" }
+    ]},
+    { "key": "palmistry-03", "sectionKey": "context", "questionType": "multiple_choice", "questionText": "How would you describe where you are in life right now?", "difficulty": "easy", "required": true, "options": [
+      { "label": "In a period of change or transition", "value": "transition" },
+      { "label": "Settled and steady", "value": "settled" },
+      { "label": "Building toward something new", "value": "building" },
+      { "label": "Reflecting on the past", "value": "reflecting" }
+    ]},
+    { "key": "palmistry-04", "sectionKey": "context", "questionType": "text_input", "questionText": "Anything specific you'd like your reading to touch on? (optional)", "difficulty": "easy", "required": false }
+  ]
+}

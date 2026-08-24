@@ -1,0 +1,228 @@
+{
+  "slug": "emotional-intelligence",
+  "title": "Emotional Intelligence",
+  "shortDescription": "Self-awareness, self-regulation, empathy, social awareness and relationship management, based on EQ-i 2.0 and MSCEIT frameworks.",
+  "longDescription": "Emotional Intelligence measures how you perceive, use, understand, and manage emotions — in yourself and others — across 9 EQ facets drawn from the EQ-i 2.0 and MSCEIT frameworks: Perceiving Emotions, Using Emotions, Understanding Emotions, Managing Emotions, Self-Perception, Self-Expression, Interpersonal Skills, Decision Making, and Stress Management.",
+  "icon": "heart-handshake",
+  "categoryKey": "emotional",
+  "engineType": "standard_questionnaire",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 15,
+  "access": "free",
+  "sourceNote": "Ported verbatim from airostudio/Emotional-Intelligence (public/js/test-questions.js) — 40 real questions across the 9 real EQ facets. A few items reference face images or an original slider mechanic not directly portable as multiple_choice/likert_scale text; those are noted per-question via 'instructions'/'scoringNotes' rather than silently dropped.",
+
+  "sections": [
+    { "key": "perceiving_emotions", "name": "Perceiving Emotions", "description": "The ability to identify emotions in faces, pictures, voices, and cultural artifacts.", "instructions": "For each item, choose the response that best identifies the emotion shown or described.", "timeLimitSeconds": null, "weight": 0.125, "order": 1 },
+    { "key": "using_emotions", "name": "Using Emotions", "description": "The ability to harness emotions to facilitate various cognitive activities.", "instructions": "For each scenario, choose the emotional state that would be most helpful in that situation.", "timeLimitSeconds": null, "weight": 0.125, "order": 2 },
+    { "key": "understanding_emotions", "name": "Understanding Emotions", "description": "The ability to comprehend emotional language and appreciate complicated relationships among emotions.", "instructions": "For each item, choose the response that best explains how emotions relate, blend, or evolve.", "timeLimitSeconds": null, "weight": 0.125, "order": 3 },
+    { "key": "managing_emotions", "name": "Managing Emotions", "description": "The ability to regulate emotions in ourselves and in others.", "instructions": "For each scenario, choose the response that reflects the most effective way to manage the emotions involved.", "timeLimitSeconds": null, "weight": 0.125, "order": 4 },
+    { "key": "self_perception", "name": "Self-Perception", "description": "Understanding your own emotions, confidence, and self-regard.", "instructions": "Rate how much you agree with each statement about yourself.", "timeLimitSeconds": null, "weight": 0.1, "order": 5 },
+    { "key": "self_expression", "name": "Self-Expression", "description": "How you express emotions and assert yourself appropriately.", "instructions": "Rate how much you agree with each statement, or choose the response that best fits how you would act.", "timeLimitSeconds": null, "weight": 0.1, "order": 6 },
+    { "key": "interpersonal", "name": "Interpersonal", "description": "Your ability to develop and maintain relationships and show empathy.", "instructions": "Rate how much you agree with each statement, or choose the response that best fits how you would act.", "timeLimitSeconds": null, "weight": 0.1, "order": 7 },
+    { "key": "decision_making", "name": "Decision Making", "description": "How you use emotional information in the decision-making process.", "instructions": "Rate how much you agree with each statement, or choose the response that best fits how you would act.", "timeLimitSeconds": null, "weight": 0.1, "order": 8 },
+    { "key": "stress_management", "name": "Stress Management", "description": "Your ability to cope with challenges and regulate emotions under pressure.", "instructions": "Rate how much you agree with each statement, or choose the response that best fits how you would act.", "timeLimitSeconds": null, "weight": 0.1, "order": 9 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "perceiving_emotions", "label": "Perceiving Emotions", "description": "The ability to identify emotions in faces, pictures, voices, and cultural artifacts.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "emotional", "order": 1 },
+    { "key": "using_emotions", "label": "Using Emotions", "description": "The ability to harness emotions to facilitate various cognitive activities.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "emotional", "order": 2 },
+    { "key": "understanding_emotions", "label": "Understanding Emotions", "description": "The ability to comprehend emotional language and appreciate complicated relationships among emotions.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "emotional", "order": 3 },
+    { "key": "managing_emotions", "label": "Managing Emotions", "description": "The ability to regulate emotions in ourselves and in others.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "emotional", "order": 4 },
+    { "key": "self_perception", "label": "Self-Perception", "description": "Understanding your own emotions, confidence, and self-regard.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "emotional", "order": 5 },
+    { "key": "self_expression", "label": "Self-Expression", "description": "How you express emotions and assert yourself appropriately.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "emotional", "order": 6 },
+    { "key": "interpersonal", "label": "Interpersonal", "description": "Your ability to develop and maintain relationships and show empathy.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "emotional", "order": 7 },
+    { "key": "decision_making", "label": "Decision Making", "description": "How you use emotional information in the decision-making process.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "emotional", "order": 8 },
+    { "key": "stress_management", "label": "Stress Management", "description": "Your ability to cope with challenges and regulate emotions under pressure.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "emotional", "order": 9 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "overall", "formula": "weighted_average", "sectionWeights": { "perceiving_emotions": 0.125, "using_emotions": 0.125, "understanding_emotions": 0.125, "managing_emotions": 0.125, "self_perception": 0.1, "self_expression": 0.1, "interpersonal": 0.1, "decision_making": 0.1, "stress_management": 0.1 } },
+    { "dimensionKey": "perceiving_emotions", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "using_emotions", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "understanding_emotions", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "managing_emotions", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "self_perception", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "self_expression", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "interpersonal", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "decision_making", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "stress_management", "formula": "average", "normalization": { "min": 1, "max": 5 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing Emotional Intelligence", "description": "There are several areas where you can grow your emotional skills. Emotional awareness, expression, and regulation are still forming, which presents great opportunities for personal development.", "recommendations": ["Keep a daily emotion journal to build self-awareness", "Practice pausing before reacting when emotions run high", "Ask trusted friends or colleagues for feedback on your emotional interactions"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average Emotional Intelligence", "description": "Your emotional intelligence is typical. With focused effort on specific facets, you can significantly enhance how you perceive, use, understand, and manage emotions.", "recommendations": ["Balance emotional and logical considerations when making decisions", "Practice active listening and validating others' feelings before problem-solving", "Develop healthy coping strategies for stressful situations"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong Emotional Intelligence", "description": "You have solid emotional skills and generally navigate emotional situations well, with some areas for potential growth.", "recommendations": ["Channel nervous energy into focused attention during high-stakes moments", "Continue building resilience through gradual exposure to stress", "Practice assertive, 'I'-statement communication in difficult conversations"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong Emotional Intelligence", "description": "You demonstrate strong emotional awareness and management skills, handling both your own emotions and those of others with confidence in most situations.", "recommendations": ["Refine your ability to remain objective when emotions run high", "Use positive emotions deliberately to boost creativity and decision quality", "Continue strengthening close, mutually satisfying relationships"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional Emotional Intelligence", "description": "You demonstrate outstanding emotional awareness and management skills, excelling at understanding both your own emotions and those of others across nearly all situations.", "recommendations": ["Share your emotional regulation strategies with others as a mentor or coach", "Take on high-stakes situations that require sustained composure under pressure", "Use your strengths in perceiving and managing emotions to support team dynamics"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [
+    { "sourceDimensionKey": "perceiving_emotions", "targetBrainProfileDimensionKey": "emotional", "weight": 0.125 },
+    { "sourceDimensionKey": "using_emotions", "targetBrainProfileDimensionKey": "emotional", "weight": 0.125 },
+    { "sourceDimensionKey": "understanding_emotions", "targetBrainProfileDimensionKey": "emotional", "weight": 0.125 },
+    { "sourceDimensionKey": "managing_emotions", "targetBrainProfileDimensionKey": "emotional", "weight": 0.125 },
+    { "sourceDimensionKey": "self_perception", "targetBrainProfileDimensionKey": "emotional", "weight": 0.1 },
+    { "sourceDimensionKey": "self_expression", "targetBrainProfileDimensionKey": "emotional", "weight": 0.1 },
+    { "sourceDimensionKey": "interpersonal", "targetBrainProfileDimensionKey": "emotional", "weight": 0.1 },
+    { "sourceDimensionKey": "decision_making", "targetBrainProfileDimensionKey": "emotional", "weight": 0.1 },
+    { "sourceDimensionKey": "stress_management", "targetBrainProfileDimensionKey": "emotional", "weight": 0.1 }
+  ],
+
+  "questions": [
+    { "key": "ei_q1", "sectionKey": "perceiving_emotions", "questionType": "multiple_choice", "questionText": "What emotion is this person most likely feeling?", "instructions": "Source item referenced a face image (face-surprised) not extractable as text; option text and point values are real.", "difficulty": "medium", "required": true, "options": [
+      { "label": "Happy", "value": "happy", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 1 }] },
+      { "label": "Surprised", "value": "surprised", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 5 }] },
+      { "label": "Fearful", "value": "fearful", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 3 }] },
+      { "label": "Angry", "value": "angry", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 1 }] }
+    ]},
+    { "key": "ei_q2", "sectionKey": "perceiving_emotions", "questionType": "multiple_choice", "questionText": "Which face shows genuine happiness?", "instructions": "Source item referenced 4 face images not extractable as text; option text and point values are real.", "difficulty": "medium", "required": true, "options": [
+      { "label": "Face A", "value": "a", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 5 }] },
+      { "label": "Face B", "value": "b", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 2 }] },
+      { "label": "Face C", "value": "c", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 1 }] },
+      { "label": "Face D", "value": "d", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 3 }] }
+    ]},
+    { "key": "ei_q3", "sectionKey": "perceiving_emotions", "questionType": "multiple_choice", "questionText": "A colleague rushes into a meeting late, avoids eye contact, and fumbles with papers. What are they likely feeling?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Confident and prepared", "value": "confident", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 1 }] },
+      { "label": "Anxious and embarrassed", "value": "anxious", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 5 }] },
+      { "label": "Angry at others", "value": "angry", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 2 }] },
+      { "label": "Bored and indifferent", "value": "bored", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 1 }] }
+    ]},
+    { "key": "ei_q4", "sectionKey": "perceiving_emotions", "questionType": "multiple_choice", "questionText": "This expression indicates which emotion?", "instructions": "Source item referenced a face image (face-contempt) not extractable as text; option text and point values are real.", "difficulty": "medium", "required": true, "options": [
+      { "label": "Sadness", "value": "sadness", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 2 }] },
+      { "label": "Contempt", "value": "contempt", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 5 }] },
+      { "label": "Fear", "value": "fear", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 1 }] },
+      { "label": "Joy", "value": "joy", "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 1 }] }
+    ]},
+    { "key": "ei_q5", "sectionKey": "perceiving_emotions", "questionType": "slider", "questionText": "Rate the intensity of sadness shown in this expression:", "instructions": "Originally a 0-100 slider ('Very Mild' to 'Very Intense') compared against a correct intensity of 70. Scoring: 5 pts if |value-70|<20, 3 pts if <40, else 1 pt.", "difficulty": "hard", "required": true, "scoreConfig": [{ "dimensionKey": "perceiving_emotions", "points": 3 }] },
+    { "key": "ei_q6", "sectionKey": "using_emotions", "questionType": "multiple_choice", "questionText": "You need to write a heartfelt condolence letter. Which mood would help you write most effectively?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Excited and energetic", "value": "excited", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 1 }] },
+      { "label": "Calm and reflective", "value": "calm", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 5 }] },
+      { "label": "Anxious and worried", "value": "anxious", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 2 }] },
+      { "label": "Neutral and detached", "value": "neutral", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 3 }] }
+    ]},
+    { "key": "ei_q7", "sectionKey": "using_emotions", "questionType": "multiple_choice", "questionText": "Which emotional state would best help you brainstorm creative solutions?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Mild positive excitement", "value": "excitement", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 5 }] },
+      { "label": "Deep sadness", "value": "sadness", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 1 }] },
+      { "label": "Intense anxiety", "value": "anxiety", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 1 }] },
+      { "label": "Strong anger", "value": "anger", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 2 }] }
+    ]},
+    { "key": "ei_q8", "sectionKey": "using_emotions", "questionType": "multiple_choice", "questionText": "You're about to give an important presentation. A moderate level of which emotion would enhance your performance?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Fear and panic", "value": "panic", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 1 }] },
+      { "label": "Complete calmness", "value": "calm", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 3 }] },
+      { "label": "Nervous excitement", "value": "excitement", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 5 }] },
+      { "label": "Boredom", "value": "boredom", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 1 }] }
+    ]},
+    { "key": "ei_q9", "sectionKey": "using_emotions", "questionType": "multiple_choice", "questionText": "When reviewing important financial documents for errors, which emotional state is most helpful?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Slightly anxious and alert", "value": "alert", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 5 }] },
+      { "label": "Very happy and excited", "value": "excited", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 2 }] },
+      { "label": "Angry and frustrated", "value": "angry", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 1 }] },
+      { "label": "Deeply relaxed", "value": "relaxed", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 2 }] }
+    ]},
+    { "key": "ei_q10", "sectionKey": "using_emotions", "questionType": "multiple_choice", "questionText": "Which mood helps most when you need to connect deeply with a friend going through a difficult time?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Cheerful optimism", "value": "cheerful", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 2 }] },
+      { "label": "Empathetic sadness", "value": "empathetic", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 5 }] },
+      { "label": "Logical detachment", "value": "detached", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 1 }] },
+      { "label": "Energetic enthusiasm", "value": "energetic", "scoreConfig": [{ "dimensionKey": "using_emotions", "points": 1 }] }
+    ]},
+    { "key": "ei_q11", "sectionKey": "understanding_emotions", "questionType": "multiple_choice", "questionText": "If someone feels disappointed, and the situation continues to get worse, what emotion typically follows?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Joy", "value": "joy", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 1 }] },
+      { "label": "Frustration or anger", "value": "frustration", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 5 }] },
+      { "label": "Surprise", "value": "surprise", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 2 }] },
+      { "label": "Pride", "value": "pride", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 1 }] }
+    ]},
+    { "key": "ei_q12", "sectionKey": "understanding_emotions", "questionType": "multiple_choice", "questionText": "What emotion results from combining anticipation and joy?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Optimism", "value": "optimism", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 5 }] },
+      { "label": "Contempt", "value": "contempt", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 1 }] },
+      { "label": "Remorse", "value": "remorse", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 1 }] },
+      { "label": "Aggressiveness", "value": "aggressiveness", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 2 }] }
+    ]},
+    { "key": "ei_q13", "sectionKey": "understanding_emotions", "questionType": "multiple_choice", "questionText": "Someone receives unexpected praise for work they didn't think was noticed. What sequence of emotions likely occurs?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Anger → Sadness → Fear", "value": "a", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 1 }] },
+      { "label": "Surprise → Joy → Pride", "value": "b", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 5 }] },
+      { "label": "Fear → Disgust → Contempt", "value": "c", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 1 }] },
+      { "label": "Sadness → Surprise → Anger", "value": "d", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 2 }] }
+    ]},
+    { "key": "ei_q14", "sectionKey": "understanding_emotions", "questionType": "multiple_choice", "questionText": "Grief is typically a combination of which emotions?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Joy and anticipation", "value": "a", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 1 }] },
+      { "label": "Sadness and love/longing", "value": "b", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 5 }] },
+      { "label": "Anger and fear", "value": "c", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 2 }] },
+      { "label": "Surprise and disgust", "value": "d", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 1 }] }
+    ]},
+    { "key": "ei_q15", "sectionKey": "understanding_emotions", "questionType": "multiple_choice", "questionText": "After failing an important exam, which emotional progression is most likely healthy?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Denial → Anger → Permanent bitterness", "value": "a", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 1 }] },
+      { "label": "Disappointment → Acceptance → Determination", "value": "b", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 5 }] },
+      { "label": "Joy → Surprise → More joy", "value": "c", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 1 }] },
+      { "label": "Fear → Panic → Withdrawal", "value": "d", "scoreConfig": [{ "dimensionKey": "understanding_emotions", "points": 2 }] }
+    ]},
+    { "key": "ei_q16", "sectionKey": "managing_emotions", "questionType": "multiple_choice", "questionText": "A friend shares exciting news while you're feeling down. The best response is to:", "difficulty": "medium", "required": true, "options": [
+      { "label": "Pretend to be happy and hide your feelings", "value": "a", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 2 }] },
+      { "label": "Tell them you can't deal with their happiness right now", "value": "b", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 1 }] },
+      { "label": "Genuinely share their joy while acknowledging your own feelings privately", "value": "c", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 5 }] },
+      { "label": "Change the subject to your problems", "value": "d", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 1 }] }
+    ]},
+    { "key": "ei_q17", "sectionKey": "managing_emotions", "questionType": "multiple_choice", "questionText": "You receive harsh criticism at work that you feel is unfair. The most effective response is to:", "difficulty": "medium", "required": true, "options": [
+      { "label": "Immediately defend yourself aggressively", "value": "a", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 1 }] },
+      { "label": "Suppress all emotions and say nothing", "value": "b", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 2 }] },
+      { "label": "Take time to process, then calmly discuss specific points", "value": "c", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 5 }] },
+      { "label": "Complain to coworkers about the unfairness", "value": "d", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 2 }] }
+    ]},
+    { "key": "ei_q18", "sectionKey": "managing_emotions", "questionType": "multiple_choice", "questionText": "You're angry at a family member. To maintain the relationship, you should:", "difficulty": "medium", "required": true, "options": [
+      { "label": "Yell to release the tension", "value": "a", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 1 }] },
+      { "label": "Give silent treatment until they apologize", "value": "b", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 2 }] },
+      { "label": "Express your feelings calmly using 'I' statements", "value": "c", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 5 }] },
+      { "label": "Pretend nothing happened", "value": "d", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 2 }] }
+    ]},
+    { "key": "ei_q19", "sectionKey": "managing_emotions", "questionType": "multiple_choice", "questionText": "You're feeling anxious before a big event. The best strategy is to:", "difficulty": "medium", "required": true, "options": [
+      { "label": "Try to completely eliminate the anxiety", "value": "a", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 2 }] },
+      { "label": "Use the nervous energy to enhance your alertness and preparation", "value": "b", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 5 }] },
+      { "label": "Avoid thinking about the event entirely", "value": "c", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 1 }] },
+      { "label": "Cancel if possible", "value": "d", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 1 }] }
+    ]},
+    { "key": "ei_q20", "sectionKey": "managing_emotions", "questionType": "multiple_choice", "questionText": "A team member is upset about a project setback. To help them, you should:", "difficulty": "medium", "required": true, "options": [
+      { "label": "Tell them to focus on the positive", "value": "a", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 2 }] },
+      { "label": "Ignore their emotions and focus only on solutions", "value": "b", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 2 }] },
+      { "label": "Validate their feelings first, then collaborate on solutions", "value": "c", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 5 }] },
+      { "label": "Share a time when you had it worse", "value": "d", "scoreConfig": [{ "dimensionKey": "managing_emotions", "points": 1 }] }
+    ]},
+    { "key": "ei_q21", "sectionKey": "self_perception", "questionType": "likert_scale", "questionText": "I have a clear understanding of my own emotions as I experience them.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "self_perception", "points": 1 }] },
+    { "key": "ei_q22", "sectionKey": "self_perception", "questionType": "likert_scale", "questionText": "I am confident in my ability to handle most emotional situations.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "self_perception", "points": 1 }] },
+    { "key": "ei_q23", "sectionKey": "self_perception", "questionType": "likert_scale", "questionText": "I know my strengths and accept my limitations.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "self_perception", "points": 1 }] },
+    { "key": "ei_q24", "sectionKey": "self_perception", "questionType": "likert_scale", "questionText": "I feel fulfilled and satisfied with my life direction.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "self_perception", "points": 1 }] },
+    { "key": "ei_q25", "sectionKey": "self_expression", "questionType": "likert_scale", "questionText": "I express my emotions openly and appropriately.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "self_expression", "points": 1 }] },
+    { "key": "ei_q26", "sectionKey": "self_expression", "questionType": "likert_scale", "questionText": "I stand up for my beliefs even when others disagree.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "self_expression", "points": 1 }] },
+    { "key": "ei_q27", "sectionKey": "self_expression", "questionType": "likert_scale", "questionText": "I make decisions independently without excessive need for others' approval.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "self_expression", "points": 1 }] },
+    { "key": "ei_q28", "sectionKey": "self_expression", "questionType": "multiple_choice", "questionText": "In a meeting, your idea is dismissed quickly. You would most likely:", "difficulty": "medium", "required": true, "options": [
+      { "label": "Stay quiet and not bring it up again", "value": "a", "scoreConfig": [{ "dimensionKey": "self_expression", "points": 1 }] },
+      { "label": "Get visibly upset", "value": "b", "scoreConfig": [{ "dimensionKey": "self_expression", "points": 2 }] },
+      { "label": "Calmly ask for a chance to explain the idea more fully", "value": "c", "scoreConfig": [{ "dimensionKey": "self_expression", "points": 5 }] },
+      { "label": "Complain about it after the meeting", "value": "d", "scoreConfig": [{ "dimensionKey": "self_expression", "points": 2 }] }
+    ]},
+    { "key": "ei_q29", "sectionKey": "interpersonal", "questionType": "likert_scale", "questionText": "I can easily sense how others are feeling.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "interpersonal", "points": 1 }] },
+    { "key": "ei_q30", "sectionKey": "interpersonal", "questionType": "likert_scale", "questionText": "I maintain close, mutually satisfying relationships.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "interpersonal", "points": 1 }] },
+    { "key": "ei_q31", "sectionKey": "interpersonal", "questionType": "multiple_choice", "questionText": "A coworker seems withdrawn lately. Your approach would be to:", "difficulty": "medium", "required": true, "options": [
+      { "label": "Ignore it - it's not your business", "value": "a", "scoreConfig": [{ "dimensionKey": "interpersonal", "points": 1 }] },
+      { "label": "Gossip with others about what might be wrong", "value": "b", "scoreConfig": [{ "dimensionKey": "interpersonal", "points": 1 }] },
+      { "label": "Privately ask if they're okay and offer support", "value": "c", "scoreConfig": [{ "dimensionKey": "interpersonal", "points": 5 }] },
+      { "label": "Report it to management immediately", "value": "d", "scoreConfig": [{ "dimensionKey": "interpersonal", "points": 2 }] }
+    ]},
+    { "key": "ei_q32", "sectionKey": "interpersonal", "questionType": "likert_scale", "questionText": "I am comfortable in social situations with people I don't know well.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "interpersonal", "points": 1 }] },
+    { "key": "ei_q33", "sectionKey": "decision_making", "questionType": "likert_scale", "questionText": "I consider how my decisions will affect others' feelings.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "decision_making", "points": 1 }] },
+    { "key": "ei_q34", "sectionKey": "decision_making", "questionType": "likert_scale", "questionText": "I can remain objective when emotions run high.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "decision_making", "points": 1 }] },
+    { "key": "ei_q35", "sectionKey": "decision_making", "questionType": "multiple_choice", "questionText": "You discover a close friend made a significant mistake at work. You would:", "difficulty": "medium", "required": true, "options": [
+      { "label": "Cover it up to protect them", "value": "a", "scoreConfig": [{ "dimensionKey": "decision_making", "points": 2 }] },
+      { "label": "Report them immediately without talking to them", "value": "b", "scoreConfig": [{ "dimensionKey": "decision_making", "points": 2 }] },
+      { "label": "Talk to them first, then help find an ethical solution", "value": "c", "scoreConfig": [{ "dimensionKey": "decision_making", "points": 5 }] },
+      { "label": "Pretend you didn't notice", "value": "d", "scoreConfig": [{ "dimensionKey": "decision_making", "points": 1 }] }
+    ]},
+    { "key": "ei_q36", "sectionKey": "decision_making", "questionType": "likert_scale", "questionText": "I resist acting on impulse and consider long-term consequences.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "decision_making", "points": 1 }] },
+    { "key": "ei_q37", "sectionKey": "stress_management", "questionType": "likert_scale", "questionText": "I adapt well when situations change unexpectedly.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "stress_management", "points": 1 }] },
+    { "key": "ei_q38", "sectionKey": "stress_management", "questionType": "likert_scale", "questionText": "I can tolerate stressful situations without becoming overwhelmed.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "stress_management", "points": 1 }] },
+    { "key": "ei_q39", "sectionKey": "stress_management", "questionType": "multiple_choice", "questionText": "You have multiple urgent deadlines converging. Your approach is to:", "difficulty": "medium", "required": true, "options": [
+      { "label": "Panic and complain about the workload", "value": "a", "scoreConfig": [{ "dimensionKey": "stress_management", "points": 1 }] },
+      { "label": "Work frantically on everything at once", "value": "b", "scoreConfig": [{ "dimensionKey": "stress_management", "points": 2 }] },
+      { "label": "Prioritize, communicate proactively, and stay focused", "value": "c", "scoreConfig": [{ "dimensionKey": "stress_management", "points": 5 }] },
+      { "label": "Give up and accept failure", "value": "d", "scoreConfig": [{ "dimensionKey": "stress_management", "points": 1 }] }
+    ]},
+    { "key": "ei_q40", "sectionKey": "stress_management", "questionType": "likert_scale", "questionText": "I maintain a generally positive outlook even during difficult times.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "stress_management", "points": 1 }] }
+  ]
+}

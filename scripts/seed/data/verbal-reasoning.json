@@ -1,0 +1,1623 @@
+{
+  "slug": "verbal-reasoning",
+  "title": "Verbal Reasoning",
+  "shortDescription": "Comprehension, analogies, inference and argument evaluation \u2014 GRE Verbal / LSAT Logical Reasoning calibre.",
+  "longDescription": "Verbal Reasoning measures cognitive efficiency in language: how fast and accurately you process arguments, extract logical conclusions, and select the exact word a context demands. It covers four areas \u2014 Deductive Reasoning, Critical Reasoning, Reading Comprehension, and Verbal Precision.",
+  "icon": "message-square",
+  "categoryKey": "language",
+  "engineType": "timed_questionnaire",
+  "difficulty": "hard",
+  "estimatedDurationMinutes": 18,
+  "access": "free",
+  "sourceNote": "Ported verbatim from airostudio/VerbRea (src/lib/questions.ts) \u2014 24 real questions across the 4 real categories.",
+  "sections": [
+    {
+      "key": "deductive",
+      "name": "Deductive Reasoning",
+      "description": "Apply top-down logic to premises and identify the conclusion that must be true.",
+      "instructions": "Read each set of premises and select the conclusion that must be true.",
+      "timeLimitSeconds": null,
+      "weight": 1,
+      "order": 1
+    },
+    {
+      "key": "critical",
+      "name": "Critical Reasoning",
+      "description": "Evaluate arguments for assumptions, flaws, and the evidence that strengthens or weakens them.",
+      "instructions": "Read each stimulus and answer the question about the argument's structure, assumptions, or evidence.",
+      "timeLimitSeconds": null,
+      "weight": 1,
+      "order": 2
+    },
+    {
+      "key": "reading",
+      "name": "Reading Comprehension",
+      "description": "Extract meaning, tone, and supported inference from dense, unfamiliar material at speed.",
+      "instructions": "Read each passage and answer the question that follows.",
+      "timeLimitSeconds": null,
+      "weight": 1,
+      "order": 3
+    },
+    {
+      "key": "precision",
+      "name": "Verbal Precision",
+      "description": "Select the exact word or relationship that a context demands \u2014 efficiency under time pressure.",
+      "instructions": "Choose the option that best completes the sentence or analogy.",
+      "timeLimitSeconds": null,
+      "weight": 1,
+      "order": 4
+    }
+  ],
+  "scoringDimensions": [
+    {
+      "key": "verbal",
+      "label": "Verbal Reasoning",
+      "description": "Composite measure of speed and accuracy in deductive logic, argument evaluation, reading comprehension, and word precision.",
+      "contributesToBrainProfile": true,
+      "brainProfileDimensionKey": "verbal",
+      "order": 1
+    },
+    {
+      "key": "deductive",
+      "label": "Deductive Reasoning",
+      "description": "Ability to derive conclusions that must be true from stated premises.",
+      "contributesToBrainProfile": false,
+      "order": 2
+    },
+    {
+      "key": "critical",
+      "label": "Critical Reasoning",
+      "description": "Ability to identify assumptions, flaws, strengtheners, and weakeners in arguments.",
+      "contributesToBrainProfile": false,
+      "order": 3
+    },
+    {
+      "key": "reading",
+      "label": "Reading Comprehension",
+      "description": "Ability to extract purpose, tone, and supported inference from passages.",
+      "contributesToBrainProfile": false,
+      "order": 4
+    },
+    {
+      "key": "precision",
+      "label": "Verbal Precision",
+      "description": "Ability to select the exact word or relationship a context demands.",
+      "contributesToBrainProfile": false,
+      "order": 5
+    }
+  ],
+  "scoringRules": [
+    {
+      "dimensionKey": "verbal",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 24
+      }
+    },
+    {
+      "dimensionKey": "deductive",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "dimensionKey": "critical",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "dimensionKey": "reading",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "dimensionKey": "precision",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 6
+      }
+    }
+  ],
+  "resultRanges": [
+    {
+      "dimensionKey": "overall",
+      "minScore": 0,
+      "maxScore": 30,
+      "title": "Developing",
+      "description": "Your results indicate an opportunity to build core deductive and critical-reasoning technique before timed practice will compound \u2014 accuracy improvements will move this score faster than speed drills at this stage.",
+      "recommendations": [
+        "Practice basic syllogisms and modus tollens/modus ponens patterns daily.",
+        "Slow down on critical reasoning stimuli to fully map the argument before answering.",
+        "Build vocabulary through active reading rather than word lists alone."
+      ],
+      "order": 1
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 31,
+      "maxScore": 50,
+      "title": "Average",
+      "description": "You show solid instincts on individual items but inconsistent performance across question types \u2014 targeted practice on your weaker category will move this score fastest.",
+      "recommendations": [
+        "Identify your weakest of the four categories and drill it specifically.",
+        "Time yourself on practice sets to build comfort under pressure.",
+        "Practice distinguishing 'must be true' conclusions from merely plausible ones."
+      ],
+      "order": 2
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 51,
+      "maxScore": 70,
+      "title": "Strong",
+      "description": "You reliably reach correct conclusions but have room to sharpen either raw processing speed or precision under time pressure \u2014 closing that gap is where the largest score gains typically live.",
+      "recommendations": [
+        "Focus on reducing time-per-question without sacrificing accuracy.",
+        "Practice eliminating distractor answers quickly in critical reasoning.",
+        "Sharpen precision with nuanced synonym and analogy drills."
+      ],
+      "order": 3
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 71,
+      "maxScore": 85,
+      "title": "Very Strong",
+      "description": "You extract logical conclusions and evaluate arguments with strong speed and precision, on par with high-performing graduate program applicants.",
+      "recommendations": [
+        "Maintain sharpness with periodic timed practice sets.",
+        "Push into harder, denser reading passages to extend your ceiling.",
+        "Practice under increasingly compressed time limits."
+      ],
+      "order": 4
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 86,
+      "maxScore": 100,
+      "title": "Exceptional",
+      "description": "You process language and argument structure at a level consistent with top-decile performance on graduate and executive verbal assessments \u2014 fast, accurate, and rarely misled by distractor logic.",
+      "recommendations": [
+        "Maintain performance with occasional high-difficulty practice.",
+        "Consider mentoring or teaching reasoning technique to reinforce mastery.",
+        "Explore adjacent skill areas such as quantitative or abstract reasoning."
+      ],
+      "order": 5
+    }
+  ],
+  "brainProfileContributions": [
+    {
+      "sourceDimensionKey": "verbal",
+      "targetBrainProfileDimensionKey": "verbal",
+      "weight": 1
+    }
+  ],
+  "questions": [
+    {
+      "key": "ded-1",
+      "sectionKey": "deductive",
+      "questionType": "multiple_choice",
+      "questionText": "All certified arborists are licensed by the state. No one licensed by the state is exempt from insurance requirements. Which conclusion must be true?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 60,
+      "required": true,
+      "options": [
+        {
+          "label": "Everyone exempt from insurance requirements is a certified arborist.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Some certified arborists are exempt from insurance requirements.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "No certified arborist is exempt from insurance requirements.",
+          "value": "2",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deductive",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Everyone licensed by the state is a certified arborist.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ded-2",
+      "sectionKey": "deductive",
+      "questionType": "multiple_choice",
+      "questionText": "If a contract is executed under seal, it does not require consideration. This contract required consideration. What must be true?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 60,
+      "required": true,
+      "options": [
+        {
+          "label": "This contract was not executed under seal.",
+          "value": "0",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deductive",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "This contract was executed under seal.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "All contracts require consideration.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "No contracts are executed under seal.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ded-3",
+      "sectionKey": "deductive",
+      "questionType": "multiple_choice",
+      "questionText": "Every member of the audit committee has read the compliance report. Priya has not read the compliance report. What must be true?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 60,
+      "required": true,
+      "options": [
+        {
+          "label": "Priya is a member of the audit committee.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "No one has read the compliance report.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "The audit committee has not read the report.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Priya is not a member of the audit committee.",
+          "value": "3",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deductive",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ded-4",
+      "sectionKey": "deductive",
+      "questionType": "multiple_choice",
+      "questionText": "Some engineers at the firm hold a PE license. All PE license holders must complete continuing education annually. Which conclusion must be true?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 60,
+      "required": true,
+      "options": [
+        {
+          "label": "All engineers at the firm hold a PE license.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "At least one engineer at the firm must complete continuing education annually.",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deductive",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Most engineers at the firm hold a PE license.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "No engineer without a PE license takes continuing education.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ded-5",
+      "sectionKey": "deductive",
+      "questionType": "multiple_choice",
+      "questionText": "If the merger is approved, shareholders will receive a premium. Shareholders did not receive a premium. What must be true?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 60,
+      "required": true,
+      "options": [
+        {
+          "label": "The merger was approved.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Shareholders rejected the premium.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "The premium was delayed, not cancelled.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "The merger was not approved.",
+          "value": "3",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deductive",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ded-6",
+      "sectionKey": "deductive",
+      "questionType": "multiple_choice",
+      "questionText": "No first-year associates are permitted to bill clients directly. Jordan billed a client directly. What must be true?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 60,
+      "required": true,
+      "options": [
+        {
+          "label": "Jordan is a first-year associate.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Jordan is not a first-year associate.",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deductive",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "All associates bill clients directly.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Billing clients directly is permitted for everyone.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "crit-1",
+      "sectionKey": "critical",
+      "questionType": "multiple_choice",
+      "questionText": "A city council notes that in the two years after installing streetlights downtown, reported crime fell 15%. The council concludes the streetlights caused the decrease. Which finding, if true, would most weaken the council's argument?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 75,
+      "required": true,
+      "options": [
+        {
+          "label": "During the same two years, the city also added 20 additional police officers for downtown patrols.",
+          "value": "0",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "critical",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "The streetlights use energy-efficient LED bulbs.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Crime in the downtown area had been rising steadily for a decade before the lights were installed.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Residents surveyed said they feel safer walking downtown at night.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "crit-2",
+      "sectionKey": "critical",
+      "questionType": "multiple_choice",
+      "questionText": "In a clinical trial, patients taking Drug X reported 40% fewer migraines than before the trial began. The manufacturer concludes Drug X reduces migraine frequency. Which finding would most strengthen the manufacturer's conclusion?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 75,
+      "required": true,
+      "options": [
+        {
+          "label": "Drug X has a novel chemical structure not used in prior migraine treatments.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "The trial included patients from twelve different countries.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "A matched placebo group in the same trial showed no reduction in migraine frequency, and no patient changed any other medication or habit.",
+          "value": "2",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "critical",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Migraine frequency naturally varies from month to month in most patients.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "crit-3",
+      "sectionKey": "critical",
+      "questionType": "multiple_choice",
+      "questionText": "The new toll bridge will be profitable only if it attracts at least 10,000 vehicles per day. Traffic engineers project that commuter demand alone will bring 12,000 vehicles per day once the connecting highway opens. The company concludes the bridge will be profitable. The company's conclusion depends on which assumption?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 75,
+      "required": true,
+      "options": [
+        {
+          "label": "The bridge will remain profitable indefinitely.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "No competing bridge will ever be built nearby.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Commuters prefer bridges to highways.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "The connecting highway will in fact open.",
+          "value": "3",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "critical",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "crit-4",
+      "sectionKey": "critical",
+      "questionType": "multiple_choice",
+      "questionText": "Employees who voluntarily take the company's optional wellness course report 30% fewer sick days than those who don't. Management concludes that making the course mandatory for all employees will reduce absenteeism company-wide. Which of the following identifies a flaw in management's reasoning?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 75,
+      "required": true,
+      "options": [
+        {
+          "label": "It fails to state how many employees have taken the course so far.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "It fails to consider that employees who already choose to take the course may be healthier or more conscientious than those who don't.",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "critical",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "It assumes the course is currently optional rather than mandatory.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "It does not specify the exact content of the wellness course.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "crit-5",
+      "sectionKey": "critical",
+      "questionType": "multiple_choice",
+      "questionText": "Even though the firm doubled its marketing budget last quarter, the number of new client sign-ups remained flat. Which of the following, if true, best resolves this apparent discrepancy?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 75,
+      "required": true,
+      "options": [
+        {
+          "label": "The firm's marketing budget was smaller in the prior year than in the year before that.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "New client sign-ups are tracked in a different database than the marketing budget.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Most of the increased budget funded brand-awareness campaigns with no direct sign-up call to action, rather than conversion-focused advertising.",
+          "value": "2",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "critical",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "The firm's competitors also increased their marketing budgets last quarter.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "crit-6",
+      "sectionKey": "critical",
+      "questionType": "multiple_choice",
+      "questionText": "In every department where remote work was permitted more than three days per week last year, employee turnover fell by at least 10% within the year. In the Finance department, remote work was permitted five days per week last year. Which of the following is most strongly supported by these statements?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 75,
+      "required": true,
+      "options": [
+        {
+          "label": "Turnover in the Finance department fell by at least 10% within the year.",
+          "value": "0",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "critical",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Finance department employees prefer remote work to in-office work.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Every department will eventually permit five-day remote work.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Remote work is the only factor that affects employee turnover.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "read-1a",
+      "sectionKey": "reading",
+      "questionType": "multiple_choice",
+      "questionText": "Economists studying hiring practices have long noted that employers, unable to directly observe a candidate's ability before hiring, often rely on costly, visible signals \u2014 an elite degree, a demanding internship, a professional certification \u2014 as proxies for underlying competence. The signal is valuable to employers precisely because it is expensive for low-ability candidates to fake: only genuinely capable candidates can obtain it at reasonable cost. Critics of this signaling model argue that it wastes resources on credentials that teach little of direct value to the job itself, functioning as a filter rather than as preparation.\n\nWhich best states the primary purpose of the passage?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 90,
+      "required": true,
+      "options": [
+        {
+          "label": "To explain why costly credentials function as signals of ability and to note a criticism of that function.",
+          "value": "0",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "reading",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "To argue that elite degrees should be abolished as hiring criteria.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "To prove that internships teach no job-relevant skills.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "To compare hiring practices across different industries.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "read-1b",
+      "sectionKey": "reading",
+      "questionType": "multiple_choice",
+      "questionText": "Economists studying hiring practices have long noted that employers, unable to directly observe a candidate's ability before hiring, often rely on costly, visible signals \u2014 an elite degree, a demanding internship, a professional certification \u2014 as proxies for underlying competence. The signal is valuable to employers precisely because it is expensive for low-ability candidates to fake: only genuinely capable candidates can obtain it at reasonable cost. Critics of this signaling model argue that it wastes resources on credentials that teach little of direct value to the job itself, functioning as a filter rather than as preparation.\n\nThe passage suggests that a signal would lose its value to employers if:",
+      "difficulty": "hard",
+      "timeLimitSeconds": 90,
+      "required": true,
+      "options": [
+        {
+          "label": "It became more widely required across industries.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "It was replaced by a cheaper alternative credential.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Low-ability candidates could obtain it as easily as high-ability candidates.",
+          "value": "2",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "reading",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Employers began interviewing candidates in person.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "read-2a",
+      "sectionKey": "reading",
+      "questionType": "multiple_choice",
+      "questionText": "In clinical trials, patients who merely believe they are receiving an active treatment often show measurable improvement, a phenomenon researchers attribute partly to expectation itself rather than to any pharmacological effect. This placebo response complicates the evaluation of new drugs: a treatment that outperforms no intervention at all may still fail to outperform a placebo, revealing that its apparent benefit was largely psychological. Well-designed trials therefore compare new treatments against a placebo rather than against nothing, isolating the drug's effect from the effect of mere expectation.\n\nWhich best captures the author's main point?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 90,
+      "required": true,
+      "options": [
+        {
+          "label": "Placebo effects prove that most medications are unnecessary.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Comparing a treatment only against no intervention can overstate its true effect, so placebo-controlled comparison is necessary.",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "reading",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Patients should be told when they are receiving a placebo.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Expectation has no measurable effect on clinical outcomes.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "read-2b",
+      "sectionKey": "reading",
+      "questionType": "multiple_choice",
+      "questionText": "In clinical trials, patients who merely believe they are receiving an active treatment often show measurable improvement, a phenomenon researchers attribute partly to expectation itself rather than to any pharmacological effect. This placebo response complicates the evaluation of new drugs: a treatment that outperforms no intervention at all may still fail to outperform a placebo, revealing that its apparent benefit was largely psychological. Well-designed trials therefore compare new treatments against a placebo rather than against nothing, isolating the drug's effect from the effect of mere expectation.\n\nWhich finding, if true, would most directly undermine the passage's claim about why placebo-controlled trials are necessary?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 90,
+      "required": true,
+      "options": [
+        {
+          "label": "A large study found that patients disliked receiving a placebo.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "A large study found that most new drugs fail their trials.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "A large study found that doctors prefer prescribing established drugs.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "A large study found that outcomes in placebo groups were statistically indistinguishable from outcomes in untreated groups.",
+          "value": "3",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "reading",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "read-3a",
+      "sectionKey": "reading",
+      "questionType": "multiple_choice",
+      "questionText": "Textualist judges maintain that a statute means what its enacted language would have conveyed to an ordinary reader at the time of passage, regardless of what individual legislators privately intended. Purposivist judges, by contrast, read ambiguous provisions in light of the broader problem Congress evidently sought to solve, even when the literal text admits a narrower reading. Neither camp claims that legislative intent is irrelevant; they disagree chiefly about where that intent is properly located \u2014 in the public meaning of the words enacted, or in the evident purpose behind them.\n\nThe author's tone toward the two interpretive camps is best described as:",
+      "difficulty": "hard",
+      "timeLimitSeconds": 90,
+      "required": true,
+      "options": [
+        {
+          "label": "Dismissive of purposivism as unworkable.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Even-handed, presenting each position's reasoning without endorsing either.",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "reading",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Strongly critical of textualism as overly rigid.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Openly mocking of both schools of thought.",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "read-3b",
+      "sectionKey": "reading",
+      "questionType": "multiple_choice",
+      "questionText": "Textualist judges maintain that a statute means what its enacted language would have conveyed to an ordinary reader at the time of passage, regardless of what individual legislators privately intended. Purposivist judges, by contrast, read ambiguous provisions in light of the broader problem Congress evidently sought to solve, even when the literal text admits a narrower reading. Neither camp claims that legislative intent is irrelevant; they disagree chiefly about where that intent is properly located \u2014 in the public meaning of the words enacted, or in the evident purpose behind them.\n\nWhich is the best-supported inference from the passage?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 90,
+      "required": true,
+      "options": [
+        {
+          "label": "Purposivist judges consider legislative intent to be irrelevant.",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Textualist judges never consider the problem Congress sought to solve.",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "The two camps agree on how every statute should be interpreted.",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "A textualist and a purposivist could reach different conclusions when a statute's text is ambiguous.",
+          "value": "3",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "reading",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "prec-1",
+      "sectionKey": "precision",
+      "questionType": "multiple_choice",
+      "questionText": "Despite the committee's ______ efforts to reach consensus, the final vote remained deeply divided.",
+      "difficulty": "hard",
+      "timeLimitSeconds": 30,
+      "required": true,
+      "options": [
+        {
+          "label": "desultory",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "perfunctory",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "concerted",
+          "value": "2",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "precision",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "apathetic",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "prec-2",
+      "sectionKey": "precision",
+      "questionType": "multiple_choice",
+      "questionText": "The CEO's remarks were intentionally ______, leaving analysts uncertain whether merger talks had resumed.",
+      "difficulty": "hard",
+      "timeLimitSeconds": 30,
+      "required": true,
+      "options": [
+        {
+          "label": "equivocal",
+          "value": "0",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "precision",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "candid",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "unequivocal",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "forthright",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "prec-3",
+      "sectionKey": "precision",
+      "questionType": "multiple_choice",
+      "questionText": "PRODIGAL is to THRIFT as ______ is to ______.",
+      "difficulty": "hard",
+      "timeLimitSeconds": 30,
+      "required": true,
+      "options": [
+        {
+          "label": "taciturn : silence",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "verbose : brevity",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "precision",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "generous : charity",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "meticulous : care",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "prec-4",
+      "sectionKey": "precision",
+      "questionType": "multiple_choice",
+      "questionText": "The auditor's report was notable for its ______: it avoided vague generalities and specified exact figures for every discrepancy.",
+      "difficulty": "hard",
+      "timeLimitSeconds": 30,
+      "required": true,
+      "options": [
+        {
+          "label": "ambiguity",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "brevity",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "specificity",
+          "value": "2",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "precision",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "neutrality",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "prec-5",
+      "sectionKey": "precision",
+      "questionType": "multiple_choice",
+      "questionText": "Although the negotiations appeared ______ at the outset, both delegations ultimately reached an agreement within hours.",
+      "difficulty": "hard",
+      "timeLimitSeconds": 30,
+      "required": true,
+      "options": [
+        {
+          "label": "promising",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "straightforward",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "amicable",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "intractable",
+          "value": "3",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "precision",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "prec-6",
+      "sectionKey": "precision",
+      "questionType": "multiple_choice",
+      "questionText": "TEMPER is to ANGER as ______ is to ______.",
+      "difficulty": "hard",
+      "timeLimitSeconds": 30,
+      "required": true,
+      "options": [
+        {
+          "label": "curb : enthusiasm",
+          "value": "0",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 1
+            },
+            {
+              "dimensionKey": "precision",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "provoke : anger",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "ignite : passion",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "sustain : interest",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "slug": "spatial-intelligence",
+  "title": "Spatial Intelligence",
+  "shortDescription": "Rotation, orientation, shape matching and 2D/3D transformations using SVG-based visual reasoning matrices.",
+  "longDescription": "Spatial Intelligence measures non-verbal visual pattern reasoning through 3x3 matrix-completion puzzles, where shapes progress by rule across rows and columns (shape, fill, size, color, quantity, position, or compound combinations) and one cell is missing.",
+  "icon": "box",
+  "categoryKey": "spatial",
+  "engineType": "pattern_recognition",
+  "difficulty": "hard",
+  "estimatedDurationMinutes": 15,
+  "access": "free",
+  "sourceNote": "Ported from airostudio/spacial-intelligence (lib/questions.ts, lib/scoring.ts, components/MatrixCell.tsx) — 10 real questions, short of the catalogue's nominal ~18, not padded with invented ones. Matrices are procedurally rendered (not static images); each question's svgSourceNote documents what's needed to regenerate the visual from the real source props. The single-item sub-categories the source used (Shape Sequence, Pattern Fill, Size Progression, Color Rotation, Inner Pattern, Quantity, Diagonal Logic, Shape Toggle, Compound Rules, Matrix Symmetry) are noted in questionText rather than modeled as separate scoring sub-dimensions, since each appears in only one question.",
+
+  "sections": [
+    { "key": "matrix-reasoning", "name": "Matrix Pattern Reasoning", "description": "A set of 3x3 visual matrices where shapes progress by rule across rows and columns; one cell is missing and must be completed by selecting the correct shape from six options.", "instructions": "Study the pattern in each 3x3 grid. Figure out the rule governing how shapes change across the grid, then choose the option that correctly completes the missing (bottom-right) cell.", "timeLimitSeconds": 600, "weight": 1, "order": 1 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "spatial", "label": "Spatial Intelligence", "description": "Composite measure of non-verbal visual pattern reasoning across shape, fill, size, color, quantity, and compound transformation rules in matrix-completion puzzles.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "spatial", "order": 1 }
+  ],
+
+  "scoringRules": [{ "dimensionKey": "spatial", "formula": "sum", "normalization": { "min": 0, "max": 100 } }],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Spatial pattern reasoning is still emerging. Multi-step matrix rules involving shape, color, size, and fill changing at once were difficult to track under time pressure.", "recommendations": ["Practice simple shape-sequence puzzles daily for 10 minutes to build pattern-detection basics.", "Isolate one attribute at a time (shape, then color, then size) before trying to combine rules.", "Use physical objects or blocks to build intuition for how shapes transform in a sequence."], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "Solid, typical spatial reasoning performance. Single-rule progressions (shape order, fill, size) were handled well, but compound and diagonal rules were inconsistent.", "recommendations": ["Practice scanning both rows and columns simultaneously, since harder matrices combine rules across both.", "Try mentally rotating or transforming objects before checking answers to build visualization strength.", "Time yourself on easier puzzles first to build speed before tackling compound-rule items."], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Above-average spatial intelligence. Color rotation, size/fill progressions, and quantity changes were identified reliably, with only the most compound rules causing occasional errors.", "recommendations": ["Challenge yourself with matrices that combine three or more changing attributes at once.", "Practice diagonal and symmetry-based logic puzzles to sharpen multi-axis reasoning.", "Keep timing yourself to convert accuracy gains into speed gains."], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Excellent spatial pattern reasoning. Compound rules combining shape, color, fill, and position were solved quickly and accurately, placing performance well above typical adult norms.", "recommendations": ["Seek out advanced non-verbal reasoning batteries for continued challenge.", "Apply this strength in fields like engineering, architecture, design, or data visualization.", "Mentor others on rule-decomposition strategies for matrix puzzles."], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Elite spatial intelligence. Every rule type — simple progressions, rotations, diagonal logic, toggling, compound combinations, and symmetry — was solved with near-perfect accuracy, placing this result in the top tier of the population.", "recommendations": ["Pursue advanced spatial domains such as 3D CAD, chess, surgery, or theoretical mathematics.", "Benchmark against timed, higher-difficulty visual reasoning batteries to keep finding ceiling.", "Pair this strength with verbal or numerical assessments to build a complete cognitive profile."], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "spatial", "targetBrainProfileDimensionKey": "spatial", "weight": 1 }],
+
+  "questions": [
+    { "key": "spatial-q1", "sectionKey": "matrix-reasoning", "questionType": "pattern_question", "questionText": "3x3 grid, easy difficulty (category: Shape Sequence). Each row cycles the same three shapes left to right in the order circle, square, triangle, with the row's color held constant (row 1 indigo #6366f1, row 2 amber #f59e0b, row 3 green #10b981). The bottom-right cell is blank. Following the row's circle-square-triangle progression, the missing cell should be a green triangle.", "instructions": "Identify the shape-order rule per row and pick the option that completes the missing cell.", "difficulty": "easy", "required": true, "svgSourceNote": "lib/questions.ts questions[0] (id:1); rendered per-cell by components/MatrixCell.tsx via renderShape() using {shape:'triangle', color:'#10b981', pattern:'solid', size:'md'}.", "options": [
+      { "label": "Green solid triangle (medium)", "value": "triangle-#10b981-solid-md", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "spatial", "points": 10 }] },
+      { "label": "Green solid circle (medium)", "value": "circle-#10b981-solid-md" },
+      { "label": "Green solid diamond (medium)", "value": "diamond-#10b981-solid-md" },
+      { "label": "Amber solid triangle (medium)", "value": "triangle-#f59e0b-solid-md" },
+      { "label": "Indigo solid square (medium)", "value": "square-#6366f1-solid-md" },
+      { "label": "Indigo solid triangle (medium)", "value": "triangle-#6366f1-solid-md" }
+    ]},
+    { "key": "spatial-q2", "sectionKey": "matrix-reasoning", "questionType": "pattern_question", "questionText": "3x3 grid, easy difficulty (category: Pattern Fill). Each row keeps the same shape and color across all three columns, while the fill pattern progresses left to right: outline, then striped, then solid. Row 1 = red circle, row 2 = purple square, row 3 = blue diamond. The bottom-right cell is blank. Following the row's fill progression, the missing cell should be a solid blue diamond.", "instructions": "Identify the fill-progression rule per row and pick the option that completes the missing cell.", "difficulty": "easy", "required": true, "svgSourceNote": "lib/questions.ts questions[1] (id:2); rendered by components/MatrixCell.tsx renderShape() with {shape:'diamond', color:'#0ea5e9', pattern:'solid', size:'md'}.", "options": [
+      { "label": "Blue solid diamond", "value": "diamond-#0ea5e9-solid-md", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "spatial", "points": 10 }] },
+      { "label": "Blue outline diamond", "value": "diamond-#0ea5e9-outline-md" },
+      { "label": "Blue solid circle", "value": "circle-#0ea5e9-solid-md" },
+      { "label": "Red solid diamond", "value": "diamond-#ef4444-solid-md" },
+      { "label": "Blue solid square", "value": "square-#0ea5e9-solid-md" },
+      { "label": "Blue striped diamond", "value": "diamond-#0ea5e9-striped-md" }
+    ]},
+    { "key": "spatial-q3", "sectionKey": "matrix-reasoning", "questionType": "pattern_question", "questionText": "3x3 grid, easy difficulty (category: Size Progression). Each row keeps the same shape and color across columns while size increases left to right: small, then medium, then large. Row 1 = orange circle, row 2 = teal square, row 3 = purple triangle. The bottom-right cell is blank. Following the row's size progression, the missing cell should be a large purple solid triangle.", "instructions": "Identify the size-progression rule per row and pick the option that completes the missing cell.", "difficulty": "easy", "required": true, "svgSourceNote": "lib/questions.ts questions[2] (id:3); size 'sm'/'md'/'lg' maps to radii 20/30/42 via SIZE_MAP in components/MatrixCell.tsx.", "options": [
+      { "label": "Large purple solid triangle", "value": "triangle-#a855f7-solid-lg", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "spatial", "points": 10 }] },
+      { "label": "Small purple solid triangle", "value": "triangle-#a855f7-solid-sm" },
+      { "label": "Large teal solid triangle", "value": "triangle-#14b8a6-solid-lg" },
+      { "label": "Large purple solid circle", "value": "circle-#a855f7-solid-lg" },
+      { "label": "Large purple outline triangle", "value": "triangle-#a855f7-outline-lg" },
+      { "label": "Large purple solid square", "value": "square-#a855f7-solid-lg" }
+    ]},
+    { "key": "spatial-q4", "sectionKey": "matrix-reasoning", "questionType": "pattern_question", "questionText": "3x3 grid, medium difficulty (category: Color Rotation). Each row keeps the same shape across all columns, while color rotates left to right: red, then green, then blue. Row 1 = hexagon, row 2 = star, row 3 = cross. The bottom-right cell is blank. Following the row's color rotation, the missing cell should be a blue cross.", "instructions": "Identify the color-rotation rule per row and pick the option that completes the missing cell.", "difficulty": "medium", "required": true, "svgSourceNote": "lib/questions.ts questions[3] (id:4); cross drawn as a 12-point plus-sign path in components/MatrixCell.tsx renderShape().", "options": [
+      { "label": "Blue solid cross", "value": "cross-#3b82f6-solid-md", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "spatial", "points": 10 }] },
+      { "label": "Red solid cross", "value": "cross-#ef4444-solid-md" },
+      { "label": "Blue solid hexagon", "value": "hexagon-#3b82f6-solid-md" },
+      { "label": "Green solid cross", "value": "cross-#22c55e-solid-md" },
+      { "label": "Blue solid star", "value": "star-#3b82f6-solid-md" },
+      { "label": "Purple solid cross", "value": "cross-#a855f7-solid-md" }
+    ]},
+    { "key": "spatial-q5", "sectionKey": "matrix-reasoning", "questionType": "pattern_question", "questionText": "3x3 grid, medium difficulty (category: Inner Pattern). Each row has a fixed large outer shape/color (row 1 = indigo square, row 2 = amber circle, row 3 = green diamond) containing a small white inner shape that changes per cell. The bottom-right cell is blank. The correct completion keeps the row 3 green diamond outer shape and uses a matching white diamond as the inner shape.", "instructions": "Track the outer shape/color per row and the changing inner shape per cell, then pick the option that completes the missing cell.", "difficulty": "medium", "required": true, "svgSourceNote": "lib/questions.ts questions[4] (id:5); nested rendering via components/MatrixCell.tsx MatrixCellView drawing outer then cell.inner at INNER_SIZE_MAP radius.", "options": [
+      { "label": "Large green diamond with white circle inside", "value": "diamond-#10b981-lg/inner-circle-#fff-sm" },
+      { "label": "Large green diamond with white diamond inside", "value": "diamond-#10b981-lg/inner-diamond-#fff-sm", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "spatial", "points": 10 }] },
+      { "label": "Large green circle with white circle inside", "value": "circle-#10b981-lg/inner-circle-#fff-sm" },
+      { "label": "Large amber diamond with white circle inside", "value": "diamond-#f59e0b-lg/inner-circle-#fff-sm" },
+      { "label": "Large green diamond with white triangle inside", "value": "diamond-#10b981-lg/inner-triangle-#fff-sm" },
+      { "label": "Large green square with white circle inside", "value": "square-#10b981-lg/inner-circle-#fff-sm" }
+    ]},
+    { "key": "spatial-q6", "sectionKey": "matrix-reasoning", "questionType": "pattern_question", "questionText": "3x3 grid, medium difficulty (category: Quantity). Each row keeps the same shape and color while the count of shapes drawn in the cell increases left to right: 1, then 2, then 3. Row 1 = rose circle, row 2 = purple square, row 3 = sky-blue triangle. The bottom-right cell is blank. Following the row's quantity progression, the missing cell should show 3 sky-blue triangles.", "instructions": "Identify the quantity-progression rule per row and pick the option that completes the missing cell.", "difficulty": "medium", "required": true, "svgSourceNote": "lib/questions.ts questions[5] (id:6); multi-shape layout via components/MatrixCell.tsx CountShapes() positioning 1/2/3 copies based on cell.count.", "options": [
+      { "label": "3 sky-blue triangles", "value": "triangle-#0ea5e9-solid-md-count3", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "spatial", "points": 10 }] },
+      { "label": "2 sky-blue triangles", "value": "triangle-#0ea5e9-solid-md-count2" },
+      { "label": "3 sky-blue squares", "value": "square-#0ea5e9-solid-md-count3" },
+      { "label": "1 sky-blue triangle", "value": "triangle-#0ea5e9-solid-md-count1" },
+      { "label": "3 rose triangles", "value": "triangle-#f43f5e-solid-md-count3" },
+      { "label": "3 sky-blue circles", "value": "circle-#0ea5e9-solid-md-count3" }
+    ]},
+    { "key": "spatial-q7", "sectionKey": "matrix-reasoning", "questionType": "pattern_question", "questionText": "3x3 grid, hard difficulty (category: Diagonal Logic). Shape cycles diagonally: row 1 is circle, square, triangle; row 2 is square, triangle, circle; row 3 is triangle, circle, [missing]. Each column has a fixed fill/size (col 1 = solid/large, col 2 = outline/medium, col 3 = striped/small) and each row has a fixed color (row 1 = indigo, row 2 = amber, row 3 = green). Continuing the diagonal shape cycle and column 3's striped/small styling, the missing cell should be a small striped green square.", "instructions": "Track how the shape identity shifts diagonally row-to-row while color (by row) and fill/size (by column) stay fixed, then pick the option that completes the missing cell.", "difficulty": "hard", "required": true, "svgSourceNote": "lib/questions.ts questions[6] (id:7); combines per-row color, per-column size/pattern, and diagonal shape cycling, all rendered per-cell.", "options": [
+      { "label": "Small striped green square", "value": "square-#10b981-striped-sm", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "spatial", "points": 10 }] },
+      { "label": "Small striped green circle", "value": "circle-#10b981-striped-sm" },
+      { "label": "Small striped green diamond", "value": "diamond-#10b981-striped-sm" },
+      { "label": "Small solid green square", "value": "square-#10b981-solid-sm" },
+      { "label": "Small striped green triangle", "value": "triangle-#10b981-striped-sm" },
+      { "label": "Small striped indigo square", "value": "square-#6366f1-striped-sm" }
+    ]},
+    { "key": "spatial-q8", "sectionKey": "matrix-reasoning", "questionType": "pattern_question", "questionText": "3x3 grid, hard difficulty (category: Shape Toggle). Within each row, the shape alternates between only two types (circle and diamond): row 1 = circle, diamond, circle (red); row 2 = diamond, circle, diamond (purple); row 3 = circle, diamond, [missing] (blue). Continuing the alternation, the missing cell should be a blue circle.", "instructions": "Identify the two-shape alternation within each row and pick the option that completes the missing cell.", "difficulty": "hard", "required": true, "svgSourceNote": "lib/questions.ts questions[7] (id:8); circle/diamond alternation rendered per-cell, only the `shape` prop toggling while color/pattern/size stay constant per row.", "options": [
+      { "label": "Blue solid circle", "value": "circle-#0284c7-solid-md", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "spatial", "points": 10 }] },
+      { "label": "Blue solid diamond", "value": "diamond-#0284c7-solid-md" },
+      { "label": "Red solid circle", "value": "circle-#e11d48-solid-md" },
+      { "label": "Blue solid square", "value": "square-#0284c7-solid-md" },
+      { "label": "Purple solid circle", "value": "circle-#7c3aed-solid-md" },
+      { "label": "Blue solid triangle", "value": "triangle-#0284c7-solid-md" }
+    ]},
+    { "key": "spatial-q9", "sectionKey": "matrix-reasoning", "questionType": "pattern_question", "questionText": "3x3 grid, hard difficulty (category: Compound Rules). Shape, color, and fill pattern all rotate together diagonally: row 1 = orange solid circle (large), green striped square (medium), blue outline triangle (small); row 2 = green solid square (large), blue striped triangle (medium), orange outline circle (small); row 3 = blue solid triangle (large), orange striped circle (medium), [missing]. Size and fill are fixed per column (large/solid, medium/striped, small/outline) while shape and color cycle diagonally. The missing cell should be a small outline green square.", "instructions": "Track three simultaneous rules — shape rotation, color rotation, and column-fixed size/fill — then pick the option that completes the missing cell.", "difficulty": "hard", "required": true, "svgSourceNote": "lib/questions.ts questions[8] (id:9); the compound {shape,color,pattern,size} combination for each cell is rendered as one unit.", "options": [
+      { "label": "Small outline green square", "value": "square-#22c55e-outline-sm", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "spatial", "points": 10 }] },
+      { "label": "Small outline blue triangle", "value": "triangle-#3b82f6-outline-sm" },
+      { "label": "Small outline blue square", "value": "square-#3b82f6-outline-sm" },
+      { "label": "Small outline green circle", "value": "circle-#22c55e-outline-sm" },
+      { "label": "Small solid green square", "value": "square-#22c55e-solid-sm" },
+      { "label": "Small outline green diamond", "value": "diamond-#22c55e-outline-sm" }
+    ]},
+    { "key": "spatial-q10", "sectionKey": "matrix-reasoning", "questionType": "pattern_question", "questionText": "3x3 grid, hard difficulty (category: Matrix Symmetry). Shape cyclically permutes across rows (row 1: star, hexagon, cross; row 2: hexagon, cross, star; row 3: cross, star, [missing]), fill pattern cyclically permutes across rows too (row 1: solid, outline, striped; row 2: outline, striped, solid; row 3: striped, solid, [outline for last cell]), size is fixed per column (large, medium, small), and color is fixed per row (red, purple, cyan). The missing cell should be a small outline cyan hexagon.", "instructions": "Track the cyclic shape permutation and cyclic fill-pattern permutation across rows simultaneously, then pick the option that completes the missing cell.", "difficulty": "hard", "required": true, "svgSourceNote": "lib/questions.ts questions[9] (id:10); hexagon/star/cross shapes drawn as SVG polygons/paths; most complex compound rule in the bank.", "options": [
+      { "label": "Small outline cyan hexagon", "value": "hexagon-#0891b2-outline-sm", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "spatial", "points": 10 }] },
+      { "label": "Small outline cyan cross", "value": "cross-#0891b2-outline-sm" },
+      { "label": "Small striped cyan star", "value": "star-#0891b2-striped-sm" },
+      { "label": "Small solid cyan hexagon", "value": "hexagon-#0891b2-solid-sm" },
+      { "label": "Small outline cyan circle", "value": "circle-#0891b2-outline-sm" },
+      { "label": "Small outline red hexagon", "value": "hexagon-#dc2626-outline-sm" }
+    ]}
+  ]
+}

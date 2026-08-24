@@ -91,21 +91,55 @@ function collectImpacts(
   questionScoreConfig: ScoreImpact[] | null | undefined,
   options: { id: string; scoreConfig?: ScoreImpact[] | null }[]
 ): ScoreImpact[] {
-  const impacts: ScoreImpact[] = [...(questionScoreConfig ?? [])];
-
   const answer = response.answer;
-  if (answer.type === "multiple_choice" || answer.type === "image_choice" || answer.type === "pattern_question" || answer.type === "visual_rotation") {
+
+  // Choice-based questions: points come entirely from the selected
+  // option(s)' own scoreConfig — the question-level scoreConfig isn't used.
+  if (
+    answer.type === "multiple_choice" ||
+    answer.type === "image_choice" ||
+    answer.type === "pattern_question" ||
+    answer.type === "visual_rotation" ||
+    answer.type === "timed_choice"
+  ) {
     const opt = options.find((o) => o.id === answer.optionId);
-    if (opt?.scoreConfig) impacts.push(...opt.scoreConfig);
+    return opt?.scoreConfig ? [...opt.scoreConfig] : [];
   }
   if (answer.type === "multiple_select") {
+    const impacts: ScoreImpact[] = [];
     for (const optionId of answer.optionIds) {
       const opt = options.find((o) => o.id === optionId);
       if (opt?.scoreConfig) impacts.push(...opt.scoreConfig);
     }
+    return impacts;
   }
 
-  return impacts;
+  // Value-based questions (Likert self-report, rating scales, sliders,
+  // numeric entry): the question's scoreConfig gives a per-unit weight per
+  // dimension, and the actual answered value scales it — otherwise every
+  // response would score identically regardless of what was selected.
+  if (
+    answer.type === "likert_scale" ||
+    answer.type === "rating_scale" ||
+    answer.type === "slider" ||
+    answer.type === "numeric_input"
+  ) {
+    return (questionScoreConfig ?? []).map((impact) => ({
+      dimensionKey: impact.dimensionKey,
+      points: answer.value * impact.points,
+    }));
+  }
+
+  if (answer.type === "true_false") {
+    // scoreConfig on a true/false question represents the points for a
+    // "true" answer; a "false" answer earns none. Questions that want the
+    // reverse should encode it via the option-based multiple_choice type.
+    return answer.value ? [...(questionScoreConfig ?? [])] : [];
+  }
+
+  // Open-ended / non-deterministic types (text, long_text, open_creative,
+  // image_upload, etc.) never contribute to the deterministic score.
+  return [];
 }
 
 function normalize(raw: number, rule?: ScoringRule): number {

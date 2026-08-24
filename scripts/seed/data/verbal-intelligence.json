@@ -1,0 +1,2551 @@
+{
+  "slug": "verbal-intelligence",
+  "title": "Verbal Intelligence",
+  "shortDescription": "Vocabulary, comprehension, similarities and general information, based on the Wechsler Adult Intelligence Scale (WAIS).",
+  "longDescription": "Verbal Intelligence measures overall verbal intellectual functioning across five WAIS-inspired subtests: Vocabulary, Comprehension, Similarities, General Information, and Arithmetic Reasoning.",
+  "icon": "book-open",
+  "categoryKey": "language",
+  "engineType": "standard_questionnaire",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 12,
+  "access": "free",
+  "sourceNote": "Ported verbatim from airostudio/verbalize \u2014 40 real questions across the 5 real WAIS-inspired subtests found in the source.",
+  "sections": [
+    {
+      "key": "vocabulary",
+      "name": "Vocabulary",
+      "description": "Assesses knowledge of word meanings and verbal comprehension of individual terms.",
+      "instructions": "Select the definition that best matches the given word.",
+      "timeLimitSeconds": null,
+      "weight": 1,
+      "order": 1
+    },
+    {
+      "key": "comprehension",
+      "name": "Comprehension",
+      "description": "Assesses practical judgment, reasoning about social conventions, and understanding of common sayings.",
+      "instructions": "Choose the answer that best explains the reasoning or meaning behind the statement.",
+      "timeLimitSeconds": null,
+      "weight": 1,
+      "order": 2
+    },
+    {
+      "key": "similarities",
+      "name": "Similarities",
+      "description": "Assesses abstract verbal reasoning by identifying conceptual relationships between two items.",
+      "instructions": "Choose the answer that best describes how the two items are alike.",
+      "timeLimitSeconds": null,
+      "weight": 1,
+      "order": 3
+    },
+    {
+      "key": "general-information",
+      "name": "General Information",
+      "description": "Assesses fund of general knowledge across geography, history, science, and the arts.",
+      "instructions": "Select the correct answer to each general knowledge question.",
+      "timeLimitSeconds": null,
+      "weight": 1,
+      "order": 4
+    },
+    {
+      "key": "arithmetic-reasoning",
+      "name": "Arithmetic Reasoning",
+      "description": "Assesses numerical reasoning and the ability to solve word problems involving calculation and logic.",
+      "instructions": "Solve each problem and select the correct answer.",
+      "timeLimitSeconds": null,
+      "weight": 1,
+      "order": 5
+    }
+  ],
+  "scoringDimensions": [
+    {
+      "key": "verbal-intelligence",
+      "label": "Verbal Intelligence",
+      "description": "Composite score reflecting overall verbal intellectual functioning across vocabulary, comprehension, similarities, general information, and arithmetic reasoning.",
+      "contributesToBrainProfile": true,
+      "brainProfileDimensionKey": "verbal",
+      "order": 1
+    },
+    {
+      "key": "vocabulary",
+      "label": "Vocabulary",
+      "description": "Knowledge of word meanings.",
+      "contributesToBrainProfile": false,
+      "order": 2
+    },
+    {
+      "key": "comprehension",
+      "label": "Comprehension",
+      "description": "Practical and social judgment reasoning.",
+      "contributesToBrainProfile": false,
+      "order": 3
+    },
+    {
+      "key": "similarities",
+      "label": "Similarities",
+      "description": "Abstract verbal conceptual reasoning.",
+      "contributesToBrainProfile": false,
+      "order": 4
+    },
+    {
+      "key": "general-information",
+      "label": "General Information",
+      "description": "Breadth of general knowledge.",
+      "contributesToBrainProfile": false,
+      "order": 5
+    },
+    {
+      "key": "arithmetic-reasoning",
+      "label": "Arithmetic Reasoning",
+      "description": "Numerical word-problem reasoning.",
+      "contributesToBrainProfile": false,
+      "order": 6
+    }
+  ],
+  "scoringRules": [
+    {
+      "dimensionKey": "verbal-intelligence",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 80
+      }
+    },
+    {
+      "dimensionKey": "vocabulary",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 16
+      }
+    },
+    {
+      "dimensionKey": "comprehension",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 16
+      }
+    },
+    {
+      "dimensionKey": "similarities",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 16
+      }
+    },
+    {
+      "dimensionKey": "general-information",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 16
+      }
+    },
+    {
+      "dimensionKey": "arithmetic-reasoning",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 16
+      }
+    }
+  ],
+  "resultRanges": [
+    {
+      "dimensionKey": "overall",
+      "minScore": 0,
+      "maxScore": 30,
+      "title": "Developing",
+      "description": "Your verbal intelligence score suggests foundational verbal skills are still developing across vocabulary, comprehension, and reasoning tasks.",
+      "recommendations": [
+        "Build vocabulary daily by learning and using 3-5 new words",
+        "Read a variety of material, including nonfiction and opinion pieces",
+        "Practice explaining idioms and proverbs in your own words"
+      ],
+      "order": 1
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 31,
+      "maxScore": 50,
+      "title": "Average",
+      "description": "Your verbal intelligence falls within the typical range, showing solid but improvable skills in language and reasoning.",
+      "recommendations": [
+        "Engage in discussions or debates to sharpen verbal reasoning",
+        "Read above your comfort level to expand vocabulary",
+        "Practice solving word problems to strengthen arithmetic reasoning"
+      ],
+      "order": 2
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 51,
+      "maxScore": 70,
+      "title": "Strong",
+      "description": "You demonstrate strong verbal intelligence, with solid command of vocabulary, comprehension, and abstract reasoning.",
+      "recommendations": [
+        "Challenge yourself with advanced literature or essays",
+        "Try writing persuasive arguments to refine eloquence",
+        "Explore general knowledge quizzes to broaden your base"
+      ],
+      "order": 3
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 71,
+      "maxScore": 85,
+      "title": "Very Strong",
+      "description": "You show very strong verbal intelligence, excelling in word knowledge, judgment, and conceptual reasoning.",
+      "recommendations": [
+        "Mentor others in writing or verbal communication",
+        "Pursue complex reading such as academic or philosophical texts",
+        "Continue practicing multi-step reasoning problems to stay sharp"
+      ],
+      "order": 4
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 86,
+      "maxScore": 100,
+      "title": "Exceptional",
+      "description": "Your verbal intelligence is exceptional, reflecting outstanding vocabulary, comprehension, abstract reasoning, and general knowledge.",
+      "recommendations": [
+        "Pursue advanced writing, debate, or public speaking opportunities",
+        "Consider fields that leverage strong verbal-analytical ability",
+        "Keep exploring diverse topics to maintain your broad knowledge base"
+      ],
+      "order": 5
+    }
+  ],
+  "brainProfileContributions": [
+    {
+      "sourceDimensionKey": "verbal-intelligence",
+      "targetBrainProfileDimensionKey": "verbal",
+      "weight": 1
+    }
+  ],
+  "questions": [
+    {
+      "key": "vocabulary-1",
+      "sectionKey": "vocabulary",
+      "questionType": "multiple_choice",
+      "questionText": "What does the word \"BENEVOLENT\" mean?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Hostile and aggressive",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Kind and generous",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "vocabulary",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Extremely wealthy",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Very intelligent",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vocabulary-2",
+      "sectionKey": "vocabulary",
+      "questionType": "multiple_choice",
+      "questionText": "What is the meaning of \"UBIQUITOUS\"?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Rare and unusual",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Found everywhere",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "vocabulary",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Hidden from view",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Very expensive",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vocabulary-3",
+      "sectionKey": "vocabulary",
+      "questionType": "multiple_choice",
+      "questionText": "What does \"EPHEMERAL\" mean?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Lasting a very short time",
+          "value": "a",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "vocabulary",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Extremely heavy",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Made of ethereal material",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Eternally lasting",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vocabulary-4",
+      "sectionKey": "vocabulary",
+      "questionType": "multiple_choice",
+      "questionText": "What does \"PRAGMATIC\" mean?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Dealing with things sensibly and realistically",
+          "value": "a",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "vocabulary",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Being overly dramatic",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Speaking multiple languages",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Being extremely cautious",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vocabulary-5",
+      "sectionKey": "vocabulary",
+      "questionType": "multiple_choice",
+      "questionText": "What is the meaning of \"ELOQUENT\"?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Unable to speak clearly",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Fluent and persuasive in speaking or writing",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "vocabulary",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Speaking very quietly",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Being silent",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vocabulary-6",
+      "sectionKey": "vocabulary",
+      "questionType": "multiple_choice",
+      "questionText": "What does \"AMBIGUOUS\" mean?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Very clear and precise",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Extremely ambitious",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Open to more than one interpretation",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "vocabulary",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Walking slowly",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vocabulary-7",
+      "sectionKey": "vocabulary",
+      "questionType": "multiple_choice",
+      "questionText": "What is the meaning of \"METICULOUS\"?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Careless and sloppy",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Showing great attention to detail",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "vocabulary",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Being very tall",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Acting mysteriously",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vocabulary-8",
+      "sectionKey": "vocabulary",
+      "questionType": "multiple_choice",
+      "questionText": "What does \"RESILIENT\" mean?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Easily broken or damaged",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Able to recover quickly from difficulties",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "vocabulary",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Very resistant to change",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Living in a remote area",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "comprehension-1",
+      "sectionKey": "comprehension",
+      "questionType": "multiple_choice",
+      "questionText": "Why is it important to have laws in society?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "To punish people who are different",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "To maintain order and protect rights",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "comprehension",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "To make lawyers wealthy",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Laws are not important",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "comprehension-2",
+      "sectionKey": "comprehension",
+      "questionType": "multiple_choice",
+      "questionText": "What does the saying \"Don't judge a book by its cover\" mean?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Only read books with nice covers",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Don't evaluate things based on appearance alone",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "comprehension",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Books are better than movies",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Always read the summary first",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "comprehension-3",
+      "sectionKey": "comprehension",
+      "questionType": "multiple_choice",
+      "questionText": "Why do people typically save money for retirement?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Because banks require it",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "To ensure financial security when no longer working",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "comprehension",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Because money loses value over time",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "People don't actually save for retirement",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "comprehension-4",
+      "sectionKey": "comprehension",
+      "questionType": "multiple_choice",
+      "questionText": "What does \"A stitch in time saves nine\" mean?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Sewing is an important skill",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Time travel is possible",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Fixing problems early prevents bigger problems later",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "comprehension",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Nine stitches are better than one",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "comprehension-5",
+      "sectionKey": "comprehension",
+      "questionType": "multiple_choice",
+      "questionText": "Why is freedom of speech considered important in a democracy?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "So people can insult each other",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "It allows citizens to express opinions and hold leaders accountable",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "comprehension",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Because silence is unhealthy",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "It makes news programs more interesting",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "comprehension-6",
+      "sectionKey": "comprehension",
+      "questionType": "multiple_choice",
+      "questionText": "What does \"The early bird catches the worm\" suggest?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Birds should wake up early",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Worms are most active in the morning",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Those who act promptly have an advantage",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "comprehension",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Early morning is the best time to eat",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "comprehension-7",
+      "sectionKey": "comprehension",
+      "questionType": "multiple_choice",
+      "questionText": "Why do most countries require children to attend school?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "To give parents free time",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Education helps children develop skills for life and work",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "comprehension",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Buildings would be empty otherwise",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Teachers need employment",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "comprehension-8",
+      "sectionKey": "comprehension",
+      "questionType": "multiple_choice",
+      "questionText": "What does \"Don't put all your eggs in one basket\" advise?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "Eggs are fragile and need care",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Diversify your investments or efforts to reduce risk",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "comprehension",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Always use multiple baskets for shopping",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Chickens should have separate nests",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "similarities-1",
+      "sectionKey": "similarities",
+      "questionType": "multiple_choice",
+      "questionText": "How are an APPLE and an ORANGE alike?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "They are both the same color",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are both fruits",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "similarities",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "They both grow underground",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are both vegetables",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "similarities-2",
+      "sectionKey": "similarities",
+      "questionType": "multiple_choice",
+      "questionText": "How are DEMOCRACY and MONARCHY alike?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "They are both forms of government",
+          "value": "a",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "similarities",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "They both involve voting",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are both ancient Greek words",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are exact opposites",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "similarities-3",
+      "sectionKey": "similarities",
+      "questionType": "multiple_choice",
+      "questionText": "How are a POEM and a STATUE alike?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "They are both made of stone",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are both forms of artistic expression",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "similarities",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "They both use words",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are not alike at all",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "similarities-4",
+      "sectionKey": "similarities",
+      "questionType": "multiple_choice",
+      "questionText": "How are a RIVER and a ROAD alike?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "They are both made of water",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are both pathways for travel or transport",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "similarities",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "They are both man-made",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They both require fuel to use",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "similarities-5",
+      "sectionKey": "similarities",
+      "questionType": "multiple_choice",
+      "questionText": "How are a NEWSPAPER and TELEVISION alike?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "They both require electricity",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are both forms of mass media",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "similarities",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "They both use paper",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are both rectangular",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "similarities-6",
+      "sectionKey": "similarities",
+      "questionType": "multiple_choice",
+      "questionText": "How are PRAISE and PUNISHMENT alike?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "They both feel good",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are both forms of feedback that influence behavior",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "similarities",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "They are both negative",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They both involve physical contact",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "similarities-7",
+      "sectionKey": "similarities",
+      "questionType": "multiple_choice",
+      "questionText": "How are a TELESCOPE and a MICROSCOPE alike?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "They both make things appear larger",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They both look at stars",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are both instruments that enhance vision to see things not visible to the naked eye",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "similarities",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "They are both used by doctors",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "similarities-8",
+      "sectionKey": "similarities",
+      "questionType": "multiple_choice",
+      "questionText": "How are LIBERTY and JUSTICE alike?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "They are both legal terms only",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are both fundamental democratic values",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "similarities",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "They both refer to freedom",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "They are opposites",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "information-1",
+      "sectionKey": "general-information",
+      "questionType": "multiple_choice",
+      "questionText": "What is the capital of France?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "London",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Berlin",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Paris",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "general-information",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Madrid",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "information-2",
+      "sectionKey": "general-information",
+      "questionType": "multiple_choice",
+      "questionText": "Who wrote \"Romeo and Juliet\"?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Charles Dickens",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "William Shakespeare",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "general-information",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Jane Austen",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Mark Twain",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "information-3",
+      "sectionKey": "general-information",
+      "questionType": "multiple_choice",
+      "questionText": "How many continents are there on Earth?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "5",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "7",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "general-information",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "8",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "information-4",
+      "sectionKey": "general-information",
+      "questionType": "multiple_choice",
+      "questionText": "What is the largest organ in the human body?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Heart",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Liver",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Brain",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Skin",
+          "value": "d",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "general-information",
+              "points": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "information-5",
+      "sectionKey": "general-information",
+      "questionType": "multiple_choice",
+      "questionText": "Which planet is known as the Red Planet?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Venus",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Jupiter",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Mars",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "general-information",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Saturn",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "information-6",
+      "sectionKey": "general-information",
+      "questionType": "multiple_choice",
+      "questionText": "Who painted the Mona Lisa?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Vincent van Gogh",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Pablo Picasso",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Leonardo da Vinci",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "general-information",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Michelangelo",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "information-7",
+      "sectionKey": "general-information",
+      "questionType": "multiple_choice",
+      "questionText": "What year did World War II end?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "1942",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "1945",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "general-information",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "1948",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "1950",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "information-8",
+      "sectionKey": "general-information",
+      "questionType": "multiple_choice",
+      "questionText": "What is the chemical symbol for gold?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Go",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Gd",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Au",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "general-information",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "Ag",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arithmetic-1",
+      "sectionKey": "arithmetic-reasoning",
+      "questionType": "multiple_choice",
+      "questionText": "If you have 3 apples and buy 5 more, then give away 2, how many do you have?",
+      "difficulty": "hard",
+      "required": true,
+      "options": [
+        {
+          "label": "4",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "arithmetic-reasoning",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "8",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arithmetic-2",
+      "sectionKey": "arithmetic-reasoning",
+      "questionType": "multiple_choice",
+      "questionText": "A store offers 25% off a $80 item. What is the sale price?",
+      "difficulty": "hard",
+      "required": true,
+      "options": [
+        {
+          "label": "$55",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "$60",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "arithmetic-reasoning",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "$65",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "$70",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arithmetic-3",
+      "sectionKey": "arithmetic-reasoning",
+      "questionType": "multiple_choice",
+      "questionText": "What number comes next in the sequence: 2, 4, 8, 16, __?",
+      "difficulty": "hard",
+      "required": true,
+      "options": [
+        {
+          "label": "24",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "32",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "arithmetic-reasoning",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "20",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "18",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arithmetic-4",
+      "sectionKey": "arithmetic-reasoning",
+      "questionType": "multiple_choice",
+      "questionText": "If a train travels 60 miles in 1 hour, how far will it travel in 2.5 hours?",
+      "difficulty": "hard",
+      "required": true,
+      "options": [
+        {
+          "label": "120 miles",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "140 miles",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "150 miles",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "arithmetic-reasoning",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "180 miles",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arithmetic-5",
+      "sectionKey": "arithmetic-reasoning",
+      "questionType": "multiple_choice",
+      "questionText": "What is 15% of 200?",
+      "difficulty": "hard",
+      "required": true,
+      "options": [
+        {
+          "label": "15",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "25",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "30",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "arithmetic-reasoning",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "35",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arithmetic-6",
+      "sectionKey": "arithmetic-reasoning",
+      "questionType": "multiple_choice",
+      "questionText": "If 5 workers can build a wall in 10 days, how many days will 10 workers take?",
+      "difficulty": "hard",
+      "required": true,
+      "options": [
+        {
+          "label": "3 days",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "5 days",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "arithmetic-reasoning",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "7 days",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "20 days",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arithmetic-7",
+      "sectionKey": "arithmetic-reasoning",
+      "questionType": "multiple_choice",
+      "questionText": "What comes next: 1, 1, 2, 3, 5, 8, __?",
+      "difficulty": "hard",
+      "required": true,
+      "options": [
+        {
+          "label": "10",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "11",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "12",
+          "value": "c",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "13",
+          "value": "d",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "arithmetic-reasoning",
+              "points": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arithmetic-8",
+      "sectionKey": "arithmetic-reasoning",
+      "questionType": "multiple_choice",
+      "questionText": "A book costs $24. After a 1/3 discount, what is the new price?",
+      "difficulty": "hard",
+      "required": true,
+      "options": [
+        {
+          "label": "$8",
+          "value": "a",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "$12",
+          "value": "b",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "$16",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 2
+            },
+            {
+              "dimensionKey": "arithmetic-reasoning",
+              "points": 2
+            }
+          ]
+        },
+        {
+          "label": "$18",
+          "value": "d",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "verbal-intelligence",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

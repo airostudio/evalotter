@@ -1,0 +1,79 @@
+{
+  "slug": "intelligence-profile",
+  "title": "EvalOtter Intelligence Profile",
+  "shortDescription": "The flagship assessment. Combines logical reasoning, numerical intelligence, memory, verbal reasoning, spatial intelligence, and pattern recognition into one EvalOtter Score.",
+  "longDescription": "The EvalOtter Intelligence Profile is the flagship assessment — a broad first read across six cognitive domains: logical reasoning, numerical intelligence, memory, verbal reasoning, spatial intelligence, and pattern recognition. It draws a curated subset of questions from the platform's shared question library (the same items used in the dedicated single-domain assessments), so results are directly comparable to your scores on those assessments. EvalOtter assessments are designed for education, entertainment and self-discovery and are not a substitute for professional psychological, medical or clinical assessment.",
+  "icon": "brain",
+  "categoryKey": "cognitive",
+  "engineType": "hybrid",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 25,
+  "access": "free",
+  "featured": true,
+  "sourceNote": "Deliberately does NOT port the old airostudio/brainyak repo's 15 'pattern recognition' questions: that repo's data/questions.ts hardcodes correctAnswer:0 for every single question regardless of the actual image content (see src/store/testStore.ts's isCorrect check against that fixed value) — the app's IQ score was cosmetic, not a real assessment. Shipping that would mean the platform's own flagship silently scored on fabricated correctness. Instead, this assessment reuses real, legitimately-scored questions from the sibling single-domain assessments via the shared question library (see reuseQuestionKeys) — the architecture's intended way to compose a multi-domain assessment, per the Question Library principle in the platform spec.",
+
+  "sections": [
+    { "key": "logical", "name": "Logical Reasoning", "description": "Pattern detection and deductive inference.", "instructions": null, "timeLimitSeconds": null, "weight": 1, "order": 1 },
+    { "key": "numerical", "name": "Numerical Intelligence", "description": "Arithmetic, percentages, and sequences.", "instructions": null, "timeLimitSeconds": null, "weight": 1, "order": 2 },
+    { "key": "memory", "name": "Memory", "description": "Word recall.", "instructions": null, "timeLimitSeconds": null, "weight": 1, "order": 3 },
+    { "key": "verbal", "name": "Verbal Reasoning", "description": "Vocabulary and word precision.", "instructions": null, "timeLimitSeconds": null, "weight": 1, "order": 4 },
+    { "key": "spatial", "name": "Spatial Intelligence", "description": "Visual matrix pattern completion.", "instructions": null, "timeLimitSeconds": null, "weight": 1, "order": 5 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "logical", "label": "Logical", "description": "Pattern detection and deductive inference.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "logical", "order": 1 },
+    { "key": "numerical", "label": "Numerical", "description": "Arithmetic, percentages, ratios, and sequences.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "logical", "order": 2 },
+    { "key": "memory", "label": "Memory", "description": "Word and sequence recall.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "memory", "order": 3 },
+    { "key": "verbal", "label": "Verbal", "description": "Vocabulary and word precision.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "verbal", "order": 4 },
+    { "key": "spatial", "label": "Spatial", "description": "Visual matrix pattern completion.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "spatial", "order": 5 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "logical", "formula": "sum", "normalization": { "min": 0, "max": 4 } },
+    { "dimensionKey": "numerical", "formula": "sum", "normalization": { "min": 0, "max": 4 } },
+    { "dimensionKey": "memory", "formula": "sum", "normalization": { "min": 0, "max": 10 } },
+    { "dimensionKey": "verbal", "formula": "sum", "normalization": { "min": 0, "max": 4 } },
+    { "dimensionKey": "spatial", "formula": "sum", "normalization": { "min": 0, "max": 20 } },
+    { "dimensionKey": "overall", "formula": "average" }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Your broad cognitive profile is still forming across the domains tested. This first read is a starting point, not a verdict — the dedicated single-domain assessments will show you exactly where to focus.", "recommendations": ["Take the dedicated assessment for your lowest-scoring domain to get a fuller picture.", "Revisit this profile after practicing in your weaker areas.", "Use the Brain Profile radar to see your shape at a glance, not just one number."], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "You show typical performance across most cognitive domains tested, with some unevenness between your strongest and weakest areas.", "recommendations": ["Check your Brain Profile to see which domain is pulling the average down.", "Take the single-domain assessments for a more precise read on each area.", "Revisit this profile periodically to track how your shape changes over time."], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "You perform solidly across logical, numerical, memory, verbal, and spatial reasoning, with a reasonably balanced profile.", "recommendations": ["Take the dedicated assessments to sharpen your understanding of each individual domain.", "Look at your Brain Profile radar for your single strongest area and lean into it.", "Retake periodically — this composite is a good way to track overall change over time."], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "You perform well above average across the cognitive domains tested, with a well-rounded profile and no clear weak spot.", "recommendations": ["Take the single-domain assessments to find your single sharpest edge.", "Explore Emotional Intelligence and Creative Assessment to round out your full Brain Profile.", "Consider what real-world contexts would let you apply this range of ability."], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "You perform exceptionally across logical, numerical, memory, verbal, and spatial reasoning — a rare, well-rounded profile in the top tier of this assessment.", "recommendations": ["Explore the full catalogue — Emotional Intelligence and Creative Assessment measure dimensions this profile doesn't touch.", "Take the single-domain assessments to see just how deep each individual strength runs.", "Revisit periodically; a broad composite like this is a good long-term benchmark."], "order": 5 }
+  ],
+
+  "brainProfileContributions": [
+    { "sourceDimensionKey": "logical", "targetBrainProfileDimensionKey": "logical", "weight": 0.6 },
+    { "sourceDimensionKey": "numerical", "targetBrainProfileDimensionKey": "logical", "weight": 0.4 },
+    { "sourceDimensionKey": "memory", "targetBrainProfileDimensionKey": "memory", "weight": 1 },
+    { "sourceDimensionKey": "verbal", "targetBrainProfileDimensionKey": "verbal", "weight": 1 },
+    { "sourceDimensionKey": "spatial", "targetBrainProfileDimensionKey": "spatial", "weight": 1 }
+  ],
+
+  "questions": [],
+
+  "reuseQuestionKeys": [
+    { "questionKey": "logical-01", "sectionKey": "logical", "order": 1 },
+    { "questionKey": "logical-07", "sectionKey": "logical", "order": 2 },
+    { "questionKey": "logical-09", "sectionKey": "logical", "order": 3 },
+    { "questionKey": "logical-13", "sectionKey": "logical", "order": 4 },
+
+    { "questionKey": "metrics-01", "sectionKey": "numerical", "order": 1 },
+    { "questionKey": "metrics-05", "sectionKey": "numerical", "order": 2 },
+    { "questionKey": "metrics-09", "sectionKey": "numerical", "order": 3 },
+    { "questionKey": "metrics-13", "sectionKey": "numerical", "order": 4 },
+
+    { "questionKey": "adas-word-recall", "sectionKey": "memory", "order": 1 },
+
+    { "questionKey": "prec-1", "sectionKey": "verbal", "order": 1 },
+    { "questionKey": "prec-2", "sectionKey": "verbal", "order": 2 },
+    { "questionKey": "prec-3", "sectionKey": "verbal", "order": 3 },
+    { "questionKey": "prec-4", "sectionKey": "verbal", "order": 4 },
+
+    { "questionKey": "spatial-q1", "sectionKey": "spatial", "order": 1 },
+    { "questionKey": "spatial-q4", "sectionKey": "spatial", "order": 2 }
+  ]
+}

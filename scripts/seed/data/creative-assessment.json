@@ -1,0 +1,114 @@
+{
+  "slug": "creative-assessment",
+  "title": "Creative Assessment",
+  "shortDescription": "Divergent thinking, originality, flexibility and problem reframing, with open-text responses and AI-assisted interpretation.",
+  "longDescription": "Creative Assessment measures divergent thinking, originality, flexibility, and problem-reframing ability through a mix of closed-form pattern/ideation items (deterministically scored) and open-ended written prompts (AI-interpreted only, never scored deterministically).",
+  "icon": "palette",
+  "categoryKey": "creative",
+  "engineType": "hybrid",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 15,
+  "access": "free",
+  "sourceNote": "Ported verbatim from airostudio/Creative-Assessment (questions.js) — 15 real questions (13 closed-form, 2 open-ended). Per platform policy, the two open_creative questions never feed the deterministic score; they're passed to the AI interpretation layer only.",
+
+  "sections": [
+    { "key": "core-assessment", "name": "Core Creative Assessment", "description": "Closed-form items covering visual pattern recognition, ideation, problem solving, flexibility, and innovation, each scored deterministically.", "instructions": "Choose the option that best fits each prompt. Some items include an image or a slider scale.", "timeLimitSeconds": null, "weight": 0.7, "order": 1 },
+    { "key": "creative-expression", "name": "Creative Expression", "description": "Open-ended written prompts that surface divergent thinking and imaginative expression. These responses are AI-interpreted and do not contribute to the deterministic score.", "instructions": "Write freely — there are no right or wrong answers here.", "timeLimitSeconds": null, "weight": 0.3, "order": 2 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "creative", "label": "Creative", "description": "Overall composite creativity score aggregating visual creativity, ideation, problem solving, flexibility, and innovation.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "creative", "order": 1 },
+    { "key": "visual-creativity", "label": "Visual Creativity", "description": "Pattern recognition and aesthetic sense, measured through visual pattern completion and image-selection items.", "contributesToBrainProfile": false, "order": 2 },
+    { "key": "ideation", "label": "Ideation", "description": "Idea generation and divergent thinking, measured through alternative-uses and brainstorming items.", "contributesToBrainProfile": false, "order": 3 },
+    { "key": "problem-solving", "label": "Problem Solving", "description": "Creative and analytical approaches to solving constrained or contradictory problems.", "contributesToBrainProfile": false, "order": 4 },
+    { "key": "flexibility", "label": "Flexibility", "description": "Adaptability and openness to changing approach, especially after negative feedback or a failed first attempt.", "contributesToBrainProfile": false, "order": 5 },
+    { "key": "innovation", "label": "Innovation", "description": "Novel thinking and risk-taking when facing seemingly impossible challenges.", "contributesToBrainProfile": false, "order": 6 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "creative", "formula": "average", "normalization": { "min": 0, "max": 10 } },
+    { "dimensionKey": "visual-creativity", "formula": "average", "normalization": { "min": 0, "max": 10 } },
+    { "dimensionKey": "ideation", "formula": "average", "normalization": { "min": 0, "max": 10 } },
+    { "dimensionKey": "problem-solving", "formula": "average", "normalization": { "min": 0, "max": 10 } },
+    { "dimensionKey": "flexibility", "formula": "average", "normalization": { "min": 0, "max": 10 } },
+    { "dimensionKey": "innovation", "formula": "average", "normalization": { "min": 0, "max": 10 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Your creative thinking is still emerging. You tend to favor familiar, well-trodden solutions over novel ones, and may hesitate to change course once you've picked an approach.", "recommendations": ["Practice brainstorming without judging ideas — quantity first, quality later.", "Deliberately generate multiple unrelated uses for everyday objects.", "Seek out feedback and treat it as raw material rather than criticism."], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "You show a moderate capacity for creative thinking, with occasional flashes of originality, but your ideas often stay close to conventional patterns.", "recommendations": ["Push past your first three ideas — the most original ones tend to come later.", "Try reframing problems from a completely different perspective before solving them.", "Expose yourself to unfamiliar visual styles and disciplines regularly."], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "You demonstrate solid creative range — comfortable generating alternatives, spotting patterns, and adjusting your approach when something isn't working.", "recommendations": ["Stretch further into unconventional or paradox-embracing solutions.", "Pair your idea generation with faster experimentation cycles.", "Mentor others in divergent-thinking techniques to sharpen your own."], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "You think fluently and flexibly, generating many original ideas and reframing problems with ease. You're comfortable with ambiguity and contradiction.", "recommendations": ["Channel your fluency into structured creative projects with real constraints.", "Explore cross-domain inspiration to keep pushing originality further.", "Practice articulating the 'why' behind your creative choices for collaborators."], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Your creative thinking is exceptional — highly original, fluent, and adaptable across visual, verbal, and problem-solving domains.", "recommendations": ["Take on ambiguous, high-stakes creative challenges that stretch your range.", "Share your process to help build creative capacity in others.", "Protect deliberate space for unstructured exploration to sustain originality."], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "creative", "targetBrainProfileDimensionKey": "creative", "weight": 1 }],
+
+  "questions": [
+    { "key": "q1", "sectionKey": "core-assessment", "questionType": "multiple_choice", "questionText": "Which pattern best completes this sequence?", "instructions": "Image shows an SVG sequence: a blue circle, a pink rounded square, a blue triangle, a blue circle, a pink rounded square, then a '?'. (from questions.js, Q1 image)", "difficulty": "easy", "required": true, "options": [
+      { "label": "Triangle", "value": "a", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 9 }, { "dimensionKey": "visual-creativity", "points": 10 }, { "dimensionKey": "problem-solving", "points": 8 }] },
+      { "label": "Square", "value": "b", "scoreConfig": [{ "dimensionKey": "creative", "points": 4 }, { "dimensionKey": "visual-creativity", "points": 4 }, { "dimensionKey": "problem-solving", "points": 3 }] },
+      { "label": "Circle", "value": "c", "scoreConfig": [{ "dimensionKey": "creative", "points": 6 }, { "dimensionKey": "visual-creativity", "points": 6 }, { "dimensionKey": "problem-solving", "points": 5 }] },
+      { "label": "Hexagon", "value": "d", "scoreConfig": [{ "dimensionKey": "creative", "points": 8 }, { "dimensionKey": "visual-creativity", "points": 8 }, { "dimensionKey": "problem-solving", "points": 7 }] }
+    ]},
+    { "key": "q2", "sectionKey": "core-assessment", "questionType": "multiple_choice", "questionText": "A paperclip is typically used to hold papers together. How many alternative uses can you think of?", "difficulty": "medium", "required": true, "options": [
+      { "label": "1-3 uses", "value": "a", "scoreConfig": [{ "dimensionKey": "creative", "points": 3 }, { "dimensionKey": "ideation", "points": 3 }, { "dimensionKey": "flexibility", "points": 2 }] },
+      { "label": "4-6 uses", "value": "b", "scoreConfig": [{ "dimensionKey": "creative", "points": 5 }, { "dimensionKey": "ideation", "points": 5 }, { "dimensionKey": "flexibility", "points": 4 }] },
+      { "label": "7-10 uses", "value": "c", "scoreConfig": [{ "dimensionKey": "creative", "points": 8 }, { "dimensionKey": "ideation", "points": 8 }, { "dimensionKey": "flexibility", "points": 7 }] },
+      { "label": "More than 10 uses", "value": "d", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 10 }, { "dimensionKey": "ideation", "points": 10 }, { "dimensionKey": "flexibility", "points": 9 }] }
+    ]},
+    { "key": "q3", "sectionKey": "core-assessment", "questionType": "multiple_choice", "questionText": "Which color combination best represents \"Innovation\"?", "instructions": "Image shows an SVG dark panel with the text 'INNOVATION' and two soft gradient circles (blue-purple gradient on the left, pink-red gradient on the right). (from questions.js, Q3 image)", "difficulty": "easy", "required": true, "options": [
+      { "label": "Blue & Purple", "value": "a", "scoreConfig": [{ "dimensionKey": "creative", "points": 7 }, { "dimensionKey": "visual-creativity", "points": 7 }, { "dimensionKey": "innovation", "points": 6 }] },
+      { "label": "Yellow & Orange", "value": "b", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 10 }, { "dimensionKey": "visual-creativity", "points": 9 }, { "dimensionKey": "innovation", "points": 10 }] },
+      { "label": "Green & Teal", "value": "c", "scoreConfig": [{ "dimensionKey": "creative", "points": 7 }, { "dimensionKey": "visual-creativity", "points": 6 }, { "dimensionKey": "innovation", "points": 7 }] },
+      { "label": "Red & Pink", "value": "d", "scoreConfig": [{ "dimensionKey": "creative", "points": 8 }, { "dimensionKey": "visual-creativity", "points": 8 }, { "dimensionKey": "innovation", "points": 8 }] }
+    ]},
+    { "key": "q4", "sectionKey": "core-assessment", "questionType": "multiple_choice", "questionText": "You're given 9 dots arranged in a 3x3 grid. Connect all dots using only 4 straight lines without lifting your pen. What's the key insight?", "instructions": "Image shows an SVG 3x3 grid of 9 dots. (from questions.js, Q4 image)", "difficulty": "hard", "required": true, "options": [
+      { "label": "Stay within the grid boundaries", "value": "a", "scoreConfig": [{ "dimensionKey": "creative", "points": 2 }, { "dimensionKey": "problem-solving", "points": 2 }, { "dimensionKey": "flexibility", "points": 2 }] },
+      { "label": "Think outside the box - extend beyond the grid", "value": "b", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 10 }, { "dimensionKey": "problem-solving", "points": 10 }, { "dimensionKey": "flexibility", "points": 10 }] },
+      { "label": "Use curved lines instead", "value": "c", "scoreConfig": [{ "dimensionKey": "creative", "points": 5 }, { "dimensionKey": "problem-solving", "points": 4 }, { "dimensionKey": "flexibility", "points": 5 }] },
+      { "label": "Use thicker lines to cover multiple dots", "value": "d", "scoreConfig": [{ "dimensionKey": "creative", "points": 4 }, { "dimensionKey": "problem-solving", "points": 3 }, { "dimensionKey": "flexibility", "points": 4 }] }
+    ]},
+    { "key": "q5", "sectionKey": "core-assessment", "questionType": "slider", "questionText": "How comfortable are you with changing your approach when your first solution doesn't work?", "instructions": "1-10 slider from 'Very uncomfortable' to 'Very comfortable'.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 0.9 }, { "dimensionKey": "flexibility", "points": 1 }, { "dimensionKey": "problem-solving", "points": 0.7 }] },
+    { "key": "q6", "sectionKey": "core-assessment", "questionType": "image_choice", "questionText": "Which abstract image best represents \"Growth\"?", "instructions": "Each option is its own SVG icon. (from questions.js, Q6 answers)", "difficulty": "medium", "required": true, "options": [
+      { "label": "Upward Arrow", "value": "a", "scoreConfig": [{ "dimensionKey": "creative", "points": 6 }, { "dimensionKey": "visual-creativity", "points": 6 }, { "dimensionKey": "ideation", "points": 5 }] },
+      { "label": "Wave Pattern", "value": "b", "scoreConfig": [{ "dimensionKey": "creative", "points": 8 }, { "dimensionKey": "visual-creativity", "points": 8 }, { "dimensionKey": "ideation", "points": 7 }] },
+      { "label": "Expanding Circles", "value": "c", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 10 }, { "dimensionKey": "visual-creativity", "points": 10 }, { "dimensionKey": "ideation", "points": 9 }] },
+      { "label": "Rising Bars", "value": "d", "scoreConfig": [{ "dimensionKey": "creative", "points": 7 }, { "dimensionKey": "visual-creativity", "points": 7 }, { "dimensionKey": "ideation", "points": 6 }] }
+    ]},
+    { "key": "q7", "sectionKey": "core-assessment", "questionType": "multiple_choice", "questionText": "When facing a challenge that seems impossible, what's your typical approach?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Research how others solved similar problems", "value": "a", "scoreConfig": [{ "dimensionKey": "creative", "points": 6 }, { "dimensionKey": "innovation", "points": 5 }, { "dimensionKey": "problem-solving", "points": 6 }] },
+      { "label": "Experiment with unconventional solutions", "value": "b", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 9 }, { "dimensionKey": "innovation", "points": 10 }, { "dimensionKey": "problem-solving", "points": 8 }] },
+      { "label": "Collaborate with others to brainstorm", "value": "c", "scoreConfig": [{ "dimensionKey": "creative", "points": 8 }, { "dimensionKey": "innovation", "points": 8 }, { "dimensionKey": "problem-solving", "points": 7 }] },
+      { "label": "Break it down into smaller, manageable parts", "value": "d", "scoreConfig": [{ "dimensionKey": "creative", "points": 8 }, { "dimensionKey": "innovation", "points": 6 }, { "dimensionKey": "problem-solving", "points": 9 }] }
+    ]},
+    { "key": "q8", "sectionKey": "creative-expression", "questionType": "open_creative", "questionText": "Complete this sentence in the most creative way possible: \"The sunset painted the sky with colors that reminded me of...\"", "instructions": "Let your imagination flow...", "difficulty": "medium", "required": true },
+    { "key": "q9", "sectionKey": "core-assessment", "questionType": "multiple_choice", "questionText": "What comes next in this creative sequence?", "instructions": "Image shows an SVG sequence of four rotated squares at 0°, 15°, 30°, and 45° in different colors, followed by a '?'. (from questions.js, Q9 image)", "difficulty": "hard", "required": true, "options": [
+      { "label": "Diamond (60° rotation)", "value": "a", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 10 }, { "dimensionKey": "visual-creativity", "points": 10 }, { "dimensionKey": "problem-solving", "points": 10 }] },
+      { "label": "Square (0° rotation)", "value": "b", "scoreConfig": [{ "dimensionKey": "creative", "points": 3 }, { "dimensionKey": "visual-creativity", "points": 3 }, { "dimensionKey": "problem-solving", "points": 2 }] },
+      { "label": "Diamond (45° rotation)", "value": "c", "scoreConfig": [{ "dimensionKey": "creative", "points": 6 }, { "dimensionKey": "visual-creativity", "points": 6 }, { "dimensionKey": "problem-solving", "points": 5 }] },
+      { "label": "Square (90° rotation)", "value": "d", "scoreConfig": [{ "dimensionKey": "creative", "points": 4 }, { "dimensionKey": "visual-creativity", "points": 4 }, { "dimensionKey": "problem-solving", "points": 4 }] }
+    ]},
+    { "key": "q10", "sectionKey": "core-assessment", "questionType": "slider", "questionText": "Rate your ability to generate multiple ideas quickly when brainstorming:", "instructions": "1-10 slider from 'Slow & Methodical' to 'Rapid & Fluent'.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 0.8 }, { "dimensionKey": "ideation", "points": 1 }, { "dimensionKey": "innovation", "points": 0.6 }] },
+    { "key": "q11", "sectionKey": "core-assessment", "questionType": "multiple_choice", "questionText": "A client needs a logo, but they have contradicting requirements: \"modern yet classic, bold yet subtle.\" How do you approach this?", "difficulty": "hard", "required": true, "options": [
+      { "label": "Find a middle ground that slightly satisfies both", "value": "a", "scoreConfig": [{ "dimensionKey": "creative", "points": 4 }, { "dimensionKey": "problem-solving", "points": 5 }, { "dimensionKey": "flexibility", "points": 4 }, { "dimensionKey": "innovation", "points": 4 }] },
+      { "label": "Create multiple versions exploring different interpretations", "value": "b", "scoreConfig": [{ "dimensionKey": "creative", "points": 8 }, { "dimensionKey": "problem-solving", "points": 8 }, { "dimensionKey": "flexibility", "points": 9 }, { "dimensionKey": "innovation", "points": 8 }] },
+      { "label": "Ask clarifying questions to understand the deeper need", "value": "c", "scoreConfig": [{ "dimensionKey": "creative", "points": 8 }, { "dimensionKey": "problem-solving", "points": 9 }, { "dimensionKey": "flexibility", "points": 7 }, { "dimensionKey": "innovation", "points": 7 }] },
+      { "label": "Embrace the paradox and create something that transforms between states", "value": "d", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 10 }, { "dimensionKey": "problem-solving", "points": 10 }, { "dimensionKey": "flexibility", "points": 10 }, { "dimensionKey": "innovation", "points": 10 }] }
+    ]},
+    { "key": "q12", "sectionKey": "core-assessment", "questionType": "image_choice", "questionText": "Which composition demonstrates the best use of negative space?", "instructions": "Each option is its own SVG composition. (from questions.js, Q12 answers)", "difficulty": "medium", "required": true, "options": [
+      { "label": "Filled Grid", "value": "a", "scoreConfig": [{ "dimensionKey": "creative", "points": 3 }, { "dimensionKey": "visual-creativity", "points": 3 }] },
+      { "label": "Frame Focus", "value": "b", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 10 }, { "dimensionKey": "visual-creativity", "points": 10 }] },
+      { "label": "Solid Block", "value": "c", "scoreConfig": [{ "dimensionKey": "creative", "points": 2 }, { "dimensionKey": "visual-creativity", "points": 2 }] },
+      { "label": "Corner Element", "value": "d", "scoreConfig": [{ "dimensionKey": "creative", "points": 7 }, { "dimensionKey": "visual-creativity", "points": 7 }] }
+    ]},
+    { "key": "q13", "sectionKey": "core-assessment", "questionType": "multiple_choice", "questionText": "Your creative project just received negative feedback. What's your immediate reaction?", "difficulty": "medium", "required": true, "options": [
+      { "label": "Defend your creative choices", "value": "a", "scoreConfig": [{ "dimensionKey": "creative", "points": 3 }, { "dimensionKey": "flexibility", "points": 2 }, { "dimensionKey": "innovation", "points": 3 }] },
+      { "label": "Reflect on the feedback before responding", "value": "b", "scoreConfig": [{ "dimensionKey": "creative", "points": 7 }, { "dimensionKey": "flexibility", "points": 7 }, { "dimensionKey": "innovation", "points": 6 }] },
+      { "label": "See it as an opportunity to improve", "value": "c", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 10 }, { "dimensionKey": "flexibility", "points": 10 }, { "dimensionKey": "innovation", "points": 9 }] },
+      { "label": "Ask for specific examples to understand better", "value": "d", "scoreConfig": [{ "dimensionKey": "creative", "points": 8 }, { "dimensionKey": "flexibility", "points": 8 }, { "dimensionKey": "innovation", "points": 7 }] }
+    ]},
+    { "key": "q14", "sectionKey": "creative-expression", "questionType": "open_creative", "questionText": "Describe an innovative way to use a common household item (like a spoon, book, or umbrella) for a completely different purpose:", "instructions": "Think outside the box...", "difficulty": "medium", "required": true },
+    { "key": "q15", "sectionKey": "core-assessment", "questionType": "slider", "questionText": "How would you rate your overall creative confidence?", "instructions": "1-10 slider from 'Still developing' to 'Highly confident'.", "difficulty": "easy", "required": true, "scoreConfig": [{ "dimensionKey": "creative", "points": 0.7 }, { "dimensionKey": "innovation", "points": 0.8 }, { "dimensionKey": "visual-creativity", "points": 0.5 }, { "dimensionKey": "ideation", "points": 0.7 }, { "dimensionKey": "problem-solving", "points": 0.6 }, { "dimensionKey": "flexibility", "points": 0.7 }]}
+  ]
+}

@@ -21,24 +21,55 @@ export async function updateBrainProfileForResult(
     .eq("assessment_id", assessment.id);
 
   if (rules && rules.length > 0) {
+    // An assessment can have several scoring dimensions mapped to the same
+    // brain-profile axis (e.g. multiple EQ-i facets all feeding
+    // "emotional"). Combine those via weighted average up front — writing
+    // each rule with its own upsert would have the last rule silently
+    // clobber the others, since they'd all target the same row.
+    const contributionsByTarget = new Map<string, { weightedSum: number; weightSum: number; label: string }>();
+
     for (const rule of rules) {
       const dimension = scoring.dimensions.find((d) => d.dimensionKey === rule.source_dimension_key);
       if (!dimension) continue;
 
-      const { data: existing } = await supabase
+      const weight = Number(rule.weight);
+      const target = rule.target_brain_profile_dimension_key;
+      const existing = contributionsByTarget.get(target);
+      if (existing) {
+        existing.weightedSum += dimension.score * weight;
+        existing.weightSum += weight;
+      } else {
+        contributionsByTarget.set(target, {
+          weightedSum: dimension.score * weight,
+          weightSum: weight,
+          label: dimension.label,
+        });
+      }
+    }
+
+    for (const [targetKey, agg] of contributionsByTarget) {
+      if (agg.weightSum <= 0) continue;
+
+      const { data: existingRow } = await supabase
         .from("brain_profile_dimensions")
         .select("score")
         .eq("user_id", userId)
-        .eq("dimension_key", rule.target_brain_profile_dimension_key)
+        .eq("dimension_key", targetKey)
         .maybeSingle();
 
+      // NB: contributions from a *different* assessment mapped to the same
+      // axis still simply overwrite rather than blend — combining across
+      // assessments (and replacing a stale contribution on retake, rather
+      // than double-counting it) needs a per-assessment contribution table
+      // to do correctly. Fine for v1 since launch assessments each own a
+      // distinct axis; revisit if that changes.
       await supabase.from("brain_profile_dimensions").upsert(
         {
           user_id: userId,
-          dimension_key: rule.target_brain_profile_dimension_key,
-          label: dimension.label,
-          score: dimension.score * Number(rule.weight),
-          previous_score: existing?.score ?? null,
+          dimension_key: targetKey,
+          label: agg.label,
+          score: agg.weightedSum / agg.weightSum,
+          previous_score: existingRow?.score ?? null,
           contributing_assessment_slugs: [assessment.slug],
           last_updated_at: new Date().toISOString(),
         },

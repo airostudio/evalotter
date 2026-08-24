@@ -1,0 +1,1153 @@
+{
+  "slug": "memory-recall",
+  "title": "Memory Recall",
+  "shortDescription": "Word, image and number-sequence recall exercises adapted from clinical memory tests like ISLT and ADAS-Cog word recall.",
+  "longDescription": "Memory Recall is a comprehensive cognitive assessment inspired by standardized memory tests: the ISLT Shopping List Test, ADAS-Cog Word Recall, a Logical Memory story-recall test, an SKT-style speed naming and object recognition task, and a SAGE-style general cognitive screen.",
+  "icon": "sparkles",
+  "categoryKey": "memory",
+  "engineType": "memory_exercise",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 12,
+  "access": "free",
+  "sourceNote": "Ported verbatim from airostudio/Memory-Recall-Test (public/js/app.js) \u2014 a plain HTML/JS app, not a framework app, so this content is easy to miss by searching only .ts/.tsx files. All study lists, the story text, and object/emoji items are real. Two items (sage-orientation's correct day-of-week; skt-naming items' response-time scoring) depend on runtime/interaction state in the source app and are noted below rather than hard-coded. KNOWN GAP: memory_recall-type questions (islt-shopping-list, adas-word-recall, skt-object-recall) carry scoreConfig but the generic scoring engine (src/lib/scoring/engine.ts) does not yet compare a recalled[] answer against studyItems/distractorItems \u2014 these 3 questions currently score 0 at runtime. Fixing this needs studyItems/distractorItems threaded onto the real Question type (currently a seed-authoring-only field) plus a recall-accuracy scoring branch in collectImpacts(). The other 21 questions in this assessment (multiple_choice, timed_choice) score correctly.",
+  "sections": [
+    {
+      "key": "islt",
+      "name": "ISLT Shopping List",
+      "description": "International Shopping List Test \u2014 participants study a 12-item shopping list, then attempt to recognize the items from a mixed grid of targets and distractors.",
+      "instructions": "You will see 12 shopping list items for 30 seconds. Study them carefully. Afterward, select the items you remember from a grid of 20 items (12 targets + 8 distractors).",
+      "timeLimitSeconds": 30,
+      "weight": 0.2,
+      "order": 1
+    },
+    {
+      "key": "adas",
+      "name": "ADAS-Cog Word Recall",
+      "description": "Alzheimer's Disease Assessment Scale-Cognitive word list test \u2014 10 words are shown sequentially, then freely recalled by typing.",
+      "instructions": "10 words will be displayed one at a time, 3 seconds each. After all words have been shown, type as many as you can remember, in any order.",
+      "timeLimitSeconds": 30,
+      "weight": 0.2,
+      "order": 2
+    },
+    {
+      "key": "lm",
+      "name": "Logical Memory Test",
+      "description": "Wechsler-style Logical Memory subtest \u2014 a short news-style story is read, then comprehension/recall questions are answered about its details.",
+      "instructions": "Read the story 'The Brave Firefighter' carefully. You have 45 seconds. Afterward, answer 5 multiple-choice questions about details from the story.",
+      "timeLimitSeconds": 45,
+      "weight": 0.2,
+      "order": 3
+    },
+    {
+      "key": "skt",
+      "name": "SKT Speed Test",
+      "description": "Syndrom-Kurztest-inspired speed naming and object recognition task \u2014 8 objects are named as quickly as possible, then recognized from a mixed grid.",
+      "instructions": "You will be shown 8 objects one at a time. Select the correct name for each as quickly as possible. Afterward, identify which objects you saw from a mixed grid of 14 (8 targets + 6 distractors).",
+      "timeLimitSeconds": null,
+      "weight": 0.2,
+      "order": 4
+    },
+    {
+      "key": "sage",
+      "name": "SAGE Assessment",
+      "description": "Self-Administered Gerocognitive Exam-inspired mixed cognitive screen covering orientation, calculation, pattern recognition, language, visual, reasoning, and memory items.",
+      "instructions": "Answer each question by selecting one option. Includes one item testing recall of the earlier ISLT shopping list.",
+      "timeLimitSeconds": null,
+      "weight": 0.2,
+      "order": 5
+    }
+  ],
+  "scoringDimensions": [
+    {
+      "key": "memory",
+      "label": "Memory",
+      "description": "Composite memory score aggregating immediate recall, delayed/story recall, sequence memory, and general cognitive screening performance across all sub-tests.",
+      "contributesToBrainProfile": true,
+      "brainProfileDimensionKey": "memory",
+      "order": 1
+    },
+    {
+      "key": "immediate-recall",
+      "label": "Immediate Recall",
+      "description": "Ability to encode and immediately recognize/recall newly presented items (ISLT shopping list recognition, ADAS-Cog free word recall).",
+      "contributesToBrainProfile": false,
+      "order": 2
+    },
+    {
+      "key": "delayed-recall",
+      "label": "Delayed / Story Recall",
+      "description": "Ability to retain and answer detail-oriented questions about a short narrative after a 45-second delay.",
+      "contributesToBrainProfile": false,
+      "order": 3
+    },
+    {
+      "key": "sequence-memory",
+      "label": "Sequence & Object Memory",
+      "description": "Speed of object naming and subsequent recognition of a sequentially presented object set.",
+      "contributesToBrainProfile": false,
+      "order": 4
+    },
+    {
+      "key": "sage-composite",
+      "label": "General Cognitive Screen",
+      "description": "Broad cognitive screening performance across orientation, calculation, pattern, language, visual, reasoning, and memory items.",
+      "contributesToBrainProfile": false,
+      "order": 5
+    }
+  ],
+  "scoringRules": [
+    {
+      "dimensionKey": "memory",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 30
+      }
+    }
+  ],
+  "resultRanges": [
+    {
+      "dimensionKey": "overall",
+      "minScore": 0,
+      "maxScore": 30,
+      "title": "Developing",
+      "description": "Recall and recognition performance across shopping list, word list, story, and object tasks was well below typical range, suggesting memory encoding or retrieval may benefit from focused attention.",
+      "recommendations": [
+        "Practice daily recall exercises like repeating shopping lists or short stories back to yourself",
+        "Break new information into smaller chunks before trying to remember it",
+        "Reduce distractions during tasks that require you to remember new information"
+      ],
+      "order": 1
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 31,
+      "maxScore": 50,
+      "title": "Average",
+      "description": "You recalled a moderate share of shopping list items, word list items, and story details \u2014 performance consistent with typical everyday memory demands but with room to strengthen retention.",
+      "recommendations": [
+        "Use association techniques (linking new items to familiar images) to boost recall",
+        "Revisit and rehearse new information within a few hours of learning it",
+        "Get consistent sleep, which strengthens memory consolidation"
+      ],
+      "order": 2
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 51,
+      "maxScore": 70,
+      "title": "Strong",
+      "description": "You correctly recognized most shopping list and object items and recalled the majority of word list and story details, indicating solid immediate and delayed recall abilities.",
+      "recommendations": [
+        "Challenge yourself with longer lists or more complex stories to keep improving",
+        "Practice free recall (without options) rather than just recognition to build retrieval strength",
+        "Maintain habits like reading and puzzles that keep memory circuits active"
+      ],
+      "order": 3
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 71,
+      "maxScore": 85,
+      "title": "Very Strong",
+      "description": "You recalled nearly all items across the shopping list, word list, story, and object recognition tasks, reflecting well above average encoding and retrieval performance.",
+      "recommendations": [
+        "Take on advanced memory challenges, such as memorizing longer sequences or multiple lists at once",
+        "Teach or quiz others using recall techniques to reinforce your own retention",
+        "Keep varying the type of material you practice recalling"
+      ],
+      "order": 4
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 86,
+      "maxScore": 100,
+      "title": "Exceptional",
+      "description": "You achieved near-perfect recall and recognition across shopping list, word list, story detail, and object memory tasks \u2014 performance in the top tier of this assessment.",
+      "recommendations": [
+        "Explore competitive or advanced memory training (e.g., memory championship techniques)",
+        "Use your strong recall ability to support learning in other high-value areas of life",
+        "Mentor others in memory strategies that have worked for you"
+      ],
+      "order": 5
+    }
+  ],
+  "brainProfileContributions": [
+    {
+      "sourceDimensionKey": "memory",
+      "targetBrainProfileDimensionKey": "memory",
+      "weight": 1
+    }
+  ],
+  "questions": [
+    {
+      "key": "islt-shopping-list",
+      "sectionKey": "islt",
+      "questionType": "memory_recall",
+      "questionText": "Study the following 12 shopping list items. You have 30 seconds.",
+      "instructions": "After 30 seconds, the items will be hidden. You will then see a grid of 20 items (the 12 originals mixed with 8 distractors) and must select all the ones you originally saw.",
+      "difficulty": "medium",
+      "timeLimitSeconds": 30,
+      "required": true,
+      "studyItems": [
+        "Bread",
+        "Milk",
+        "Eggs",
+        "Butter",
+        "Cheese",
+        "Apple",
+        "Banana",
+        "Orange",
+        "Tomato",
+        "Carrot",
+        "Onion",
+        "Potato"
+      ],
+      "distractorItems": [
+        "Grapes",
+        "Lemon",
+        "Corn",
+        "Mushroom",
+        "Pepper",
+        "Broccoli",
+        "Fish",
+        "Chicken"
+      ],
+      "scoringNotes": "1 point per correctly selected target item chosen from the 20-item recognition grid; max 12 points. Recognition-based recall, not free recall.",
+      "scoreConfig": [
+        {
+          "dimensionKey": "memory",
+          "points": 1
+        },
+        {
+          "dimensionKey": "immediate-recall",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "key": "adas-word-recall",
+      "sectionKey": "adas",
+      "questionType": "memory_recall",
+      "questionText": "Watch each word carefully as it appears. After all 10 words have been shown, type as many as you can remember.",
+      "instructions": "Each word is displayed for 3 seconds before automatically advancing. After the sequence ends, type each recalled word and press Enter to add it.",
+      "difficulty": "medium",
+      "timeLimitSeconds": null,
+      "required": true,
+      "studyItems": [
+        "OCEAN",
+        "LETTER",
+        "QUEEN",
+        "GARDEN",
+        "CABIN",
+        "NEEDLE",
+        "BUTTER",
+        "VILLAGE",
+        "METAL",
+        "ARMY"
+      ],
+      "scoringNotes": "1 point per typed word (case-insensitive) matching the original list; duplicates not double-counted; max 10 points. Free recall (no options shown).",
+      "scoreConfig": [
+        {
+          "dimensionKey": "memory",
+          "points": 1
+        },
+        {
+          "dimensionKey": "immediate-recall",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "key": "lm-q1",
+      "sectionKey": "lm",
+      "questionType": "multiple_choice",
+      "questionText": "What was the firefighter's first name?",
+      "instructions": "Story (shown for 45 seconds before these questions): \"Anna Roberts, a 32-year-old firefighter from Chicago, saved three children from a burning apartment building on Oak Street last Tuesday evening. The fire started at 7:45 PM on the third floor. Anna climbed a 40-foot ladder and carried each child to safety. The children, ages 4, 6, and 8, were treated for minor smoke inhalation at Memorial Hospital. The mayor awarded Anna the Medal of Valor on Friday.\"",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Sarah",
+          "value": "Sarah",
+          "isCorrect": false
+        },
+        {
+          "label": "Anna",
+          "value": "Anna",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "delayed-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Maria",
+          "value": "Maria",
+          "isCorrect": false
+        },
+        {
+          "label": "Emma",
+          "value": "Emma",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "lm-q2",
+      "sectionKey": "lm",
+      "questionType": "multiple_choice",
+      "questionText": "How old was the firefighter?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "28",
+          "value": "28",
+          "isCorrect": false
+        },
+        {
+          "label": "30",
+          "value": "30",
+          "isCorrect": false
+        },
+        {
+          "label": "32",
+          "value": "32",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "delayed-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "35",
+          "value": "35",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "lm-q3",
+      "sectionKey": "lm",
+      "questionType": "multiple_choice",
+      "questionText": "What street was the building on?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Elm Street",
+          "value": "Elm Street",
+          "isCorrect": false
+        },
+        {
+          "label": "Oak Street",
+          "value": "Oak Street",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "delayed-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Pine Street",
+          "value": "Pine Street",
+          "isCorrect": false
+        },
+        {
+          "label": "Maple Street",
+          "value": "Maple Street",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "lm-q4",
+      "sectionKey": "lm",
+      "questionType": "multiple_choice",
+      "questionText": "How many children were saved?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Two",
+          "value": "Two",
+          "isCorrect": false
+        },
+        {
+          "label": "Three",
+          "value": "Three",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "delayed-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Four",
+          "value": "Four",
+          "isCorrect": false
+        },
+        {
+          "label": "Five",
+          "value": "Five",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "lm-q5",
+      "sectionKey": "lm",
+      "questionType": "multiple_choice",
+      "questionText": "What award did Anna receive?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Medal of Honor",
+          "value": "Medal of Honor",
+          "isCorrect": false
+        },
+        {
+          "label": "Medal of Valor",
+          "value": "Medal of Valor",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "delayed-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Bravery Award",
+          "value": "Bravery Award",
+          "isCorrect": false
+        },
+        {
+          "label": "Hero Medal",
+          "value": "Hero Medal",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "skt-naming-1",
+      "sectionKey": "skt",
+      "questionType": "timed_choice",
+      "questionText": "\ud83c\udfe0 What is this object called?",
+      "instructions": "Answer as quickly as possible; response time is recorded and contributes to the speed score.",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "House",
+          "value": "House",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Building",
+          "value": "Building",
+          "isCorrect": false
+        },
+        {
+          "label": "Tower",
+          "value": "Tower",
+          "isCorrect": false
+        },
+        {
+          "label": "Cabin",
+          "value": "Cabin",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "skt-naming-2",
+      "sectionKey": "skt",
+      "questionType": "timed_choice",
+      "questionText": "\ud83d\ude97 What is this object called?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Car",
+          "value": "Car",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Bus",
+          "value": "Bus",
+          "isCorrect": false
+        },
+        {
+          "label": "Truck",
+          "value": "Truck",
+          "isCorrect": false
+        },
+        {
+          "label": "Van",
+          "value": "Van",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "skt-naming-3",
+      "sectionKey": "skt",
+      "questionType": "timed_choice",
+      "questionText": "\u2702\ufe0f What is this object called?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Scissors",
+          "value": "Scissors",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Knife",
+          "value": "Knife",
+          "isCorrect": false
+        },
+        {
+          "label": "Blade",
+          "value": "Blade",
+          "isCorrect": false
+        },
+        {
+          "label": "Cutter",
+          "value": "Cutter",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "skt-naming-4",
+      "sectionKey": "skt",
+      "questionType": "timed_choice",
+      "questionText": "\u231a What is this object called?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Watch",
+          "value": "Watch",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Clock",
+          "value": "Clock",
+          "isCorrect": false
+        },
+        {
+          "label": "Timer",
+          "value": "Timer",
+          "isCorrect": false
+        },
+        {
+          "label": "Compass",
+          "value": "Compass",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "skt-naming-5",
+      "sectionKey": "skt",
+      "questionType": "timed_choice",
+      "questionText": "\ud83d\udcf1 What is this object called?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Phone",
+          "value": "Phone",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Tablet",
+          "value": "Tablet",
+          "isCorrect": false
+        },
+        {
+          "label": "Remote",
+          "value": "Remote",
+          "isCorrect": false
+        },
+        {
+          "label": "Calculator",
+          "value": "Calculator",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "skt-naming-6",
+      "sectionKey": "skt",
+      "questionType": "timed_choice",
+      "questionText": "\ud83d\udd11 What is this object called?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Key",
+          "value": "Key",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Lock",
+          "value": "Lock",
+          "isCorrect": false
+        },
+        {
+          "label": "Chain",
+          "value": "Chain",
+          "isCorrect": false
+        },
+        {
+          "label": "Ring",
+          "value": "Ring",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "skt-naming-7",
+      "sectionKey": "skt",
+      "questionType": "timed_choice",
+      "questionText": "\ud83d\udc53 What is this object called?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Glasses",
+          "value": "Glasses",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Goggles",
+          "value": "Goggles",
+          "isCorrect": false
+        },
+        {
+          "label": "Sunglasses",
+          "value": "Sunglasses",
+          "isCorrect": false
+        },
+        {
+          "label": "Monocle",
+          "value": "Monocle",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "skt-naming-8",
+      "sectionKey": "skt",
+      "questionType": "timed_choice",
+      "questionText": "\ud83d\udcda What is this object called?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Books",
+          "value": "Books",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Papers",
+          "value": "Papers",
+          "isCorrect": false
+        },
+        {
+          "label": "Magazines",
+          "value": "Magazines",
+          "isCorrect": false
+        },
+        {
+          "label": "Notebooks",
+          "value": "Notebooks",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "skt-object-recall",
+      "sectionKey": "skt",
+      "questionType": "memory_recall",
+      "questionText": "Which objects did you see during the naming task? Select all that you remember.",
+      "instructions": "You will see a grid of 14 objects (the 8 objects shown earlier plus 6 new distractors). Select only the ones you were shown.",
+      "difficulty": "medium",
+      "required": true,
+      "studyItems": [
+        "House",
+        "Car",
+        "Scissors",
+        "Watch",
+        "Phone",
+        "Key",
+        "Glasses",
+        "Books"
+      ],
+      "distractorItems": [
+        "Guitar",
+        "Palette",
+        "Bell",
+        "Target",
+        "Masks",
+        "Trophy"
+      ],
+      "scoringNotes": "1 point per correctly selected target object; max 8 points.",
+      "scoreConfig": [
+        {
+          "dimensionKey": "memory",
+          "points": 1
+        },
+        {
+          "dimensionKey": "sequence-memory",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "key": "sage-orientation",
+      "sectionKey": "sage",
+      "questionType": "multiple_choice",
+      "questionText": "What day of the week is it today?",
+      "instructions": "In the source app the correct answer is computed dynamically as the current day of week at test time, not a fixed answer \u2014 the admin/runtime layer needs to set correctAnswer per attempt rather than at seed time.",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Monday",
+          "value": "Monday",
+          "isCorrect": false
+        },
+        {
+          "label": "Tuesday",
+          "value": "Tuesday",
+          "isCorrect": false
+        },
+        {
+          "label": "Wednesday",
+          "value": "Wednesday",
+          "isCorrect": false
+        },
+        {
+          "label": "Thursday",
+          "value": "Thursday",
+          "isCorrect": false
+        },
+        {
+          "label": "Friday",
+          "value": "Friday",
+          "isCorrect": false
+        },
+        {
+          "label": "Saturday",
+          "value": "Saturday",
+          "isCorrect": false
+        },
+        {
+          "label": "Sunday",
+          "value": "Sunday",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "sage-calculation-1",
+      "sectionKey": "sage",
+      "questionType": "multiple_choice",
+      "questionText": "What is 93 minus 7?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "84",
+          "value": "84",
+          "isCorrect": false
+        },
+        {
+          "label": "85",
+          "value": "85",
+          "isCorrect": false
+        },
+        {
+          "label": "86",
+          "value": "86",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sage-composite",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "87",
+          "value": "87",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "sage-calculation-2",
+      "sectionKey": "sage",
+      "questionType": "multiple_choice",
+      "questionText": "What is 86 minus 7?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "77",
+          "value": "77",
+          "isCorrect": false
+        },
+        {
+          "label": "78",
+          "value": "78",
+          "isCorrect": false
+        },
+        {
+          "label": "79",
+          "value": "79",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sage-composite",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "80",
+          "value": "80",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "sage-pattern",
+      "sectionKey": "sage",
+      "questionType": "multiple_choice",
+      "questionText": "What comes next: 2, 4, 8, 16, ?",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "20",
+          "value": "20",
+          "isCorrect": false
+        },
+        {
+          "label": "24",
+          "value": "24",
+          "isCorrect": false
+        },
+        {
+          "label": "32",
+          "value": "32",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sage-composite",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "64",
+          "value": "64",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "sage-language",
+      "sectionKey": "sage",
+      "questionType": "multiple_choice",
+      "questionText": "Which word does NOT belong?",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Apple",
+          "value": "Apple",
+          "isCorrect": false
+        },
+        {
+          "label": "Orange",
+          "value": "Orange",
+          "isCorrect": false
+        },
+        {
+          "label": "Banana",
+          "value": "Banana",
+          "isCorrect": false
+        },
+        {
+          "label": "Carrot",
+          "value": "Carrot",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sage-composite",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sage-visual",
+      "sectionKey": "sage",
+      "questionType": "multiple_choice",
+      "questionText": "How many triangles are in this shape? \u25b3\u25b3\u25b3\u25b3",
+      "difficulty": "medium",
+      "required": true,
+      "options": [
+        {
+          "label": "2",
+          "value": "2",
+          "isCorrect": false
+        },
+        {
+          "label": "3",
+          "value": "3",
+          "isCorrect": false
+        },
+        {
+          "label": "4",
+          "value": "4",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sage-composite",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "value": "5",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "sage-reasoning",
+      "sectionKey": "sage",
+      "questionType": "multiple_choice",
+      "questionText": "If all roses are flowers, and some flowers fade quickly, then:",
+      "difficulty": "hard",
+      "required": true,
+      "options": [
+        {
+          "label": "All roses fade quickly",
+          "value": "All roses fade quickly",
+          "isCorrect": false
+        },
+        {
+          "label": "Some roses may fade quickly",
+          "value": "Some roses may fade quickly",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sage-composite",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "No roses fade quickly",
+          "value": "No roses fade quickly",
+          "isCorrect": false
+        },
+        {
+          "label": "Roses never fade",
+          "value": "Roses never fade",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "key": "sage-memory",
+      "sectionKey": "sage",
+      "questionType": "multiple_choice",
+      "questionText": "Earlier you saw a shopping list. What was the FIRST item?",
+      "instructions": "Tests delayed recall of the very first item shown during the ISLT shopping list section earlier in the assessment.",
+      "difficulty": "easy",
+      "required": true,
+      "options": [
+        {
+          "label": "Bread",
+          "value": "Bread",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sage-composite",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Milk",
+          "value": "Milk",
+          "isCorrect": false
+        },
+        {
+          "label": "Eggs",
+          "value": "Eggs",
+          "isCorrect": false
+        },
+        {
+          "label": "Butter",
+          "value": "Butter",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "slug": "logical-reasoning",
+  "title": "Logical Reasoning",
+  "shortDescription": "Pattern detection, deduction, sequences and abstract reasoning — measured the way GRE and LSAT logic sections do.",
+  "longDescription": "Logical Reasoning measures how you detect patterns and draw valid conclusions from stated premises. The assessment has two parts: abstract pattern recognition (shape, color, rotation, quantity and spectrum sequences) and deductive reasoning (syllogisms and conditional logic, including recognizing when a conclusion only might be true rather than must be true).",
+  "icon": "git-branch",
+  "categoryKey": "logical",
+  "engineType": "standard_questionnaire",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 15,
+  "access": "free",
+  "sourceNote": "Ported from airostudio/logical-reasoning (lib/testQuestions.ts). 15 real questions total (6 abstract-pattern, 9 deductive) — short of the catalogue's nominal ~20, not padded with invented ones. The 6 abstract-pattern questions reference real SVG art at public/images/patterns/pattern-{1..6}.svg in the source repo; questionText describes each pattern in words. Porting the actual SVGs as question media is a follow-up.",
+
+  "sections": [
+    { "key": "abstract-reasoning", "name": "Abstract Pattern Reasoning", "description": "Visual and numeric pattern-recognition questions where you identify the next item in a sequence based on shape, color, rotation, quantity, or spectrum progression.", "instructions": "Study each pattern sequence carefully and select the option that correctly continues the pattern.", "timeLimitSeconds": null, "weight": 0.4, "order": 1 },
+    { "key": "deductive-reasoning", "name": "Deductive Reasoning", "description": "Verbal logic questions testing your ability to draw valid conclusions from given premises, including syllogisms and identification of logical fallacies.", "instructions": "Read each set of statements carefully and choose the conclusion that logically follows (or correctly identifies that it cannot be determined).", "timeLimitSeconds": null, "weight": 0.6, "order": 2 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "logical", "label": "Logical Reasoning", "description": "Overall composite measure of logical reasoning ability, combining abstract pattern recognition and deductive inference performance.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "logical", "order": 1 },
+    { "key": "pattern-detection", "label": "Pattern Detection", "description": "Ability to recognize and extrapolate visual and numeric patterns.", "contributesToBrainProfile": false, "order": 2 },
+    { "key": "deduction", "label": "Deductive Inference", "description": "Ability to draw valid conclusions from premises, including recognizing invalid inferences.", "contributesToBrainProfile": false, "order": 3 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "logical", "formula": "sum", "normalization": { "min": 0, "max": 15 } },
+    { "dimensionKey": "pattern-detection", "formula": "sum", "normalization": { "min": 0, "max": 6 } },
+    { "dimensionKey": "deduction", "formula": "sum", "normalization": { "min": 0, "max": 9 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Basic logical reasoning abilities. Pattern recognition and deductive inference are still forming, with frequent difficulty distinguishing valid conclusions from plausible-sounding but unsupported ones.", "recommendations": ["Practice simple pattern-completion puzzles daily to build sequence recognition", "Study the difference between valid syllogisms and common fallacies like affirming the consequent", "Work through logic puzzles slowly, writing out each premise before concluding"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "Moderate logical reasoning abilities. You can solve straightforward pattern and deduction problems but struggle with multi-step chains or subtler invalid-inference traps.", "recommendations": ["Practice multi-step syllogisms involving three or more premises", "Time yourself on pattern sequences to build speed alongside accuracy", "Focus on distinguishing 'must be true' from 'might be true' conclusions"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Good logical reasoning abilities. You solve most pattern-recognition and deductive problems with consistent accuracy, occasionally missing more subtle or multi-layered items.", "recommendations": ["Challenge yourself with abstract reasoning puzzles that combine two changing attributes at once", "Practice conditional logic chains (if-then-therefore) with nested conditions", "Seek out advanced syllogism sets that include invalid-argument distractors"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Strong logical reasoning abilities. You excel at identifying patterns and drawing valid conclusions, handling most deductive traps and multi-attribute sequences correctly.", "recommendations": ["Tackle competition-style logic puzzles and advanced abstract reasoning sets", "Explore formal logic notation to deepen understanding of validity vs. soundness"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Outstanding logical reasoning abilities. You demonstrate superior pattern recognition and deductive thinking skills, consistently identifying valid conclusions and complex sequence rules.", "recommendations": ["Pursue advanced study in formal logic, discrete mathematics, or algorithmic problem solving", "Apply your reasoning strengths to real-world analytical or strategic decision-making roles"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "logical", "targetBrainProfileDimensionKey": "logical", "weight": 1 }],
+
+  "questions": [
+    { "key": "logical-01", "sectionKey": "abstract-reasoning", "order": 1, "difficulty": "medium", "questionType": "pattern_question", "questionText": "Study the pattern sequence. Which shape comes next? The sequence repeats circle → square → triangle with colors blue → red → green in that cycle. [SVG: public/images/patterns/pattern-1.svg in source repo]", "required": true, "options": [
+      { "label": "Triangle (Green)", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "pattern-detection", "points": 1 }] },
+      { "label": "Circle (Blue)", "value": "1", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Square (Red)", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Pentagon (Yellow)", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-02", "sectionKey": "abstract-reasoning", "order": 2, "difficulty": "medium", "questionType": "pattern_question", "questionText": "Identify the next shape in the sequence. The number of sides increases by 1 each time: shapes shown have 3, 4, 5, and 6 sides in sequence. [SVG: public/images/patterns/pattern-2.svg in source repo]", "required": true, "options": [
+      { "label": "Octagon", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Heptagon (7 sides)", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "pattern-detection", "points": 1 }] },
+      { "label": "Circle", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Pentagon", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-03", "sectionKey": "abstract-reasoning", "order": 3, "difficulty": "medium", "questionType": "pattern_question", "questionText": "The arrow rotates 90° clockwise each step, completing a full circle over 4 steps. Which direction comes next? [SVG: public/images/patterns/pattern-3.svg in source repo]", "required": true, "options": [
+      { "label": "Arrow Up", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "pattern-detection", "points": 1 }] },
+      { "label": "Arrow Down", "value": "1", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Arrow Right", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Arrow Left", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-04", "sectionKey": "abstract-reasoning", "order": 4, "difficulty": "medium", "questionType": "pattern_question", "questionText": "Observe the pattern where quantities double: dot groups shown as 1, 2, 4, 8 in sequence. What comes next? [SVG: public/images/patterns/pattern-4.svg in source repo]", "required": true, "options": [
+      { "label": "12 dots", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "16 dots", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "pattern-detection", "points": 1 }] },
+      { "label": "10 dots", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "8 dots", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-05", "sectionKey": "abstract-reasoning", "order": 5, "difficulty": "medium", "questionType": "pattern_question", "questionText": "Shapes alternate between filled and outlined while increasing in size (circles shown small→large, filled/outline alternating). What's next? [SVG: public/images/patterns/pattern-5.svg in source repo]", "required": true, "options": [
+      { "label": "Extra Large Filled Circle", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Extra Large Outline Circle", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "pattern-detection", "points": 1 }] },
+      { "label": "Small Filled Circle", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Medium Outline Circle", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-06", "sectionKey": "abstract-reasoning", "order": 6, "difficulty": "medium", "questionType": "pattern_question", "questionText": "Colors progress through the spectrum: red, orange, yellow, green, blue shown in sequence. Which color comes next? [SVG: public/images/patterns/pattern-6.svg in source repo]", "required": true, "options": [
+      { "label": "Purple", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Indigo", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "pattern-detection", "points": 1 }] },
+      { "label": "Red", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Pink", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-07", "sectionKey": "deductive-reasoning", "order": 7, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "All managers are employees. Sarah is a manager. Therefore:", "required": true, "options": [
+      { "label": "Sarah is an employee", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "Sarah is not an employee", "value": "1", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "All employees are managers", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Some employees are not managers", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-08", "sectionKey": "deductive-reasoning", "order": 8, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "If it rains, the ground gets wet. The ground is wet. Therefore:", "required": true, "options": [
+      { "label": "It definitely rained", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "It might have rained, but there could be other causes", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "It did not rain", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "The ground is always wet", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-09", "sectionKey": "deductive-reasoning", "order": 9, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "No cats are dogs. All dogs are mammals. Therefore:", "required": true, "options": [
+      { "label": "No cats are mammals", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Some mammals are not cats", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "All mammals are dogs", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "No mammals are cats", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-10", "sectionKey": "deductive-reasoning", "order": 10, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Either John went to the store or he went home. John did not go to the store. Therefore:", "required": true, "options": [
+      { "label": "John might be at home", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "John went home", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "John went to both places", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "John went nowhere", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-11", "sectionKey": "deductive-reasoning", "order": 11, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "If you study hard, you will pass the exam. Maria passed the exam. Therefore:", "required": true, "options": [
+      { "label": "Maria studied hard", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Maria might have studied hard, or she might be naturally talented", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "Maria did not study hard", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Everyone who passes studied hard", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-12", "sectionKey": "deductive-reasoning", "order": 12, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "All birds have feathers. Penguins are birds. Therefore:", "required": true, "options": [
+      { "label": "Penguins can fly", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Penguins have feathers", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "All feathered animals are birds", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Penguins are not birds", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-13", "sectionKey": "deductive-reasoning", "order": 13, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "If a number is divisible by 10, it is divisible by 5. The number 30 is divisible by 10. Therefore:", "required": true, "options": [
+      { "label": "30 is divisible by 5", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "30 is not divisible by 5", "value": "1", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "All numbers divisible by 5 are divisible by 10", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "30 is divisible by 3 only", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-14", "sectionKey": "deductive-reasoning", "order": 14, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Some teachers are strict. Ms. Johnson is a teacher. Therefore:", "required": true, "options": [
+      { "label": "Ms. Johnson is strict", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Ms. Johnson might or might not be strict", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "Ms. Johnson is not strict", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "All teachers are strict", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]},
+    { "key": "logical-15", "sectionKey": "deductive-reasoning", "order": 15, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "All squares are rectangles. All rectangles have four sides. Therefore:", "required": true, "options": [
+      { "label": "All four-sided shapes are squares", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "All squares have four sides", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "No rectangles are squares", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
+      { "label": "Some squares don't have four sides", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
+    ]}
+  ]
+}

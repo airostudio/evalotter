@@ -1,0 +1,991 @@
+{
+  "slug": "metrics",
+  "title": "Metrics / Numerical Intelligence",
+  "shortDescription": "Numerical reasoning, percentages, ratios, sequences and data interpretation under light time pressure.",
+  "longDescription": "Metrics measures numerical reasoning across five areas: mental arithmetic, percentages, ratios and proportions, number sequences, and data interpretation from tables and charts \u2014 the kind of quantitative reasoning used in everyday financial and analytical decisions.",
+  "icon": "calculator",
+  "categoryKey": "numerical",
+  "engineType": "timed_questionnaire",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 15,
+  "access": "free",
+  "sourceNote": "No existing repo covered numerical/metrics content, so this question bank is authored fresh rather than ported.",
+  "sections": [
+    {
+      "key": "arithmetic",
+      "name": "Mental Arithmetic",
+      "description": "Quick calculation without a calculator.",
+      "instructions": "Solve each problem as quickly and accurately as you can.",
+      "timeLimitSeconds": 20,
+      "weight": 1,
+      "order": 1
+    },
+    {
+      "key": "percentages",
+      "name": "Percentages",
+      "description": "Calculating and reasoning about percentage changes and proportions.",
+      "instructions": "Work out each percentage problem.",
+      "timeLimitSeconds": 30,
+      "weight": 1,
+      "order": 2
+    },
+    {
+      "key": "ratios",
+      "name": "Ratios & Proportions",
+      "description": "Scaling quantities and comparing rates.",
+      "instructions": "Solve each ratio or proportion problem.",
+      "timeLimitSeconds": 30,
+      "weight": 1,
+      "order": 3
+    },
+    {
+      "key": "sequences",
+      "name": "Number Sequences",
+      "description": "Identifying the rule governing a sequence of numbers.",
+      "instructions": "Determine the pattern and select the next number.",
+      "timeLimitSeconds": 30,
+      "weight": 1,
+      "order": 4
+    },
+    {
+      "key": "data-interpretation",
+      "name": "Data Interpretation",
+      "description": "Reading and reasoning about numbers presented in tables.",
+      "instructions": "Study the data, then answer the question.",
+      "timeLimitSeconds": 45,
+      "weight": 1,
+      "order": 5
+    }
+  ],
+  "scoringDimensions": [
+    {
+      "key": "numerical",
+      "label": "Numerical Intelligence",
+      "description": "Composite measure of numerical reasoning across mental arithmetic, percentages, ratios, sequences, and data interpretation.",
+      "contributesToBrainProfile": true,
+      "brainProfileDimensionKey": "logical",
+      "order": 1
+    },
+    {
+      "key": "arithmetic",
+      "label": "Mental Arithmetic",
+      "description": "Speed and accuracy of unaided calculation.",
+      "contributesToBrainProfile": false,
+      "order": 2
+    },
+    {
+      "key": "percentages",
+      "label": "Percentages",
+      "description": "Ability to calculate and reason about percentage change.",
+      "contributesToBrainProfile": false,
+      "order": 3
+    },
+    {
+      "key": "ratios",
+      "label": "Ratios & Proportions",
+      "description": "Ability to scale quantities and compare rates.",
+      "contributesToBrainProfile": false,
+      "order": 4
+    },
+    {
+      "key": "sequences",
+      "label": "Number Sequences",
+      "description": "Ability to detect the rule governing a numeric sequence.",
+      "contributesToBrainProfile": false,
+      "order": 5
+    },
+    {
+      "key": "data-interpretation",
+      "label": "Data Interpretation",
+      "description": "Ability to extract and reason about figures from tabular data.",
+      "contributesToBrainProfile": false,
+      "order": 6
+    }
+  ],
+  "scoringRules": [
+    {
+      "dimensionKey": "numerical",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 20
+      }
+    },
+    {
+      "dimensionKey": "arithmetic",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "dimensionKey": "percentages",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "dimensionKey": "ratios",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "dimensionKey": "sequences",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 4
+      }
+    },
+    {
+      "dimensionKey": "data-interpretation",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 4
+      }
+    }
+  ],
+  "resultRanges": [
+    {
+      "dimensionKey": "overall",
+      "minScore": 0,
+      "maxScore": 30,
+      "title": "Developing",
+      "description": "Numerical reasoning under time pressure is still forming. Percentage and ratio calculations took noticeably longer, and multi-step data interpretation questions were the hardest to complete accurately.",
+      "recommendations": [
+        "Practice mental percentage calculations daily (10%, 25%, then combine for others).",
+        "Drill ratio and proportion word problems until the setup becomes automatic.",
+        "Work through simple bar/table data questions slowly before adding a timer."
+      ],
+      "order": 1
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 31,
+      "maxScore": 50,
+      "title": "Average",
+      "description": "You handle straightforward calculations reliably but slow down or make errors on multi-step percentage, ratio, or data-interpretation problems.",
+      "recommendations": [
+        "Practice two-step percentage problems (e.g. percentage of a percentage).",
+        "Time yourself on sequence puzzles to build pattern-spotting speed.",
+        "Practice reading two-variable tables and cross-referencing rows and columns."
+      ],
+      "order": 2
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 51,
+      "maxScore": 70,
+      "title": "Strong",
+      "description": "You solve most numerical reasoning problems accurately and at a reasonable pace, with occasional slips on compound percentage or ratio questions.",
+      "recommendations": [
+        "Practice compound percentage change (successive increases/decreases).",
+        "Work through GMAT/GRE-style data sufficiency and interpretation sets.",
+        "Push your sequence-solving speed with mixed arithmetic/geometric patterns."
+      ],
+      "order": 3
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 71,
+      "maxScore": 85,
+      "title": "Very Strong",
+      "description": "You process numerical information quickly and accurately across arithmetic, percentages, ratios, and data interpretation, with only the hardest compound-rule sequences slowing you down.",
+      "recommendations": [
+        "Practice advanced data-interpretation sets with multiple linked tables.",
+        "Time yourself against progressively shorter limits to sharpen speed further.",
+        "Apply this strength to real financial or analytical decision-making."
+      ],
+      "order": 4
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 86,
+      "maxScore": 100,
+      "title": "Exceptional",
+      "description": "Your numerical reasoning is exceptional \u2014 fast, accurate, and reliable across every category tested, including compound percentage changes, multi-step ratios, and dense tabular data.",
+      "recommendations": [
+        "Pursue quantitative fields (finance, data science, engineering, actuarial work) that leverage this strength.",
+        "Take on advanced numerical reasoning batteries (GMAT Quant, actuarial exams) to keep finding ceiling.",
+        "Mentor others in mental-math and estimation techniques."
+      ],
+      "order": 5
+    }
+  ],
+  "brainProfileContributions": [
+    {
+      "sourceDimensionKey": "numerical",
+      "targetBrainProfileDimensionKey": "logical",
+      "weight": 0.5
+    }
+  ],
+  "questions": [
+    {
+      "key": "metrics-01",
+      "sectionKey": "arithmetic",
+      "questionType": "multiple_choice",
+      "questionText": "What is 47 + 158?",
+      "difficulty": "easy",
+      "timeLimitSeconds": 20,
+      "required": true,
+      "options": [
+        {
+          "label": "195",
+          "value": "a"
+        },
+        {
+          "label": "205",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "arithmetic",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "215",
+          "value": "c"
+        },
+        {
+          "label": "225",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-02",
+      "sectionKey": "arithmetic",
+      "questionType": "multiple_choice",
+      "questionText": "What is 13 \u00d7 17?",
+      "difficulty": "medium",
+      "timeLimitSeconds": 25,
+      "required": true,
+      "options": [
+        {
+          "label": "201",
+          "value": "a"
+        },
+        {
+          "label": "211",
+          "value": "b"
+        },
+        {
+          "label": "221",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "arithmetic",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "231",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-03",
+      "sectionKey": "arithmetic",
+      "questionType": "multiple_choice",
+      "questionText": "What is 504 \u00f7 12?",
+      "difficulty": "medium",
+      "timeLimitSeconds": 25,
+      "required": true,
+      "options": [
+        {
+          "label": "36",
+          "value": "a"
+        },
+        {
+          "label": "40",
+          "value": "b"
+        },
+        {
+          "label": "42",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "arithmetic",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "44",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-04",
+      "sectionKey": "arithmetic",
+      "questionType": "multiple_choice",
+      "questionText": "What is 8 squared minus 15?",
+      "difficulty": "easy",
+      "timeLimitSeconds": 20,
+      "required": true,
+      "options": [
+        {
+          "label": "39",
+          "value": "a"
+        },
+        {
+          "label": "45",
+          "value": "b"
+        },
+        {
+          "label": "49",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "arithmetic",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "53",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-05",
+      "sectionKey": "percentages",
+      "questionType": "multiple_choice",
+      "questionText": "A jacket originally priced at $80 is discounted by 30%. What is the sale price?",
+      "difficulty": "easy",
+      "timeLimitSeconds": 30,
+      "required": true,
+      "options": [
+        {
+          "label": "$50",
+          "value": "a"
+        },
+        {
+          "label": "$56",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "percentages",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "$60",
+          "value": "c"
+        },
+        {
+          "label": "$24",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-06",
+      "sectionKey": "percentages",
+      "questionType": "multiple_choice",
+      "questionText": "A company's revenue grew from $2.4 million to $3.0 million. What was the percentage increase?",
+      "difficulty": "medium",
+      "timeLimitSeconds": 35,
+      "required": true,
+      "options": [
+        {
+          "label": "20%",
+          "value": "a"
+        },
+        {
+          "label": "25%",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "percentages",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "30%",
+          "value": "c"
+        },
+        {
+          "label": "60%",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-07",
+      "sectionKey": "percentages",
+      "questionType": "multiple_choice",
+      "questionText": "A price increases by 20% and then decreases by 20%. Compared to the original price, the final price is:",
+      "difficulty": "hard",
+      "timeLimitSeconds": 40,
+      "required": true,
+      "options": [
+        {
+          "label": "Unchanged",
+          "value": "a"
+        },
+        {
+          "label": "4% lower",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "percentages",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "4% higher",
+          "value": "c"
+        },
+        {
+          "label": "2% lower",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-08",
+      "sectionKey": "percentages",
+      "questionType": "multiple_choice",
+      "questionText": "35 is what percentage of 140?",
+      "difficulty": "medium",
+      "timeLimitSeconds": 30,
+      "required": true,
+      "options": [
+        {
+          "label": "20%",
+          "value": "a"
+        },
+        {
+          "label": "25%",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "percentages",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "30%",
+          "value": "c"
+        },
+        {
+          "label": "35%",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-09",
+      "sectionKey": "ratios",
+      "questionType": "multiple_choice",
+      "questionText": "A recipe for 4 people uses 250g of flour. How much flour is needed for 10 people?",
+      "difficulty": "easy",
+      "timeLimitSeconds": 30,
+      "required": true,
+      "options": [
+        {
+          "label": "500g",
+          "value": "a"
+        },
+        {
+          "label": "625g",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "ratios",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "750g",
+          "value": "c"
+        },
+        {
+          "label": "1000g",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-10",
+      "sectionKey": "ratios",
+      "questionType": "multiple_choice",
+      "questionText": "Two investors split a $60,000 profit in the ratio 2:3. What is the larger share?",
+      "difficulty": "medium",
+      "timeLimitSeconds": 35,
+      "required": true,
+      "options": [
+        {
+          "label": "$24,000",
+          "value": "a"
+        },
+        {
+          "label": "$30,000",
+          "value": "b"
+        },
+        {
+          "label": "$36,000",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "ratios",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "$40,000",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-11",
+      "sectionKey": "ratios",
+      "questionType": "multiple_choice",
+      "questionText": "A car travels 210 miles using 7 gallons of fuel. At the same rate, how far can it travel on 12 gallons?",
+      "difficulty": "medium",
+      "timeLimitSeconds": 35,
+      "required": true,
+      "options": [
+        {
+          "label": "300 miles",
+          "value": "a"
+        },
+        {
+          "label": "330 miles",
+          "value": "b"
+        },
+        {
+          "label": "360 miles",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "ratios",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "420 miles",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-12",
+      "sectionKey": "ratios",
+      "questionType": "multiple_choice",
+      "questionText": "If 5 machines can complete a job in 12 hours, how long would 8 machines take, working at the same rate?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 40,
+      "required": true,
+      "options": [
+        {
+          "label": "6 hours",
+          "value": "a"
+        },
+        {
+          "label": "7.5 hours",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "ratios",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "8 hours",
+          "value": "c"
+        },
+        {
+          "label": "19.2 hours",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-13",
+      "sectionKey": "sequences",
+      "questionType": "multiple_choice",
+      "questionText": "What comes next: 3, 7, 15, 31, __?",
+      "difficulty": "medium",
+      "timeLimitSeconds": 30,
+      "required": true,
+      "options": [
+        {
+          "label": "47",
+          "value": "a"
+        },
+        {
+          "label": "63",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequences",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "59",
+          "value": "c"
+        },
+        {
+          "label": "62",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-14",
+      "sectionKey": "sequences",
+      "questionType": "multiple_choice",
+      "questionText": "What comes next: 2, 6, 12, 20, 30, __?",
+      "difficulty": "medium",
+      "timeLimitSeconds": 30,
+      "required": true,
+      "options": [
+        {
+          "label": "40",
+          "value": "a"
+        },
+        {
+          "label": "36",
+          "value": "b"
+        },
+        {
+          "label": "42",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequences",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "38",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-15",
+      "sectionKey": "sequences",
+      "questionType": "multiple_choice",
+      "questionText": "What comes next: 1, 4, 9, 16, 25, __?",
+      "difficulty": "easy",
+      "timeLimitSeconds": 25,
+      "required": true,
+      "options": [
+        {
+          "label": "30",
+          "value": "a"
+        },
+        {
+          "label": "36",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequences",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "32",
+          "value": "c"
+        },
+        {
+          "label": "49",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-16",
+      "sectionKey": "sequences",
+      "questionType": "multiple_choice",
+      "questionText": "What comes next: 100, 95, 85, 70, 50, __?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 40,
+      "required": true,
+      "options": [
+        {
+          "label": "25",
+          "value": "a",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequences",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "35",
+          "value": "b"
+        },
+        {
+          "label": "30",
+          "value": "c"
+        },
+        {
+          "label": "20",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-17",
+      "sectionKey": "data-interpretation",
+      "questionType": "multiple_choice",
+      "questionText": "A company's quarterly sales (in thousands): Q1 = 420, Q2 = 380, Q3 = 510, Q4 = 490. What was the percentage change from Q2 to Q3?",
+      "difficulty": "medium",
+      "timeLimitSeconds": 45,
+      "required": true,
+      "options": [
+        {
+          "label": "About 26% increase",
+          "value": "a"
+        },
+        {
+          "label": "About 34% increase",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "data-interpretation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "About 21% increase",
+          "value": "c"
+        },
+        {
+          "label": "About 30% decrease",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-18",
+      "sectionKey": "data-interpretation",
+      "questionType": "multiple_choice",
+      "questionText": "Using the same quarterly sales figures (Q1 = 420, Q2 = 380, Q3 = 510, Q4 = 490, in thousands), what was the average quarterly sales for the year?",
+      "difficulty": "medium",
+      "timeLimitSeconds": 45,
+      "required": true,
+      "options": [
+        {
+          "label": "425,000",
+          "value": "a"
+        },
+        {
+          "label": "450,000",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "data-interpretation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "460,000",
+          "value": "c"
+        },
+        {
+          "label": "475,000",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-19",
+      "sectionKey": "data-interpretation",
+      "questionType": "multiple_choice",
+      "questionText": "A survey of 200 people found 45% prefer coffee, 30% prefer tea, and the rest prefer neither. How many people prefer neither?",
+      "difficulty": "medium",
+      "timeLimitSeconds": 40,
+      "required": true,
+      "options": [
+        {
+          "label": "25",
+          "value": "a"
+        },
+        {
+          "label": "40",
+          "value": "b"
+        },
+        {
+          "label": "50",
+          "value": "c",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "data-interpretation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "60",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "key": "metrics-20",
+      "sectionKey": "data-interpretation",
+      "questionType": "multiple_choice",
+      "questionText": "A store's costs were $12,000 and revenue was $15,600. What was the profit margin (profit as a percentage of revenue)?",
+      "difficulty": "hard",
+      "timeLimitSeconds": 45,
+      "required": true,
+      "options": [
+        {
+          "label": "20%",
+          "value": "a"
+        },
+        {
+          "label": "23%",
+          "value": "b",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "numerical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "data-interpretation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "30%",
+          "value": "c"
+        },
+        {
+          "label": "15%",
+          "value": "d"
+        }
+      ]
+    }
+  ]
+}

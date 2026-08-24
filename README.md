@@ -33,7 +33,8 @@ but nothing is playable end-to-end until a real database is connected:
    auth and assessment-taking still need real credentials to work).
 4. Regenerate `src/lib/supabase/database.types.ts` from the real schema:
    `npx supabase gen types typescript --project-id <ref> > src/lib/supabase/database.types.ts`
-5. Seed the catalogue (see **Status** below — seed data is not yet written).
+5. Seed the catalogue: `npm run seed:validate` (static checks, no DB) then
+   `npm run seed` (writes to the connected project — see **Seed data** below).
 
 ## Architecture
 
@@ -69,22 +70,54 @@ but nothing is playable end-to-end until a real database is connected:
   catalogue (assessments, questions, scoring config) is public-read,
   editor/admin-write. See `supabase/migrations/0003_row_level_security.sql`.
 
-## Status
+## Seed data
 
-Working end-to-end against a connected Supabase project: auth, the
-assessment catalogue, a live-playable standard-questionnaire run (autosave,
-resume, sections, timers), deterministic scoring, the results page with
-charts, Brain Profile aggregation, and PDF report generation.
+`scripts/seed/data/*.json` holds real content for all ten launch assessments
+(192 questions total) — mostly ported verbatim from sibling single-purpose
+repos rather than invented, with the porting decisions and any gaps recorded
+per-file in each JSON's `sourceNote`:
 
-Not yet built:
+| Assessment | Source | Notes |
+|---|---|---|
+| Logical Reasoning | `airostudio/logical-reasoning` | 15 real questions (source has no more) |
+| Memory Recall | `airostudio/Memory-Recall-Test` | plain HTML/JS app — see known gap below |
+| Verbal Reasoning | `airostudio/VerbRea` | 24 questions, verbatim |
+| Verbal Intelligence | `airostudio/verbalize` | 40 questions, verbatim |
+| Emotional Intelligence | `airostudio/Emotional-Intelligence` | 40 questions across 9 EQ-i/MSCEIT facets |
+| Creative Assessment | `airostudio/Creative-Assessment` | 13 scored + 2 open-ended (AI-interpreted only) |
+| Spatial Intelligence | `airostudio/spacial-intelligence` | 10 real questions (source has no more) |
+| Metrics / Numerical Intelligence | — | no source repo existed; authored fresh |
+| Palmistry | — | no source repo existed; authored fresh, no scoring |
+| EvalOtter Intelligence Profile (flagship) | shared library | composed by reusing real questions from the assessments above — see below |
 
-- **Seed data** — the ten initial assessments exist as catalogue *copy*
-  (`src/config/catalogue.ts`) but not as rows in `questions` /
-  `assessment_questions` / etc. Several have real source content to port in
-  from sibling repos (Logical Reasoning, Memory Recall, Verbal Reasoning,
-  Verbal Intelligence, Emotional Intelligence, Creative Assessment, Spatial
-  Intelligence); Metrics/Numerical Intelligence and Palmistry need to be
-  authored fresh.
+**The flagship deliberately does not port the old `airostudio/brainyak`
+repo's "pattern recognition" content.** That repo hardcodes
+`correctAnswer: 0` for every one of its 15 questions regardless of the
+actual image shown (`src/data/questions.ts` / `src/store/testStore.ts`) —
+its IQ score was cosmetic, not a real measurement. Shipping that would mean
+this platform's own flagship assessment silently scored on fabricated
+correctness. Instead the flagship composes itself from real, legitimately-
+scored questions already defined for the single-domain assessments, via
+`reuseQuestionKeys` — the intended use of the shared question library
+(`questions` rows are reused across `assessment_questions`, not duplicated).
+
+**Known gap:** `memory_recall`-type questions (the ISLT shopping list, ADAS-Cog
+word list, and SKT object-recognition items in Memory Recall) carry real
+scoring config, but `src/lib/scoring/engine.ts` doesn't yet compare a
+`recalled[]` answer against the study/distractor lists — those 3 of Memory
+Recall's 24 questions currently score 0 at runtime. The other 21 (multiple
+choice, timed choice) score correctly. Fixing it needs `studyItems`/
+`distractorItems` threaded onto the real `Question` type (currently a
+seed-authoring-only field) plus a recall-accuracy branch in `collectImpacts()`.
+
+Run `npm run seed:validate` any time — it statically checks every seed file
+for the two bug classes already caught once each while authoring this data:
+a scoring dimension declared but never actually targeted by any question
+(dead 0 on the results page), and a reused question scoring a dimension key
+the reusing assessment never declared (silently contributes nothing there).
+
+## Not yet built
+
 - **Admin builder UI** — the schema and RLS support it, but there's no
   `/admin` assessment builder yet, only the data model it would write to.
 - **Live AI interpretation calls** — the abstraction exists
@@ -98,6 +131,9 @@ Not yet built:
 
 ## Brand
 
-The logo is currently a placeholder (`src/components/marketing/BrandMark.tsx`
-falls back to a generic icon + wordmark). Drop the real logo file at
-`public/logo.svg` and swap in `BrandLogoImage` once it's available.
+The real logo lives at `public/logo.png` (rendered from a lossy JPEG whose
+"no background" checkerboard was baked into the pixels rather than a real
+alpha channel — see the git history for how it was recovered). It's usable
+at header/footer/favicon sizes; if a clean vector or lossless source ever
+turns up, it's worth re-generating `public/logo.png`, `src/app/icon.png`,
+and `src/app/apple-icon.png` from it for a sharper result at large sizes.
