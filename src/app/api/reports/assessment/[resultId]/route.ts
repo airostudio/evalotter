@@ -42,7 +42,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ resultI
   return new NextResponse(Buffer.from(pdfBytes), {
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": `attachment; filename="brainyak-report-${resultId}.pdf"`,
+      "Content-Disposition": `attachment; filename="evalotter-report-${resultId}.pdf"`,
     },
   });
 }

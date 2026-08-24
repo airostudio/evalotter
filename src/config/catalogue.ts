@@ -50,10 +50,10 @@ export const CATEGORY_LABELS: Record<string, string> = {
 
 export const CATALOGUE: CatalogueAssessment[] = [
   {
-    slug: "brainyak",
-    title: "Brainyak Intelligence Profile",
+    slug: "intelligence-profile",
+    title: "EvalOtter Intelligence Profile",
     shortDescription:
-      "The flagship assessment. Combines logical reasoning, numerical intelligence, memory, verbal reasoning, spatial intelligence, and pattern recognition into one Brainyak Score.",
+      "The flagship assessment. Combines logical reasoning, numerical intelligence, memory, verbal reasoning, spatial intelligence, and pattern recognition into one EvalOtter Score.",
     category: "Cognitive",
     categoryKey: "cognitive",
     icon: "brain",

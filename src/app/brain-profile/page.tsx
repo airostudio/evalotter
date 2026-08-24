@@ -40,8 +40,8 @@ export default async function BrainProfilePage() {
 
       <div className="mt-10 grid gap-6 md:grid-cols-[auto_1fr]">
         <div className="flex flex-col items-center gap-3 rounded-xl2 border border-ink-700 bg-ink-800/50 p-8 shadow-panel">
-          <p className="text-xs uppercase tracking-widest text-paper-100/40">Brainyak Score</p>
-          <ScoreRing score={profile?.brainyak_score ? Number(profile.brainyak_score) : 0} size={180} />
+          <p className="text-xs uppercase tracking-widest text-paper-100/40">EvalOtter Score</p>
+          <ScoreRing score={profile?.evalotter_score ? Number(profile.evalotter_score) : 0} size={180} />
           <p className="text-sm text-paper-100/50">
             {completed} / {total} assessments · {completionPct}% complete
           </p>

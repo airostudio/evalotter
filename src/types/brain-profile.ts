@@ -9,7 +9,7 @@ export interface BrainProfileDimension {
 
 export interface UserBrainProfile {
   userId: string;
-  brainyakScore: number | null;
+  evalotterScore: number | null;
   assessmentsCompleted: number;
   assessmentsTotal: number;
   strongestDimensionKey?: string | null;

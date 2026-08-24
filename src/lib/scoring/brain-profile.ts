@@ -59,7 +59,7 @@ export async function updateBrainProfileForResult(
     .eq("user_id", userId);
 
   const scores = (dims ?? []).map((d) => Number(d.score)).filter((n) => !Number.isNaN(n));
-  const brainyakScore = scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : null;
+  const evalotterScore = scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : null;
 
   const { data: sorted } = await supabase
     .from("brain_profile_dimensions")
@@ -71,7 +71,7 @@ export async function updateBrainProfileForResult(
   await supabase.from("user_brain_profiles").upsert(
     {
       user_id: userId,
-      brainyak_score: brainyakScore,
+      evalotter_score: evalotterScore,
       assessments_completed: completedCount ?? 0,
       strongest_dimension_key: sorted?.[0]?.dimension_key ?? null,
       weakest_dimension_key: sorted?.[sorted.length - 1]?.dimension_key ?? null,

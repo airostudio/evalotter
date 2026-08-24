@@ -33,14 +33,14 @@ export async function generateAssessmentReportPdf(input: AssessmentReportInput):
 
   let y = height - 64;
 
-  page.drawText("BRAINYAK", { x: 48, y, size: 12, font: bold, color: VIOLET });
+  page.drawText("EVALOTTER", { x: 48, y, size: 12, font: bold, color: VIOLET });
   page.drawText("Assessment Report", { x: 48, y: y - 16, size: 10, font: regular, color: MUTED });
 
   y -= 56;
   page.drawText(input.assessment.title, { x: 48, y, size: 22, font: bold, color: INK });
 
   y -= 30;
-  const name = input.user.displayName ?? input.user.fullName ?? "Brainyak user";
+  const name = input.user.displayName ?? input.user.fullName ?? "EvalOtter user";
   page.drawText(`${name}  ·  ${new Date(input.completedAt).toLocaleDateString()}`, {
     x: 48,
     y,
@@ -96,7 +96,7 @@ export async function generateAssessmentReportPdf(input: AssessmentReportInput):
   }
 
   page.drawText(
-    "Brainyak assessments are designed for education, entertainment and self-discovery and are not a substitute for professional psychological, medical or clinical assessment.",
+    "EvalOtter assessments are designed for education, entertainment and self-discovery and are not a substitute for professional psychological, medical or clinical assessment.",
     { x: 48, y: 48, size: 7.5, font: regular, color: MUTED, maxWidth: width - 96, lineHeight: 10 }
   );
 

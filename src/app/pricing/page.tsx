@@ -27,7 +27,7 @@ const PLANS = [
     highlighted: true,
   },
   {
-    name: "Full Brainyak Profile",
+    name: "Full EvalOtter Profile",
     price: "Coming soon",
     period: "one-off",
     description: "Every assessment, unlocked in a single purchase.",

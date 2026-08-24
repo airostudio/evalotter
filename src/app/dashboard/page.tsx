@@ -49,8 +49,8 @@ export default async function DashboardPage() {
 
       <div className="mt-10 grid gap-6 md:grid-cols-3">
         <div className="flex flex-col items-center justify-center rounded-xl2 border border-ink-700 bg-ink-800/50 p-8 text-center shadow-panel">
-          <p className="mb-4 text-xs uppercase tracking-widest text-paper-100/40">Brainyak Score</p>
-          <ScoreRing score={profile?.brainyak_score ? Number(profile.brainyak_score) : 0} />
+          <p className="mb-4 text-xs uppercase tracking-widest text-paper-100/40">EvalOtter Score</p>
+          <ScoreRing score={profile?.evalotter_score ? Number(profile.evalotter_score) : 0} />
         </div>
 
         <div className="flex flex-col justify-center gap-4 rounded-xl2 border border-ink-700 bg-ink-800/50 p-8 shadow-panel">

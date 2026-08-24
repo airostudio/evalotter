@@ -41,8 +41,8 @@ const STEPS = [
 
 const FAQS = [
   {
-    q: "Is Brainyak a medical or psychological diagnosis?",
-    a: "No. Brainyak assessments are designed for education, entertainment and self-discovery and are not a substitute for professional psychological, medical or clinical assessment.",
+    q: "Is EvalOtter a medical or psychological diagnosis?",
+    a: "No. EvalOtter assessments are designed for education, entertainment and self-discovery and are not a substitute for professional psychological, medical or clinical assessment.",
   },
   {
     q: "How is my score calculated?",
@@ -103,7 +103,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Brainyak Intelligence Profile */}
+      {/* Featured EvalOtter Intelligence Profile */}
       <section className="border-b border-ink-700/60 bg-ink-900/40">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:items-center">
           <FadeIn>
@@ -121,7 +121,7 @@ export default function HomePage() {
               href={`/assessments/${featured.slug}`}
               className="focus-ring mt-8 inline-flex min-h-[48px] items-center gap-2 rounded-xl2 bg-signal-violet px-6 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
-              Take the Brainyak Profile <ArrowRight className="h-4 w-4" />
+              Take the EvalOtter Profile <ArrowRight className="h-4 w-4" />
             </Link>
           </FadeIn>
           <FadeIn delay={0.1}>
@@ -190,11 +190,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Brainyak is different */}
+      {/* Why EvalOtter is different */}
       <section className="border-b border-ink-700/60">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
           <FadeIn className="mx-auto max-w-xl text-center">
-            <h2 className="font-display text-3xl text-paper-100">Why Brainyak is different</h2>
+            <h2 className="font-display text-3xl text-paper-100">Why EvalOtter is different</h2>
           </FadeIn>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {WHY_DIFFERENT.map((item, i) => (

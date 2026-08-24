@@ -28,17 +28,17 @@ export async function GET() {
   const MUTED = rgb(0.45, 0.46, 0.5);
 
   let y = height - 64;
-  page.drawText("BRAINYAK", { x: 48, y, size: 12, font: bold, color: VIOLET });
+  page.drawText("EVALOTTER", { x: 48, y, size: 12, font: bold, color: VIOLET });
   page.drawText("Complete Brain Profile Report", { x: 48, y: y - 16, size: 10, font: regular, color: MUTED });
 
   y -= 56;
-  const name = user.profile?.displayName ?? user.profile?.fullName ?? user.email ?? "Brainyak user";
+  const name = user.profile?.displayName ?? user.profile?.fullName ?? user.email ?? "EvalOtter user";
   page.drawText(name, { x: 48, y, size: 22, font: bold, color: INK });
 
   y -= 44;
-  page.drawText("Brainyak Score", { x: 48, y, size: 10, font: regular, color: MUTED });
+  page.drawText("EvalOtter Score", { x: 48, y, size: 10, font: regular, color: MUTED });
   y -= 30;
-  page.drawText(profile?.brainyak_score ? `${Math.round(Number(profile.brainyak_score))} / 100` : "Not yet available", {
+  page.drawText(profile?.evalotter_score ? `${Math.round(Number(profile.evalotter_score))} / 100` : "Not yet available", {
     x: 48,
     y,
     size: 28,
@@ -80,7 +80,7 @@ export async function GET() {
   }
 
   page.drawText(
-    "Brainyak assessments are designed for education, entertainment and self-discovery and are not a substitute for professional psychological, medical or clinical assessment.",
+    "EvalOtter assessments are designed for education, entertainment and self-discovery and are not a substitute for professional psychological, medical or clinical assessment.",
     { x: 48, y: 48, size: 7.5, font: regular, color: MUTED, maxWidth: width - 96, lineHeight: 10 }
   );
 
@@ -89,7 +89,7 @@ export async function GET() {
   return new NextResponse(Buffer.from(bytes), {
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": `attachment; filename="brainyak-brain-profile.pdf"`,
+      "Content-Disposition": `attachment; filename="evalotter-brain-profile.pdf"`,
     },
   });
 }

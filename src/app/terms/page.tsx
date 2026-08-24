@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Terms" };
 const SECTIONS = [
   {
     title: "Nature of the service",
-    body: "Brainyak assessments are designed for education, entertainment and self-discovery and are not a substitute for professional psychological, medical or clinical assessment. Palmistry specifically is offered for entertainment and self-reflection only, and carries no scientific validity claim.",
+    body: "EvalOtter assessments are designed for education, entertainment and self-discovery and are not a substitute for professional psychological, medical or clinical assessment. Palmistry specifically is offered for entertainment and self-reflection only, and carries no scientific validity claim.",
   },
   {
     title: "Your account",

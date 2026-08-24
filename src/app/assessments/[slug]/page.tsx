@@ -78,7 +78,7 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
           <ShieldCheck className="h-5 w-5 shrink-0 text-signal-cyan" />
           <p>
             Palmistry is offered for entertainment and self-reflection. It is not a scientifically
-            validated diagnosis, and it never contributes to your Brainyak cognitive score.
+            validated diagnosis, and it never contributes to your EvalOtter cognitive score.
           </p>
         </div>
       )}

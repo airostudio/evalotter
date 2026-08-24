@@ -18,7 +18,7 @@ export default function MethodologyPage() {
       <SimplePageHeader
         eyebrow="Methodology"
         title="Real frameworks, transparent scoring"
-        lede="Every Brainyak assessment is grounded in an established methodology and scored by rules you could read yourself — never a black box."
+        lede="Every EvalOtter assessment is grounded in an established methodology and scored by rules you could read yourself — never a black box."
       />
 
       <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
@@ -48,7 +48,7 @@ export default function MethodologyPage() {
         <section className="mt-12">
           <h2 className="font-display text-xl text-paper-100">Not a diagnosis</h2>
           <p className="mt-3 leading-relaxed text-paper-100/60">
-            Brainyak assessments are designed for education, entertainment and self-discovery and
+            EvalOtter assessments are designed for education, entertainment and self-discovery and
             are not a substitute for professional psychological, medical or clinical assessment.
             Palmistry in particular is offered purely for entertainment and self-reflection.
           </p>

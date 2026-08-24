@@ -9,7 +9,7 @@ import { interpretPalmistry } from "@/lib/ai/palmistry-vision";
  * Stores both palm photos privately (palmistry/{userId}/...), records the
  * submission, runs the (vision-model-ready) analysis stub, and marks the
  * attempt complete. No deterministic "score" applies here — Palmistry is
- * explicitly entertainment/self-reflection and never feeds the Brainyak
+ * explicitly entertainment/self-reflection and never feeds the EvalOtter
  * cognitive score (see brain_profile_contribution_rules, which has no row
  * for this assessment).
  */

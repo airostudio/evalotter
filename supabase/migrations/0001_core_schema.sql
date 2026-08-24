@@ -1,4 +1,4 @@
--- Brainyak core schema
+-- EvalOtter core schema
 -- Conventions: UUID primary keys, created_at/updated_at on mutable tables,
 -- snake_case columns, FKs with sensible ON DELETE behavior, indexes on FKs
 -- and columns used for lookups/filters.
@@ -316,7 +316,7 @@ create index result_dimensions_result_idx on result_dimensions (result_id);
 
 create table user_brain_profiles (
   user_id uuid primary key references profiles (id) on delete cascade,
-  brainyak_score numeric,
+  evalotter_score numeric,
   assessments_completed integer not null default 0,
   assessments_total integer not null default 0,
   strongest_dimension_key text,

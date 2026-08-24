@@ -75,7 +75,7 @@ export function PalmistryCapture({ assessment, attempt }: AssessmentRendererProp
         <ShieldCheck className="mb-4 h-8 w-8 text-signal-cyan" />
         <h2 className="font-display text-2xl text-paper-100">Before you begin</h2>
         <p className="mt-4 text-sm leading-relaxed text-paper-100/70">
-          Palmistry on Brainyak is offered for <strong>entertainment and self-reflection</strong>{" "}
+          Palmistry on EvalOtter is offered for <strong>entertainment and self-reflection</strong>{" "}
           only — it is not a scientifically validated or clinical assessment. You&apos;ll be asked
           to photograph both palms. Images are stored securely, visible only to you, and you can
           delete them at any time from your account.

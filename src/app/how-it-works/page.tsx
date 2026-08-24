@@ -8,7 +8,7 @@ export const metadata: Metadata = { title: "How it works" };
 const STEPS = [
   {
     title: "1. Choose an assessment",
-    body: "Browse the catalogue by category — cognitive, memory, emotional, spatial, creative and more — or start with the flagship Brainyak Intelligence Profile for a broad first read.",
+    body: "Browse the catalogue by category — cognitive, memory, emotional, spatial, creative and more — or start with the flagship EvalOtter Intelligence Profile for a broad first read.",
   },
   {
     title: "2. Complete it at your pace",
@@ -34,7 +34,7 @@ export default function HowItWorksPage() {
       <SimplePageHeader
         eyebrow="How it works"
         title="From first click to a real profile"
-        lede="Brainyak is built around one idea: assessments should feel considered, not gamified — and your results should mean something over time."
+        lede="EvalOtter is built around one idea: assessments should feel considered, not gamified — and your results should mean something over time."
       />
 
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">

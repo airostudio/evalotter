@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Brain } from "lucide-react";
 import type { AuthedUser } from "@/lib/auth/current-user";
 import { logoutAction } from "@/actions/auth";
+import { BrandMark, BrandWordmark } from "./BrandMark";
 
 const NAV_LINKS = [
   { href: "/assessments", label: "Assessments" },
@@ -15,8 +15,8 @@ export function SiteHeader({ user }: { user: AuthedUser | null }) {
     <header className="sticky top-0 z-40 border-b border-ink-700/80 bg-ink-950/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2 focus-ring rounded-lg">
-          <Brain className="h-5 w-5 text-signal-cyan" />
-          <span className="font-display text-lg tracking-tight text-paper-100">Brainyak</span>
+          <BrandMark size={20} />
+          <BrandWordmark className="text-lg" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">

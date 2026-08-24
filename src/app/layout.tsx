@@ -6,8 +6,8 @@ import { getCurrentUser } from "@/lib/auth/current-user";
 
 export const metadata: Metadata = {
   title: {
-    default: "Brainyak — Discover How Your Mind Works",
-    template: "%s · Brainyak",
+    default: "EvalOtter — Discover How Your Mind Works",
+    template: "%s · EvalOtter",
   },
   description:
     "Measure your reasoning, memory, emotional intelligence, creativity, spatial thinking and more through interactive assessments designed to reveal how you think.",

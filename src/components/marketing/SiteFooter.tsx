@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Brain } from "lucide-react";
+import { BrandMark, BrandWordmark } from "./BrandMark";
 
 const COLUMNS = [
   {
@@ -34,8 +34,8 @@ export function SiteFooter() {
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
             <div className="flex items-center gap-2">
-              <Brain className="h-5 w-5 text-signal-cyan" />
-              <span className="font-display text-lg text-paper-100">Brainyak</span>
+              <BrandMark size={20} />
+              <BrandWordmark className="text-lg" />
             </div>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-paper-100/50">
               Interactive assessments designed to reveal how you think.
@@ -65,11 +65,11 @@ export function SiteFooter() {
 
         <div className="mt-12 border-t border-ink-700/80 pt-6">
           <p className="max-w-3xl text-xs leading-relaxed text-paper-100/40">
-            Brainyak assessments are designed for education, entertainment and self-discovery and
+            EvalOtter assessments are designed for education, entertainment and self-discovery and
             are not a substitute for professional psychological, medical or clinical assessment.
           </p>
           <p className="mt-3 text-xs text-paper-100/30">
-            © {new Date().getFullYear()} Brainyak. All rights reserved.
+            © {new Date().getFullYear()} EvalOtter. All rights reserved.
           </p>
         </div>
       </div>

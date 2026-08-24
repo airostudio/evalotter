@@ -5,7 +5,7 @@ import { CatalogueBrowser } from "@/components/marketing/CatalogueBrowser";
 
 export const metadata: Metadata = {
   title: "Assessment Catalogue",
-  description: "Browse every Brainyak assessment, filterable by category.",
+  description: "Browse every EvalOtter assessment, filterable by category.",
 };
 
 export const revalidate = 60;
@@ -45,7 +45,7 @@ export default async function AssessmentsPage() {
         <span className="text-xs uppercase tracking-widest text-signal-cyan/80">Catalogue</span>
         <h1 className="mt-3 font-display text-4xl text-paper-100">Every assessment, in one place</h1>
         <p className="mt-4 text-paper-100/60">
-          Filter by category to find the right assessment, or start with the Brainyak Intelligence
+          Filter by category to find the right assessment, or start with the EvalOtter Intelligence
           Profile for a complete picture.
         </p>
       </div>
