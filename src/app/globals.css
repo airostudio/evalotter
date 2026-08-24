@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  @apply bg-ink-950 text-paper-100 antialiased;
+}
+
+.focus-ring {
+  @apply outline-none ring-2 ring-signal-cyan/60 ring-offset-2 ring-offset-ink-950;
+}
+
+::selection {
+  background: rgba(124, 92, 255, 0.35);
+}
