@@ -24,8 +24,13 @@ gating fails open on public routes — see `src/lib/supabase/middleware.ts`),
 but nothing is playable end-to-end until a real database is connected:
 
 1. Create a Supabase project.
-2. Apply the migrations in `supabase/migrations/` in order (via the Supabase
-   CLI or SQL editor).
+2. Apply the schema: paste `supabase/combined_migrations.sql` into the
+   Supabase SQL editor and run it (it's `supabase/migrations/0001`–`0008`
+   concatenated in order, with explicit transaction boundaries around the
+   two enum-value additions — PostgreSQL forbids using a newly added enum
+   value in the same transaction that added it). Applying the individual
+   files in `supabase/migrations/` one at a time, in numeric order, works
+   identically if you'd rather use the Supabase CLI's migration runner.
 3. Set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and
    `SUPABASE_SERVICE_ROLE_KEY` in `.env.local` (and in your deploy
    environment — a missing/misconfigured Supabase config used to crash
