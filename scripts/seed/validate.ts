@@ -13,9 +13,10 @@ const DATA_DIR = join(__dirname, "data");
 
 interface SeedFile {
   slug: string;
-  sections: { key: string }[];
-  scoringDimensions: { key: string; contributesToBrainProfile: boolean; brainProfileDimensionKey?: string | null }[];
-  resultRanges: { dimensionKey: string; minScore: number; maxScore: number }[];
+  status?: string;
+  sections?: { key: string }[];
+  scoringDimensions?: { key: string; contributesToBrainProfile: boolean; brainProfileDimensionKey?: string | null }[];
+  resultRanges?: { dimensionKey: string; minScore: number; maxScore: number }[];
   questions?: any[];
   reuseQuestionKeys?: { questionKey: string; sectionKey: string }[];
   brainProfileContributions?: { sourceDimensionKey: string; targetBrainProfileDimensionKey: string }[];
@@ -38,28 +39,39 @@ const allQuestionKeys = new Map<string, string>(); // key -> owning slug
 const questionImpactDimensions = new Map<string, Set<string>>(); // key -> dimension keys its scoreConfig targets
 
 // Pass 1: collect all question keys, check per-file uniqueness of section/dimension keys.
+// A file's top-level JSON is normally one assessment object; it may instead
+// be an array of several lightweight ones (used for content-less
+// "coming soon" roadmap entries).
 const parsed: { file: string; data: SeedFile }[] = [];
 for (const file of files) {
-  const data: SeedFile = JSON.parse(readFileSync(join(DATA_DIR, file), "utf8"));
-  parsed.push({ file, data });
+  const rawParsed = JSON.parse(readFileSync(join(DATA_DIR, file), "utf8"));
+  const entries: SeedFile[] = Array.isArray(rawParsed) ? rawParsed : [rawParsed];
 
-  for (const q of data.questions ?? []) {
-    if (allQuestionKeys.has(q.key)) {
-      fail(file, `duplicate question key "${q.key}" (already defined in ${allQuestionKeys.get(q.key)})`);
+  for (const data of entries) {
+    parsed.push({ file, data });
+
+    for (const q of data.questions ?? []) {
+      if (allQuestionKeys.has(q.key)) {
+        fail(file, `duplicate question key "${q.key}" (already defined in ${allQuestionKeys.get(q.key)})`);
+      }
+      allQuestionKeys.set(q.key, data.slug);
+
+      const impacts = new Set<string>();
+      for (const opt of q.options ?? []) for (const i of opt.scoreConfig ?? []) impacts.add(i.dimensionKey);
+      for (const i of q.scoreConfig ?? []) impacts.add(i.dimensionKey);
+      questionImpactDimensions.set(q.key, impacts);
     }
-    allQuestionKeys.set(q.key, data.slug);
-
-    const impacts = new Set<string>();
-    for (const opt of q.options ?? []) for (const i of opt.scoreConfig ?? []) impacts.add(i.dimensionKey);
-    for (const i of q.scoreConfig ?? []) impacts.add(i.dimensionKey);
-    questionImpactDimensions.set(q.key, impacts);
   }
 }
 
-// Pass 2: per-file structural checks.
+// Pass 2: per-file structural checks. Skip entirely for content-less
+// "coming soon" placeholders — they're not expected to have sections,
+// dimensions, or result ranges yet.
 for (const { file, data } of parsed) {
-  const sectionKeys = new Set(data.sections.map((s) => s.key));
-  const dimensionKeys = new Set(data.scoringDimensions.map((d) => d.key));
+  if (data.status === "coming_soon") continue;
+
+  const sectionKeys = new Set((data.sections ?? []).map((s) => s.key));
+  const dimensionKeys = new Set((data.scoringDimensions ?? []).map((d) => d.key));
 
   for (const q of data.questions ?? []) {
     if (!sectionKeys.has(q.sectionKey)) {
@@ -108,21 +120,21 @@ for (const { file, data } of parsed) {
     for (const opt of q.options ?? []) for (const i of opt.scoreConfig ?? []) scoredDimensions.add(i.dimensionKey);
     for (const i of q.scoreConfig ?? []) scoredDimensions.add(i.dimensionKey);
   }
-  for (const dim of data.scoringDimensions) {
+  for (const dim of data.scoringDimensions ?? []) {
     if (!scoredDimensions.has(dim.key) && !(data.reuseQuestionKeys && data.reuseQuestionKeys.length > 0)) {
       warn(file, `scoring dimension "${dim.key}" is declared but no question's scoreConfig ever targets it`);
     }
   }
 
   // contributesToBrainProfile dimensions must name a target.
-  for (const dim of data.scoringDimensions) {
+  for (const dim of data.scoringDimensions ?? []) {
     if (dim.contributesToBrainProfile && !dim.brainProfileDimensionKey) {
       fail(file, `dimension "${dim.key}" has contributesToBrainProfile:true but no brainProfileDimensionKey`);
     }
   }
 
   // "overall" result ranges should form a contiguous, gapless 0-100 cover.
-  const overall = data.resultRanges.filter((r) => r.dimensionKey === "overall").sort((a, b) => a.minScore - b.minScore);
+  const overall = (data.resultRanges ?? []).filter((r) => r.dimensionKey === "overall").sort((a, b) => a.minScore - b.minScore);
   if (overall.length > 0) {
     const first = overall[0]!;
     const last = overall[overall.length - 1]!;

@@ -60,7 +60,7 @@ const FAQS = [
 
 export default function HomePage() {
   const featured = CATALOGUE.find((a) => a.featured) ?? CATALOGUE[0]!;
-  const rest = CATALOGUE.filter((a) => a.slug !== featured.slug).slice(0, 6);
+  const rest = CATALOGUE.filter((a) => a.slug !== featured.slug && !a.comingSoon).slice(0, 6);
 
   return (
     <div>

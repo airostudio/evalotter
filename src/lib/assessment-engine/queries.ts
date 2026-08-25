@@ -30,6 +30,23 @@ export async function listPublishedAssessments(): Promise<Assessment[]> {
   );
 }
 
+/** Published + coming-soon assessments, for catalogue display (coming-soon entries are never startable). */
+export async function listCatalogueAssessments(): Promise<Assessment[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("assessments")
+    .select("*, assessment_categories(*)")
+    .in("status", ["published", "coming_soon"])
+    .order("featured", { ascending: false })
+    .order("title", { ascending: true });
+
+  if (error) throw error;
+
+  return (data ?? []).map((row) =>
+    mapAssessment(row, row.assessment_categories ? mapCategory(row.assessment_categories) : undefined)
+  );
+}
+
 export async function listCategories() {
   const supabase = await createClient();
   const { data, error } = await supabase

@@ -101,14 +101,15 @@ scored questions already defined for the single-domain assessments, via
 `reuseQuestionKeys` — the intended use of the shared question library
 (`questions` rows are reused across `assessment_questions`, not duplicated).
 
-**Known gap:** `memory_recall`-type questions (the ISLT shopping list, ADAS-Cog
-word list, and SKT object-recognition items in Memory Recall) carry real
-scoring config, but `src/lib/scoring/engine.ts` doesn't yet compare a
-`recalled[]` answer against the study/distractor lists — those 3 of Memory
-Recall's 24 questions currently score 0 at runtime. The other 21 (multiple
-choice, timed choice) score correctly. Fixing it needs `studyItems`/
-`distractorItems` threaded onto the real `Question` type (currently a
-seed-authoring-only field) plus a recall-accuracy branch in `collectImpacts()`.
+**Memory Recall scores fully correctly (all 24 questions).** The ISLT
+shopping list and SKT object-recognition items are `memory_recognition`
+type — a study phase (`src/components/questions/MemoryRecognitionQuestion.tsx`)
+followed by a recognition grid, answered as `multiple_select` so they reuse
+the already-correct option-based scoring path. The ADAS word list stays
+`memory_recall` (true free recall,
+`src/components/questions/MemoryRecallQuestion.tsx`), scored by a dedicated
+`collectImpacts()` branch that compares typed entries against the
+question's options (its ground-truth word list) case-insensitively.
 
 Run `npm run seed:validate` any time — it statically checks every seed file
 for the two bug classes already caught once each while authoring this data:
@@ -116,16 +117,58 @@ a scoring dimension declared but never actually targeted by any question
 (dead 0 on the results page), and a reused question scoring a dimension key
 the reusing assessment never declared (silently contributes nothing there).
 
+## Coming-soon assessments
+
+`scripts/seed/data/coming-soon.json` holds 18 roadmap entries (Verbal
+Reasoning Mastery, Memory Palace Challenge, Critical Thinking Depth,
+Numerical Agility, Creative Divergent Thinking, Speed Processing Index,
+Phonological Awareness, Executive Function Profiling, Visuospatial
+Rotation, Auditory Processing Speed, Attention Control Test, Abstract
+Reasoning Pro, Decision Making Under Pressure, Cognitive Flexibility Index,
+Language Acquisition, Social Cognition Assessment, Fluid Intelligence Peak,
+Career Aptitude Profile, Full IQ Estimation Report) with catalogue metadata
+only — no sections, questions, or scoring. They're `status: "coming_soon"`
+(a distinct DB status from `draft`, since coming-soon entries are
+deliberately public-facing — see `0007`/`0008` migrations for the enum
+value and RLS policy). The catalogue shows them with a "Coming soon" badge
+and a disabled button (`AssessmentCard.tsx`, `assessments/[slug]/page.tsx`).
+
+To build one out later: rename its entry in `coming-soon.json` out of that
+file into its own `scripts/seed/data/<slug>.json` matching the shape of the
+ten real assessments (see any of those for the pattern), add real
+sections/questions/scoringDimensions/resultRanges, drop `"status":
+"coming_soon"` so it defaults to `"published"`, then `npm run seed:validate`
+and `npm run seed`.
+
+## AI interpretation & Palmistry vision
+
+Both are fully wired to Claude (`src/lib/ai/client.ts`, using
+`@anthropic-ai/sdk`) — set `ANTHROPIC_API_KEY` to enable them; without it
+they degrade gracefully rather than failing:
+
+- **Interpretation** (`src/lib/ai/interpretation.ts`): runs after every
+  completed attempt (`completeAttemptAction` in `src/actions/attempts.ts`),
+  strictly after deterministic scoring — it receives the already-computed
+  scores (plus any `open_creative`/`long_text` answers, which is what makes
+  Creative Assessment's two open-ended prompts actually get used) and
+  returns a structured interpretation persisted to `ai_interpretations`,
+  rendered on the results page. Never blocks or alters the deterministic
+  result if the call fails or no key is configured.
+- **Palmistry vision** (`src/lib/ai/palmistry-vision.ts`): fetches both
+  stored palm photos from Supabase Storage server-side, sends them to a
+  vision-capable Claude model with the person's context answers, and parses
+  the structured reading. Explicitly framed as entertainment/self-reflection
+  in the prompt itself, not just the UI copy.
+
+I haven't been able to test either against a live key in this environment
+(no ANTHROPIC_API_KEY here) — the JSON-parsing, error handling, and
+graceful-degradation paths are exercised, but not a real model response.
+Worth a manual check once a key is configured.
+
 ## Not yet built
 
 - **Admin builder UI** — the schema and RLS support it, but there's no
   `/admin` assessment builder yet, only the data model it would write to.
-- **Live AI interpretation calls** — the abstraction exists
-  (`src/lib/ai/`) but isn't wired to a provider; needs `OPENAI_API_KEY` or
-  `ANTHROPIC_API_KEY`.
-- **Palmistry vision analysis** — capture flow and storage exist
-  (`src/components/assessment/PalmistryCapture.tsx`,
-  `palmistry_submissions` table); actual vision-model inference is a stub.
 - **Stripe checkout** — the data model (`subscriptions`, `report_purchases`)
   is Stripe-ready but no checkout flow is wired up.
 

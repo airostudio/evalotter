@@ -89,9 +89,25 @@ function computeRawScoreForDimension(
 function collectImpacts(
   response: AssessmentResponse,
   questionScoreConfig: ScoreImpact[] | null | undefined,
-  options: { id: string; scoreConfig?: ScoreImpact[] | null }[]
+  options: { id: string; value: string; scoreConfig?: ScoreImpact[] | null }[]
 ): ScoreImpact[] {
   const answer = response.answer;
+
+  // Free recall: the question's options are the ground-truth item list
+  // (each isCorrect:true, carrying its own scoreConfig) rather than
+  // clickable choices — score by matching each typed entry against an
+  // option's value, case-insensitively, crediting each matched option at
+  // most once regardless of how many times it was (re)typed.
+  if (answer.type === "memory_recall") {
+    const recalledNormalized = new Set(answer.recalled.map((r) => r.trim().toLowerCase()));
+    const impacts: ScoreImpact[] = [];
+    for (const opt of options) {
+      if (opt.scoreConfig && recalledNormalized.has(opt.value.trim().toLowerCase())) {
+        impacts.push(...opt.scoreConfig);
+      }
+    }
+    return impacts;
+  }
 
   // Choice-based questions: points come entirely from the selected
   // option(s)' own scoreConfig — the question-level scoreConfig isn't used.

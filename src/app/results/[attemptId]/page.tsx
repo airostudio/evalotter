@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Download, RefreshCw } from "lucide-react";
+import { Download, RefreshCw, Sparkles } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireUser } from "@/lib/auth/current-user";
 import { ScoreRing } from "@/components/charts/ScoreRing";
@@ -54,6 +54,14 @@ export default async function ResultPage({ params }: PageProps) {
     .eq("result_id", result.id);
 
   const dimensions = dimensionRows ?? [];
+
+  const { data: interpretation } = await supabase
+    .from("ai_interpretations")
+    .select("*")
+    .eq("result_id", result.id)
+    .eq("status", "completed")
+    .order("created_at", { ascending: false })
+    .maybeSingle();
 
   const { data: previousResults } = await supabase
     .from("assessment_results")
@@ -127,6 +135,50 @@ export default async function ResultPage({ params }: PageProps) {
                 ))}
             </ul>
           </div>
+        </div>
+      )}
+
+      {interpretation && (
+        <div className="mt-10 rounded-xl2 border border-signal-cyan/30 bg-signal-cyan/[0.04] p-6">
+          <div className="flex items-center gap-2">
+            <Sparkles className="h-4 w-4 text-signal-cyan" />
+            <h2 className="text-sm font-medium text-paper-100/70">AI interpretation</h2>
+          </div>
+          <p className="mt-3 text-[15px] leading-relaxed text-paper-100/85">{interpretation.summary}</p>
+
+          {interpretation.behavioural_interpretation && (
+            <p className="mt-4 text-sm leading-relaxed text-paper-100/65">
+              {interpretation.behavioural_interpretation}
+            </p>
+          )}
+
+          {(interpretation.recommendations?.length ?? 0) > 0 && (
+            <div className="mt-5">
+              <h3 className="text-xs font-medium uppercase tracking-wider text-paper-100/40">Recommendations</h3>
+              <ul className="mt-2 flex flex-col gap-1.5">
+                {interpretation.recommendations!.map((r: string, i: number) => (
+                  <li key={i} className="flex gap-2 text-sm text-paper-100/75">
+                    <span className="text-signal-cyan/60">→</span> {r}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {interpretation.suggested_next_assessment_slug && (
+            <Link
+              href={`/assessments/${interpretation.suggested_next_assessment_slug}`}
+              className="focus-ring mt-5 inline-flex min-h-[40px] items-center gap-1.5 rounded-xl2 border border-ink-600 px-4 text-sm text-paper-100 hover:border-signal-cyan/50"
+            >
+              Suggested next: {interpretation.suggested_next_assessment_slug.replace(/-/g, " ")} →
+            </Link>
+          )}
+
+          <p className="mt-5 text-xs text-paper-100/35">
+            AI-generated interpretation of your scores — for education and self-reflection, not a
+            clinical assessment. Your scores above are computed deterministically and are never
+            altered by this interpretation.
+          </p>
         </div>
       )}
 

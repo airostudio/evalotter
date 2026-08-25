@@ -13,7 +13,7 @@ export type AssessmentEngineType =
   | "hybrid"
   | "custom_interactive";
 
-export type AssessmentStatus = "draft" | "review" | "published" | "archived";
+export type AssessmentStatus = "draft" | "review" | "published" | "archived" | "coming_soon";
 
 export type AssessmentAccess = "free" | "premium";
 

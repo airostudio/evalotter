@@ -1,6 +1,7 @@
 import type {
   AssessmentAccess,
   AssessmentEngineType,
+  AssessmentStatus,
   QuestionType,
 } from "@/types";
 
@@ -26,6 +27,8 @@ export interface SeedAssessment {
   estimatedDurationMinutes: number;
   access: AssessmentAccess;
   featured?: boolean;
+  /** Defaults to "published". Use "coming_soon" for a roadmap teaser with no content — sections/questions may be empty in that case. */
+  status?: AssessmentStatus;
   runnerSettings?: Partial<{
     allowBackNavigation: boolean;
     randomizeSections: boolean;
@@ -37,10 +40,11 @@ export interface SeedAssessment {
     totalTimeLimitSeconds: number | null;
   }>;
 
-  sections: SeedSection[];
-  scoringDimensions: SeedScoringDimension[];
+  /** Empty (or omitted) only for status:"coming_soon" placeholder assessments with no content yet. */
+  sections?: SeedSection[];
+  scoringDimensions?: SeedScoringDimension[];
   scoringRules?: SeedScoringRule[];
-  resultRanges: SeedResultRange[];
+  resultRanges?: SeedResultRange[];
 
   /**
    * Questions authored directly for this assessment. Use `reuseQuestionKeys`

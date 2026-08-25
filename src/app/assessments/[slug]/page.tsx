@@ -84,7 +84,11 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
       )}
 
       <div className="mt-10 flex flex-wrap gap-3">
-        {!live ? (
+        {fallback?.comingSoon ? (
+          <span className="flex min-h-[48px] cursor-not-allowed items-center rounded-xl2 border border-ink-700 px-7 text-sm font-medium text-paper-100/40">
+            Coming soon — not yet available
+          </span>
+        ) : !live ? (
           <p className="text-sm text-paper-100/40">
             This assessment isn&apos;t connected to a live database in this environment yet — see
             the README for setup and seeding instructions.

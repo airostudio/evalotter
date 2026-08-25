@@ -19,8 +19,9 @@ export function CatalogueBrowser({
     return ["all", ...[...keys]];
   }, [assessments]);
 
-  const filtered =
-    activeCategory === "all" ? assessments : assessments.filter((a) => a.categoryKey === activeCategory);
+  const filtered = [
+    ...(activeCategory === "all" ? assessments : assessments.filter((a) => a.categoryKey === activeCategory)),
+  ].sort((a, b) => Number(Boolean(a.comingSoon)) - Number(Boolean(b.comingSoon)));
 
   return (
     <div>

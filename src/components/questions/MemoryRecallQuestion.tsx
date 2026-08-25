@@ -1,15 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { QuestionComponentProps } from "./registry";
 
 /**
- * Free-recall input: the user types back everything they remember from a
- * prior study phase (word list, image sequence, etc), one item at a time.
- * The study phase itself is presented by the section instructions/timer;
- * this component only captures the recall.
+ * Free-recall input: the user studies a word/item list for
+ * `question.timeLimitSeconds`, then types back everything they remember,
+ * one item at a time. The "correct" list is the question's own options
+ * (each isCorrect:true, with its own scoreConfig) — scoring compares the
+ * typed entries against those option labels case-insensitively.
  */
-export function MemoryRecallQuestion({ value, onChange }: QuestionComponentProps) {
+export function MemoryRecallQuestion({ question, value, onChange }: QuestionComponentProps) {
+  const studyItems = useMemo(() => (question.options ?? []).filter((o) => o.isCorrect), [question.options]);
+  const studySeconds = question.timeLimitSeconds ?? 20;
+
+  const [phase, setPhase] = useState<"study" | "recall">(studyItems.length > 0 ? "study" : "recall");
+  const [secondsLeft, setSecondsLeft] = useState(studySeconds);
+
+  useEffect(() => {
+    if (phase !== "study") return;
+    if (secondsLeft <= 0) {
+      setPhase("recall");
+      return;
+    }
+    const timer = setTimeout(() => setSecondsLeft((s) => s - 1), 1000);
+    return () => clearTimeout(timer);
+  }, [phase, secondsLeft]);
+
   const recalled = value?.type === "memory_recall" ? value.recalled : [];
   const [draft, setDraft] = useState("");
 
@@ -22,6 +39,33 @@ export function MemoryRecallQuestion({ value, onChange }: QuestionComponentProps
 
   function removeItem(index: number) {
     onChange({ type: "memory_recall", recalled: recalled.filter((_, i) => i !== index) });
+  }
+
+  if (phase === "study") {
+    return (
+      <div className="flex flex-col items-center gap-6 rounded-xl2 border border-ink-600 bg-ink-800/40 px-6 py-10 text-center">
+        <p className="text-xs uppercase tracking-widest text-paper-100/40">
+          Study these — {secondsLeft}s remaining
+        </p>
+        <ul className="flex flex-wrap justify-center gap-3">
+          {studyItems.map((item) => (
+            <li
+              key={item.id}
+              className="rounded-full border border-signal-cyan/40 bg-signal-cyan/10 px-5 py-2.5 text-[15px] text-paper-100"
+            >
+              {item.label}
+            </li>
+          ))}
+        </ul>
+        <button
+          type="button"
+          onClick={() => setPhase("recall")}
+          className="focus-ring text-xs text-paper-100/40 underline hover:text-paper-100/70"
+        >
+          Skip ahead
+        </button>
+      </div>
+    );
   }
 
   return (

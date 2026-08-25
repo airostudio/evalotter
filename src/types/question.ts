@@ -15,6 +15,7 @@ export type QuestionType =
   | "matching"
   | "timed_choice"
   | "memory_recall"
+  | "memory_recognition"
   | "pattern_question"
   | "visual_rotation"
   | "open_creative"

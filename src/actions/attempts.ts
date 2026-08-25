@@ -10,6 +10,7 @@ import { getAssessmentWithVersionById } from "@/lib/assessment-engine/queries";
 import { mapResponse } from "@/lib/assessment-engine/mappers";
 import { updateBrainProfileForResult } from "@/lib/scoring/brain-profile";
 import { maybeGrantAchievements } from "@/lib/scoring/achievements";
+import { generateInterpretation } from "@/lib/ai/interpretation";
 import type { AnswerValue } from "@/types";
 
 registerBuiltInAssessmentEngines();
@@ -192,6 +193,28 @@ export async function completeAttemptAction(attemptId: string) {
 
   await updateBrainProfileForResult(user.id, assessment, scoring);
   await maybeGrantAchievements(user.id);
+
+  // Best-effort: an AI provider outage or missing key must never block the
+  // user from seeing the deterministic result they already earned.
+  try {
+    const interpretation = await generateInterpretation(assessment, scoring, responses);
+    if (interpretation) {
+      await supabase.from("ai_interpretations").insert({
+        result_id: resultRow.id,
+        status: "completed",
+        provider: "anthropic",
+        summary: interpretation.summary,
+        strengths: interpretation.strengths,
+        development_areas: interpretation.developmentAreas,
+        behavioural_interpretation: interpretation.behaviouralInterpretation,
+        recommendations: interpretation.recommendations,
+        suggested_next_assessment_slug: interpretation.suggestedNextAssessmentSlug,
+        raw_response: interpretation,
+      });
+    }
+  } catch (err) {
+    console.error(`[attempts] AI interpretation failed for result ${resultRow.id}:`, err);
+  }
 
   revalidatePath("/dashboard");
   revalidatePath("/brain-profile");

@@ -15,6 +15,7 @@ import { DragDropQuestion } from "./DragDropQuestion";
 import { MatchingQuestion } from "./MatchingQuestion";
 import { TimedChoiceQuestion } from "./TimedChoiceQuestion";
 import { MemoryRecallQuestion } from "./MemoryRecallQuestion";
+import { MemoryRecognitionQuestion } from "./MemoryRecognitionQuestion";
 import { CustomInteractiveQuestion } from "./CustomInteractiveQuestion";
 
 let registered = false;
@@ -40,6 +41,7 @@ export function registerBuiltInQuestionComponents() {
   registerQuestionComponent("matching", MatchingQuestion);
   registerQuestionComponent("timed_choice", TimedChoiceQuestion);
   registerQuestionComponent("memory_recall", MemoryRecallQuestion);
+  registerQuestionComponent("memory_recognition", MemoryRecognitionQuestion);
   registerQuestionComponent("pattern_question", ImageChoiceQuestion);
   registerQuestionComponent("visual_rotation", ImageChoiceQuestion);
   registerQuestionComponent("open_creative", OpenCreativeQuestion);

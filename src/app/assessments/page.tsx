@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { CATALOGUE, CATEGORY_LABELS, type CatalogueAssessment } from "@/config/catalogue";
-import { listPublishedAssessments } from "@/lib/assessment-engine/queries";
+import { listCatalogueAssessments } from "@/lib/assessment-engine/queries";
 import { CatalogueBrowser } from "@/components/marketing/CatalogueBrowser";
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export const revalidate = 60;
 
 async function getCatalogueData(): Promise<CatalogueAssessment[]> {
   try {
-    const assessments = await listPublishedAssessments();
+    const assessments = await listCatalogueAssessments();
     if (assessments.length === 0) return CATALOGUE;
 
     return assessments.map((a) => ({
@@ -28,6 +28,7 @@ async function getCatalogueData(): Promise<CatalogueAssessment[]> {
       questionCount: a.questionCount,
       access: a.access,
       featured: a.featured,
+      comingSoon: a.status === "coming_soon",
     }));
   } catch {
     // Supabase not configured/seeded yet in this environment — fall back

@@ -12,15 +12,23 @@ interface AssessmentCardProps {
 
 export function AssessmentCard({ assessment, status = "not_started", latestScore, bestScore }: AssessmentCardProps) {
   return (
-    <div className="group flex flex-col rounded-xl2 border border-ink-700 bg-ink-800/50 p-6 shadow-panel transition-colors hover:border-ink-500">
+    <div
+      className={`group flex flex-col rounded-xl2 border border-ink-700 bg-ink-800/50 p-6 shadow-panel transition-colors hover:border-ink-500 ${assessment.comingSoon ? "opacity-70" : ""}`}
+    >
       <div className="flex items-start justify-between">
         <span className="flex h-11 w-11 items-center justify-center rounded-xl2 bg-signal-violet/15 text-signal-violet">
           <AssessmentIcon icon={assessment.icon} className="h-5 w-5" />
         </span>
-        {assessment.access === "premium" && (
-          <span className="flex items-center gap-1 rounded-full border border-ink-600 px-2.5 py-1 text-[11px] text-paper-100/50">
-            <Lock className="h-3 w-3" /> Premium
+        {assessment.comingSoon ? (
+          <span className="rounded-full border border-signal-cyan/30 bg-signal-cyan/10 px-2.5 py-1 text-[11px] font-medium text-signal-cyan">
+            Coming soon
           </span>
+        ) : (
+          assessment.access === "premium" && (
+            <span className="flex items-center gap-1 rounded-full border border-ink-600 px-2.5 py-1 text-[11px] text-paper-100/50">
+              <Lock className="h-3 w-3" /> Premium
+            </span>
+          )
         )}
       </div>
 
@@ -54,12 +62,18 @@ export function AssessmentCard({ assessment, status = "not_started", latestScore
         </div>
       )}
 
-      <Link
-        href={`/assessments/${assessment.slug}`}
-        className="focus-ring mt-5 flex min-h-[44px] items-center justify-center rounded-xl2 border border-ink-600 text-sm font-medium text-paper-100 transition-colors group-hover:border-signal-cyan/60 group-hover:text-signal-cyan"
-      >
-        {status === "completed" ? "View results" : status === "in_progress" ? "Continue" : "Start assessment"}
-      </Link>
+      {assessment.comingSoon ? (
+        <span className="mt-5 flex min-h-[44px] cursor-not-allowed items-center justify-center rounded-xl2 border border-ink-700 text-sm font-medium text-paper-100/35">
+          Coming soon
+        </span>
+      ) : (
+        <Link
+          href={`/assessments/${assessment.slug}`}
+          className="focus-ring mt-5 flex min-h-[44px] items-center justify-center rounded-xl2 border border-ink-600 text-sm font-medium text-paper-100 transition-colors group-hover:border-signal-cyan/60 group-hover:text-signal-cyan"
+        >
+          {status === "completed" ? "View results" : status === "in_progress" ? "Continue" : "Start assessment"}
+        </Link>
+      )}
     </div>
   );
 }

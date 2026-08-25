@@ -48,10 +48,14 @@ const CATEGORY_LABELS: Record<string, { label: string; icon: string; order: numb
 async function main() {
   const dataDir = join(__dirname, "data");
   const files = readdirSync(dataDir).filter((f) => f.endsWith(".json"));
-  const seeds = files.map((f) => ({
-    file: f,
-    data: JSON.parse(readFileSync(join(dataDir, f), "utf8")),
-  }));
+  // A file's top-level JSON is normally one assessment object; a file may
+  // instead be an array of several lightweight ones (used for the
+  // content-less "coming soon" roadmap entries, to avoid one file each).
+  const seeds = files.flatMap((f) => {
+    const parsed = JSON.parse(readFileSync(join(dataDir, f), "utf8"));
+    const entries = Array.isArray(parsed) ? parsed : [parsed];
+    return entries.map((data) => ({ file: f, data }));
+  });
 
   console.log(`Seeding ${seeds.length} assessments from scripts/seed/data/...\n`);
 
@@ -145,7 +149,7 @@ async function main() {
           question_count: totalQuestionCount,
           featured: data.featured ?? false,
           access: data.access,
-          status: "published",
+          status: data.status ?? "published",
         },
         { onConflict: "slug" }
       )
@@ -156,7 +160,7 @@ async function main() {
 
     // Scoring dimensions & result ranges are assessment-level (shared across
     // versions) — upsert/replace rather than duplicate.
-    for (const dim of data.scoringDimensions) {
+    for (const dim of data.scoringDimensions ?? []) {
       const { error } = await supabase.from("scoring_dimensions").upsert(
         {
           assessment_id: assessmentId,
@@ -173,7 +177,7 @@ async function main() {
     }
 
     await supabase.from("result_ranges").delete().eq("assessment_id", assessmentId);
-    if (data.resultRanges.length > 0) {
+    if ((data.resultRanges ?? []).length > 0) {
       const { error } = await supabase.from("result_ranges").insert(
         data.resultRanges.map((r: any) => ({
           assessment_id: assessmentId,
@@ -201,6 +205,15 @@ async function main() {
         }))
       );
       if (error) throw new Error(`[${file}] brain profile contributions: ${error.message}`);
+    }
+
+    // Coming-soon placeholders have no content yet — the assessment row
+    // (and its catalogue-facing metadata above) is all they need. Skip
+    // version/section/question creation entirely rather than publishing an
+    // empty, unplayable version.
+    if ((data.sections ?? []).length === 0) {
+      console.log(`✓ ${data.slug} — coming soon, no version created`);
+      continue;
     }
 
     // New version every run — never mutate a previously-published one.

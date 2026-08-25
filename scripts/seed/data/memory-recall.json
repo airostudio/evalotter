@@ -9,7 +9,7 @@
   "difficulty": "medium",
   "estimatedDurationMinutes": 12,
   "access": "free",
-  "sourceNote": "Ported verbatim from airostudio/Memory-Recall-Test (public/js/app.js) \u2014 a plain HTML/JS app, not a framework app, so this content is easy to miss by searching only .ts/.tsx files. All study lists, the story text, and object/emoji items are real. Two items (sage-orientation's correct day-of-week; skt-naming items' response-time scoring) depend on runtime/interaction state in the source app and are noted below rather than hard-coded. KNOWN GAP: memory_recall-type questions (islt-shopping-list, adas-word-recall, skt-object-recall) carry scoreConfig but the generic scoring engine (src/lib/scoring/engine.ts) does not yet compare a recalled[] answer against studyItems/distractorItems \u2014 these 3 questions currently score 0 at runtime. Fixing this needs studyItems/distractorItems threaded onto the real Question type (currently a seed-authoring-only field) plus a recall-accuracy scoring branch in collectImpacts(). The other 21 questions in this assessment (multiple_choice, timed_choice) score correctly.",
+  "sourceNote": "Ported verbatim from airostudio/Memory-Recall-Test (public/js/app.js) \u2014 a plain HTML/JS app. All study lists, the story text, and object/emoji items are real. sage-orientation's correct day-of-week depends on runtime state in the source app and is left without a fixed answer here. memory_recall/memory_recognition scoring: islt-shopping-list and skt-object-recall are now memory_recognition (study phase then a recognition grid, answered as multiple_select, scored via the existing option-based path); adas-word-recall stays memory_recall (free recall), scored by a dedicated engine branch comparing typed entries against its options' ground-truth values. All 24 questions in this assessment now score correctly.",
   "sections": [
     {
       "key": "islt",
@@ -183,45 +183,232 @@
     {
       "key": "islt-shopping-list",
       "sectionKey": "islt",
-      "questionType": "memory_recall",
+      "questionType": "memory_recognition",
       "questionText": "Study the following 12 shopping list items. You have 30 seconds.",
       "instructions": "After 30 seconds, the items will be hidden. You will then see a grid of 20 items (the 12 originals mixed with 8 distractors) and must select all the ones you originally saw.",
       "difficulty": "medium",
       "timeLimitSeconds": 30,
       "required": true,
-      "studyItems": [
-        "Bread",
-        "Milk",
-        "Eggs",
-        "Butter",
-        "Cheese",
-        "Apple",
-        "Banana",
-        "Orange",
-        "Tomato",
-        "Carrot",
-        "Onion",
-        "Potato"
-      ],
-      "distractorItems": [
-        "Grapes",
-        "Lemon",
-        "Corn",
-        "Mushroom",
-        "Pepper",
-        "Broccoli",
-        "Fish",
-        "Chicken"
-      ],
-      "scoringNotes": "1 point per correctly selected target item chosen from the 20-item recognition grid; max 12 points. Recognition-based recall, not free recall.",
-      "scoreConfig": [
+      "options": [
         {
-          "dimensionKey": "memory",
-          "points": 1
+          "label": "Bread",
+          "value": "Bread",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
         },
         {
-          "dimensionKey": "immediate-recall",
-          "points": 1
+          "label": "Milk",
+          "value": "Milk",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Eggs",
+          "value": "Eggs",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Butter",
+          "value": "Butter",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Cheese",
+          "value": "Cheese",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Apple",
+          "value": "Apple",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Banana",
+          "value": "Banana",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Orange",
+          "value": "Orange",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Tomato",
+          "value": "Tomato",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Carrot",
+          "value": "Carrot",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Onion",
+          "value": "Onion",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Potato",
+          "value": "Potato",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Grapes",
+          "value": "Grapes",
+          "isCorrect": false
+        },
+        {
+          "label": "Lemon",
+          "value": "Lemon",
+          "isCorrect": false
+        },
+        {
+          "label": "Corn",
+          "value": "Corn",
+          "isCorrect": false
+        },
+        {
+          "label": "Mushroom",
+          "value": "Mushroom",
+          "isCorrect": false
+        },
+        {
+          "label": "Pepper",
+          "value": "Pepper",
+          "isCorrect": false
+        },
+        {
+          "label": "Broccoli",
+          "value": "Broccoli",
+          "isCorrect": false
+        },
+        {
+          "label": "Fish",
+          "value": "Fish",
+          "isCorrect": false
+        },
+        {
+          "label": "Chicken",
+          "value": "Chicken",
+          "isCorrect": false
         }
       ]
     },
@@ -234,27 +421,156 @@
       "difficulty": "medium",
       "timeLimitSeconds": null,
       "required": true,
-      "studyItems": [
-        "OCEAN",
-        "LETTER",
-        "QUEEN",
-        "GARDEN",
-        "CABIN",
-        "NEEDLE",
-        "BUTTER",
-        "VILLAGE",
-        "METAL",
-        "ARMY"
-      ],
-      "scoringNotes": "1 point per typed word (case-insensitive) matching the original list; duplicates not double-counted; max 10 points. Free recall (no options shown).",
-      "scoreConfig": [
+      "options": [
         {
-          "dimensionKey": "memory",
-          "points": 1
+          "label": "OCEAN",
+          "value": "OCEAN",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
         },
         {
-          "dimensionKey": "immediate-recall",
-          "points": 1
+          "label": "LETTER",
+          "value": "LETTER",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "QUEEN",
+          "value": "QUEEN",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "GARDEN",
+          "value": "GARDEN",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "CABIN",
+          "value": "CABIN",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "NEEDLE",
+          "value": "NEEDLE",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "BUTTER",
+          "value": "BUTTER",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "VILLAGE",
+          "value": "VILLAGE",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "METAL",
+          "value": "METAL",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "ARMY",
+          "value": "ARMY",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "immediate-recall",
+              "points": 1
+            }
+          ]
         }
       ]
     },
@@ -783,38 +1099,161 @@
     {
       "key": "skt-object-recall",
       "sectionKey": "skt",
-      "questionType": "memory_recall",
+      "questionType": "memory_recognition",
       "questionText": "Which objects did you see during the naming task? Select all that you remember.",
       "instructions": "You will see a grid of 14 objects (the 8 objects shown earlier plus 6 new distractors). Select only the ones you were shown.",
       "difficulty": "medium",
       "required": true,
-      "studyItems": [
-        "House",
-        "Car",
-        "Scissors",
-        "Watch",
-        "Phone",
-        "Key",
-        "Glasses",
-        "Books"
-      ],
-      "distractorItems": [
-        "Guitar",
-        "Palette",
-        "Bell",
-        "Target",
-        "Masks",
-        "Trophy"
-      ],
-      "scoringNotes": "1 point per correctly selected target object; max 8 points.",
-      "scoreConfig": [
+      "options": [
         {
-          "dimensionKey": "memory",
-          "points": 1
+          "label": "House",
+          "value": "House",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
         },
         {
-          "dimensionKey": "sequence-memory",
-          "points": 1
+          "label": "Car",
+          "value": "Car",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Scissors",
+          "value": "Scissors",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Watch",
+          "value": "Watch",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Phone",
+          "value": "Phone",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Key",
+          "value": "Key",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Glasses",
+          "value": "Glasses",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Books",
+          "value": "Books",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "memory",
+              "points": 1
+            },
+            {
+              "dimensionKey": "sequence-memory",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Guitar",
+          "value": "Guitar",
+          "isCorrect": false
+        },
+        {
+          "label": "Palette",
+          "value": "Palette",
+          "isCorrect": false
+        },
+        {
+          "label": "Bell",
+          "value": "Bell",
+          "isCorrect": false
+        },
+        {
+          "label": "Target",
+          "value": "Target",
+          "isCorrect": false
+        },
+        {
+          "label": "Masks",
+          "value": "Masks",
+          "isCorrect": false
+        },
+        {
+          "label": "Trophy",
+          "value": "Trophy",
+          "isCorrect": false
         }
       ]
     },
