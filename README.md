@@ -25,7 +25,7 @@ but nothing is playable end-to-end until a real database is connected:
 
 1. Create a Supabase project.
 2. Apply the schema: paste `supabase/combined_migrations.sql` into the
-   Supabase SQL editor and run it (it's `supabase/migrations/0001`–`0008`
+   Supabase SQL editor and run it (it's `supabase/migrations/0001`–`0010`
    concatenated in order, with explicit transaction boundaries around the
    two enum-value additions — PostgreSQL forbids using a newly added enum
    value in the same transaction that added it). Applying the individual
@@ -170,12 +170,59 @@ I haven't been able to test either against a live key in this environment
 graceful-degradation paths are exercised, but not a real model response.
 Worth a manual check once a key is configured.
 
+## Monetization
+
+Every assessment is free to *take*, start to finish, and scored the moment
+you finish — deterministically, same as always. What's paywalled is the
+**results view**: `src/app/results/[attemptId]/page.tsx` blurs the score,
+dimension breakdown, strengths/development areas, and AI interpretation
+(`src/components/results/LockedOverlay.tsx`) behind a popup
+(`ResultsPaywall.tsx`) that opens automatically once results are ready.
+Palmistry's reading is gated the same way. Nothing fake is ever shown in the
+locked state — the real computed values are blurred via CSS, never
+substituted with placeholder numbers.
+
+Three one-time Stripe Checkout options, no subscriptions:
+
+| Tier | Price | Grants |
+|---|---|---|
+| Single report | $1.99 | Full results for one assessment (`report_purchases` row, keyed by assessment) |
+| Full collection | $18.99 | Full results for every assessment, forever (`subscriptions` row, `plan = 'full_profile_one_off'`) |
+| Full collection + Perfect Love | $39.99 | The above, plus [Perfect Love](https://perfectlove.site) access — see caveat below |
+
+The pricing page (`/pricing`) lists every published assessment individually
+at $1.99 (buyable ahead of taking it, not just from its results page) plus
+the two collection tiers.
+
+**Setup**: set `STRIPE_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET`. Prices are
+passed inline via Stripe's `price_data` in
+`src/app/api/stripe/checkout/route.ts` — there's nothing to pre-create as a
+Product/Price in the Stripe Dashboard. Register
+`/api/stripe/webhook` in the Stripe Dashboard (or `stripe listen
+--forward-to localhost:3000/api/stripe/webhook` locally) for the
+`checkout.session.completed` event — that's the source of truth for
+recording a purchase. The results page also confirms a session immediately
+on redirect (`confirmCheckoutSessionAction` in `src/actions/checkout.ts`)
+for instant unlock UX, verified against Stripe itself (not trusted from the
+URL), idempotent against the webhook via a unique constraint on
+`stripe_payment_intent_id` (migration `0009_monetization.sql`).
+
+**Perfect Love caveat**: `perfectlove.site` is a separate platform with no
+live integration here. The $39.99 tier records
+`subscriptions.includes_perfect_love = true` (migration
+`0010_perfect_love_bundle.sql`) so a purchase is identifiable, and the
+pricing page tells the buyer they'll get access instructions by email — but
+no email is actually sent and no account is actually provisioned on
+Perfect Love's side. That still needs either a manual fulfillment process or
+a real integration between the two platforms before this tier is fully
+functional.
+
 ## Not yet built
 
 - **Admin builder UI** — the schema and RLS support it, but there's no
   `/admin` assessment builder yet, only the data model it would write to.
-- **Stripe checkout** — the data model (`subscriptions`, `report_purchases`)
-  is Stripe-ready but no checkout flow is wired up.
+- **Perfect Love fulfillment** — see the caveat above; the purchase records
+  correctly, the cross-platform access grant does not happen automatically.
 
 ## Brand
 

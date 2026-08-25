@@ -1,5 +1,6 @@
 import { ShieldCheck } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import { LockedOverlay } from "./LockedOverlay";
 
 interface PalmistrySubmissionRow {
   id: string;
@@ -24,9 +25,11 @@ const ANALYSIS_FIELDS: { key: string; label: string }[] = [
 export async function PalmistryResult({
   submission,
   assessmentTitle,
+  unlocked,
 }: {
   submission: PalmistrySubmissionRow | null;
   assessmentTitle: string;
+  unlocked: boolean;
 }) {
   if (!submission) {
     return (
@@ -52,40 +55,48 @@ export async function PalmistryResult({
         <p>For entertainment and self-reflection only — not a scientific or clinical analysis.</p>
       </div>
 
-      <div className="mt-8 flex justify-center gap-4">
-        {leftUrl && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={leftUrl} alt="Left palm" className="h-40 w-40 rounded-xl2 border border-ink-600 object-cover" />
-        )}
-        {rightUrl && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={rightUrl} alt="Right palm" className="h-40 w-40 rounded-xl2 border border-ink-600 object-cover" />
-        )}
-      </div>
+      {(() => {
+        const reading = (
+          <>
+            <div className="mt-8 flex justify-center gap-4">
+              {leftUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={leftUrl} alt="Left palm" className="h-40 w-40 rounded-xl2 border border-ink-600 object-cover" />
+              )}
+              {rightUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={rightUrl} alt="Right palm" className="h-40 w-40 rounded-xl2 border border-ink-600 object-cover" />
+              )}
+            </div>
 
-      {submission.status !== "analyzed" ? (
-        <p className="mt-10 text-center text-paper-100/60">Your reading is still being prepared.</p>
-      ) : (
-        <div className="mt-10 flex flex-col gap-4">
-          {submission.analysis?.summary && (
-            <p className="rounded-xl2 border border-ink-700 bg-ink-800/30 p-5 text-sm leading-relaxed text-paper-100/80">
-              {submission.analysis.summary}
-            </p>
-          )}
-          <div className="grid gap-3 sm:grid-cols-2">
-            {ANALYSIS_FIELDS.map((field) => {
-              const value = submission.analysis?.[field.key];
-              if (!value) return null;
-              return (
-                <div key={field.key} className="rounded-xl2 border border-ink-700 bg-ink-800/30 p-4">
-                  <p className="text-xs uppercase tracking-wide text-paper-100/40">{field.label}</p>
-                  <p className="mt-1.5 text-sm text-paper-100/85">{value}</p>
+            {submission.status !== "analyzed" ? (
+              <p className="mt-10 text-center text-paper-100/60">Your reading is still being prepared.</p>
+            ) : (
+              <div className="mt-10 flex flex-col gap-4">
+                {submission.analysis?.summary && (
+                  <p className="rounded-xl2 border border-ink-700 bg-ink-800/30 p-5 text-sm leading-relaxed text-paper-100/80">
+                    {submission.analysis.summary}
+                  </p>
+                )}
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {ANALYSIS_FIELDS.map((field) => {
+                    const value = submission.analysis?.[field.key];
+                    if (!value) return null;
+                    return (
+                      <div key={field.key} className="rounded-xl2 border border-ink-700 bg-ink-800/30 p-4">
+                        <p className="text-xs uppercase tracking-wide text-paper-100/40">{field.label}</p>
+                        <p className="mt-1.5 text-sm text-paper-100/85">{value}</p>
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
+              </div>
+            )}
+          </>
+        );
+
+        return unlocked ? reading : <LockedOverlay label="Unlock your reading">{reading}</LockedOverlay>;
+      })()}
     </div>
   );
 }
