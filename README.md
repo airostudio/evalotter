@@ -226,9 +226,11 @@ functional.
 
 ## Brand
 
-The real logo lives at `public/logo.png` (rendered from a lossy JPEG whose
-"no background" checkerboard was baked into the pixels rather than a real
-alpha channel — see the git history for how it was recovered). It's usable
-at header/footer/favicon sizes; if a clean vector or lossless source ever
-turns up, it's worth re-generating `public/logo.png`, `src/app/icon.png`,
-and `src/app/apple-icon.png` from it for a sharper result at large sizes.
+The source logo is `public/evalotter-logo26.png` — a clean lockup (otter
+mark + "EVALOTTER.COM" wordmark) with a real alpha channel. `public/logo.png`,
+`src/app/icon.png`, and `src/app/apple-icon.png` are the mark cropped out of
+it, auto-trimmed and padded to a square, at 512×512/512×512/180×180
+respectively (`BrandMark.tsx` renders it small next to the site's own
+"EvalOtter" text, so only the glyph is needed there, not the wordmark). If
+the source logo is ever replaced, regenerate those three from the same crop
+so they stay in sync.
