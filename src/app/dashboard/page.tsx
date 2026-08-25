@@ -4,12 +4,13 @@ import { createClient } from "@/lib/supabase/server";
 import { requireUser } from "@/lib/auth/current-user";
 import { ScoreRing } from "@/components/charts/ScoreRing";
 import { CATALOGUE } from "@/config/catalogue";
+import { PerfectLoveCodeCard } from "@/components/dashboard/PerfectLoveCodeCard";
 
 export default async function DashboardPage() {
   const user = await requireUser();
   const supabase = await createClient();
 
-  const [{ data: profile }, { data: recentResults }, { data: inProgress }] = await Promise.all([
+  const [{ data: profile }, { data: recentResults }, { data: inProgress }, { data: perfectLoveCode }] = await Promise.all([
     supabase.from("user_brain_profiles").select("*").eq("user_id", user.id).maybeSingle(),
     supabase
       .from("assessment_results")
@@ -23,6 +24,13 @@ export default async function DashboardPage() {
       .eq("user_id", user.id)
       .eq("status", "in_progress")
       .order("last_activity_at", { ascending: false })
+      .limit(1)
+      .maybeSingle(),
+    supabase
+      .from("perfect_love_codes")
+      .select("code, status")
+      .eq("user_id", user.id)
+      .order("issued_at", { ascending: false })
       .limit(1)
       .maybeSingle(),
   ]);
@@ -141,6 +149,10 @@ export default async function DashboardPage() {
             Open Brain Profile <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
+
+        {perfectLoveCode && (
+          <PerfectLoveCodeCard code={perfectLoveCode.code} redeemed={perfectLoveCode.status === "redeemed"} />
+        )}
       </div>
     </div>
   );

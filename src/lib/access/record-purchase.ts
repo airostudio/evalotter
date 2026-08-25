@@ -1,5 +1,6 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { issuePerfectLoveCode } from "@/lib/access/perfect-love-codes";
 import type Stripe from "stripe";
 
 /**
@@ -37,6 +38,10 @@ export async function recordPurchaseFromSession(session: Stripe.Checkout.Session
       { onConflict: "stripe_payment_intent_id" }
     );
     if (error) console.error("[stripe] failed to record collection purchase:", error);
+
+    if (type === "collection_plus_love") {
+      await issuePerfectLoveCode(userId, paymentIntentId);
+    }
     return;
   }
 

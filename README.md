@@ -207,22 +207,40 @@ for instant unlock UX, verified against Stripe itself (not trusted from the
 URL), idempotent against the webhook via a unique constraint on
 `stripe_payment_intent_id` (migration `0009_monetization.sql`).
 
-**Perfect Love caveat**: `perfectlove.site` is a separate platform with no
-live integration here. The $39.99 tier records
-`subscriptions.includes_perfect_love = true` (migration
-`0010_perfect_love_bundle.sql`) so a purchase is identifiable, and the
-pricing page tells the buyer they'll get access instructions by email — but
-no email is actually sent and no account is actually provisioned on
-Perfect Love's side. That still needs either a manual fulfillment process or
-a real integration between the two platforms before this tier is fully
-functional.
+**Perfect Love fulfillment**: `perfectlove.site` is a separate platform, so
+there's no shared database or account system — fulfillment is a one-time
+redemption code, not an automatic account grant.
+
+- On a `collection_plus_love` purchase, `issuePerfectLoveCode()`
+  (`src/lib/access/perfect-love-codes.ts`) mints a high-entropy random code
+  (`PL-XXXX-XXXX-XXXX`, never derived from the user id/email) and stores it
+  in `perfect_love_codes`, idempotent per Stripe payment intent so a webhook
+  retry can't mint a second one. The user sees their code on `/dashboard`
+  (`PerfectLoveCodeCard.tsx`) to copy and redeem themselves.
+- Perfect Love's *backend* redeems it server-to-server against
+  `POST /api/perfect-love/redeem`, authenticated with a shared secret
+  (`PERFECT_LOVE_API_SECRET`, sent as the `X-Perfect-Love-Secret` header —
+  there's no public/browser-facing redemption link, which is the actual
+  anti-sharing mechanism: a leaked code is useless without going through
+  Perfect Love's own real checkout). Redemption is a single atomic
+  `UPDATE ... WHERE status = 'issued'`, so two concurrent redemption
+  attempts for the same code can't both succeed, and an optional `email` in
+  the request is checked against the purchasing account's email *before*
+  the code is burned, so a wrong guess doesn't waste it.
+- **What's still needed on Perfect Love's side**: an actual call to this
+  endpoint from their checkout/redemption flow, and whatever they do with
+  `{ valid: true, evalotterUserId }` on success (grant the "full package"
+  entitlement in their own system). That part lives in their codebase, not
+  this one — nothing to build here until it's specced.
 
 ## Not yet built
 
 - **Admin builder UI** — the schema and RLS support it, but there's no
   `/admin` assessment builder yet, only the data model it would write to.
-- **Perfect Love fulfillment** — see the caveat above; the purchase records
-  correctly, the cross-platform access grant does not happen automatically.
+- **Perfect Love's redemption call** — see the fulfillment section above;
+  EvalOtter's side (issue, display, verify, atomically redeem) is complete,
+  Perfect Love's side (actually calling the endpoint and granting access)
+  is not, since it lives in a different codebase.
 
 ## Brand
 

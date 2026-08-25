@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireUser } from "@/lib/auth/current-user";
 import { createClient } from "@/lib/supabase/server";
-import { getStripeClient, PRICING } from "@/lib/stripe/client";
+import { getStripeClient } from "@/lib/stripe/client";
+import { PRICING } from "@/lib/stripe/pricing";
 
 type CheckoutType = "single" | "collection" | "collection_plus_love";
 

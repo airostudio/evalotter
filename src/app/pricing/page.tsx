@@ -5,7 +5,7 @@ import { SimplePageHeader } from "@/components/marketing/SimplePageHeader";
 import { PricingBuyButton } from "@/components/marketing/PricingBuyButton";
 import { listPublishedAssessments } from "@/lib/assessment-engine/queries";
 import { CATALOGUE } from "@/config/catalogue";
-import { PRICING, PERFECT_LOVE_SITE_URL } from "@/lib/stripe/client";
+import { PRICING, PERFECT_LOVE_SITE_URL } from "@/lib/stripe/pricing";
 
 export const metadata: Metadata = { title: "Pricing" };
 export const revalidate = 60;
