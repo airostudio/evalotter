@@ -61,7 +61,12 @@ function computeRawScoreForDimension(
     const aq = questions.find((q) => q.questionId === response.questionId);
     if (!aq) continue;
 
-    const impacts = collectImpacts(response, aq.question.scoreConfig, aq.question.options ?? []);
+    const impacts = collectImpacts(
+      response,
+      aq.question.scoreConfig,
+      aq.question.options ?? [],
+      aq.question.timeLimitSeconds
+    );
     const dimensionImpact = impacts
       .filter((i) => i.dimensionKey === dimensionKey)
       .reduce((sum, i) => sum + i.points, 0);
@@ -89,9 +94,27 @@ function computeRawScoreForDimension(
 function collectImpacts(
   response: AssessmentResponse,
   questionScoreConfig: ScoreImpact[] | null | undefined,
-  options: { id: string; value: string; scoreConfig?: ScoreImpact[] | null }[]
+  options: { id: string; value: string; scoreConfig?: ScoreImpact[] | null }[],
+  timeLimitSeconds?: number | null
 ): ScoreImpact[] {
   const answer = response.answer;
+
+  // Ordered recall (method-of-loci style sequence tasks): each option's
+  // `value` holds its correct 1-indexed serial position as a string (e.g.
+  // "1", "2", "3"...). Points are only awarded when an option is placed in
+  // that exact position — strict serial-position credit, the standard way
+  // ordered-recall tasks are scored in memory research (a correct item
+  // recalled in the wrong slot earns nothing, same as a wrong item).
+  if (answer.type === "sequence") {
+    const impacts: ScoreImpact[] = [];
+    answer.order.forEach((optionId, index) => {
+      const opt = options.find((o) => o.id === optionId);
+      if (opt?.scoreConfig && opt.value === String(index + 1)) {
+        impacts.push(...opt.scoreConfig);
+      }
+    });
+    return impacts;
+  }
 
   // Free recall: the question's options are the ground-truth item list
   // (each isCorrect:true, carrying its own scoreConfig) rather than
@@ -109,14 +132,34 @@ function collectImpacts(
     return impacts;
   }
 
+  // Speed-scored choice: correctness gates it (wrong answer = 0, same as
+  // plain choice-based below) but a correct answer's points are scaled by
+  // how quickly it was given, using the question's timeLimitSeconds as the
+  // window — full credit answered instantly, decaying linearly to a 50%
+  // floor at the time limit (never to zero, since it was still correct).
+  // Falls back to unscaled full credit if the question has no time limit
+  // set, so authoring a timed_choice question without one just behaves
+  // like a plain choice question rather than silently under-scoring.
+  if (answer.type === "timed_choice") {
+    const opt = options.find((o) => o.id === answer.optionId);
+    if (!opt?.scoreConfig) return [];
+    if (!timeLimitSeconds || timeLimitSeconds <= 0) return [...opt.scoreConfig];
+
+    const limitMs = timeLimitSeconds * 1000;
+    const speedFactor = clamp(1 - (answer.responseTimeMs / limitMs) * 0.5, 0.5, 1);
+    return opt.scoreConfig.map((impact) => ({
+      dimensionKey: impact.dimensionKey,
+      points: impact.points * speedFactor,
+    }));
+  }
+
   // Choice-based questions: points come entirely from the selected
   // option(s)' own scoreConfig — the question-level scoreConfig isn't used.
   if (
     answer.type === "multiple_choice" ||
     answer.type === "image_choice" ||
     answer.type === "pattern_question" ||
-    answer.type === "visual_rotation" ||
-    answer.type === "timed_choice"
+    answer.type === "visual_rotation"
   ) {
     const opt = options.find((o) => o.id === answer.optionId);
     return opt?.scoreConfig ? [...opt.scoreConfig] : [];

@@ -210,7 +210,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Memory Palace Challenge",
     shortDescription: "A method-of-loci memory exercise — place items along an imagined route, then recall them in order.",
     category: "Memory", categoryKey: "memory", icon: "map",
-    engineType: "memory_exercise", difficulty: "hard", estimatedDurationMinutes: 15, questionCount: 12, access: "premium", comingSoon: true,
+    engineType: "memory_exercise", difficulty: "hard", estimatedDurationMinutes: 15, questionCount: 12, access: "premium",
   },
   {
     slug: "critical-thinking-depth",
@@ -231,14 +231,14 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Creative Divergent Thinking",
     shortDescription: "Alternative-uses and idea-fluency tasks that measure how many genuinely different directions you can generate.",
     category: "Creative", categoryKey: "creative", icon: "shuffle",
-    engineType: "hybrid", difficulty: "medium", estimatedDurationMinutes: 15, questionCount: 10, access: "premium", comingSoon: true,
+    engineType: "hybrid", difficulty: "medium", estimatedDurationMinutes: 15, questionCount: 10, access: "premium",
   },
   {
     slug: "speed-processing-index",
     title: "Speed Processing Index",
     shortDescription: "Simple, low-difficulty tasks answered as fast as possible — an index of raw cognitive processing speed.",
     category: "Cognitive", categoryKey: "cognitive", icon: "timer",
-    engineType: "timed_questionnaire", difficulty: "easy", estimatedDurationMinutes: 8, questionCount: 40, access: "free", comingSoon: true,
+    engineType: "timed_questionnaire", difficulty: "easy", estimatedDurationMinutes: 8, questionCount: 40, access: "free",
   },
   {
     slug: "phonological-awareness",
@@ -252,7 +252,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Executive Function Profiling",
     shortDescription: "Planning, inhibition, working memory, and task-switching — the control processes behind goal-directed behavior.",
     category: "Cognitive", categoryKey: "cognitive", icon: "layers",
-    engineType: "hybrid", difficulty: "hard", estimatedDurationMinutes: 20, questionCount: 24, access: "premium", comingSoon: true,
+    engineType: "hybrid", difficulty: "hard", estimatedDurationMinutes: 20, questionCount: 24, access: "premium",
   },
   {
     slug: "visuospatial-rotation",
@@ -271,9 +271,9 @@ export const CATALOGUE: CatalogueAssessment[] = [
   {
     slug: "attention-control-test",
     title: "Attention Control Test",
-    shortDescription: "Sustained focus and selective attention under distraction — a Stroop-style interference task.",
+    shortDescription: "Sustained focus and selective attention under distraction — a flanker-style interference task.",
     category: "Cognitive", categoryKey: "cognitive", icon: "eye",
-    engineType: "timed_questionnaire", difficulty: "medium", estimatedDurationMinutes: 10, questionCount: 30, access: "free", comingSoon: true,
+    engineType: "timed_questionnaire", difficulty: "medium", estimatedDurationMinutes: 10, questionCount: 30, access: "free",
   },
   {
     slug: "abstract-reasoning-pro",

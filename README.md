@@ -99,8 +99,8 @@ per-file in each JSON's `sourceNote`:
 | Palmistry | — | no source repo existed; authored fresh, no scoring |
 | EvalOtter Intelligence Profile (flagship) | shared library | composed by reusing real questions from the assessments above — see below |
 
-Eight former "coming soon" entries have since been built out the same way,
-each modeled on a real, named, world-standard instrument rather than
+Thirteen former "coming soon" entries have since been built out the same
+way, each modeled on a real, named, world-standard instrument rather than
 invented from scratch — see **Graduated coming-soon assessments** below for
 the copyright caveat that applies to all of them.
 
@@ -114,6 +114,11 @@ the copyright caveat that applies to all of them.
 | Career Aptitude Profile | Holland Codes / RIASEC (O*NET Interest Profiler's basis) | 30 self-report items across the 6 RIASEC types; deliberately excluded from the Brain Profile aggregate — vocational interest isn't a cognitive-ability score |
 | Language Acquisition | Reber's Artificial Grammar Learning paradigm | 20 classification items testing implicit pattern extraction, using an original finite-state grammar (not Reber's exact one — see caveat below) |
 | Decision Making Under Pressure | Cognitive Reflection Test (CRT) paradigm | 15 questions — 10 original CRT-style "fast wrong answer vs. correct answer" problems plus 5 scenario-judgment items, under one 15-minute overall clock |
+| Creative Divergent Thinking | Guilford's Alternative Uses Task + Mednick's Remote Associates Test | 5 AI-interpreted open-ended AUT prompts + 5 deterministically-scored RAT word triads |
+| Executive Function Profiling | BRIEF (Behavior Rating Inventory of Executive Function) | 24 self-report items across 8 of its 9 published scales (Inhibit, Shift, Emotional Control, Initiate, Working Memory, Plan/Organize, Task Monitor, Self-Monitor) |
+| Memory Palace Challenge | Method of Loci ("memory palace") | 4 themed routes (5-8 stops each), ordered recall scored via the newly-fixed `sequence` question type — see engine fixes below |
+| Attention Control Test | Eriksen Flanker Task | 30 congruent/incongruent arrow trials, response-time-weighted scoring via the newly-fixed `timed_choice` handling — see below (catalogue copy corrected from "Stroop-style" to "flanker-style" to match what was actually built) |
+| Speed Processing Index | Jensen's simple/choice reaction-time paradigm | 40 trivial-difficulty judgments (string matching, arithmetic, number comparison, category membership) across 4 sections, response-time-weighted |
 
 **The flagship deliberately does not port the old `airostudio/brainyak`
 repo's "pattern recognition" content.** That repo hardcodes
@@ -144,15 +149,20 @@ the reusing assessment never declared (silently contributes nothing there).
 
 ## Graduated coming-soon assessments
 
-Eight assessments have moved from the roadmap into real, scored ones (see
-the table above), across two batches:
+Thirteen assessments have moved from the roadmap into real, scored ones
+(see the table above), across three batches:
 
 - **Batch 1**: Critical Thinking Depth, Phonological Awareness, Social
   Cognition Assessment, Numerical Agility.
 - **Batch 2**: Verbal Reasoning Mastery, Career Aptitude Profile, Language
   Acquisition, Decision Making Under Pressure.
+- **Batch 3**: Creative Divergent Thinking, Executive Function Profiling,
+  Memory Palace Challenge, Attention Control Test, Speed Processing Index —
+  the last three only became buildable *during* this batch, after fixing
+  the `sequence` and response-time-weighted `timed_choice` scoring gaps
+  batch 2's README had flagged (see **Engine fixes** below).
 
-11 remain on the roadmap. The approach for all of them, and for whichever
+6 remain on the roadmap. The approach for all of them, and for whichever
 get built out next:
 
 - **Research the real, named, world-standard instrument for the domain
@@ -165,32 +175,36 @@ get built out next:
   *paradigm* (the skills it isolates, how it's structured, how it's
   scored), with original items written to implement that paradigm — the
   same approach legitimate cognitive-assessment platforms use.
-- **Only build what the existing infrastructure can score for real.**
-  Several domains have been deliberately skipped so far, each for a
-  concrete infrastructure gap rather than an oversight:
-  - **Attention Control Test / Speed Processing Index** — a genuine Stroop
-    or processing-speed measure needs response-time-weighted scoring, which
-    `timed_choice` captures the data for but `collectImpacts()` doesn't yet
-    use (see `src/lib/scoring/engine.ts`).
-  - **Abstract Reasoning Pro / Visuospatial Rotation** — Raven's-style
-    matrices and the Vandenberg & Kuse Mental Rotation Test need real
-    rendered visuals; `pattern_question`/`visual_rotation` currently fall
-    back to `ImageChoiceQuestion.tsx`'s plain-text-label mode with no image
-    asset pipeline behind it. Building these without real images would mean
-    a text-description task masquerading as a visual reasoning test.
+- **Only build what the existing infrastructure can score for real.** Four
+  domains remain deliberately skipped, each for a concrete infrastructure
+  gap rather than an oversight:
+  - **Abstract Reasoning Pro / Visuospatial Rotation / Fluid Intelligence
+    Peak** — Raven's-style matrices and the Vandenberg & Kuse Mental
+    Rotation Test need real rendered visuals; `pattern_question`/
+    `visual_rotation` currently fall back to `ImageChoiceQuestion.tsx`'s
+    plain-text-label mode with no image asset pipeline behind it. Building
+    these without real images would mean a text-description task
+    masquerading as a visual reasoning test.
   - **Cognitive Flexibility Index** — the Wisconsin Card Sorting Test's
     defining mechanic is inferring a hidden sorting rule from right/wrong
     feedback, then re-inferring it after an unannounced switch. The runner
     has no adaptive branching (every question is scored independently of
     prior answers), so there's no way to give that feedback loop without
     faking the one thing WCST actually measures.
-  - **Memory Palace Challenge** — a method-of-loci exercise is naturally an
-    ordered-recall task (`sequence` question type), but `collectImpacts()`
-    doesn't score `sequence` answers yet either — same class of gap as the
-    timed_choice one above.
-  All four are legitimate infrastructure work for a future batch (an
-  adaptive-questionnaire engine, response-time-weighted scoring, sequence
-  scoring, an image pipeline), not something to fake around.
+  - **Auditory Processing Speed** — the trait itself is about processing
+    spoken input, and this platform has no audio playback infrastructure.
+    Substituting text (the way Phonological Awareness's adaptation does)
+    would drop the "auditory" part of what's being measured entirely,
+    unlike Phonological Awareness where the underlying phonemic skill
+    survives a text presentation.
+  - **Full IQ Estimation Report** — structurally different from the others:
+    it's meant to be a composite drawn from a user's *other* completed
+    results, not a battery of its own questions. That needs a "reads
+    existing attempts" engine rather than a seed-content assessment, which
+    is a real feature to design, not content to author.
+  All four are legitimate infrastructure work for a future batch (an image
+  pipeline, an adaptive-questionnaire engine, audio input, an
+  aggregate-report engine), not something to fake around.
 - **Note real adaptations openly, in the file's `sourceNote`.**
   Phonological Awareness's source (CTOPP-2) is administered orally; this
   platform has no audio-recording input, so every item is presented and
@@ -210,18 +224,35 @@ get built out next:
   seen them — a documented limitation of the original CRT that published
   extended batteries work around the same way.
 
+**Engine fixes** (`src/lib/scoring/engine.ts`), made during batch 3 because
+they were needed for real, not preemptively:
+
+- **`sequence` scoring** — previously unscored entirely (fell through to
+  the open-ended fallback). Now credits an option only when placed in the
+  exact serial position its `value` field declares (e.g. `"3"` for the
+  third stop on a route) — strict serial-position credit, the standard way
+  ordered-recall tasks are scored in memory research. Unlocked Memory
+  Palace Challenge.
+- **`timed_choice` response-time weighting** — previously scored identically
+  regardless of `responseTimeMs`, so two "speed"-branded assessments would
+  have been measuring only accuracy. Now a correct answer's points scale
+  from full credit at 0ms down to a 50% floor at the question's
+  `timeLimitSeconds` (never to zero — it was still correct), falling back
+  to unscaled full credit if no time limit is set. Both verified with a
+  throwaway synthetic-data script before any content was built on top of
+  them (deleted after). Unlocked Attention Control Test and Speed
+  Processing Index.
+
 `npm run seed:validate` catches structural bugs before any of this reaches
 a database — always run it on new content before `npm run seed`.
 
 ## Coming-soon assessments
 
-`scripts/seed/data/coming-soon.json` now holds the remaining 11 roadmap
-entries (Memory Palace Challenge, Creative Divergent Thinking, Speed
-Processing Index, Executive Function Profiling, Visuospatial Rotation,
-Auditory Processing Speed, Attention Control Test, Abstract Reasoning Pro,
-Cognitive Flexibility Index, Fluid Intelligence Peak, Full IQ Estimation
-Report) with catalogue metadata only — no sections, questions, or scoring.
-They're `status: "coming_soon"`
+`scripts/seed/data/coming-soon.json` now holds the remaining 6 roadmap
+entries (Visuospatial Rotation, Auditory Processing Speed, Abstract
+Reasoning Pro, Cognitive Flexibility Index, Fluid Intelligence Peak, Full
+IQ Estimation Report) with catalogue metadata only — no sections,
+questions, or scoring. They're `status: "coming_soon"`
 (a distinct DB status from `draft`, since coming-soon entries are
 deliberately public-facing — see `0007`/`0008` migrations for the enum
 value and RLS policy). The catalogue shows them with a "Coming soon" badge

@@ -1,0 +1,1139 @@
+{
+  "slug": "attention-control-test",
+  "title": "Attention Control Test",
+  "shortDescription": "Sustained focus and selective attention under distraction — a flanker-style interference task.",
+  "longDescription": "Attention Control Test is built on the Eriksen Flanker Task (Eriksen & Eriksen, 1974) — one of the most widely used paradigms for measuring selective attention and response inhibition. You identify the direction of a center arrow while ignoring surrounding \"flanker\" arrows that sometimes point the same way (congruent, easy) and sometimes point the opposite way (incongruent, harder) — the classic interference effect. Both accuracy and response speed are scored, since the point of the task is resisting the flankers' pull quickly, not just eventually getting it right.",
+  "icon": "eye",
+  "categoryKey": "cognitive",
+  "engineType": "timed_questionnaire",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 10,
+  "access": "free",
+  "sourceNote": "Original flanker trials implementing the Eriksen Flanker Task's published paradigm (a center target flanked by congruent or incongruent distractors, response speed and accuracy both scored) — rendered as plain-text arrow strings rather than Stroop's colored-word format (the catalogue originally described this as \"Stroop-style\"), since flanker trials are genuinely renderable as text/unicode with no image pipeline needed, while an authentic Stroop task needs real colored-text rendering this platform doesn't have yet. Scoring uses timed_choice's response-time weighting (src/lib/scoring/engine.ts) — each question's 3-second time limit is deliberately tight, matching the task's speed-under-interference design; a correct answer given instantly scores full credit, decaying to a 50% floor at the time limit, never to zero (it was still correct).",
+  "runnerSettings": {
+    "totalTimeLimitSeconds": 600
+  },
+  "sections": [
+    {
+      "key": "flanker-trials",
+      "name": "Flanker Trials",
+      "description": "Identify the direction of the CENTER arrow only, ignoring the arrows around it.",
+      "instructions": "Answer as fast as you accurately can. The center arrow is what matters — the surrounding arrows are distractors and sometimes point the other way on purpose.",
+      "timeLimitSeconds": null,
+      "weight": 1,
+      "order": 1
+    }
+  ],
+  "scoringDimensions": [
+    {
+      "key": "attention-control",
+      "label": "Attention Control",
+      "description": "Speed and accuracy identifying the target while ignoring flanking distractors.",
+      "contributesToBrainProfile": true,
+      "brainProfileDimensionKey": "logical",
+      "order": 1
+    }
+  ],
+  "scoringRules": [
+    {
+      "dimensionKey": "attention-control",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 30
+      }
+    }
+  ],
+  "resultRanges": [
+    {
+      "dimensionKey": "overall",
+      "minScore": 0,
+      "maxScore": 30,
+      "title": "Developing",
+      "description": "The flanking arrows are pulling attention away from the center target more often than not, especially on incongruent trials — a common pattern that improves with practice.",
+      "recommendations": [
+        "Practice deliberately narrowing your focus to just the center position before glancing at the whole string",
+        "Slow down very slightly on trials that feel like they 'flash by' — a rushed wrong answer costs more than a half-second of care",
+        "Notice whether errors cluster on incongruent trials specifically — that's the interference effect, and it's normal early on"
+      ],
+      "order": 1
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 31,
+      "maxScore": 50,
+      "title": "Average",
+      "description": "Congruent trials are handled well, but incongruent ones (where the flankers point the other way) cost accuracy or speed.",
+      "recommendations": [
+        "Practice sets weighted toward incongruent trials specifically to build resistance to the interference effect",
+        "Keep your gaze centered rather than scanning the whole arrow string left to right"
+      ],
+      "order": 2
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 51,
+      "maxScore": 70,
+      "title": "Strong",
+      "description": "Reliable accuracy across both congruent and incongruent trials, with a modest speed cost on the harder ones — a normal, healthy interference pattern.",
+      "recommendations": [
+        "Push response speed further on congruent trials, where accuracy is already solid",
+        "This level of selective attention transfers directly to work environments full of visual distraction"
+      ],
+      "order": 3
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 71,
+      "maxScore": 85,
+      "title": "Very Strong",
+      "description": "Fast and accurate on nearly every trial, including incongruent ones — minimal interference from the flanking distractors.",
+      "recommendations": [
+        "This is a strong, genuine selective-attention advantage — notice where it helps most in daily distraction-heavy tasks",
+        "Try the task again after a mentally fatiguing day to see how much the effect holds up under load"
+      ],
+      "order": 4
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 86,
+      "maxScore": 100,
+      "title": "Exceptional",
+      "description": "Near-perfect speed and accuracy on every trial type — the flanking distractors barely register.",
+      "recommendations": [
+        "This level of attentional control is a genuine asset in high-distraction, high-stakes environments",
+        "Consider roles or tasks that specifically reward sustained selective attention under interference"
+      ],
+      "order": 5
+    }
+  ],
+  "brainProfileContributions": [
+    {
+      "sourceDimensionKey": "attention-control",
+      "targetBrainProfileDimensionKey": "logical",
+      "weight": 0.4
+    }
+  ],
+  "questions": [
+    {
+      "key": "act-01",
+      "sectionKey": "flanker-trials",
+      "order": 1,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "→→→→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-02",
+      "sectionKey": "flanker-trials",
+      "order": 2,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "←←←←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-03",
+      "sectionKey": "flanker-trials",
+      "order": 3,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "←←→←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-04",
+      "sectionKey": "flanker-trials",
+      "order": 4,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "→→←→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-05",
+      "sectionKey": "flanker-trials",
+      "order": 5,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "→→→→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-06",
+      "sectionKey": "flanker-trials",
+      "order": 6,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "←←←←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-07",
+      "sectionKey": "flanker-trials",
+      "order": 7,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "←←→←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-08",
+      "sectionKey": "flanker-trials",
+      "order": 8,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "→→←→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-09",
+      "sectionKey": "flanker-trials",
+      "order": 9,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "→→→→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-10",
+      "sectionKey": "flanker-trials",
+      "order": 10,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "←←←←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-11",
+      "sectionKey": "flanker-trials",
+      "order": 11,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "←←→←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-12",
+      "sectionKey": "flanker-trials",
+      "order": 12,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "→→←→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-13",
+      "sectionKey": "flanker-trials",
+      "order": 13,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "→→→→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-14",
+      "sectionKey": "flanker-trials",
+      "order": 14,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "←←←←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-15",
+      "sectionKey": "flanker-trials",
+      "order": 15,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "←←→←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-16",
+      "sectionKey": "flanker-trials",
+      "order": 16,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "→→←→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-17",
+      "sectionKey": "flanker-trials",
+      "order": 17,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "→→→→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-18",
+      "sectionKey": "flanker-trials",
+      "order": 18,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "←←←←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-19",
+      "sectionKey": "flanker-trials",
+      "order": 19,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "←←→←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-20",
+      "sectionKey": "flanker-trials",
+      "order": 20,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "→→←→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-21",
+      "sectionKey": "flanker-trials",
+      "order": 21,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "→→→→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-22",
+      "sectionKey": "flanker-trials",
+      "order": 22,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "←←←←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-23",
+      "sectionKey": "flanker-trials",
+      "order": 23,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "←←→←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-24",
+      "sectionKey": "flanker-trials",
+      "order": 24,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "→→←→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-25",
+      "sectionKey": "flanker-trials",
+      "order": 25,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "→→→→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-26",
+      "sectionKey": "flanker-trials",
+      "order": 26,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "←←←←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-27",
+      "sectionKey": "flanker-trials",
+      "order": 27,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "←←→←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-28",
+      "sectionKey": "flanker-trials",
+      "order": 28,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "→→←→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-29",
+      "sectionKey": "flanker-trials",
+      "order": 29,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "→→→→→",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "act-30",
+      "sectionKey": "flanker-trials",
+      "order": 30,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "←←←←←",
+      "timeLimitSeconds": 3,
+      "required": true,
+      "options": [
+        {
+          "label": "Left",
+          "value": "left",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Right",
+          "value": "right",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "attention-control",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

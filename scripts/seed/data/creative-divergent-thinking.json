@@ -1,0 +1,75 @@
+{
+  "slug": "creative-divergent-thinking",
+  "title": "Creative Divergent Thinking",
+  "shortDescription": "Alternative-uses and idea-fluency tasks that measure how many genuinely different directions you can generate.",
+  "longDescription": "Creative Divergent Thinking combines two classic, complementary creativity paradigms. The Alternative Uses Task (Guilford, 1967) asks you to generate as many different uses as you can for an everyday object — the foundational measure of idea fluency and divergent thinking, scored here by AI interpretation rather than a right/wrong answer, since the point is open-ended generation. The Remote Associates Test (Mednick, 1962) asks you to find the single word that connects three seemingly unrelated words — a convergent-creativity measure with objectively correct answers, scored deterministically.",
+  "icon": "shuffle",
+  "categoryKey": "creative",
+  "engineType": "hybrid",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 15,
+  "access": "premium",
+  "sourceNote": "The 5 Remote Associates Test items are original word triads written to implement Mednick's compound-word-association format, hand-verified for validity (each connecting word forms a real compound/phrase with all three given words) rather than reused from Mednick's original item bank, which this platform can't verify reproducing correctly from memory. The 5 Alternative Uses Task prompts follow Guilford's original open-ended format directly — there's no fixed answer key to reproduce, so no adaptation was needed there. Following the same policy as Creative Assessment: the open_creative items never feed the deterministic score; they're passed to the AI interpretation layer only (src/lib/ai/interpretation.ts), same policy documented there.",
+
+  "sections": [
+    { "key": "remote-associates", "name": "Remote Associates", "description": "Find the single word that connects three given words.", "instructions": "Each item gives three words. Choose the word that forms a real compound word or common phrase with all three.", "timeLimitSeconds": null, "weight": 0.5, "order": 1 },
+    { "key": "alternative-uses", "name": "Alternative Uses", "description": "Generate as many different uses as you can for an everyday object.", "instructions": "List as many different, genuinely distinct uses as you can think of. Quantity and variety both matter more than any single \"best\" answer.", "timeLimitSeconds": null, "weight": 0.5, "order": 2 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "convergent-creativity", "label": "Remote Associates (Convergent Creativity)", "description": "Finding the single connecting concept across three unrelated words.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "creative", "order": 1 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "convergent-creativity", "formula": "sum", "normalization": { "min": 0, "max": 5 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Spotting the connecting concept across unrelated words is difficult right now — your idea-generation on the alternative-uses prompts is interpreted separately below.", "recommendations": ["Practice free-associating around each given word before looking for overlap with the others", "For alternative uses, push past the first 2-3 obvious answers — genuinely different categories of use are what's being measured", "Read your AI interpretation below for feedback on the open-ended prompts specifically"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "Some remote-associate connections found, others elusive — a normal split on a genuinely difficult task type.", "recommendations": ["Try approaching each word from multiple senses (literal, compound, homophone) before moving on", "On alternative uses, deliberately shift categories (not just size/shape variations of the same idea)"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Reliable at finding the connecting concept across most word triads.", "recommendations": ["Push into remote associates with less obvious connecting words to sharpen this further", "Notice which alternative-uses categories you gravitate toward, and deliberately branch into unfamiliar ones"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Consistently finds the connecting concept, including on the less obvious triads.", "recommendations": ["This convergent-creativity skill pairs well with strong divergent output — check your AI interpretation for how they compare", "Try timed remote-associates practice to push speed alongside accuracy"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Near-perfect at finding the connecting concept across every word triad.", "recommendations": ["This level of associative fluency is a genuine asset in ideation-heavy or naming-heavy work", "Consider how it pairs with your divergent-thinking results from the alternative-uses prompts"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "convergent-creativity", "targetBrainProfileDimensionKey": "creative", "weight": 0.5 }],
+
+  "questions": [
+    { "key": "cdt-rat-01", "sectionKey": "remote-associates", "order": 1, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Which word connects to all three of these? PINE · CRAB · SAUCE", "required": true, "options": [
+      { "label": "Apple", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 1 }] },
+      { "label": "Pie", "value": "1", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] },
+      { "label": "Juice", "value": "2", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] },
+      { "label": "Seed", "value": "3", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] }
+    ]},
+    { "key": "cdt-rat-02", "sectionKey": "remote-associates", "order": 2, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Which word connects to all three of these? SUN · WALL · POT", "required": true, "options": [
+      { "label": "Garden", "value": "0", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] },
+      { "label": "Flower", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 1 }] },
+      { "label": "Petal", "value": "2", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] },
+      { "label": "Vase", "value": "3", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] }
+    ]},
+    { "key": "cdt-rat-03", "sectionKey": "remote-associates", "order": 3, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Which word connects to all three of these? FIRE · BUTTER · WHEEL", "required": true, "options": [
+      { "label": "Bee", "value": "0", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] },
+      { "label": "Wing", "value": "1", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] },
+      { "label": "Fly", "value": "2", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 1 }] },
+      { "label": "Moth", "value": "3", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] }
+    ]},
+    { "key": "cdt-rat-04", "sectionKey": "remote-associates", "order": 4, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Which word connects to all three of these? FOOT · BASKET · ROOM", "required": true, "options": [
+      { "label": "Game", "value": "0", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] },
+      { "label": "Ball", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 1 }] },
+      { "label": "Court", "value": "2", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] },
+      { "label": "Net", "value": "3", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] }
+    ]},
+    { "key": "cdt-rat-05", "sectionKey": "remote-associates", "order": 5, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Which word connects to all three of these? SUN · MOON · HOUSE", "required": true, "options": [
+      { "label": "Lamp", "value": "0", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] },
+      { "label": "Dark", "value": "1", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] },
+      { "label": "Candle", "value": "2", "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 0 }] },
+      { "label": "Light", "value": "3", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "convergent-creativity", "points": 1 }] }
+    ]},
+
+    { "key": "cdt-aut-01", "sectionKey": "alternative-uses", "order": 6, "difficulty": "medium", "questionType": "open_creative", "questionText": "List as many different uses as you can think of for a paperclip.", "instructions": "Aim for variety, not just quantity — different categories of use count more than small variations on the same idea.", "required": true },
+    { "key": "cdt-aut-02", "sectionKey": "alternative-uses", "order": 7, "difficulty": "medium", "questionType": "open_creative", "questionText": "List as many different uses as you can think of for a brick.", "instructions": "Aim for variety, not just quantity.", "required": true },
+    { "key": "cdt-aut-03", "sectionKey": "alternative-uses", "order": 8, "difficulty": "medium", "questionType": "open_creative", "questionText": "List as many different uses as you can think of for a rubber band.", "instructions": "Aim for variety, not just quantity.", "required": true },
+    { "key": "cdt-aut-04", "sectionKey": "alternative-uses", "order": 9, "difficulty": "medium", "questionType": "open_creative", "questionText": "List as many different uses as you can think of for an old newspaper.", "instructions": "Aim for variety, not just quantity.", "required": true },
+    { "key": "cdt-aut-05", "sectionKey": "alternative-uses", "order": 10, "difficulty": "medium", "questionType": "open_creative", "questionText": "List as many different uses as you can think of for a cardboard box.", "instructions": "Aim for variety, not just quantity.", "required": true }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "slug": "executive-function-profiling",
+  "title": "Executive Function Profiling",
+  "shortDescription": "Planning, inhibition, working memory, and task-switching — the control processes behind goal-directed behavior.",
+  "longDescription": "Executive Function Profiling is built on the scale structure of the BRIEF (Behavior Rating Inventory of Executive Function) — the clinical standard for self- and informant-rated executive function, widely used alongside performance-based tests. It measures eight control processes: Inhibit, Shift, Emotional Control, Initiate, Working Memory, Plan/Organize, Task Monitor, and Self-Monitor.",
+  "icon": "layers",
+  "categoryKey": "cognitive",
+  "engineType": "hybrid",
+  "difficulty": "hard",
+  "estimatedDurationMinutes": 20,
+  "access": "premium",
+  "sourceNote": "Original self-report items written to implement the BRIEF's published eight-scale structure (Inhibit, Shift, Emotional Control, Initiate, Working Memory, Plan/Organize, Task Monitor, Self-Monitor; the ninth scale, Organization of Materials, was left out as more about physical workspace tidiness than a distinct control process worth a digital self-report item) — the BRIEF itself (PAR Inc.) is a copyrighted, clinically normed, commercially administered instrument, so its actual items and norms are not reproduced here. Self-report inherently measures perceived executive function, not directly observed behavior the way a performance-based task (e.g. an N-back or Stroop) would — that's a real limitation of the self-report format itself, not specific to this adaptation.",
+
+  "sections": [
+    { "key": "inhibit", "name": "Inhibit", "description": "Impulse control — resisting an urge or stopping a response.", "instructions": "Rate how much each statement describes you.", "timeLimitSeconds": null, "weight": 0.125, "order": 1 },
+    { "key": "shift", "name": "Shift", "description": "Cognitive flexibility — moving between tasks or adapting to change.", "instructions": "Rate how much each statement describes you.", "timeLimitSeconds": null, "weight": 0.125, "order": 2 },
+    { "key": "emotional-control", "name": "Emotional Control", "description": "Modulating emotional responses appropriately.", "instructions": "Rate how much each statement describes you.", "timeLimitSeconds": null, "weight": 0.125, "order": 3 },
+    { "key": "initiate", "name": "Initiate", "description": "Starting tasks or activities independently.", "instructions": "Rate how much each statement describes you.", "timeLimitSeconds": null, "weight": 0.125, "order": 4 },
+    { "key": "working-memory", "name": "Working Memory", "description": "Holding and manipulating information during a task.", "instructions": "Rate how much each statement describes you.", "timeLimitSeconds": null, "weight": 0.125, "order": 5 },
+    { "key": "plan-organize", "name": "Plan/Organize", "description": "Anticipating future events and setting goals or steps.", "instructions": "Rate how much each statement describes you.", "timeLimitSeconds": null, "weight": 0.125, "order": 6 },
+    { "key": "task-monitor", "name": "Task Monitor", "description": "Checking your own work for errors or progress.", "instructions": "Rate how much each statement describes you.", "timeLimitSeconds": null, "weight": 0.125, "order": 7 },
+    { "key": "self-monitor", "name": "Self-Monitor", "description": "Awareness of your own impact on others.", "instructions": "Rate how much each statement describes you.", "timeLimitSeconds": null, "weight": 0.125, "order": 8 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "executive-function", "label": "Executive Function", "description": "Composite score across all eight control processes.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "logical", "order": 1 },
+    { "key": "inhibit", "label": "Inhibit", "description": "Impulse control and response inhibition.", "contributesToBrainProfile": false, "order": 2 },
+    { "key": "shift", "label": "Shift", "description": "Cognitive flexibility and adapting to change.", "contributesToBrainProfile": false, "order": 3 },
+    { "key": "emotional-control", "label": "Emotional Control", "description": "Modulating emotional responses appropriately.", "contributesToBrainProfile": false, "order": 4 },
+    { "key": "initiate", "label": "Initiate", "description": "Starting tasks independently.", "contributesToBrainProfile": false, "order": 5 },
+    { "key": "working-memory", "label": "Working Memory", "description": "Holding and manipulating information during a task.", "contributesToBrainProfile": false, "order": 6 },
+    { "key": "plan-organize", "label": "Plan/Organize", "description": "Anticipating and structuring steps toward a goal.", "contributesToBrainProfile": false, "order": 7 },
+    { "key": "task-monitor", "label": "Task Monitor", "description": "Checking your own work as you go.", "contributesToBrainProfile": false, "order": 8 },
+    { "key": "self-monitor", "label": "Self-Monitor", "description": "Awareness of your impact on others.", "contributesToBrainProfile": false, "order": 9 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "executive-function", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "inhibit", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "shift", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "emotional-control", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "initiate", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "working-memory", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "plan-organize", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "task-monitor", "formula": "average", "normalization": { "min": 1, "max": 5 } },
+    { "dimensionKey": "self-monitor", "formula": "average", "normalization": { "min": 1, "max": 5 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Several control processes feel effortful right now — worth checking the eight scores above for which specific ones stand out most.", "recommendations": ["Pick the single lowest-scoring scale above and focus on one concrete habit for it (e.g. a written task list for Plan/Organize)", "External supports (timers, checklists, written reminders) compensate well for executive function gaps — use them deliberately, not as a last resort", "Notice patterns across your day: executive function is often more fatigue-sensitive than other cognitive measures"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "A typical mixed profile — some control processes stronger than others.", "recommendations": ["Look at your two lowest scales above and build one small structural habit for each", "Notice whether your weaker scales cluster (e.g. Inhibit + Emotional Control often move together) — that pattern is informative"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Reliable executive control across most processes, with room to grow in one or two specific scales.", "recommendations": ["Push your weakest scale specifically rather than practicing generically", "Strong executive function compounds well with other cognitive strengths — check your Brain Profile for where it's paying off most"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Consistently strong self-reported control across planning, inhibition, working memory, and task-switching.", "recommendations": ["This level of executive control is a genuine asset in complex, multi-step, or high-distraction work", "Consider whether your Self-Monitor score matches how others actually perceive you — it's worth checking that gap periodically"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Uniformly strong across all eight executive function scales.", "recommendations": ["This is a strong foundation for demanding, multi-threaded work — notice where it's already paying off", "Since this is self-report, periodically sanity-check it against how consistently your actual follow-through matches your intentions"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "executive-function", "targetBrainProfileDimensionKey": "logical", "weight": 0.4 }],
+
+  "questions": [
+    { "key": "efp-in-01", "sectionKey": "inhibit", "order": 1, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I think before I act, even when I'm in a hurry.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "inhibit", "points": 1 }] },
+    { "key": "efp-in-02", "sectionKey": "inhibit", "order": 2, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I can stop myself from blurting out something I'll regret.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "inhibit", "points": 1 }] },
+    { "key": "efp-in-03", "sectionKey": "inhibit", "order": 3, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I stay in control of my reactions even when frustrated.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "inhibit", "points": 1 }] },
+
+    { "key": "efp-sh-01", "sectionKey": "shift", "order": 4, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I adjust easily when plans change unexpectedly.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "shift", "points": 1 }] },
+    { "key": "efp-sh-02", "sectionKey": "shift", "order": 5, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I can switch between tasks without losing my train of thought.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "shift", "points": 1 }] },
+    { "key": "efp-sh-03", "sectionKey": "shift", "order": 6, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I handle changes to my daily routine without much trouble.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "shift", "points": 1 }] },
+
+    { "key": "efp-ec-01", "sectionKey": "emotional-control", "order": 7, "difficulty": "medium", "questionType": "likert_scale", "questionText": "My emotional reactions tend to match the size of the situation, not bigger.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "emotional-control", "points": 1 }] },
+    { "key": "efp-ec-02", "sectionKey": "emotional-control", "order": 8, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I recover quickly after something upsets me.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "emotional-control", "points": 1 }] },
+    { "key": "efp-ec-03", "sectionKey": "emotional-control", "order": 9, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I stay calm even when things don't go my way.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "emotional-control", "points": 1 }] },
+
+    { "key": "efp-it-01", "sectionKey": "initiate", "order": 10, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I start tasks on my own without needing a push.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "initiate", "points": 1 }] },
+    { "key": "efp-it-02", "sectionKey": "initiate", "order": 11, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I get going on a project as soon as I've decided to do it.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "initiate", "points": 1 }] },
+    { "key": "efp-it-03", "sectionKey": "initiate", "order": 12, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I don't put off starting things I know I need to do.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "initiate", "points": 1 }] },
+
+    { "key": "efp-wm-01", "sectionKey": "working-memory", "order": 13, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I can hold several instructions in mind while completing a task.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "working-memory", "points": 1 }] },
+    { "key": "efp-wm-02", "sectionKey": "working-memory", "order": 14, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I remember what I was doing after a brief interruption.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "working-memory", "points": 1 }] },
+    { "key": "efp-wm-03", "sectionKey": "working-memory", "order": 15, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I keep track of multiple steps in a task without writing them down.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "working-memory", "points": 1 }] },
+
+    { "key": "efp-po-01", "sectionKey": "plan-organize", "order": 16, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I break big tasks into manageable steps before starting.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "plan-organize", "points": 1 }] },
+    { "key": "efp-po-02", "sectionKey": "plan-organize", "order": 17, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I plan ahead rather than figuring things out as I go.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "plan-organize", "points": 1 }] },
+    { "key": "efp-po-03", "sectionKey": "plan-organize", "order": 18, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I organize my time well when I have multiple things to do.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "plan-organize", "points": 1 }] },
+
+    { "key": "efp-tm-01", "sectionKey": "task-monitor", "order": 19, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I check my work for mistakes before considering it done.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "task-monitor", "points": 1 }] },
+    { "key": "efp-tm-02", "sectionKey": "task-monitor", "order": 20, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I notice when I've gone off track partway through a task.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "task-monitor", "points": 1 }] },
+    { "key": "efp-tm-03", "sectionKey": "task-monitor", "order": 21, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I review my progress periodically rather than only at the very end.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "task-monitor", "points": 1 }] },
+
+    { "key": "efp-sm-01", "sectionKey": "self-monitor", "order": 22, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I notice how my behavior is affecting the people around me.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "self-monitor", "points": 1 }] },
+    { "key": "efp-sm-02", "sectionKey": "self-monitor", "order": 23, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I can tell when I'm coming across differently than I intend to.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "self-monitor", "points": 1 }] },
+    { "key": "efp-sm-03", "sectionKey": "self-monitor", "order": 24, "difficulty": "medium", "questionType": "likert_scale", "questionText": "I adjust my approach when I sense it isn't landing well with someone.", "required": true, "scoreConfig": [{ "dimensionKey": "executive-function", "points": 1 }, { "dimensionKey": "self-monitor", "points": 1 }] }
+  ]
+}

@@ -1,0 +1,1616 @@
+{
+  "slug": "speed-processing-index",
+  "title": "Speed Processing Index",
+  "shortDescription": "Simple, low-difficulty tasks answered as fast as possible — an index of raw cognitive processing speed.",
+  "longDescription": "Speed Processing Index is built on the simple/choice reaction-time paradigm established by Arthur Jensen's chronometric research — one of the foundational bodies of work linking raw processing speed to general cognitive ability. Every task here is deliberately trivial in difficulty (string matching, basic arithmetic, number comparison, category judgment) so that response time, not problem difficulty, is what's actually being measured.",
+  "icon": "timer",
+  "categoryKey": "cognitive",
+  "engineType": "timed_questionnaire",
+  "difficulty": "easy",
+  "estimatedDurationMinutes": 8,
+  "access": "free",
+  "sourceNote": "Original items across four simple judgment types (same/different string matching, arithmetic verification, number comparison, category membership) implementing the simple/choice reaction-time paradigm from Jensen's processing-speed research — a well-established research tradition, not a single commercial test, so there's no proprietary item bank being adapted. Scoring uses timed_choice's response-time weighting (src/lib/scoring/engine.ts): a 2-second time limit per item, tight on purpose since the whole point is that these tasks should be nearly instant — a correct answer given immediately scores full credit, decaying to a 50% floor at the time limit.",
+  "runnerSettings": {
+    "totalTimeLimitSeconds": 480
+  },
+  "sections": [
+    {
+      "key": "same-different",
+      "name": "Same or Different",
+      "description": "Judge whether two strings are identical.",
+      "instructions": "Answer as fast as you accurately can.",
+      "timeLimitSeconds": null,
+      "weight": 0.25,
+      "order": 1
+    },
+    {
+      "key": "arithmetic-check",
+      "name": "Arithmetic Check",
+      "description": "Judge whether a simple arithmetic statement is true or false.",
+      "instructions": "Answer as fast as you accurately can.",
+      "timeLimitSeconds": null,
+      "weight": 0.25,
+      "order": 2
+    },
+    {
+      "key": "number-comparison",
+      "name": "Number Comparison",
+      "description": "Judge the relationship between two numbers.",
+      "instructions": "Answer as fast as you accurately can.",
+      "timeLimitSeconds": null,
+      "weight": 0.25,
+      "order": 3
+    },
+    {
+      "key": "category-check",
+      "name": "Category Check",
+      "description": "Judge whether a word belongs to a stated category.",
+      "instructions": "Answer as fast as you accurately can.",
+      "timeLimitSeconds": null,
+      "weight": 0.25,
+      "order": 4
+    }
+  ],
+  "scoringDimensions": [
+    {
+      "key": "processing-speed",
+      "label": "Processing Speed",
+      "description": "Speed and accuracy on simple, low-difficulty judgments.",
+      "contributesToBrainProfile": true,
+      "brainProfileDimensionKey": "logical",
+      "order": 1
+    }
+  ],
+  "scoringRules": [
+    {
+      "dimensionKey": "processing-speed",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 40
+      }
+    }
+  ],
+  "resultRanges": [
+    {
+      "dimensionKey": "overall",
+      "minScore": 0,
+      "maxScore": 30,
+      "title": "Developing",
+      "description": "Even on these deliberately simple judgments, speed or accuracy is lagging — worth another attempt when less fatigued, since this measure is sensitive to mental fatigue.",
+      "recommendations": [
+        "Retake when well-rested — processing speed is one of the most fatigue-sensitive cognitive measures",
+        "Focus purely on the decision itself, not double-checking — these tasks are designed to not need double-checking",
+        "Notice which section felt slowest — that's more informative than the overall number"
+      ],
+      "order": 1
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 31,
+      "maxScore": 50,
+      "title": "Average",
+      "description": "Solid accuracy with moderate speed — typical for tasks this simple under real time pressure.",
+      "recommendations": [
+        "Practice trusting your first instinct on simple judgments like these — hesitation costs more than it helps here",
+        "Notice whether accuracy or speed is the bigger factor in your score"
+      ],
+      "order": 2
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 51,
+      "maxScore": 70,
+      "title": "Strong",
+      "description": "Fast, accurate responses across all four judgment types, with minor slowdowns on the trickier comparisons.",
+      "recommendations": [
+        "This level of raw processing speed is a genuine asset in any task requiring rapid simple decisions",
+        "Try the assessment again later in the day to see how speed varies with mental state"
+      ],
+      "order": 3
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 71,
+      "maxScore": 85,
+      "title": "Very Strong",
+      "description": "Consistently fast and accurate across every section — near-ceiling performance on tasks this simple.",
+      "recommendations": [
+        "Raw processing speed at this level often correlates with strong performance on more complex timed cognitive tasks too",
+        "Consider how this speed shows up in real-world quick-decision contexts"
+      ],
+      "order": 4
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 86,
+      "maxScore": 100,
+      "title": "Exceptional",
+      "description": "Near-instant, accurate responses across all four judgment types — elite raw processing speed.",
+      "recommendations": [
+        "This is a genuinely fast baseline processing speed — a real asset across nearly any time-pressured cognitive task",
+        "Worth noting alongside your other timed assessment results, since processing speed tends to be a general factor"
+      ],
+      "order": 5
+    }
+  ],
+  "brainProfileContributions": [
+    {
+      "sourceDimensionKey": "processing-speed",
+      "targetBrainProfileDimensionKey": "logical",
+      "weight": 0.3
+    }
+  ],
+  "questions": [
+    {
+      "key": "spi-01",
+      "sectionKey": "same-different",
+      "order": 1,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Are these two strings identical? MNKQR   MNKQR",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Same",
+          "value": "same",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Different",
+          "value": "different",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-02",
+      "sectionKey": "same-different",
+      "order": 2,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Are these two strings identical? XPLDT   XPLTD",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Same",
+          "value": "same",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Different",
+          "value": "different",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-03",
+      "sectionKey": "same-different",
+      "order": 3,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Are these two strings identical? GHVWY   GHVWY",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Same",
+          "value": "same",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Different",
+          "value": "different",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-04",
+      "sectionKey": "same-different",
+      "order": 4,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Are these two strings identical? BQZRA   BQZRA",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Same",
+          "value": "same",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Different",
+          "value": "different",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-05",
+      "sectionKey": "same-different",
+      "order": 5,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Are these two strings identical? FKLNM   FKLMN",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Same",
+          "value": "same",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Different",
+          "value": "different",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-06",
+      "sectionKey": "same-different",
+      "order": 6,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Are these two strings identical? JTYUO   JTYUO",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Same",
+          "value": "same",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Different",
+          "value": "different",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-07",
+      "sectionKey": "same-different",
+      "order": 7,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Are these two strings identical? SDCXZ   SDCXV",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Same",
+          "value": "same",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Different",
+          "value": "different",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-08",
+      "sectionKey": "same-different",
+      "order": 8,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Are these two strings identical? AWERT   AWERT",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Same",
+          "value": "same",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Different",
+          "value": "different",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-09",
+      "sectionKey": "same-different",
+      "order": 9,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Are these two strings identical? PLKMN   PLKNM",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Same",
+          "value": "same",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Different",
+          "value": "different",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-10",
+      "sectionKey": "same-different",
+      "order": 10,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Are these two strings identical? QAZXS   QAZXS",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Same",
+          "value": "same",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Different",
+          "value": "different",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-11",
+      "sectionKey": "arithmetic-check",
+      "order": 11,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is this true or false? 3 + 4 = 7",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "True",
+          "value": "true",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "False",
+          "value": "false",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-12",
+      "sectionKey": "arithmetic-check",
+      "order": 12,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is this true or false? 6 + 2 = 9",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "True",
+          "value": "true",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "False",
+          "value": "false",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-13",
+      "sectionKey": "arithmetic-check",
+      "order": 13,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is this true or false? 5 + 5 = 10",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "True",
+          "value": "true",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "False",
+          "value": "false",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-14",
+      "sectionKey": "arithmetic-check",
+      "order": 14,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is this true or false? 8 - 3 = 4",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "True",
+          "value": "true",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "False",
+          "value": "false",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-15",
+      "sectionKey": "arithmetic-check",
+      "order": 15,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is this true or false? 2 + 2 = 4",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "True",
+          "value": "true",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "False",
+          "value": "false",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-16",
+      "sectionKey": "arithmetic-check",
+      "order": 16,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is this true or false? 9 - 4 = 5",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "True",
+          "value": "true",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "False",
+          "value": "false",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-17",
+      "sectionKey": "arithmetic-check",
+      "order": 17,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is this true or false? 7 + 1 = 9",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "True",
+          "value": "true",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "False",
+          "value": "false",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-18",
+      "sectionKey": "arithmetic-check",
+      "order": 18,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is this true or false? 4 + 4 = 8",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "True",
+          "value": "true",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "False",
+          "value": "false",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-19",
+      "sectionKey": "arithmetic-check",
+      "order": 19,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is this true or false? 6 - 2 = 3",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "True",
+          "value": "true",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "False",
+          "value": "false",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-20",
+      "sectionKey": "arithmetic-check",
+      "order": 20,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is this true or false? 10 - 5 = 5",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "True",
+          "value": "true",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "False",
+          "value": "false",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-21",
+      "sectionKey": "number-comparison",
+      "order": 21,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is 8 greater than, less than, or equal to 3?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Greater than",
+          "value": "greater",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Less than",
+          "value": "less",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Equal to",
+          "value": "equal",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-22",
+      "sectionKey": "number-comparison",
+      "order": 22,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is 2 greater than, less than, or equal to 9?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Greater than",
+          "value": "greater",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Less than",
+          "value": "less",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Equal to",
+          "value": "equal",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-23",
+      "sectionKey": "number-comparison",
+      "order": 23,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is 5 greater than, less than, or equal to 5?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Greater than",
+          "value": "greater",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Less than",
+          "value": "less",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Equal to",
+          "value": "equal",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-24",
+      "sectionKey": "number-comparison",
+      "order": 24,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is 7 greater than, less than, or equal to 1?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Greater than",
+          "value": "greater",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Less than",
+          "value": "less",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Equal to",
+          "value": "equal",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-25",
+      "sectionKey": "number-comparison",
+      "order": 25,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is 4 greater than, less than, or equal to 6?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Greater than",
+          "value": "greater",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Less than",
+          "value": "less",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Equal to",
+          "value": "equal",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-26",
+      "sectionKey": "number-comparison",
+      "order": 26,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is 10 greater than, less than, or equal to 10?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Greater than",
+          "value": "greater",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Less than",
+          "value": "less",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Equal to",
+          "value": "equal",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-27",
+      "sectionKey": "number-comparison",
+      "order": 27,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is 3 greater than, less than, or equal to 8?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Greater than",
+          "value": "greater",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Less than",
+          "value": "less",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Equal to",
+          "value": "equal",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-28",
+      "sectionKey": "number-comparison",
+      "order": 28,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is 9 greater than, less than, or equal to 2?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Greater than",
+          "value": "greater",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Less than",
+          "value": "less",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Equal to",
+          "value": "equal",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-29",
+      "sectionKey": "number-comparison",
+      "order": 29,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is 6 greater than, less than, or equal to 6?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Greater than",
+          "value": "greater",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Less than",
+          "value": "less",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Equal to",
+          "value": "equal",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-30",
+      "sectionKey": "number-comparison",
+      "order": 30,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is 1 greater than, less than, or equal to 7?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Greater than",
+          "value": "greater",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Less than",
+          "value": "less",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Equal to",
+          "value": "equal",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-31",
+      "sectionKey": "category-check",
+      "order": 31,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is \"DOG\" an animal?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-32",
+      "sectionKey": "category-check",
+      "order": 32,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is \"CHAIR\" an animal?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-33",
+      "sectionKey": "category-check",
+      "order": 33,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is \"APPLE\" a fruit?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-34",
+      "sectionKey": "category-check",
+      "order": 34,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is \"HAMMER\" a fruit?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-35",
+      "sectionKey": "category-check",
+      "order": 35,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is \"RED\" a color?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-36",
+      "sectionKey": "category-check",
+      "order": 36,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is \"PIANO\" a color?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-37",
+      "sectionKey": "category-check",
+      "order": 37,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is \"TUESDAY\" a day of the week?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-38",
+      "sectionKey": "category-check",
+      "order": 38,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is \"OCEAN\" a day of the week?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-39",
+      "sectionKey": "category-check",
+      "order": 39,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is \"TRIANGLE\" a shape?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "spi-40",
+      "sectionKey": "category-check",
+      "order": 40,
+      "difficulty": "easy",
+      "questionType": "timed_choice",
+      "questionText": "Is \"WHISPER\" a shape?",
+      "timeLimitSeconds": 2,
+      "required": true,
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "processing-speed",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

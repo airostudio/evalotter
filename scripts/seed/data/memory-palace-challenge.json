@@ -1,0 +1,130 @@
+{
+  "slug": "memory-palace-challenge",
+  "title": "Memory Palace Challenge",
+  "shortDescription": "A method-of-loci memory exercise — place items along an imagined route, then recall them in order.",
+  "longDescription": "Memory Palace Challenge is built on the Method of Loci (\"memory palace\") — the oldest documented memory technique, traced to ancient Greek and Roman rhetoric, and still the core technique behind competitive memory-sport disciplines like the World Memory Championships' serial-recall events. You study a route of locations, each holding one item, then recall the items in the exact order they appeared along the route. Recall is scored by strict serial position — an item remembered but placed in the wrong slot doesn't count, matching how serial recall is scored in memory research.",
+  "icon": "map",
+  "categoryKey": "memory",
+  "engineType": "memory_exercise",
+  "difficulty": "hard",
+  "estimatedDurationMinutes": 15,
+  "access": "premium",
+  "sourceNote": "The Method of Loci is a technique, not a single copyrighted test, so there's no proprietary instrument being adapted here — these four routes and their items are original content built to implement the technique faithfully. Ordered recall is scored via the `sequence` question type, which stores each item's correct 1-indexed route position in its `value` field and credits it only when placed in that exact position (src/lib/scoring/engine.ts) — previously this question type wasn't scored at all; that gap is fixed as of this assessment. Each round also includes two position-probe questions (\"what was at stop 3?\"), a genuine supplementary measure used alongside full serial recall in memory research, not padding.",
+
+  "sections": [
+    { "key": "round-1", "name": "Route 1: Home", "description": "A 5-stop route through a house.", "instructions": "Study this route, in order: 1. Front Door → Umbrella · 2. Hallway → Painting · 3. Kitchen → Teapot · 4. Living Room → Lamp · 5. Bedroom → Alarm Clock. Picture yourself walking the route, seeing each item at its stop.", "timeLimitSeconds": null, "weight": 0.2, "order": 1 },
+    { "key": "round-2", "name": "Route 2: Cottage Garden", "description": "A 6-stop route through a garden and cottage.", "instructions": "Study this route, in order: 1. Garden Gate → Watering Can · 2. Porch → Welcome Mat · 3. Foyer → Mirror · 4. Staircase → Candle · 5. Study → Globe · 6. Attic → Trunk.", "timeLimitSeconds": null, "weight": 0.25, "order": 2 },
+    { "key": "round-3", "name": "Route 3: Office Building", "description": "A 7-stop route through an office building.", "instructions": "Study this route, in order: 1. Lobby → Fountain · 2. Elevator → Plant · 3. Office Floor → Whiteboard · 4. Break Room → Coffee Pot · 5. Conference Room → Projector · 6. Supply Closet → Stapler · 7. Rooftop → Antenna.", "timeLimitSeconds": null, "weight": 0.25, "order": 3 },
+    { "key": "round-4", "name": "Route 4: Mountain Trail", "description": "An 8-stop route along a hiking trail.", "instructions": "Study this route, in order: 1. Trailhead → Compass · 2. Bridge → Rope · 3. Meadow → Canteen · 4. Forest Edge → Lantern · 5. Cave Mouth → Torch · 6. River Bend → Fishing Rod · 7. Campsite → Tent · 8. Summit → Flag.", "timeLimitSeconds": null, "weight": 0.3, "order": 4 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "loci-memory", "label": "Memory Palace Recall", "description": "Composite score across ordered recall and position-probe accuracy.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "memory", "order": 1 },
+    { "key": "sequence-recall", "label": "Ordered Recall", "description": "Recalling the full route's items in exact serial order.", "contributesToBrainProfile": false, "order": 2 },
+    { "key": "position-accuracy", "label": "Position Accuracy", "description": "Correctly identifying what was at a specific stop.", "contributesToBrainProfile": false, "order": 3 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "loci-memory", "formula": "average" },
+    { "dimensionKey": "sequence-recall", "formula": "sum", "normalization": { "min": 0, "max": 26 } },
+    { "dimensionKey": "position-accuracy", "formula": "sum", "normalization": { "min": 0, "max": 8 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Ordered recall across a full route is difficult right now — the technique itself takes practice before the palace \"sticks.\"", "recommendations": ["Start with shorter routes (3-4 stops) and build up gradually", "Make the mental images vivid and slightly absurd — bizarre images are easier to recall than plain ones", "Walk the route in your head at least twice before attempting recall"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "Shorter routes are manageable, but longer ones or a route studied only once lose items partway through.", "recommendations": ["Practice the same route repeatedly until the order feels automatic before moving to a new one", "Use real, familiar locations (your actual home) instead of generic ones — familiarity anchors the route"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Reliable ordered recall across most routes, with occasional slips on the longer ones.", "recommendations": ["Push route length further — competitive memory athletes use routes with dozens of stops", "Practice recalling routes out of order (e.g. \"what was at stop 5?\") to strengthen the underlying spatial map, not just the sequence"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Consistently accurate ordered recall even on the longest route, with strong position accuracy too.", "recommendations": ["This technique scales well — try applying it to real material you need to memorize (a speech, a list, key facts)", "Build multiple palaces for different topics so they don't interfere with each other"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Near-perfect ordered recall across every route — the core skill behind competitive memory-sport performance.", "recommendations": ["This is genuinely competition-level serial recall — the World Memory Championships' disciplines use the same core technique at larger scale", "Consider extending routes further, or memorizing genuinely long real-world sequences"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "loci-memory", "targetBrainProfileDimensionKey": "memory", "weight": 1 }],
+
+  "questions": [
+    { "key": "mpc-r1-seq", "sectionKey": "round-1", "order": 1, "difficulty": "easy", "questionType": "sequence", "questionText": "Tap the items in the order you encountered them along Route 1.", "required": true, "options": [
+      { "label": "Lamp", "value": "4", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Umbrella", "value": "1", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Alarm Clock", "value": "5", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Teapot", "value": "3", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Painting", "value": "2", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] }
+    ]},
+    { "key": "mpc-r1-p1", "sectionKey": "round-1", "order": 2, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "In Route 1, what was at the first stop (the front door)?", "required": true, "options": [
+      { "label": "Umbrella", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "position-accuracy", "points": 1 }] },
+      { "label": "Painting", "value": "1", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Teapot", "value": "2", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Lamp", "value": "3", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] }
+    ]},
+    { "key": "mpc-r1-p2", "sectionKey": "round-1", "order": 3, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "In Route 1, what was at the third stop (the kitchen)?", "required": true, "options": [
+      { "label": "Painting", "value": "0", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Teapot", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "position-accuracy", "points": 1 }] },
+      { "label": "Alarm Clock", "value": "2", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Lamp", "value": "3", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] }
+    ]},
+
+    { "key": "mpc-r2-seq", "sectionKey": "round-2", "order": 4, "difficulty": "medium", "questionType": "sequence", "questionText": "Tap the items in the order you encountered them along Route 2.", "required": true, "options": [
+      { "label": "Candle", "value": "4", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Watering Can", "value": "1", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Trunk", "value": "6", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Mirror", "value": "3", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Welcome Mat", "value": "2", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Globe", "value": "5", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] }
+    ]},
+    { "key": "mpc-r2-p1", "sectionKey": "round-2", "order": 5, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "In Route 2, what was at the fourth stop (the staircase)?", "required": true, "options": [
+      { "label": "Mirror", "value": "0", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Candle", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "position-accuracy", "points": 1 }] },
+      { "label": "Globe", "value": "2", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Trunk", "value": "3", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] }
+    ]},
+    { "key": "mpc-r2-p2", "sectionKey": "round-2", "order": 6, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "In Route 2, what was at the second stop (the porch)?", "required": true, "options": [
+      { "label": "Watering Can", "value": "0", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Welcome Mat", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "position-accuracy", "points": 1 }] },
+      { "label": "Mirror", "value": "2", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Globe", "value": "3", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] }
+    ]},
+
+    { "key": "mpc-r3-seq", "sectionKey": "round-3", "order": 7, "difficulty": "hard", "questionType": "sequence", "questionText": "Tap the items in the order you encountered them along Route 3.", "required": true, "options": [
+      { "label": "Coffee Pot", "value": "4", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Fountain", "value": "1", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Antenna", "value": "7", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Whiteboard", "value": "3", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Plant", "value": "2", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Projector", "value": "5", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Stapler", "value": "6", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] }
+    ]},
+    { "key": "mpc-r3-p1", "sectionKey": "round-3", "order": 8, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "In Route 3, what was at the fifth stop (the conference room)?", "required": true, "options": [
+      { "label": "Coffee Pot", "value": "0", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Projector", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "position-accuracy", "points": 1 }] },
+      { "label": "Stapler", "value": "2", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Antenna", "value": "3", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] }
+    ]},
+    { "key": "mpc-r3-p2", "sectionKey": "round-3", "order": 9, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "In Route 3, what was at the second stop (the elevator)?", "required": true, "options": [
+      { "label": "Fountain", "value": "0", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Plant", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "position-accuracy", "points": 1 }] },
+      { "label": "Whiteboard", "value": "2", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Coffee Pot", "value": "3", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] }
+    ]},
+
+    { "key": "mpc-r4-seq", "sectionKey": "round-4", "order": 10, "difficulty": "hard", "questionType": "sequence", "questionText": "Tap the items in the order you encountered them along Route 4.", "required": true, "options": [
+      { "label": "Lantern", "value": "4", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Compass", "value": "1", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Flag", "value": "8", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Canteen", "value": "3", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Rope", "value": "2", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Torch", "value": "5", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Fishing Rod", "value": "6", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] },
+      { "label": "Tent", "value": "7", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "sequence-recall", "points": 1 }] }
+    ]},
+    { "key": "mpc-r4-p1", "sectionKey": "round-4", "order": 11, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "In Route 4, what was at the sixth stop (the river bend)?", "required": true, "options": [
+      { "label": "Torch", "value": "0", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Fishing Rod", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "position-accuracy", "points": 1 }] },
+      { "label": "Tent", "value": "2", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Flag", "value": "3", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] }
+    ]},
+    { "key": "mpc-r4-p2", "sectionKey": "round-4", "order": 12, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "In Route 4, what was at the third stop (the meadow)?", "required": true, "options": [
+      { "label": "Rope", "value": "0", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Canteen", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 1 }, { "dimensionKey": "position-accuracy", "points": 1 }] },
+      { "label": "Lantern", "value": "2", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] },
+      { "label": "Torch", "value": "3", "scoreConfig": [{ "dimensionKey": "loci-memory", "points": 0 }] }
+    ]}
+  ]
+}
