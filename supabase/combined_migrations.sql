@@ -1,11 +1,99 @@
--- EvalOtter combined schema
--- Auto-generated from supabase/migrations/*.sql — run this once against a fresh
--- Supabase project instead of applying each migration file individually.
+-- EvalOtter combined schema — DESTRUCTIVE
+-- Auto-generated from supabase/migrations/*.sql. Run this against your
+-- Supabase project's SQL editor to get a clean copy of the full schema.
 -- Regenerate with: cat supabase/migrations/*.sql (see git history) rather than editing by hand.
+--
+-- WARNING: the teardown block below drops every EvalOtter table, type,
+-- function, storage object, and storage bucket this schema owns — auth.users
+-- itself and any Supabase-managed tables are untouched, but all application
+-- data (profiles, attempts, results, purchases, everything) is gone
+-- afterward. Only run this against a project with no data you need to keep.
+-- If you ever do have real user data, drop this block and apply
+-- supabase/migrations/*.sql incrementally instead (each file only adds).
 --
 -- Wrapped in explicit transactions: PostgreSQL forbids using a newly added enum
 -- value (memory_recognition, coming_soon) in the same transaction that added it,
 -- so those two ALTER TYPE statements each get their own commit boundary below.
+
+begin;
+
+-- ============================================================
+-- Teardown — drops every object this schema creates, in dependency order
+-- (children before parents; cascade as a safety net for anything missed).
+-- Safe to run against an empty database (every statement is "if exists").
+-- ============================================================
+
+-- The auth.users trigger must go first since it calls a function in the
+-- tables/functions being dropped below.
+drop trigger if exists on_auth_user_created on auth.users;
+
+-- Storage: policies, then objects, then the buckets themselves.
+drop policy if exists "palmistry_owner_rw" on storage.objects;
+drop policy if exists "reports_owner_rw" on storage.objects;
+drop policy if exists "assessment_media_public_read" on storage.objects;
+drop policy if exists "assessment_media_editor_write" on storage.objects;
+drop policy if exists "assessment_media_editor_update" on storage.objects;
+drop policy if exists "assessment_media_editor_delete" on storage.objects;
+delete from storage.objects where bucket_id in ('palmistry', 'reports', 'assessment-media');
+delete from storage.buckets where id in ('palmistry', 'reports', 'assessment-media');
+
+-- Application tables (cascade drops their own indexes/policies/FKs).
+drop table if exists perfect_love_codes cascade;
+drop table if exists admin_activity cascade;
+drop table if exists report_purchases cascade;
+drop table if exists subscriptions cascade;
+drop table if exists reports cascade;
+drop table if exists user_achievements cascade;
+drop table if exists achievements cascade;
+drop table if exists palmistry_submissions cascade;
+drop table if exists uploaded_media cascade;
+drop table if exists ai_interpretations cascade;
+drop table if exists brain_profile_contribution_rules cascade;
+drop table if exists brain_profile_dimensions cascade;
+drop table if exists user_brain_profiles cascade;
+drop table if exists result_dimensions cascade;
+drop table if exists assessment_results cascade;
+drop table if exists assessment_responses cascade;
+drop table if exists assessment_attempts cascade;
+drop table if exists result_ranges cascade;
+drop table if exists scoring_rules cascade;
+drop table if exists scoring_dimensions cascade;
+drop table if exists assessment_questions cascade;
+drop table if exists question_options cascade;
+drop table if exists questions cascade;
+drop table if exists assessment_sections cascade;
+drop table if exists assessment_versions cascade;
+drop table if exists assessments cascade;
+drop table if exists assessment_categories cascade;
+drop table if exists profiles cascade;
+
+-- Functions (cascade in case anything above was missed).
+drop function if exists handle_new_user() cascade;
+drop function if exists is_editor_or_above() cascade;
+drop function if exists is_admin() cascade;
+drop function if exists current_user_role() cascade;
+drop function if exists set_updated_at() cascade;
+
+-- Enum types — must come after every table that used them is gone.
+drop type if exists subscription_status cascade;
+drop type if exists subscription_plan cascade;
+drop type if exists ai_provider cascade;
+drop type if exists ai_interpretation_status cascade;
+drop type if exists attempt_status cascade;
+drop type if exists scoring_formula cascade;
+drop type if exists question_type cascade;
+drop type if exists assessment_difficulty cascade;
+drop type if exists assessment_access cascade;
+drop type if exists assessment_status cascade;
+drop type if exists assessment_engine_type cascade;
+drop type if exists user_role cascade;
+
+commit;
+
+-- ============================================================
+-- Rebuild — the full schema, from supabase/migrations/0001 through the
+-- latest, applied in order.
+-- ============================================================
 
 begin;
 

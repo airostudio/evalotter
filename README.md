@@ -25,12 +25,16 @@ but nothing is playable end-to-end until a real database is connected:
 
 1. Create a Supabase project.
 2. Apply the schema: paste `supabase/combined_migrations.sql` into the
-   Supabase SQL editor and run it (it's `supabase/migrations/0001`–`0010`
-   concatenated in order, with explicit transaction boundaries around the
-   two enum-value additions — PostgreSQL forbids using a newly added enum
-   value in the same transaction that added it). Applying the individual
-   files in `supabase/migrations/` one at a time, in numeric order, works
-   identically if you'd rather use the Supabase CLI's migration runner.
+   Supabase SQL editor and run it. **This is destructive** — it opens with
+   a teardown block that drops every EvalOtter table, type, function,
+   storage object, and storage bucket before rebuilding the schema from
+   `supabase/migrations/0001` through the latest, so it's safe to re-run
+   any time you want a clean slate. Every drop is `if exists`, so it's also
+   safe against a brand-new empty project. **Only run it against a project
+   with no data you need to keep** — if you ever have real user data, strip
+   the teardown block (everything before the first `commit;`) and apply
+   `supabase/migrations/*.sql` incrementally instead, or use the Supabase
+   CLI's migration runner on the individual files.
 3. Set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and
    `SUPABASE_SERVICE_ROLE_KEY` in `.env.local` (and in your deploy
    environment — a missing/misconfigured Supabase config used to crash
