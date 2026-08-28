@@ -3,13 +3,16 @@
 -- Supabase project's SQL editor to get a clean copy of the full schema.
 -- Regenerate with: cat supabase/migrations/*.sql (see git history) rather than editing by hand.
 --
--- WARNING: the teardown block below drops every EvalOtter table, type,
--- function, storage object, and storage bucket this schema owns — auth.users
--- itself and any Supabase-managed tables are untouched, but all application
--- data (profiles, attempts, results, purchases, everything) is gone
--- afterward. Only run this against a project with no data you need to keep.
--- If you ever do have real user data, drop this block and apply
--- supabase/migrations/*.sql incrementally instead (each file only adds).
+-- WARNING: the teardown block below drops every EvalOtter table, type, and
+-- function this schema owns (all application data — profiles, attempts,
+-- results, purchases, everything — is gone afterward) plus the storage
+-- policies. auth.users itself and any Supabase-managed tables are
+-- untouched; storage BUCKETS/OBJECTS are also left alone, since Supabase
+-- blocks direct DELETE on those from SQL (see the storage section below)
+-- — clear those via the Dashboard or Storage API if you need to. Only run
+-- this against a project with no data you need to keep. If you ever do
+-- have real user data, drop this block and apply supabase/migrations/*.sql
+-- incrementally instead (each file only adds).
 --
 -- Wrapped in explicit transactions: PostgreSQL forbids using a newly added enum
 -- value (memory_recognition, coming_soon) in the same transaction that added it,
@@ -27,15 +30,19 @@ begin;
 -- tables/functions being dropped below.
 drop trigger if exists on_auth_user_created on auth.users;
 
--- Storage: policies, then objects, then the buckets themselves.
+-- Storage policies only — Supabase blocks direct DELETE on storage.objects
+-- and storage.buckets from SQL ("Use the Storage API instead"), so bucket
+-- contents/buckets themselves aren't dropped here. That's fine: the rebuild
+-- step below (re)creates buckets with `on conflict (id) do nothing`, so an
+-- existing bucket from a prior run is left as-is rather than recreated. If
+-- you need to actually clear bucket contents, do it via the Supabase
+-- Dashboard (Storage tab) or the Storage API, not this script.
 drop policy if exists "palmistry_owner_rw" on storage.objects;
 drop policy if exists "reports_owner_rw" on storage.objects;
 drop policy if exists "assessment_media_public_read" on storage.objects;
 drop policy if exists "assessment_media_editor_write" on storage.objects;
 drop policy if exists "assessment_media_editor_update" on storage.objects;
 drop policy if exists "assessment_media_editor_delete" on storage.objects;
-delete from storage.objects where bucket_id in ('palmistry', 'reports', 'assessment-media');
-delete from storage.buckets where id in ('palmistry', 'reports', 'assessment-media');
 
 -- Application tables (cascade drops their own indexes/policies/FKs).
 drop table if exists perfect_love_codes cascade;
