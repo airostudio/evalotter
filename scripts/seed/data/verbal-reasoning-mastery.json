@@ -1,0 +1,260 @@
+{
+  "slug": "verbal-reasoning-mastery",
+  "title": "Verbal Reasoning Mastery",
+  "shortDescription": "An advanced-tier follow-on to Verbal Reasoning, pushing into denser passages and multi-step argument chains.",
+  "longDescription": "Verbal Reasoning Mastery is built around the three question types that make up the GRE General Test's Verbal Reasoning measure — one of the most widely used graduate-admissions verbal assessments: Text Completion (fill a blank using context and vocabulary), Sentence Equivalence (pick two answers that complete a sentence equivalently), and Reading Comprehension (short passages with inference questions).",
+  "icon": "message-square",
+  "categoryKey": "language",
+  "engineType": "timed_questionnaire",
+  "difficulty": "hard",
+  "estimatedDurationMinutes": 25,
+  "access": "premium",
+  "sourceNote": "Original items written to implement the GRE Verbal Reasoning measure's published three-part structure (Text Completion, Sentence Equivalence, Reading Comprehension) — the GRE itself is a copyrighted, commercially administered test (ETS), so its actual passages/items/norms are not reproduced here. Known adaptation: Sentence Equivalence scoring here awards partial credit per correct option selected (summing each selected option's points), rather than the real GRE's all-or-nothing rule (both correct or zero credit) — the underlying skill measured is the same, the credit model is simpler for a self-scored deterministic engine.",
+
+  "runnerSettings": { "totalTimeLimitSeconds": 1500 },
+
+  "sections": [
+    { "key": "text-completion", "name": "Text Completion", "description": "Choosing the word that best completes a sentence in context.", "instructions": "Each sentence has one blank. Choose the word that best completes the sentence's meaning.", "timeLimitSeconds": null, "weight": 0.34, "order": 1 },
+    { "key": "sentence-equivalence", "name": "Sentence Equivalence", "description": "Choosing two words that both complete the sentence equivalently.", "instructions": "Each sentence has one blank and six options. Select the TWO options that both complete the sentence with the same meaning.", "timeLimitSeconds": null, "weight": 0.33, "order": 2 },
+    { "key": "reading-comprehension", "name": "Reading Comprehension", "description": "Answering inference and detail questions about short passages.", "instructions": "Read each passage, then answer the questions based only on what it states or directly implies.", "timeLimitSeconds": null, "weight": 0.33, "order": 3 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "verbal", "label": "Verbal Reasoning", "description": "Composite score across text completion, sentence equivalence, and reading comprehension.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "verbal", "order": 1 },
+    { "key": "text-completion", "label": "Text Completion", "description": "Using context and vocabulary to complete a sentence's meaning.", "contributesToBrainProfile": false, "order": 2 },
+    { "key": "sentence-equivalence", "label": "Sentence Equivalence", "description": "Recognizing which of several words are semantically equivalent in context.", "contributesToBrainProfile": false, "order": 3 },
+    { "key": "reading-comprehension", "label": "Reading Comprehension", "description": "Drawing correct inferences from a short passage.", "contributesToBrainProfile": false, "order": 4 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "verbal", "formula": "average" },
+    { "dimensionKey": "text-completion", "formula": "sum", "normalization": { "min": 0, "max": 10 } },
+    { "dimensionKey": "sentence-equivalence", "formula": "sum", "normalization": { "min": 0, "max": 20 } },
+    { "dimensionKey": "reading-comprehension", "formula": "sum", "normalization": { "min": 0, "max": 10 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Advanced verbal reasoning is still forming — dense vocabulary-in-context and multi-clause passages take significant effort to parse under time pressure.", "recommendations": ["Read one long-form article daily and summarize its main claim in one sentence", "Build vocabulary through context (guess the meaning, then check) rather than flashcard memorization alone", "Practice text completion untimed first, then reintroduce the clock"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "Comfortable with straightforward vocabulary-in-context, but sentence equivalence's double-correct-answer format and denser passages slow you down.", "recommendations": ["Practice eliminating obviously-wrong pairs first in sentence equivalence before comparing the remainder", "Read passages once for structure, then again for the specific inference being asked"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Reliable across all three formats, occasionally slowed by unfamiliar vocabulary or a passage's more subtle inference.", "recommendations": ["Push into denser nonfiction (academic abstracts, opinion essays with counter-arguments) to raise your inference ceiling", "Time yourself on full timed sets to build stamina, not just accuracy"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Fast and precise across text completion, sentence equivalence, and reading comprehension, rarely tripped up by a distractor that merely sounds plausible.", "recommendations": ["This level of verbal reasoning transfers directly to graduate-level reading and argument-heavy writing", "Try passages from unfamiliar academic fields to stress-test comprehension without domain familiarity to lean on"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Expert-level verbal reasoning — vocabulary, equivalence judgments, and passage inference are all handled quickly and precisely under time pressure.", "recommendations": ["Consider fields that lean heavily on precise written argument — law, editing, research, policy analysis", "Mentor others on distinguishing a genuinely equivalent word choice from one that merely fits the sentence"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "verbal", "targetBrainProfileDimensionKey": "verbal", "weight": 1 }],
+
+  "questions": [
+    { "key": "vrm-tc-01", "sectionKey": "text-completion", "order": 1, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Despite the committee's ______ efforts to reach consensus, the meeting ended without any agreement.", "required": true, "options": [
+      { "label": "concerted", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "text-completion", "points": 1 }] },
+      { "label": "haphazard", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "reluctant", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "brief", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "public", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-tc-02", "sectionKey": "text-completion", "order": 2, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "The critic's review was so ______ that the author refused to read another word of it.", "required": true, "options": [
+      { "label": "glowing", "value": "0", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "scathing", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "text-completion", "points": 1 }] },
+      { "label": "neutral", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "brief", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "favorable", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-tc-03", "sectionKey": "text-completion", "order": 3, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Her explanation, while technically accurate, was so ______ that none of the students could follow it.", "required": true, "options": [
+      { "label": "concise", "value": "0", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "clear", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "convoluted", "value": "2", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "text-completion", "points": 1 }] },
+      { "label": "brief", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "simple", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-tc-04", "sectionKey": "text-completion", "order": 4, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "The new evidence did not merely question the old theory — it completely ______ it.", "required": true, "options": [
+      { "label": "supported", "value": "0", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "clarified", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "summarized", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "refuted", "value": "3", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "text-completion", "points": 1 }] },
+      { "label": "preceded", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-tc-05", "sectionKey": "text-completion", "order": 5, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "He is known for his ______ approach to negotiation, rarely raising his voice even under pressure.", "required": true, "options": [
+      { "label": "measured", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "text-completion", "points": 1 }] },
+      { "label": "erratic", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "hostile", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "careless", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "loud", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-tc-06", "sectionKey": "text-completion", "order": 6, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "The company's ______ growth over the past decade stands in sharp contrast to its early years of decline.", "required": true, "options": [
+      { "label": "meteoric", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "text-completion", "points": 1 }] },
+      { "label": "gradual", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "modest", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "stagnant", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "declining", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-tc-07", "sectionKey": "text-completion", "order": 7, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Rather than admit the mistake outright, the spokesperson offered only a ______ apology.", "required": true, "options": [
+      { "label": "heartfelt", "value": "0", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "grudging", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "text-completion", "points": 1 }] },
+      { "label": "enthusiastic", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "immediate", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "public", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-tc-08", "sectionKey": "text-completion", "order": 8, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "The professor's lectures were famously ______, packed with tangents that rarely returned to the original topic.", "required": true, "options": [
+      { "label": "focused", "value": "0", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "brief", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "structured", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "digressive", "value": "3", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "text-completion", "points": 1 }] },
+      { "label": "concise", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-tc-09", "sectionKey": "text-completion", "order": 9, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Even her harshest critics acknowledged the ______ clarity of her final report.", "required": true, "options": [
+      { "label": "remarkable", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "text-completion", "points": 1 }] },
+      { "label": "questionable", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "predictable", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "typical", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "modest", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-tc-10", "sectionKey": "text-completion", "order": 10, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "The negotiations, once thought hopeless, were ______ by a single unexpected concession.", "required": true, "options": [
+      { "label": "ended", "value": "0", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "documented", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "postponed", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "revived", "value": "3", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "text-completion", "points": 1 }] },
+      { "label": "forgotten", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+
+    { "key": "vrm-se-01", "sectionKey": "sentence-equivalence", "order": 11, "difficulty": "medium", "questionType": "multiple_select", "questionText": "The negotiations remained ______ for weeks, with neither side willing to make the first concession.", "required": true, "options": [
+      { "label": "stalled", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "deadlocked", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "resolved", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "swift", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "amicable", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "brief", "value": "5", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-se-02", "sectionKey": "sentence-equivalence", "order": 12, "difficulty": "medium", "questionType": "multiple_select", "questionText": "His argument, though ______, ultimately failed to convince the panel.", "required": true, "options": [
+      { "label": "eloquent", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "articulate", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "confusing", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "short", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "late", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "written", "value": "5", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-se-03", "sectionKey": "sentence-equivalence", "order": 13, "difficulty": "easy", "questionType": "multiple_select", "questionText": "The old bridge was considered ______ and was closed to traffic until repairs were complete.", "required": true, "options": [
+      { "label": "unsafe", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "hazardous", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "scenic", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "narrow", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "historic", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "toll-free", "value": "5", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-se-04", "sectionKey": "sentence-equivalence", "order": 14, "difficulty": "medium", "questionType": "multiple_select", "questionText": "Her writing style is ______, favoring short sentences and plain words over ornate prose.", "required": true, "options": [
+      { "label": "spare", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "economical", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "flowery", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "archaic", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "formal", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "poetic", "value": "5", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-se-05", "sectionKey": "sentence-equivalence", "order": 15, "difficulty": "medium", "questionType": "multiple_select", "questionText": "The manager's ______ response to the crisis reassured the entire team.", "required": true, "options": [
+      { "label": "composed", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "unflappable", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "panicked", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "delayed", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "silent", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "public", "value": "5", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-se-06", "sectionKey": "sentence-equivalence", "order": 16, "difficulty": "hard", "questionType": "multiple_select", "questionText": "The plan was so ______ that even its authors struggled to summarize it in one sentence.", "required": true, "options": [
+      { "label": "intricate", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "convoluted", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "simple", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "short", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "popular", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "cheap", "value": "5", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-se-07", "sectionKey": "sentence-equivalence", "order": 17, "difficulty": "medium", "questionType": "multiple_select", "questionText": "Critics found the film's plot ______, recycling ideas from a dozen earlier movies.", "required": true, "options": [
+      { "label": "derivative", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "unoriginal", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "groundbreaking", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "confusing", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "short", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "expensive", "value": "5", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-se-08", "sectionKey": "sentence-equivalence", "order": 18, "difficulty": "medium", "questionType": "multiple_select", "questionText": "The witness's account was ______, changing key details each time she told it.", "required": true, "options": [
+      { "label": "inconsistent", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "unreliable", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "precise", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "brief", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "recorded", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "public", "value": "5", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-se-09", "sectionKey": "sentence-equivalence", "order": 19, "difficulty": "medium", "questionType": "multiple_select", "questionText": "The company's new policy was met with ______ opposition from employees.", "required": true, "options": [
+      { "label": "fierce", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "vehement", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "mild", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "quiet", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "delayed", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "written", "value": "5", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-se-10", "sectionKey": "sentence-equivalence", "order": 20, "difficulty": "medium", "questionType": "multiple_select", "questionText": "His tone throughout the interview remained ______, even when asked pointed questions.", "required": true, "options": [
+      { "label": "calm", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "placid", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 0.5 }, { "dimensionKey": "sentence-equivalence", "points": 1 }] },
+      { "label": "agitated", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "loud", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "brief", "value": "4", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "formal", "value": "5", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+
+    { "key": "vrm-rc-01", "sectionKey": "reading-comprehension", "order": 21, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Passage: \"Urban planners have increasingly turned to 'road diets' — reducing the number of travel lanes on a street to make room for bike lanes, wider sidewalks, or turn lanes — as a tool for improving traffic safety. Counterintuitively, studies in several cities have found that these changes did not significantly increase congestion, even though the same volume of vehicles now had less road to use. Researchers attribute this partly to drivers adjusting their routes and departure times, and partly to the removed lanes having been used inefficiently for passing and weaving rather than genuine capacity.\" According to the passage, why didn't road diets significantly increase congestion?", "required": true, "options": [
+      { "label": "Drivers adjusted their behavior, and the removed lanes weren't adding much real capacity", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "reading-comprehension", "points": 1 }] },
+      { "label": "Traffic volume decreased citywide", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "The remaining lanes were widened to compensate", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "Most drivers switched to public transit", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-rc-02", "sectionKey": "reading-comprehension", "order": 22, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Same passage as above. The passage suggests road diets are primarily justified by:", "required": true, "options": [
+      { "label": "Safety improvements, not congestion reduction", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "reading-comprehension", "points": 1 }] },
+      { "label": "Reducing the total number of drivers", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "Lowering city maintenance costs", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "Increasing average vehicle speed", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-rc-03", "sectionKey": "reading-comprehension", "order": 23, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Passage: \"The 'paradox of choice' refers to the observation that, beyond a certain point, offering people more options can decrease rather than increase their satisfaction with the choice they eventually make. One proposed explanation is that more options raise the expectations of finding a 'perfect' choice, making any actual selection feel comparatively disappointing. Another is that evaluating many options simply requires more cognitive effort, leaving people less confident that they made the right call.\" Which of the following best describes the 'paradox of choice'?", "required": true, "options": [
+      { "label": "More options can leave people less, not more, satisfied with their decision", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "reading-comprehension", "points": 1 }] },
+      { "label": "People always prefer fewer options in every situation", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "More options guarantee a better final decision", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "Choice has no measurable effect on satisfaction", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-rc-04", "sectionKey": "reading-comprehension", "order": 24, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Same passage as above. The passage offers two explanations for the paradox. One centers on raised expectations; the other centers on:", "required": true, "options": [
+      { "label": "The cognitive effort required to evaluate many options", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "reading-comprehension", "points": 1 }] },
+      { "label": "The cost of the options themselves", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "Social pressure from other people's choices", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "The amount of time available to decide", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-rc-05", "sectionKey": "reading-comprehension", "order": 25, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Passage: \"Coral bleaching occurs when corals, stressed by unusually warm water, expel the symbiotic algae living in their tissues. These algae supply the coral with most of its energy and its vivid color, so their loss leaves the coral pale and vulnerable to starvation. Bleaching is not immediately fatal — corals can recover if temperatures drop and algae recolonize in time — but repeated or prolonged bleaching events sharply increase coral mortality.\" Based on the passage, coral bleaching is best described as:", "required": true, "options": [
+      { "label": "A stress response that is potentially, but not immediately, fatal", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "reading-comprehension", "points": 1 }] },
+      { "label": "An immediate and irreversible cause of coral death", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "A natural, harmless seasonal color change", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "A process unrelated to water temperature", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-rc-06", "sectionKey": "reading-comprehension", "order": 26, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Same passage as above. The algae expelled during bleaching are significant mainly because they:", "required": true, "options": [
+      { "label": "Provide most of the coral's energy and color", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "reading-comprehension", "points": 1 }] },
+      { "label": "Protect coral from predators", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "Regulate the coral's reproduction", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "Filter pollutants from the water", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-rc-07", "sectionKey": "reading-comprehension", "order": 27, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Passage: \"When a company announces layoffs, its stock price often rises in the following days — a pattern that seems to conflict with the intuition that losing experienced staff should hurt a company's prospects. Analysts explain this by pointing out that markets respond less to the layoffs themselves than to what they signal: that management is taking decisive action on costs, which investors read as a sign of financial discipline, especially if the company had been under pressure to control spending.\" The passage explains the stock-price pattern primarily as a result of:", "required": true, "options": [
+      { "label": "Investors interpreting layoffs as a signal of financial discipline", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "reading-comprehension", "points": 1 }] },
+      { "label": "Layoffs directly increasing quarterly profit", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "Reduced competition from other companies", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "Government incentives for cost-cutting", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-rc-08", "sectionKey": "reading-comprehension", "order": 28, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Same passage as above. The passage describes the rising stock price after layoffs as:", "required": true, "options": [
+      { "label": "Counterintuitive at first glance, but explainable by what the announcement signals", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "reading-comprehension", "points": 1 }] },
+      { "label": "Fully predictable and expected by all investors", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "Unrelated to how markets typically function", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "A sign of definite future profit growth", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-rc-09", "sectionKey": "reading-comprehension", "order": 29, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Passage: \"Muscle memory is something of a misnomer: skills like riding a bicycle or typing are not stored in the muscles themselves but in neural pathways built through repeated practice. Once these pathways are well established, the movements become more automatic, requiring less conscious attention. This is why a skill practiced heavily years ago, even if unused for a long time, is typically relearned far faster than it was learned the first time.\" According to the passage, 'muscle memory' is misleading because:", "required": true, "options": [
+      { "label": "The relevant memory is stored in neural pathways, not the muscles", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "reading-comprehension", "points": 1 }] },
+      { "label": "Muscles have no role in movement at all", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "It implies the skill can never be lost", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "It suggests movement doesn't require practice", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]},
+    { "key": "vrm-rc-10", "sectionKey": "reading-comprehension", "order": 30, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Same passage as above. The passage suggests that relearning a long-unused skill is typically faster than learning it originally because:", "required": true, "options": [
+      { "label": "The neural pathways built by earlier practice are still partly established", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "verbal", "points": 1 }, { "dimensionKey": "reading-comprehension", "points": 1 }] },
+      { "label": "Muscles retain physical memory of the movement", "value": "1", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "The skill becomes easier to learn with age", "value": "2", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] },
+      { "label": "Relearning requires no practice at all", "value": "3", "scoreConfig": [{ "dimensionKey": "verbal", "points": 0 }] }
+    ]}
+  ]
+}

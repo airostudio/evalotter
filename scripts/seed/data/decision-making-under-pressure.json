@@ -1,0 +1,135 @@
+{
+  "slug": "decision-making-under-pressure",
+  "title": "Decision Making Under Pressure",
+  "shortDescription": "Scenario-based judgment tasks with a ticking clock and incomplete information — how you decide, not just what.",
+  "longDescription": "Decision Making Under Pressure is built on the Cognitive Reflection Test (CRT) paradigm established by Shane Frederick (2005) — a widely used measure of the ability to override a fast, intuitive-but-wrong answer in favor of a slower, correct one. Every item is deliberately built to have a plausible answer that jumps to mind immediately and is wrong, alongside the correct answer that takes a moment of actual reasoning to reach. A second section extends the same principle to quick real-world judgment calls made with incomplete information.", "icon": "timer",
+  "categoryKey": "cognitive",
+  "engineType": "timed_questionnaire",
+  "difficulty": "hard",
+  "estimatedDurationMinutes": 15,
+  "access": "premium",
+  "sourceNote": "Original items written in the Cognitive Reflection Test's paradigm (an appealing, fast, wrong intuitive answer vs. a correct answer requiring a moment of reflection) rather than reusing Frederick's original three items (the bat-and-ball, widget-machine, and lily-pad problems) — those are now so widely circulated in pop psychology and social media that many test-takers have already seen them, which is a documented limitation of the original CRT in research (published 'CRT-2'/extended batteries exist specifically to work around this by using fresh surface content with the same underlying structure, which is what this does). The five-item scenario-judgment section extends the same 'resist the fast wrong instinct' principle to realistic snap decisions rather than math/logic puzzles.",
+
+  "runnerSettings": { "totalTimeLimitSeconds": 900 },
+
+  "sections": [
+    { "key": "quick-reflection", "name": "Quick Reflection", "description": "Problems with a fast, appealing, wrong answer and a correct one that takes a moment longer to reach.", "instructions": "Answer as quickly as you can — but don't let that stop you from checking your first instinct.", "timeLimitSeconds": null, "weight": 0.67, "order": 1 },
+    { "key": "scenario-judgment", "name": "Scenario Judgment", "description": "Realistic snap decisions made with incomplete information.", "instructions": "Choose the best immediate action given only what's stated.", "timeLimitSeconds": null, "weight": 0.33, "order": 2 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "decision-making", "label": "Decision Making Under Pressure", "description": "Composite score across quick-reflection problems and scenario judgment.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "logical", "order": 1 },
+    { "key": "quick-reflection", "label": "Quick Reflection", "description": "Ability to override a fast, wrong intuitive answer in favor of a correct one.", "contributesToBrainProfile": false, "order": 2 },
+    { "key": "scenario-judgment", "label": "Scenario Judgment", "description": "Choosing the soundest immediate action under incomplete information.", "contributesToBrainProfile": false, "order": 3 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "decision-making", "formula": "average" },
+    { "dimensionKey": "quick-reflection", "formula": "sum", "normalization": { "min": 0, "max": 10 } },
+    { "dimensionKey": "scenario-judgment", "formula": "sum", "normalization": { "min": 0, "max": 5 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "The fast, intuitive answer is winning out more often than the correct one — a common pattern under time pressure, and one that improves with deliberate practice.", "recommendations": ["When an answer feels immediately obvious, treat that as a cue to double-check it, not trust it", "Practice restating the question in your own words before answering — it interrupts the snap-judgment reflex", "Slow down on the first few items to build the habit before speeding back up"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "You catch some of the traps but not all of them — the intuitive wrong answer is still winning on the trickier items.", "recommendations": ["Notice which specific items you missed — the trap pattern (rate confusion, compounding, base rates) often repeats", "Practice pausing for one extra second before locking in an answer that felt instantly obvious"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "You reliably catch the intuitive trap and reason through to the correct answer, with occasional slips on the less common trap types.", "recommendations": ["Push into problems with two nested traps (where correcting the first mistake still leaves a second one)", "Apply this same 'pause and check the first answer' habit to real decisions under deadline pressure"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Consistently overrides the fast wrong answer across both numeric puzzles and realistic snap decisions.", "recommendations": ["This reflects strong deliberate reasoning even under time pressure — a real asset in fast-moving, high-stakes roles", "Notice how often this shows up in real decisions — flagging your own first instinct before acting on it"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Near-perfect resistance to the intuitive trap across every item — fast, correct reasoning under real time pressure.", "recommendations": ["This combination of speed and deliberate accuracy is rare — consider where high-stakes, fast-paced decisions could use it", "Mentor others on the habit of pausing to check a too-easy-feeling answer before committing to it"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "decision-making", "targetBrainProfileDimensionKey": "logical", "weight": 0.5 }],
+
+  "questions": [
+    { "key": "dmp-qr-01", "sectionKey": "quick-reflection", "order": 1, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "A hat and a scarf together cost $22. The hat costs $20 more than the scarf. How much does the scarf cost?", "required": true, "options": [
+      { "label": "$2", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "$1", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "quick-reflection", "points": 1 }] },
+      { "label": "$11", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "$20", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-qr-02", "sectionKey": "quick-reflection", "order": 2, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "If 8 printers can print 8 reports in 8 minutes, how long would it take 50 printers to print 50 reports?", "required": true, "options": [
+      { "label": "50 minutes", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "8 minutes", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "quick-reflection", "points": 1 }] },
+      { "label": "6 minutes", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "1 minute", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-qr-03", "sectionKey": "quick-reflection", "order": 3, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "A colony of bacteria doubles in size every hour. It takes 24 hours to completely fill a petri dish. How many hours would it take to fill half the dish?", "required": true, "options": [
+      { "label": "12 hours", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "23 hours", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "quick-reflection", "points": 1 }] },
+      { "label": "24 hours", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "6 hours", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-qr-04", "sectionKey": "quick-reflection", "order": 4, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "A cyclist rides the first half of a route at 20 mph and the second half (same distance) at 10 mph. What is her average speed for the whole route, in mph?", "required": true, "options": [
+      { "label": "15 mph", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "13.3 mph", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "quick-reflection", "points": 1 }] },
+      { "label": "20 mph", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "10 mph", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-qr-05", "sectionKey": "quick-reflection", "order": 5, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "A fair coin has landed on heads 5 times in a row. What is the probability it lands on heads on the next flip?", "required": true, "options": [
+      { "label": "Less than 50%", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "50%", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "quick-reflection", "points": 1 }] },
+      { "label": "More than 50%", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Cannot be determined", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-qr-06", "sectionKey": "quick-reflection", "order": 6, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "A patch of algae in a lake triples in size every day. It takes 10 days for the algae to cover the entire lake. On which day was the lake exactly one-third covered?", "required": true, "options": [
+      { "label": "Day 9", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "quick-reflection", "points": 1 }] },
+      { "label": "Day 7", "value": "1", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Day 3", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Day 5", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-qr-07", "sectionKey": "quick-reflection", "order": 7, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "You buy a stock for $100. It loses 50% of its value in year one. By what percentage must it increase in year two to get back to $100?", "required": true, "options": [
+      { "label": "50%", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "100%", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "quick-reflection", "points": 1 }] },
+      { "label": "75%", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "150%", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-qr-08", "sectionKey": "quick-reflection", "order": 8, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "All of the roses in a garden are red. Some of the flowers in the garden are not roses. Can you conclude that some of the flowers in the garden are not red?", "required": true, "options": [
+      { "label": "Yes", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "No, it cannot be determined from what's given", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "quick-reflection", "points": 1 }] },
+      { "label": "Only if there are more roses than other flowers", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "No, definitely all flowers are red", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-qr-09", "sectionKey": "quick-reflection", "order": 9, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "A rope is cut in half. Then every resulting piece is cut in half again. This \"cut everything in half\" step is repeated for a total of 5 rounds, starting from one whole rope. How many pieces of rope are there at the end?", "required": true, "options": [
+      { "label": "10", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "32", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "quick-reflection", "points": 1 }] },
+      { "label": "16", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "25", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-qr-10", "sectionKey": "quick-reflection", "order": 10, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "A clock takes 6 seconds to strike 6 o'clock, timed from the first chime to the last. How many seconds will the same clock take to strike 12 o'clock?", "required": true, "options": [
+      { "label": "12 seconds", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "13.2 seconds", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "quick-reflection", "points": 1 }] },
+      { "label": "6 seconds", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "11 seconds", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+
+    { "key": "dmp-sj-01", "sectionKey": "scenario-judgment", "order": 11, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "You're driving and brake lights suddenly flash ahead in your lane, but you can't yet tell why. What's the best immediate action?", "required": true, "options": [
+      { "label": "Immediately swerve into the next lane without checking it first", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Cover the brake and prepare to stop while checking your mirrors", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "scenario-judgment", "points": 1 }] },
+      { "label": "Speed up to get past whatever it is before it affects you", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Assume it's nothing and maintain your speed", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-sj-02", "sectionKey": "scenario-judgment", "order": 12, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Mid-presentation, you realize a key slide has a factual error that changes your conclusion. You have 2 minutes before you reach that slide. What's the best move?", "required": true, "options": [
+      { "label": "Ignore it and hope no one notices", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Quickly and calmly flag the correction when you reach that slide", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "scenario-judgment", "points": 1 }] },
+      { "label": "Stop the presentation entirely to fix the file live", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Skip the slide entirely without mentioning it", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-sj-03", "sectionKey": "scenario-judgment", "order": 13, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "A teammate messages that a production system is down, with no further detail, right before you're about to leave for an appointment you can't reschedule. What's the best immediate response?", "required": true, "options": [
+      { "label": "Leave without responding, assuming someone else will handle it", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Reply immediately asking for severity/impact and who else is aware, then decide next steps", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "scenario-judgment", "points": 1 }] },
+      { "label": "Drop everything and start investigating yourself before replying", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Ignore the message since you're about to be busy", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-sj-04", "sectionKey": "scenario-judgment", "order": 14, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "You're the only one who's noticed a shared document has two conflicting sets of numbers, and a decision based on it is happening in 5 minutes. What's the best move?", "required": true, "options": [
+      { "label": "Stay quiet since you're not sure which number is right", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Speak up immediately and flag the discrepancy before the decision is made", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "scenario-judgment", "points": 1 }] },
+      { "label": "Wait until after the decision to mention it", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Quietly pick the number that seems more plausible and use it without saying anything", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]},
+    { "key": "dmp-sj-05", "sectionKey": "scenario-judgment", "order": 15, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "You receive two urgent requests at the same time from two different managers, both due within the hour, and you can only finish one in that time. What's the best immediate action?", "required": true, "options": [
+      { "label": "Pick one silently and hope the other manager doesn't notice", "value": "0", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Tell both managers about the conflict right away and ask which takes priority, or negotiate a later deadline for one", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "decision-making", "points": 1 }, { "dimensionKey": "scenario-judgment", "points": 1 }] },
+      { "label": "Try to rush both at once and risk getting both wrong", "value": "2", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] },
+      { "label": "Do neither until someone else tells you what to do", "value": "3", "scoreConfig": [{ "dimensionKey": "decision-making", "points": 0 }] }
+    ]}
+  ]
+}

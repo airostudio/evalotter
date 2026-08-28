@@ -99,7 +99,7 @@ per-file in each JSON's `sourceNote`:
 | Palmistry | — | no source repo existed; authored fresh, no scoring |
 | EvalOtter Intelligence Profile (flagship) | shared library | composed by reusing real questions from the assessments above — see below |
 
-Four former "coming soon" entries have since been built out the same way,
+Eight former "coming soon" entries have since been built out the same way,
 each modeled on a real, named, world-standard instrument rather than
 invented from scratch — see **Graduated coming-soon assessments** below for
 the copyright caveat that applies to all of them.
@@ -110,6 +110,10 @@ the copyright caveat that applies to all of them.
 | Phonological Awareness | CTOPP-2 (Comprehensive Test of Phonological Processing) | 24 questions across its Elision/Blending Words/Sound Matching subtests — text-adapted, see caveat below |
 | Social Cognition Assessment | Happé's Strange Stories Task | 20 vignettes across its documented non-literal-language types (lie, white lie, joke, irony, figure of speech, misunderstanding, persuasion, pretense) — forced-choice adaptation, see caveat below |
 | Numerical Agility | Wonderlic Personnel Test (numerical subset) | 24 questions (arithmetic, ratios, number series, word problems) under one 10-minute overall clock, matching the Wonderlic's speed-over-power design |
+| Verbal Reasoning Mastery | GRE Verbal Reasoning measure | 30 questions across its 3 published formats (Text Completion, Sentence Equivalence, Reading Comprehension) |
+| Career Aptitude Profile | Holland Codes / RIASEC (O*NET Interest Profiler's basis) | 30 self-report items across the 6 RIASEC types; deliberately excluded from the Brain Profile aggregate — vocational interest isn't a cognitive-ability score |
+| Language Acquisition | Reber's Artificial Grammar Learning paradigm | 20 classification items testing implicit pattern extraction, using an original finite-state grammar (not Reber's exact one — see caveat below) |
+| Decision Making Under Pressure | Cognitive Reflection Test (CRT) paradigm | 15 questions — 10 original CRT-style "fast wrong answer vs. correct answer" problems plus 5 scenario-judgment items, under one 15-minute overall clock |
 
 **The flagship deliberately does not port the old `airostudio/brainyak`
 repo's "pattern recognition" content.** That repo hardcodes
@@ -140,11 +144,16 @@ the reusing assessment never declared (silently contributes nothing there).
 
 ## Graduated coming-soon assessments
 
-Critical Thinking Depth, Phonological Awareness, Social Cognition
-Assessment, and Numerical Agility have moved from the roadmap into real,
-scored assessments (see the table above) — the first batch of the
-remaining 14. The approach for all of them, and for whichever get built out
-next:
+Eight assessments have moved from the roadmap into real, scored ones (see
+the table above), across two batches:
+
+- **Batch 1**: Critical Thinking Depth, Phonological Awareness, Social
+  Cognition Assessment, Numerical Agility.
+- **Batch 2**: Verbal Reasoning Mastery, Career Aptitude Profile, Language
+  Acquisition, Decision Making Under Pressure.
+
+11 remain on the roadmap. The approach for all of them, and for whichever
+get built out next:
 
 - **Research the real, named, world-standard instrument for the domain
   first**, then model the assessment's structure (subtests/facets, item
@@ -156,19 +165,32 @@ next:
   *paradigm* (the skills it isolates, how it's structured, how it's
   scored), with original items written to implement that paradigm — the
   same approach legitimate cognitive-assessment platforms use.
-- **Only build what the existing infrastructure can score for real.** Two
-  domains were deliberately skipped for this batch: Attention Control
-  Test/Speed Processing Index (a genuine Stroop or processing-speed measure
-  needs response-time-weighted scoring, which `timed_choice` captures the
-  data for but `collectImpacts()` doesn't yet use — see
-  `src/lib/scoring/engine.ts`) and Abstract Reasoning Pro/Visuospatial
-  Rotation (Raven's-style matrices and the Vandenberg & Kuse Mental
-  Rotation Test need real rendered visuals; `pattern_question`/
-  `visual_rotation` currently fall back to `ImageChoiceQuestion.tsx`'s
-  plain-text-label mode with no image asset pipeline behind it — building
-  these without real images would mean a text-description task masquerading
-  as a visual reasoning test). Both are legitimate infrastructure work for
-  a future batch, not something to fake around.
+- **Only build what the existing infrastructure can score for real.**
+  Several domains have been deliberately skipped so far, each for a
+  concrete infrastructure gap rather than an oversight:
+  - **Attention Control Test / Speed Processing Index** — a genuine Stroop
+    or processing-speed measure needs response-time-weighted scoring, which
+    `timed_choice` captures the data for but `collectImpacts()` doesn't yet
+    use (see `src/lib/scoring/engine.ts`).
+  - **Abstract Reasoning Pro / Visuospatial Rotation** — Raven's-style
+    matrices and the Vandenberg & Kuse Mental Rotation Test need real
+    rendered visuals; `pattern_question`/`visual_rotation` currently fall
+    back to `ImageChoiceQuestion.tsx`'s plain-text-label mode with no image
+    asset pipeline behind it. Building these without real images would mean
+    a text-description task masquerading as a visual reasoning test.
+  - **Cognitive Flexibility Index** — the Wisconsin Card Sorting Test's
+    defining mechanic is inferring a hidden sorting rule from right/wrong
+    feedback, then re-inferring it after an unannounced switch. The runner
+    has no adaptive branching (every question is scored independently of
+    prior answers), so there's no way to give that feedback loop without
+    faking the one thing WCST actually measures.
+  - **Memory Palace Challenge** — a method-of-loci exercise is naturally an
+    ordered-recall task (`sequence` question type), but `collectImpacts()`
+    doesn't score `sequence` answers yet either — same class of gap as the
+    timed_choice one above.
+  All four are legitimate infrastructure work for a future batch (an
+  adaptive-questionnaire engine, response-time-weighted scoring, sequence
+  scoring, an image pipeline), not something to fake around.
 - **Note real adaptations openly, in the file's `sourceNote`.**
   Phonological Awareness's source (CTOPP-2) is administered orally; this
   platform has no audio-recording input, so every item is presented and
@@ -177,21 +199,29 @@ next:
   source (Happé's Strange Stories) is normally scored from open verbal
   explanations hand-coded by a researcher; this version uses forced-choice
   answers instead, so it's an easier recognition task than the original's
-  free explanation, not different.
+  free explanation, not different. Language Acquisition uses an original
+  finite-state grammar rather than Reber's exact one, since reproducing his
+  1967 diagram correctly from memory risked an inconsistent (and therefore
+  mis-scored) rule set — the paradigm (implicit exposure, then classify
+  novel strings) is what's ported, not the specific grammar. Decision
+  Making Under Pressure writes fresh CRT-style items rather than reusing
+  Frederick's original three (bat-and-ball, widget-machine, lily-pad) since
+  those are now widely circulated enough that many test-takers have already
+  seen them — a documented limitation of the original CRT that published
+  extended batteries work around the same way.
 
 `npm run seed:validate` catches structural bugs before any of this reaches
 a database — always run it on new content before `npm run seed`.
 
 ## Coming-soon assessments
 
-`scripts/seed/data/coming-soon.json` now holds the remaining 14 roadmap
-entries (Verbal Reasoning Mastery, Memory Palace Challenge, Creative
-Divergent Thinking, Speed Processing Index, Executive Function Profiling,
-Visuospatial Rotation, Auditory Processing Speed, Attention Control Test,
-Abstract Reasoning Pro, Decision Making Under Pressure, Cognitive
-Flexibility Index, Language Acquisition, Fluid Intelligence Peak, Career
-Aptitude Profile, Full IQ Estimation Report) with catalogue metadata
-only — no sections, questions, or scoring. They're `status: "coming_soon"`
+`scripts/seed/data/coming-soon.json` now holds the remaining 11 roadmap
+entries (Memory Palace Challenge, Creative Divergent Thinking, Speed
+Processing Index, Executive Function Profiling, Visuospatial Rotation,
+Auditory Processing Speed, Attention Control Test, Abstract Reasoning Pro,
+Cognitive Flexibility Index, Fluid Intelligence Peak, Full IQ Estimation
+Report) with catalogue metadata only — no sections, questions, or scoring.
+They're `status: "coming_soon"`
 (a distinct DB status from `draft`, since coming-soon entries are
 deliberately public-facing — see `0007`/`0008` migrations for the enum
 value and RLS policy). The catalogue shows them with a "Coming soon" badge

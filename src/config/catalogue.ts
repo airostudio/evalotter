@@ -203,7 +203,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Verbal Reasoning Mastery",
     shortDescription: "An advanced-tier follow-on to Verbal Reasoning, pushing into denser passages and multi-step argument chains.",
     category: "Language", categoryKey: "language", icon: "message-square",
-    engineType: "timed_questionnaire", difficulty: "hard", estimatedDurationMinutes: 25, questionCount: 30, access: "premium", comingSoon: true,
+    engineType: "timed_questionnaire", difficulty: "hard", estimatedDurationMinutes: 25, questionCount: 30, access: "premium",
   },
   {
     slug: "memory-palace-challenge",
@@ -287,7 +287,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Decision Making Under Pressure",
     shortDescription: "Scenario-based judgment tasks with a ticking clock and incomplete information — how you decide, not just what.",
     category: "Cognitive", categoryKey: "cognitive", icon: "timer",
-    engineType: "timed_questionnaire", difficulty: "hard", estimatedDurationMinutes: 15, questionCount: 15, access: "premium", comingSoon: true,
+    engineType: "timed_questionnaire", difficulty: "hard", estimatedDurationMinutes: 15, questionCount: 15, access: "premium",
   },
   {
     slug: "cognitive-flexibility-index",
@@ -301,7 +301,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Language Acquisition",
     shortDescription: "How readily you infer grammar and meaning from an unfamiliar constructed mini-language — a language-learning aptitude measure.",
     category: "Language", categoryKey: "language", icon: "book-open",
-    engineType: "standard_questionnaire", difficulty: "hard", estimatedDurationMinutes: 20, questionCount: 20, access: "premium", comingSoon: true,
+    engineType: "standard_questionnaire", difficulty: "hard", estimatedDurationMinutes: 20, questionCount: 20, access: "premium",
   },
   {
     slug: "social-cognition-assessment",
@@ -322,7 +322,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Career Aptitude Profile",
     shortDescription: "Maps your Brain Profile strengths and interests against career directions likely to suit how you think.",
     category: "Self Discovery", categoryKey: "self-discovery", icon: "compass",
-    engineType: "hybrid", difficulty: "easy", estimatedDurationMinutes: 15, questionCount: 30, access: "premium", comingSoon: true,
+    engineType: "hybrid", difficulty: "easy", estimatedDurationMinutes: 15, questionCount: 30, access: "premium",
   },
   {
     slug: "full-iq-estimation-report",

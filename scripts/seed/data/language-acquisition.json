@@ -1,0 +1,118 @@
+{
+  "slug": "language-acquisition",
+  "title": "Language Acquisition",
+  "shortDescription": "How readily you infer grammar and meaning from an unfamiliar constructed mini-language — a language-learning aptitude measure.",
+  "longDescription": "Language Acquisition is built on the Artificial Grammar Learning (AGL) paradigm established by Arthur Reber (1967) — one of the foundational tasks in implicit-learning research. You're shown a set of \"words\" from an invented mini-language that all follow a hidden structural rule, without being told the rule. You then classify new, never-before-seen words as consistent or inconsistent with that same pattern. Performance reflects your ability to implicitly extract structure from exposure alone — a core mechanism behind natural language acquisition.",
+  "icon": "book-open",
+  "categoryKey": "language",
+  "engineType": "standard_questionnaire",
+  "difficulty": "hard",
+  "estimatedDurationMinutes": 20,
+  "access": "premium",
+  "sourceNote": "Uses an original finite-state grammar built for this assessment (letters B, F, G, K, S; a valid word is B, then zero or more FG/GF pairs, then K, then S) rather than Reber's exact 1967 grammar, which this platform can't verify reproducing correctly from memory without risking an inconsistent (and therefore incorrectly-scored) rule set — every example and test item below was hand-verified against this platform's own grammar definition. What's ported from Reber is the paradigm itself: implicit exposure to grammatical strings, then classification of novel strings as consistent or inconsistent with the pattern, without ever stating the rule outright.",
+
+  "sections": [
+    { "key": "grammar-classification", "name": "Word Classification", "description": "Classifying novel words as following or breaking the pattern shown in the study examples.", "instructions": "Study these words from an invented language called Velkarin. They all follow the same hidden pattern — don't try to work out the rule explicitly, just get a feel for what a Velkarin word looks like: BKS · BFGKS · BGFKS · BFGFGKS · BGFGFKS · BFGGFKS · BGFFGKS · BFGFGFGKS. For each word below, decide whether it follows the same pattern as those examples or breaks it.", "timeLimitSeconds": null, "weight": 1, "order": 1 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "implicit-learning", "label": "Implicit Pattern Learning", "description": "Ability to extract and generalize structure from exposure alone, without explicit rule instruction.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "verbal", "order": 1 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "implicit-learning", "formula": "sum", "normalization": { "min": 0, "max": 20 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Classifying novel words by \"feel\" after brief exposure is difficult right now — this implicit pattern-extraction skill responds well to more exposure, not conscious rule-hunting.", "recommendations": ["Resist the urge to explicitly work out the rule — implicit learning tasks respond better to repeated exposure than analysis", "Notice which specific letter combinations felt 'off' in words you got wrong — that intuition is the skill building", "This paradigm mirrors early language exposure — the same mechanism that lets children absorb grammar without being taught rules"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "Some sensitivity to the underlying pattern, but longer or more novel words still get misclassified.", "recommendations": ["Re-read the study examples and let a 'shape' or 'rhythm' of the pattern form rather than counting letters", "Trust your first instinct on borderline words — implicit learning is often more accurate than deliberate analysis"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Reliable classification of novel words, including ones structurally different from the exact study examples.", "recommendations": ["This is a strong implicit-learning signal — often correlated with picking up a new language's grammar quickly through immersion", "Notice whether you can articulate any of the rule now, even partially — that's the implicit knowledge surfacing"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Consistently accurate across both grammatical and ungrammatical novel words, generalizing well beyond the study set.", "recommendations": ["This level of implicit pattern sensitivity is a genuine asset for immersion-based language learning", "Try noticing patterns in real language input (song lyrics, headlines) the same intuitive way, without analyzing"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Near-perfect classification of novel words — strong implicit extraction of structure from limited exposure.", "recommendations": ["Consider how immersion-heavy learning methods (rather than rule-first instruction) might suit you especially well for a new language", "This kind of statistical/structural learning also shows up in music and pattern-heavy domains — worth exploring there too"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "implicit-learning", "targetBrainProfileDimensionKey": "verbal", "weight": 0.4 }],
+
+  "questions": [
+    { "key": "la-01", "sectionKey": "grammar-classification", "order": 1, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "BFGFGGFKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] },
+      { "label": "Breaks the pattern", "value": "1", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] }
+    ]},
+    { "key": "la-02", "sectionKey": "grammar-classification", "order": 2, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "BFKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] },
+      { "label": "Breaks the pattern", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] }
+    ]},
+    { "key": "la-03", "sectionKey": "grammar-classification", "order": 3, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "BFGGFFGKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] },
+      { "label": "Breaks the pattern", "value": "1", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] }
+    ]},
+    { "key": "la-04", "sectionKey": "grammar-classification", "order": 4, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "KBFGS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] },
+      { "label": "Breaks the pattern", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] }
+    ]},
+    { "key": "la-05", "sectionKey": "grammar-classification", "order": 5, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "BFGGFGFKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] },
+      { "label": "Breaks the pattern", "value": "1", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] }
+    ]},
+    { "key": "la-06", "sectionKey": "grammar-classification", "order": 6, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "BFGK", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] },
+      { "label": "Breaks the pattern", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] }
+    ]},
+    { "key": "la-07", "sectionKey": "grammar-classification", "order": 7, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "BGFFGFGKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] },
+      { "label": "Breaks the pattern", "value": "1", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] }
+    ]},
+    { "key": "la-08", "sectionKey": "grammar-classification", "order": 8, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "BFGSK", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] },
+      { "label": "Breaks the pattern", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] }
+    ]},
+    { "key": "la-09", "sectionKey": "grammar-classification", "order": 9, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "BGFFGGFKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] },
+      { "label": "Breaks the pattern", "value": "1", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] }
+    ]},
+    { "key": "la-10", "sectionKey": "grammar-classification", "order": 10, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "BFFGKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] },
+      { "label": "Breaks the pattern", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] }
+    ]},
+    { "key": "la-11", "sectionKey": "grammar-classification", "order": 11, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "BGFGFFGKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] },
+      { "label": "Breaks the pattern", "value": "1", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] }
+    ]},
+    { "key": "la-12", "sectionKey": "grammar-classification", "order": 12, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "BFGKKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] },
+      { "label": "Breaks the pattern", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] }
+    ]},
+    { "key": "la-13", "sectionKey": "grammar-classification", "order": 13, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "BGFGFGFKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] },
+      { "label": "Breaks the pattern", "value": "1", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] }
+    ]},
+    { "key": "la-14", "sectionKey": "grammar-classification", "order": 14, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "BFGFKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] },
+      { "label": "Breaks the pattern", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] }
+    ]},
+    { "key": "la-15", "sectionKey": "grammar-classification", "order": 15, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "SFGKB", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] },
+      { "label": "Breaks the pattern", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] }
+    ]},
+    { "key": "la-16", "sectionKey": "grammar-classification", "order": 16, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "BFGGKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] },
+      { "label": "Breaks the pattern", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] }
+    ]},
+    { "key": "la-17", "sectionKey": "grammar-classification", "order": 17, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "BFGFGFGFGKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] },
+      { "label": "Breaks the pattern", "value": "1", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] }
+    ]},
+    { "key": "la-18", "sectionKey": "grammar-classification", "order": 18, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "BGFGFGFGFKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] },
+      { "label": "Breaks the pattern", "value": "1", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] }
+    ]},
+    { "key": "la-19", "sectionKey": "grammar-classification", "order": 19, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "BFGFGKSX", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] },
+      { "label": "Breaks the pattern", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] }
+    ]},
+    { "key": "la-20", "sectionKey": "grammar-classification", "order": 20, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "BGKS", "instructions": "Does this word follow the same pattern as the study examples?", "required": true, "options": [
+      { "label": "Follows the pattern", "value": "0", "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 0 }] },
+      { "label": "Breaks the pattern", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "implicit-learning", "points": 1 }] }
+    ]}
+  ]
+}
