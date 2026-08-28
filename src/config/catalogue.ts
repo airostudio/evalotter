@@ -217,14 +217,14 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Critical Thinking Depth",
     shortDescription: "Evaluate arguments for hidden assumptions, unstated premises, and reasoning under incomplete information.",
     category: "Logical", categoryKey: "logical", icon: "layers",
-    engineType: "standard_questionnaire", difficulty: "hard", estimatedDurationMinutes: 20, questionCount: 20, access: "free", comingSoon: true,
+    engineType: "standard_questionnaire", difficulty: "hard", estimatedDurationMinutes: 20, questionCount: 20, access: "free",
   },
   {
     slug: "numerical-agility",
     title: "Numerical Agility",
     shortDescription: "Rapid-fire mental math and estimation under a tight clock — built for speed as much as accuracy.",
     category: "Numerical", categoryKey: "numerical", icon: "zap",
-    engineType: "timed_questionnaire", difficulty: "medium", estimatedDurationMinutes: 10, questionCount: 25, access: "free", comingSoon: true,
+    engineType: "timed_questionnaire", difficulty: "medium", estimatedDurationMinutes: 10, questionCount: 24, access: "free",
   },
   {
     slug: "creative-divergent-thinking",
@@ -245,7 +245,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Phonological Awareness",
     shortDescription: "Rhyme, syllable, and sound-manipulation tasks measuring how you perceive and work with the sounds of language.",
     category: "Language", categoryKey: "language", icon: "volume-2",
-    engineType: "standard_questionnaire", difficulty: "medium", estimatedDurationMinutes: 12, questionCount: 20, access: "free", comingSoon: true,
+    engineType: "standard_questionnaire", difficulty: "medium", estimatedDurationMinutes: 12, questionCount: 24, access: "free",
   },
   {
     slug: "executive-function-profiling",
@@ -308,7 +308,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Social Cognition Assessment",
     shortDescription: "Reading intentions, perspective-taking, and interpreting social scenarios — the cognitive side of understanding people.",
     category: "Emotional", categoryKey: "emotional", icon: "users",
-    engineType: "standard_questionnaire", difficulty: "medium", estimatedDurationMinutes: 15, questionCount: 25, access: "free", comingSoon: true,
+    engineType: "standard_questionnaire", difficulty: "medium", estimatedDurationMinutes: 15, questionCount: 20, access: "free",
   },
   {
     slug: "fluid-intelligence-peak",

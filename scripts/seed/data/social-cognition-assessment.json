@@ -1,0 +1,144 @@
+{
+  "slug": "social-cognition-assessment",
+  "title": "Social Cognition Assessment",
+  "shortDescription": "Reading intentions, perspective-taking, and interpreting social scenarios — the cognitive side of understanding people.",
+  "longDescription": "Social Cognition is built around the paradigm of Happé's Strange Stories Task (Happé, 1994), the most widely cited theory-of-mind test beyond childhood — short vignettes end in a character saying something that isn't literally true (a lie, a joke, sarcasm, a white lie, pretense), and understanding why requires reasoning about what the character believes, wants, or intends. The original task is administered verbally with open-ended responses hand-coded by a researcher; here every vignette is answered as a forced choice between the correct mental-state explanation and plausible-but-wrong alternatives, so it can be scored deterministically.",
+  "icon": "users",
+  "categoryKey": "emotional",
+  "engineType": "standard_questionnaire",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 15,
+  "access": "free",
+  "sourceNote": "Original vignettes written to implement Happé's Strange Stories Task paradigm (non-literal-language types documented in Happé 1994 and White, Hill, Happé & Frith 2009: lie, white lie, joke, pretense, misunderstanding, persuasion, appearance/reality, figure of speech, irony) — the original published stories are not reproduced. Known adaptation: the real task scores open verbal explanations on a 0/1/2 mental-state scale via trained coders; this version uses forced-choice answers (the correct mentalistic explanation vs. a literal/physical-state distractor and an unrelated distractor) so it can be scored deterministically without human coding — this measures the same core skill (attributing the right mental state) but is an easier recognition task than free explanation.",
+
+  "sections": [
+    { "key": "non-literal-language", "name": "Non-Literal Language", "description": "Understanding lies, white lies, jokes, irony, and figures of speech — statements that aren't literally true but make sense once you understand why they were said.", "instructions": "Read each short scenario, then choose the explanation that best captures why the character said what they said.", "timeLimitSeconds": null, "weight": 0.5, "order": 1 },
+    { "key": "social-reasoning", "name": "Social Reasoning", "description": "Understanding misunderstandings, persuasion, and pretense — situations that require tracking what someone else believes or intends, separate from what's actually true.", "instructions": "Read each short scenario, then choose the explanation that best accounts for the character's behavior.", "timeLimitSeconds": null, "weight": 0.5, "order": 2 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "social-cognition", "label": "Social Cognition", "description": "Composite score across non-literal language and social reasoning.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "emotional", "order": 1 },
+    { "key": "non-literal-language", "label": "Non-Literal Language", "description": "Correctly interpreting lies, jokes, irony, and figurative speech.", "contributesToBrainProfile": false, "order": 2 },
+    { "key": "social-reasoning", "label": "Social Reasoning", "description": "Tracking beliefs, intentions, and misunderstandings distinct from objective reality.", "contributesToBrainProfile": false, "order": 3 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "social-cognition", "formula": "average" },
+    { "dimensionKey": "non-literal-language", "formula": "sum", "normalization": { "min": 0, "max": 10 } },
+    { "dimensionKey": "social-reasoning", "formula": "sum", "normalization": { "min": 0, "max": 10 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Social scenarios are often read at face value — the literal words rather than what the speaker actually believed, wanted, or intended.", "recommendations": ["When someone says something surprising, pause and ask what they might believe that would make it make sense", "Practice noticing the difference between what's said and what's meant in conversations you observe", "Watch for social cues like tone and context that signal irony, jokes, or tact"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "Straightforward social cues like obvious jokes or lies are read correctly, but subtler cases — white lies, persuasion, double meanings — are harder to untangle.", "recommendations": ["Practice distinguishing white lies (said to protect feelings) from ordinary lies (said for self-interest)", "Pay attention to a speaker's likely goal, not just their literal words, when interpreting persuasion"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Reliably infers what other people believe and intend, correctly separating that from objective reality in most scenarios.", "recommendations": ["Practice with layered scenarios where a character's belief is itself mistaken", "Apply this skill deliberately in real conversations — check your read against what actually happened"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Consistently accurate at reading intentions, irony, and non-literal language, rarely taking a figurative statement at face value.", "recommendations": ["This is a strong foundation for roles involving negotiation, mediation, or coaching", "Notice how this skill helps you catch misunderstandings before they escalate"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Expert-level social cognition — mental states, intentions, and non-literal meaning are read quickly and accurately across every scenario type.", "recommendations": ["Consider where this strength is most valuable — teaching, therapy, leadership, and mediation all lean on it heavily", "Mentor others on distinguishing what's said from what's meant"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "social-cognition", "targetBrainProfileDimensionKey": "emotional", "weight": 0.5 }],
+
+  "questions": [
+    { "key": "sca-lie-01", "sectionKey": "non-literal-language", "order": 1, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Tom ate the last slice of cake that was meant for his sister's birthday. When his mom asked who ate it, Tom said, \"I don't know, maybe the dog got it.\" Why did Tom say that?", "required": true, "options": [
+      { "label": "Tom wanted his mom to believe something false so he wouldn't get in trouble", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "non-literal-language", "points": 1 }] },
+      { "label": "Tom genuinely thought the dog might have eaten it", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "Tom likes dogs", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-wl-01", "sectionKey": "non-literal-language", "order": 2, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Grandma knitted Lily a sweater with a wonky sleeve. Lily doesn't like it, but she says, \"Thank you Grandma, I love it!\" Why did Lily say that?", "required": true, "options": [
+      { "label": "Lily actually loves the sweater and just seemed unhappy", "value": "0", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "Lily wanted to protect Grandma's feelings rather than say something hurtful", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "non-literal-language", "points": 1 }] },
+      { "label": "Lily is planning to return the sweater to the store", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-joke-01", "sectionKey": "non-literal-language", "order": 3, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Dan says to his friend, \"Nice haircut — did you lose a bet?\" His friend laughs. Why did Dan say that?", "required": true, "options": [
+      { "label": "Dan is teasing his friend playfully, not seriously criticizing the haircut", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "non-literal-language", "points": 1 }] },
+      { "label": "Dan genuinely believes his friend lost a bet", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "Dan doesn't know what a haircut is", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-irony-01", "sectionKey": "non-literal-language", "order": 4, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "It's pouring rain and the picnic is ruined. Mia looks up at the sky and says, \"Oh great, perfect weather for a picnic.\" What does Mia mean?", "required": true, "options": [
+      { "label": "Mia thinks it's actually good weather for a picnic", "value": "0", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "Mia means the opposite — she's frustrated that the weather ruined the picnic", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "non-literal-language", "points": 1 }] },
+      { "label": "Mia is asking a genuine question about the forecast", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-fig-01", "sectionKey": "non-literal-language", "order": 5, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "After a long, exhausting hike, Ravi collapses on the couch and says, \"I could sleep for a year.\" What does Ravi mean?", "required": true, "options": [
+      { "label": "Ravi is extremely tired and wants to convey how tired he is, not that he'll literally sleep for a year", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "non-literal-language", "points": 1 }] },
+      { "label": "Ravi has a sleep disorder", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "Ravi is planning to hibernate", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-lie-02", "sectionKey": "non-literal-language", "order": 6, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Jake borrowed his roommate's charger and lost it. When asked where it is, Jake says, \"I gave it back to you already.\" This isn't true — why did Jake say it?", "required": true, "options": [
+      { "label": "Jake is confused about which charger is being discussed", "value": "0", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "Jake wants his roommate to falsely believe the charger was returned, so he avoids blame", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "non-literal-language", "points": 1 }] },
+      { "label": "Jake is joking around", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-wl-02", "sectionKey": "non-literal-language", "order": 7, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "A coworker asks Priya, \"How do I look for the interview?\" His shirt is inside out but there's no time to fix it. Priya says, \"You look great — good luck!\" Why might Priya say that instead of pointing out the shirt?", "required": true, "options": [
+      { "label": "Priya didn't notice the shirt was inside out", "value": "0", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "With no time left to fix it, pointing it out would only add stress without helping — so Priya chose encouragement instead", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "non-literal-language", "points": 1 }] },
+      { "label": "Priya genuinely thinks an inside-out shirt looks great", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-irony-02", "sectionKey": "non-literal-language", "order": 8, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Sam trips and drops his lunch tray in the crowded cafeteria. His friend says, \"Smooth move.\" What does the friend mean?", "required": true, "options": [
+      { "label": "The friend is sincerely complimenting Sam's coordination", "value": "0", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "The friend is teasing Sam — the opposite of \"smooth\" just happened", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "non-literal-language", "points": 1 }] },
+      { "label": "The friend didn't see what happened", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-joke-02", "sectionKey": "non-literal-language", "order": 9, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "At dinner, Dad says, \"I'm not a doctor, but I'm pretty sure that's not how you're supposed to eat spaghetti,\" watching his toddler smear sauce everywhere. Everyone laughs. What's happening?", "required": true, "options": [
+      { "label": "Dad is making a lighthearted joke about the mess, not giving real medical advice", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "non-literal-language", "points": 1 }] },
+      { "label": "Dad is a doctor and is being modest", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "Dad is genuinely worried about food safety", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-fig-02", "sectionKey": "non-literal-language", "order": 10, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "After hearing the shocking news, Elena says, \"You could've knocked me over with a feather.\" What does Elena mean?", "required": true, "options": [
+      { "label": "Elena was extremely surprised — not that she was literally almost knocked over", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "non-literal-language", "points": 1 }] },
+      { "label": "Elena is physically weak", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "Elena wants someone to bring her a feather", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+
+    { "key": "sca-mis-01", "sectionKey": "social-reasoning", "order": 11, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Ben texts \"running late, sorry!\" to the group chat for game night. He meant to send it to his other friends about a different plan — he'd actually already left for game night on time. When he arrives on time, his friends are confused. Why?", "required": true, "options": [
+      { "label": "Ben's friends believed the text was about game night, so they expected him to be late — but it was actually about something else", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "social-reasoning", "points": 1 }] },
+      { "label": "Ben's friends don't know how to read texts", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "Ben actually was late and is lying about it", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-per-01", "sectionKey": "social-reasoning", "order": 12, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "A salesperson tells a customer, \"This is the last one in stock, and three other people are asking about it.\" Why might the salesperson say this?", "required": true, "options": [
+      { "label": "To create a sense of urgency that makes the customer more likely to buy now", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "social-reasoning", "points": 1 }] },
+      { "label": "To warn the customer that the product is unpopular", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "Because store policy requires mentioning stock levels", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-pre-01", "sectionKey": "social-reasoning", "order": 13, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Two kids are playing. One picks up a banana, holds it to her ear, and says, \"Hello? Yes, one moment please.\" Then hands it to her friend. What is she doing?", "required": true, "options": [
+      { "label": "Pretending the banana is a phone, as part of imaginative play", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "social-reasoning", "points": 1 }] },
+      { "label": "She genuinely believes the banana is a phone", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "She is hungry and confused", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-mis-02", "sectionKey": "social-reasoning", "order": 14, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Aisha waves enthusiastically across the street. The person doesn't wave back and walks away. Aisha feels hurt — but it turns out the person wasn't looking in her direction at all and never saw her. Why did Aisha feel hurt?", "required": true, "options": [
+      { "label": "Aisha believed the person saw her and chose to ignore her, even though that wasn't actually true", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "social-reasoning", "points": 1 }] },
+      { "label": "Aisha doesn't like the person", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "The person deliberately ignored her", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-per-02", "sectionKey": "social-reasoning", "order": 15, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "A manager tells the team, \"I know this deadline is tight, but I really believe in this team's ability to pull it off.\" Why might the manager phrase it this way rather than just saying \"finish it by Friday\"?", "required": true, "options": [
+      { "label": "To motivate the team by expressing confidence, making them more willing to push through the tight deadline", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "social-reasoning", "points": 1 }] },
+      { "label": "The manager is unsure whether Friday is actually the deadline", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "Company policy requires compliments before every deadline", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-pre-02", "sectionKey": "social-reasoning", "order": 16, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "A child sets up stuffed animals in a row and says, \"Class, today we're learning about dinosaurs,\" pointing to a picture book. What is happening?", "required": true, "options": [
+      { "label": "The child is play-acting being a teacher, treating the stuffed animals as students", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "social-reasoning", "points": 1 }] },
+      { "label": "The child believes the stuffed animals can actually learn", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "The child is doing actual homework", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-mis-03", "sectionKey": "social-reasoning", "order": 17, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Leo tells his friend a surprise party is \"definitely not happening this weekend\" so his friend won't suspect anything — but the party actually is this weekend. His friend repeats this to someone else as fact. Why did the friend get it wrong?", "required": true, "options": [
+      { "label": "The friend believed what Leo said was true, not knowing Leo said it deliberately to protect the surprise", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "social-reasoning", "points": 1 }] },
+      { "label": "The friend also knows about the surprise and is playing along", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "There is no surprise party", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-per-03", "sectionKey": "social-reasoning", "order": 18, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Before asking to borrow the car, a teenager first does the dishes without being asked and compliments dinner. Why might they be doing this?", "required": true, "options": [
+      { "label": "Putting their parent in a good mood first, making them more likely to say yes to the car request", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "social-reasoning", "points": 1 }] },
+      { "label": "The teenager just enjoys doing dishes", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "It's their assigned chore day", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-mis-04", "sectionKey": "social-reasoning", "order": 19, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Two friends agree to meet \"at the usual place\" — but one means their usual coffee shop and the other means their usual park bench. Both wait separately, confused when the other doesn't show. Why?", "required": true, "options": [
+      { "label": "Each believed \"the usual place\" meant the same thing to both of them, when it actually referred to two different places", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "social-reasoning", "points": 1 }] },
+      { "label": "One of them forgot about the plan entirely", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "They were never actually friends", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]},
+    { "key": "sca-per-04", "sectionKey": "social-reasoning", "order": 20, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "An ad says, \"9 out of 10 dentists recommend this toothpaste\" without mentioning how many dentists were actually asked or how they were chosen. Why might an advertiser phrase a claim this way?", "required": true, "options": [
+      { "label": "To make the product sound more credible and trustworthy than the underlying evidence necessarily supports", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 1 }, { "dimensionKey": "social-reasoning", "points": 1 }] },
+      { "label": "Because exactly 10 dentists exist in total", "value": "1", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] },
+      { "label": "It's a legal requirement for toothpaste ads", "value": "2", "scoreConfig": [{ "dimensionKey": "social-cognition", "points": 0 }] }
+    ]}
+  ]
+}

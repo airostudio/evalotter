@@ -95,6 +95,18 @@ per-file in each JSON's `sourceNote`:
 | Palmistry | — | no source repo existed; authored fresh, no scoring |
 | EvalOtter Intelligence Profile (flagship) | shared library | composed by reusing real questions from the assessments above — see below |
 
+Four former "coming soon" entries have since been built out the same way,
+each modeled on a real, named, world-standard instrument rather than
+invented from scratch — see **Graduated coming-soon assessments** below for
+the copyright caveat that applies to all of them.
+
+| Assessment | Modeled on | Notes |
+|---|---|---|
+| Critical Thinking Depth | Watson-Glaser Critical Thinking Appraisal | 20 questions across its 5 published subskills (Inference, Recognition of Assumptions, Deduction, Interpretation, Evaluation of Arguments) |
+| Phonological Awareness | CTOPP-2 (Comprehensive Test of Phonological Processing) | 24 questions across its Elision/Blending Words/Sound Matching subtests — text-adapted, see caveat below |
+| Social Cognition Assessment | Happé's Strange Stories Task | 20 vignettes across its documented non-literal-language types (lie, white lie, joke, irony, figure of speech, misunderstanding, persuasion, pretense) — forced-choice adaptation, see caveat below |
+| Numerical Agility | Wonderlic Personnel Test (numerical subset) | 24 questions (arithmetic, ratios, number series, word problems) under one 10-minute overall clock, matching the Wonderlic's speed-over-power design |
+
 **The flagship deliberately does not port the old `airostudio/brainyak`
 repo's "pattern recognition" content.** That repo hardcodes
 `correctAnswer: 0` for every one of its 15 questions regardless of the
@@ -122,16 +134,59 @@ a scoring dimension declared but never actually targeted by any question
 (dead 0 on the results page), and a reused question scoring a dimension key
 the reusing assessment never declared (silently contributes nothing there).
 
+## Graduated coming-soon assessments
+
+Critical Thinking Depth, Phonological Awareness, Social Cognition
+Assessment, and Numerical Agility have moved from the roadmap into real,
+scored assessments (see the table above) — the first batch of the
+remaining 14. The approach for all of them, and for whichever get built out
+next:
+
+- **Research the real, named, world-standard instrument for the domain
+  first**, then model the assessment's structure (subtests/facets, item
+  types, scoring logic) on it — the same thing Emotional Intelligence
+  already did with EQ-i/MSCEIT.
+- **Never reproduce the actual copyrighted items.** Watson-Glaser, CTOPP-2,
+  the Wonderlic, etc. are commercially licensed instruments — their real
+  passages/stimuli/norms aren't reproduced here. What's ported is the
+  *paradigm* (the skills it isolates, how it's structured, how it's
+  scored), with original items written to implement that paradigm — the
+  same approach legitimate cognitive-assessment platforms use.
+- **Only build what the existing infrastructure can score for real.** Two
+  domains were deliberately skipped for this batch: Attention Control
+  Test/Speed Processing Index (a genuine Stroop or processing-speed measure
+  needs response-time-weighted scoring, which `timed_choice` captures the
+  data for but `collectImpacts()` doesn't yet use — see
+  `src/lib/scoring/engine.ts`) and Abstract Reasoning Pro/Visuospatial
+  Rotation (Raven's-style matrices and the Vandenberg & Kuse Mental
+  Rotation Test need real rendered visuals; `pattern_question`/
+  `visual_rotation` currently fall back to `ImageChoiceQuestion.tsx`'s
+  plain-text-label mode with no image asset pipeline behind it — building
+  these without real images would mean a text-description task masquerading
+  as a visual reasoning test). Both are legitimate infrastructure work for
+  a future batch, not something to fake around.
+- **Note real adaptations openly, in the file's `sourceNote`.**
+  Phonological Awareness's source (CTOPP-2) is administered orally; this
+  platform has no audio-recording input, so every item is presented and
+  answered as text instead — that measures the same phonemic-manipulation
+  skill, but not auditory perception specifically. Social Cognition's
+  source (Happé's Strange Stories) is normally scored from open verbal
+  explanations hand-coded by a researcher; this version uses forced-choice
+  answers instead, so it's an easier recognition task than the original's
+  free explanation, not different.
+
+`npm run seed:validate` catches structural bugs before any of this reaches
+a database — always run it on new content before `npm run seed`.
+
 ## Coming-soon assessments
 
-`scripts/seed/data/coming-soon.json` holds 18 roadmap entries (Verbal
-Reasoning Mastery, Memory Palace Challenge, Critical Thinking Depth,
-Numerical Agility, Creative Divergent Thinking, Speed Processing Index,
-Phonological Awareness, Executive Function Profiling, Visuospatial
-Rotation, Auditory Processing Speed, Attention Control Test, Abstract
-Reasoning Pro, Decision Making Under Pressure, Cognitive Flexibility Index,
-Language Acquisition, Social Cognition Assessment, Fluid Intelligence Peak,
-Career Aptitude Profile, Full IQ Estimation Report) with catalogue metadata
+`scripts/seed/data/coming-soon.json` now holds the remaining 14 roadmap
+entries (Verbal Reasoning Mastery, Memory Palace Challenge, Creative
+Divergent Thinking, Speed Processing Index, Executive Function Profiling,
+Visuospatial Rotation, Auditory Processing Speed, Attention Control Test,
+Abstract Reasoning Pro, Decision Making Under Pressure, Cognitive
+Flexibility Index, Language Acquisition, Fluid Intelligence Peak, Career
+Aptitude Profile, Full IQ Estimation Report) with catalogue metadata
 only — no sections, questions, or scoring. They're `status: "coming_soon"`
 (a distinct DB status from `draft`, since coming-soon entries are
 deliberately public-facing — see `0007`/`0008` migrations for the enum

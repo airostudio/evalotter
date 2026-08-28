@@ -1,0 +1,192 @@
+{
+  "slug": "phonological-awareness",
+  "title": "Phonological Awareness",
+  "shortDescription": "Rhyme, syllable, and sound-manipulation tasks measuring how you perceive and work with the sounds of language.",
+  "longDescription": "Phonological Awareness is built around the subtest structure of the CTOPP-2 (Comprehensive Test of Phonological Processing, Second Edition — the standard clinical/educational measure of phonological processing): Elision (removing a sound from a spoken word to form another word), Blending Words (synthesizing separate sounds into a word), and Sound Matching (identifying shared initial or final sounds). The CTOPP-2 is administered orally; since this platform has no audio-recording input, every item is adapted to a text/reading format — see the source note below.",
+  "icon": "volume-2",
+  "categoryKey": "language",
+  "engineType": "standard_questionnaire",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 12,
+  "access": "free",
+  "sourceNote": "Original items written to implement the CTOPP-2's published subtest structure (Elision, Blending Words, Sound Matching) — the CTOPP-2 itself is a copyrighted, commercially normed instrument (PRO-ED), so its actual stimulus words and norms are not reproduced here. Known adaptation: the real CTOPP-2 is administered by a clinician reading sounds aloud and recording a spoken response; without audio infrastructure, every item here is presented and answered as text (e.g. 'say cat without the /k/ sound' as a written prompt with multiple-choice answers) rather than a true auditory task. That measures phonemic manipulation ability but not auditory perception specifically — worth building a real audio version if TTS/audio-recording is ever added.",
+
+  "sections": [
+    { "key": "elision", "name": "Elision", "description": "Removing a sound from a spoken word to form a different, real word.", "instructions": "Each item names a word and a sound to remove. Choose what's left after removing it.", "timeLimitSeconds": null, "weight": 0.34, "order": 1 },
+    { "key": "blending", "name": "Blending Words", "description": "Synthesizing individual sounds into a whole word.", "instructions": "Each item gives you separate sounds. Choose the word they form when blended together.", "timeLimitSeconds": null, "weight": 0.33, "order": 2 },
+    { "key": "sound-matching", "name": "Sound Matching", "description": "Identifying which word shares an initial or final sound with a target word.", "instructions": "Choose the word that starts (or ends) with the same sound as the target word.", "timeLimitSeconds": null, "weight": 0.33, "order": 3 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "phonological-awareness", "label": "Phonological Awareness", "description": "Composite score across elision, blending, and sound matching.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "verbal", "order": 1 },
+    { "key": "elision", "label": "Elision", "description": "Ability to remove a phonological segment from a word.", "contributesToBrainProfile": false, "order": 2 },
+    { "key": "blending", "label": "Blending", "description": "Ability to synthesize separate sounds into a word.", "contributesToBrainProfile": false, "order": 3 },
+    { "key": "sound-matching", "label": "Sound Matching", "description": "Ability to identify shared initial/final sounds across words.", "contributesToBrainProfile": false, "order": 4 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "phonological-awareness", "formula": "average" },
+    { "dimensionKey": "elision", "formula": "sum", "normalization": { "min": 0, "max": 8 } },
+    { "dimensionKey": "blending", "formula": "sum", "normalization": { "min": 0, "max": 8 } },
+    { "dimensionKey": "sound-matching", "formula": "sum", "normalization": { "min": 0, "max": 8 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Sound-manipulation skills are still forming — breaking words into their component sounds and recombining them takes deliberate effort.", "recommendations": ["Practice saying words slowly, sound by sound, before trying to remove or blend a sound", "Start with elision on simple one-syllable words before moving to blends and clusters", "Read aloud regularly — hearing your own pronunciation reinforces the sound-to-letter mapping"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "Comfortable with simple sound manipulation, but multi-sound blends and less common sound-matching pairs slow you down.", "recommendations": ["Practice blending 3-4 separate sounds into words without seeing them written first", "Work on sound matching across less obvious pairs (matching endings, not just starts)"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Reliable phonemic manipulation across elision, blending, and matching, with occasional slips on trickier consonant clusters.", "recommendations": ["Challenge yourself with elision on words with consonant blends (e.g. removing one sound from a three-consonant cluster)", "Practice with multisyllabic words rather than just single syllables"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Fast, accurate sound manipulation across all three skills — this level of phonological awareness underlies strong reading and spelling ability.", "recommendations": ["This skill transfers directly to learning new languages and to spelling irregular words", "Try phonological awareness with unfamiliar or invented words to test the skill in isolation from memorized vocabulary"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Expert-level phonological processing — sounds are manipulated automatically and accurately across every task type.", "recommendations": ["Consider how this strength could support tutoring, speech-language work, or language learning", "This is a strong predictor of ease learning additional languages — a good time to try one"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "phonological-awareness", "targetBrainProfileDimensionKey": "verbal", "weight": 0.5 }],
+
+  "questions": [
+    { "key": "pa-eli-01", "sectionKey": "elision", "order": 1, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Say \"cat\" without the /k/ sound. What word is left?", "required": true, "options": [
+      { "label": "at", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "elision", "points": 1 }] },
+      { "label": "ca", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "at-uh", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "hat", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-eli-02", "sectionKey": "elision", "order": 2, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Say \"smile\" without the /s/ sound. What word is left?", "required": true, "options": [
+      { "label": "mile", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "elision", "points": 1 }] },
+      { "label": "smle", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "mole", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "mild", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-eli-03", "sectionKey": "elision", "order": 3, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Say \"plant\" without the /p/ sound. What word is left?", "required": true, "options": [
+      { "label": "lant", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "elision", "points": 1 }] },
+      { "label": "lan", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "ant", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "pant", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-eli-04", "sectionKey": "elision", "order": 4, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Say \"train\" without the /t/ sound. What word is left?", "required": true, "options": [
+      { "label": "rain", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "elision", "points": 1 }] },
+      { "label": "ran", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "rain-uh", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "tain", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-eli-05", "sectionKey": "elision", "order": 5, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Say \"stripe\" without the /s/ sound. What word is left?", "required": true, "options": [
+      { "label": "tripe", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "elision", "points": 1 }] },
+      { "label": "ripe", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "trip", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "strip", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-eli-06", "sectionKey": "elision", "order": 6, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Say \"clamp\" without the /k/ sound. What word is left?", "required": true, "options": [
+      { "label": "lamp", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "elision", "points": 1 }] },
+      { "label": "amp", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "camp", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "ramp", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-eli-07", "sectionKey": "elision", "order": 7, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Say \"beans\" without the final /z/ sound. What word is left?", "required": true, "options": [
+      { "label": "bean", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "elision", "points": 1 }] },
+      { "label": "bea", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "beans-uh", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "bead", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-eli-08", "sectionKey": "elision", "order": 8, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Say \"desks\" without the final /s/ sound. What word is left?", "required": true, "options": [
+      { "label": "desk", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "elision", "points": 1 }] },
+      { "label": "des", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "deck", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "dest", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+
+    { "key": "pa-ble-01", "sectionKey": "blending", "order": 9, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Blend these sounds together: /k/ /a/ /t/. What word do they make?", "required": true, "options": [
+      { "label": "cat", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "blending", "points": 1 }] },
+      { "label": "cot", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "act", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "cast", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-ble-02", "sectionKey": "blending", "order": 10, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Blend these sounds together: /sh/ /i/ /p/. What word do they make?", "required": true, "options": [
+      { "label": "ship", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "blending", "points": 1 }] },
+      { "label": "sip", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "chip", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "shape", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-ble-03", "sectionKey": "blending", "order": 11, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Blend these sounds together: /f/ /l/ /a/ /g/. What word do they make?", "required": true, "options": [
+      { "label": "flag", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "blending", "points": 1 }] },
+      { "label": "frag", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "fag", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "flat", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-ble-04", "sectionKey": "blending", "order": 12, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Blend these sounds together: /s/ /t/ /o/ /p/. What word do they make?", "required": true, "options": [
+      { "label": "stop", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "blending", "points": 1 }] },
+      { "label": "sop", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "top", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "spot", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-ble-05", "sectionKey": "blending", "order": 13, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Blend these sounds together: /k/ /r/ /a/ /f/ /t/. What word do they make?", "required": true, "options": [
+      { "label": "craft", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "blending", "points": 1 }] },
+      { "label": "carft", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "craft-uh", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "kraft-ee", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-ble-06", "sectionKey": "blending", "order": 14, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Blend these sounds together: /th/ /r/ /o/ /n/. What word do they make?", "required": true, "options": [
+      { "label": "throne", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "blending", "points": 1 }] },
+      { "label": "thorn", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "thron", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "drone", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-ble-07", "sectionKey": "blending", "order": 15, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Blend these sounds together: /b/ /r/ /i/ /j/. What word do they make?", "required": true, "options": [
+      { "label": "bridge", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "blending", "points": 1 }] },
+      { "label": "brig", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "bride", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "beige", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-ble-08", "sectionKey": "blending", "order": 16, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Blend these sounds together: /m/ /oo/ /n/. What word do they make?", "required": true, "options": [
+      { "label": "moon", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "blending", "points": 1 }] },
+      { "label": "moan", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "man", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "moot", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+
+    { "key": "pa-sm-01", "sectionKey": "sound-matching", "order": 17, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Which word starts with the same sound as \"sun\"?", "required": true, "options": [
+      { "label": "soap", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "sound-matching", "points": 1 }] },
+      { "label": "moon", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "run", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "tap", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-sm-02", "sectionKey": "sound-matching", "order": 18, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Which word ends with the same sound as \"cake\"?", "required": true, "options": [
+      { "label": "lake", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "sound-matching", "points": 1 }] },
+      { "label": "case", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "call", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "cane", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-sm-03", "sectionKey": "sound-matching", "order": 19, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Which word starts with the same sound as \"phone\"?", "required": true, "options": [
+      { "label": "fence", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "sound-matching", "points": 1 }] },
+      { "label": "pond", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "cone", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "home", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-sm-04", "sectionKey": "sound-matching", "order": 20, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Which word ends with the same sound as \"laugh\"?", "required": true, "options": [
+      { "label": "off", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "sound-matching", "points": 1 }] },
+      { "label": "large", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "log", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "lath", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-sm-05", "sectionKey": "sound-matching", "order": 21, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Which word starts with the same sound as \"gym\"?", "required": true, "options": [
+      { "label": "giraffe", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "sound-matching", "points": 1 }] },
+      { "label": "gum", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "game", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "hymn", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-sm-06", "sectionKey": "sound-matching", "order": 22, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Which word ends with the same sound as \"circus\"?", "required": true, "options": [
+      { "label": "bus", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "sound-matching", "points": 1 }] },
+      { "label": "circle", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "curse", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "cursor", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-sm-07", "sectionKey": "sound-matching", "order": 23, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Which word starts with the same sound as \"knee\"?", "required": true, "options": [
+      { "label": "nice", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "sound-matching", "points": 1 }] },
+      { "label": "key", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "keen", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "tea", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]},
+    { "key": "pa-sm-08", "sectionKey": "sound-matching", "order": 24, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Which word starts with the same sound as \"chair\"?", "required": true, "options": [
+      { "label": "cheese", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 1 }, { "dimensionKey": "sound-matching", "points": 1 }] },
+      { "label": "share", "value": "1", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "care", "value": "2", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] },
+      { "label": "hair", "value": "3", "scoreConfig": [{ "dimensionKey": "phonological-awareness", "points": 0 }] }
+    ]}
+  ]
+}

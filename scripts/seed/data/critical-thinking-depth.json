@@ -1,0 +1,156 @@
+{
+  "slug": "critical-thinking-depth",
+  "title": "Critical Thinking Depth",
+  "shortDescription": "Evaluate arguments for hidden assumptions, unstated premises, and reasoning under incomplete information.",
+  "longDescription": "Critical Thinking Depth is built around the five-skill structure of the Watson-Glaser Critical Thinking Appraisal (Watson & Glaser, 1925 onward; still one of the most widely used critical-thinking measures in professional and legal hiring): Inference, Recognition of Assumptions, Deduction, Interpretation, and Evaluation of Arguments. Each section isolates one skill so the results show exactly where your reasoning is strong versus where it slips.",
+  "icon": "layers",
+  "categoryKey": "logical",
+  "engineType": "standard_questionnaire",
+  "difficulty": "hard",
+  "estimatedDurationMinutes": 20,
+  "access": "free",
+  "sourceNote": "Original items written to implement the Watson-Glaser Critical Thinking Appraisal's published five-skill structure (Inference, Recognition of Assumptions, Deduction, Interpretation, Evaluation of Arguments) — the Watson-Glaser itself is a copyrighted, commercially licensed instrument (Pearson TalentLens), so its actual passages/items are not reproduced here. What's ported is the paradigm: the same five discrete skills, the same 'given only what's stated, not what's plausible' discipline, with original scenarios.",
+
+  "sections": [
+    { "key": "inference", "name": "Inference", "description": "Judging the degree of truth or falsity of inferences drawn from a set of facts, without assuming anything beyond what's stated.", "instructions": "Based only on the facts given, judge whether each conclusion is true, probably true, insufficient data, probably false, or false. Pick the single best judgment.", "timeLimitSeconds": null, "weight": 0.2, "order": 1 },
+    { "key": "assumptions", "name": "Recognition of Assumptions", "description": "Identifying the unstated assumption that a claim depends on.", "instructions": "For each statement, decide which assumption is actually being made — not just something that sounds reasonable.", "timeLimitSeconds": null, "weight": 0.2, "order": 2 },
+    { "key": "deduction", "name": "Deduction", "description": "Determining whether a conclusion follows necessarily from given premises, using formal validity rather than real-world plausibility.", "instructions": "Assume the premises are true. Judge only whether the conclusion follows necessarily from them.", "timeLimitSeconds": null, "weight": 0.2, "order": 3 },
+    { "key": "interpretation", "name": "Interpretation", "description": "Weighing evidence to decide whether a proposed conclusion follows beyond reasonable doubt.", "instructions": "Decide whether each conclusion follows from the passage beyond a reasonable doubt, based only on the information given.", "timeLimitSeconds": null, "weight": 0.2, "order": 4 },
+    { "key": "argument-evaluation", "name": "Evaluation of Arguments", "description": "Distinguishing strong arguments (directly related to the question, addressing the most important considerations) from weak ones.", "instructions": "Judge whether each argument is strong or weak in relation to the question.", "timeLimitSeconds": null, "weight": 0.2, "order": 5 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "critical-thinking", "label": "Critical Thinking", "description": "Composite score across all five Watson-Glaser skills.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "logical", "order": 1 },
+    { "key": "inference", "label": "Inference", "description": "Judging the truth-value of conclusions from stated facts alone.", "contributesToBrainProfile": false, "order": 2 },
+    { "key": "assumptions", "label": "Recognition of Assumptions", "description": "Spotting the specific unstated assumption a claim relies on.", "contributesToBrainProfile": false, "order": 3 },
+    { "key": "deduction", "label": "Deduction", "description": "Judging formal validity independent of real-world plausibility.", "contributesToBrainProfile": false, "order": 4 },
+    { "key": "interpretation", "label": "Interpretation", "description": "Weighing whether a conclusion is supported beyond reasonable doubt.", "contributesToBrainProfile": false, "order": 5 },
+    { "key": "argument-evaluation", "label": "Evaluation of Arguments", "description": "Telling strong, relevant arguments from weak or irrelevant ones.", "contributesToBrainProfile": false, "order": 6 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "critical-thinking", "formula": "average" },
+    { "dimensionKey": "inference", "formula": "sum", "normalization": { "min": 0, "max": 4 } },
+    { "dimensionKey": "assumptions", "formula": "sum", "normalization": { "min": 0, "max": 4 } },
+    { "dimensionKey": "deduction", "formula": "sum", "normalization": { "min": 0, "max": 4 } },
+    { "dimensionKey": "interpretation", "formula": "sum", "normalization": { "min": 0, "max": 4 } },
+    { "dimensionKey": "argument-evaluation", "formula": "sum", "normalization": { "min": 0, "max": 4 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Critical-thinking fundamentals are still forming — conclusions are often accepted or rejected based on plausibility rather than what the evidence actually supports.", "recommendations": ["Practice separating 'stated' from 'assumed' in everyday arguments you read", "Work through simple syllogisms and check your answer against formal validity, not intuition", "When reading an argument, explicitly list the unstated assumptions it depends on"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "Solid on straightforward inference and deduction, but multi-step arguments or subtle unstated assumptions still catch you out.", "recommendations": ["Practice the 'must be true vs. might be true vs. cannot be determined' distinction deliberately", "Read opinion pieces and identify the strongest counter-argument before evaluating the author's case", "Slow down on assumption-recognition items — the obvious-sounding option is often a distractor"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Consistently separates valid inference from plausible-sounding speculation, and generally spots the argument's real weak point.", "recommendations": ["Practice evaluating arguments on relevance and importance, not just whether you agree with the conclusion", "Seek out longer, multi-premise deductive chains to sharpen precision"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Reliably distinguishes valid reasoning from rhetoric across all five skills, rarely swayed by an argument's conclusion when judging its structure.", "recommendations": ["Apply this discipline to real decisions with incomplete information — write out the inference chain explicitly", "Practice constructing counter-arguments that meet the same evaluation-of-arguments bar you hold others to"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Expert-level critical thinking — evidence, assumptions, and validity are evaluated independently of what conclusion is more comfortable or expected.", "recommendations": ["This is the skill set legal, analytical, and research roles are built on — consider where it's most leveraged", "Mentor others on the difference between a strong argument and one that merely sounds confident"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "critical-thinking", "targetBrainProfileDimensionKey": "logical", "weight": 1 }],
+
+  "questions": [
+    { "key": "ctd-inf-01", "sectionKey": "inference", "order": 1, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "A company's revenue rose every quarter for the last three years. Conclusion: \"The company will never post a quarterly loss.\" Based only on the facts given, this conclusion is:", "required": true, "options": [
+      { "label": "True", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Probably true", "value": "1", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Insufficient data", "value": "2", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "inference", "points": 1 }] },
+      { "label": "Probably false", "value": "3", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "False", "value": "4", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-inf-02", "sectionKey": "inference", "order": 2, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Every employee who completed the training passed the certification exam. Maria passed the certification exam. Conclusion: \"Maria completed the training.\" Based only on the facts given, this conclusion is:", "required": true, "options": [
+      { "label": "True", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Probably true", "value": "1", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Insufficient data", "value": "2", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "inference", "points": 1 }] },
+      { "label": "Probably false", "value": "3", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "False", "value": "4", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-inf-03", "sectionKey": "inference", "order": 3, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "In a city-wide survey, 80% of respondents who owned a car reported commuting by car. The survey did not ask non-car-owners how they commute. Conclusion: \"Most people in the city commute by car.\" Based only on the facts given, this conclusion is:", "required": true, "options": [
+      { "label": "True", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Probably true", "value": "1", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Insufficient data", "value": "2", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "inference", "points": 1 }] },
+      { "label": "Probably false", "value": "3", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "False", "value": "4", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-inf-04", "sectionKey": "inference", "order": 4, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "The warehouse has exactly two exits: the north dock and the south dock. The north dock has been welded shut for repairs. Conclusion: \"Anyone who leaves the warehouse leaves through the south dock.\" Based only on the facts given, this conclusion is:", "required": true, "options": [
+      { "label": "True", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "inference", "points": 1 }] },
+      { "label": "Probably true", "value": "1", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Insufficient data", "value": "2", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Probably false", "value": "3", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "False", "value": "4", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-asm-01", "sectionKey": "assumptions", "order": 5, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Statement: \"We should install the new security cameras, since they'll reduce theft.\" Which assumption does this statement make?", "required": true, "options": [
+      { "label": "The cameras are affordable for the company's budget", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Installing the cameras will actually reduce theft", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "assumptions", "points": 1 }] },
+      { "label": "Theft is currently the company's biggest problem", "value": "2", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Employees will approve of being monitored", "value": "3", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-asm-02", "sectionKey": "assumptions", "order": 6, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Statement: \"You should read the reviews before buying the blender, so you don't waste your money.\" Which assumption does this statement make?", "required": true, "options": [
+      { "label": "The reviews are trustworthy indicators of product quality", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "assumptions", "points": 1 }] },
+      { "label": "The blender is expensive", "value": "1", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Most blenders on the market are poor quality", "value": "2", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "The listener has never bought a blender before", "value": "3", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-asm-03", "sectionKey": "assumptions", "order": 7, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Statement: \"We don't need a fire drill this year — we didn't have any fires last year.\" Which assumption does this statement make?", "required": true, "options": [
+      { "label": "Fire drills are inconvenient for staff", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Last year's absence of fires predicts this year's fire risk", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "assumptions", "points": 1 }] },
+      { "label": "The building's fire alarms are in working order", "value": "2", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Fire drills are required by law", "value": "3", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-asm-04", "sectionKey": "assumptions", "order": 8, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Statement: \"Let's hire Sam — he went to the same university as our top performer.\" Which assumption does this statement make?", "required": true, "options": [
+      { "label": "Sam is looking for a new job", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "The top performer enjoyed their time at university", "value": "1", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Sharing a university with a top performer predicts similar job performance", "value": "2", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "assumptions", "points": 1 }] },
+      { "label": "The university has a strong reputation", "value": "3", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-ded-01", "sectionKey": "deduction", "order": 9, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "All premises are true. Premises: \"All engineers on this team know Python. No one who knows Python is afraid of debugging.\" Does it necessarily follow that \"No engineer on this team is afraid of debugging\"?", "required": true, "options": [
+      { "label": "Yes, it follows necessarily", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "No, it does not follow necessarily", "value": "1", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Cannot be determined from the premises", "value": "2", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-ded-02", "sectionKey": "deduction", "order": 10, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "All premises are true. Premises: \"If the alarm is armed, the light is red. The light is red.\" Does it necessarily follow that \"The alarm is armed\"?", "required": true, "options": [
+      { "label": "Yes, it follows necessarily", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "No, it does not follow necessarily", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "Cannot be determined from the premises", "value": "2", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-ded-03", "sectionKey": "deduction", "order": 11, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "All premises are true. Premises: \"Every certified diver has logged at least 20 dives. Priya has logged 25 dives.\" Does it necessarily follow that \"Priya is a certified diver\"?", "required": true, "options": [
+      { "label": "Yes, it follows necessarily", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "No, it does not follow necessarily", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "Cannot be determined from the premises", "value": "2", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-ded-04", "sectionKey": "deduction", "order": 12, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "All premises are true. Premises: \"No reptiles are warm-blooded. All snakes are reptiles.\" Does it necessarily follow that \"No snakes are warm-blooded\"?", "required": true, "options": [
+      { "label": "Yes, it follows necessarily", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
+      { "label": "No, it does not follow necessarily", "value": "1", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Cannot be determined from the premises", "value": "2", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-int-01", "sectionKey": "interpretation", "order": 13, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Passage: \"Sales of the new product line grew 40% in the first quarter after launch, while overall market demand for that product category grew only 5% in the same period.\" Proposed conclusion: \"The product's marketing campaign was effective.\" Does this conclusion follow beyond a reasonable doubt from the passage alone?", "required": true, "options": [
+      { "label": "Yes, it follows beyond reasonable doubt", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "No — growth could have other causes the passage doesn't rule out", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "interpretation", "points": 1 }] }
+    ]},
+    { "key": "ctd-int-02", "sectionKey": "interpretation", "order": 14, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Passage: \"Every one of the 40 participants who completed the full 8-week program reported improved sleep. The 12 participants who dropped out before week 8 were not surveyed.\" Proposed conclusion: \"The 8-week program improves sleep for everyone who tries it.\" Does this conclusion follow beyond a reasonable doubt from the passage alone?", "required": true, "options": [
+      { "label": "Yes, it follows beyond reasonable doubt", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "No — the dropouts' outcomes are unknown, so \"everyone\" isn't supported", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "interpretation", "points": 1 }] }
+    ]},
+    { "key": "ctd-int-03", "sectionKey": "interpretation", "order": 15, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Passage: \"The bridge was inspected in January and found structurally sound, rated for 40 tons. In February, a new regulation lowered the legal limit for that bridge class to 30 tons.\" Proposed conclusion: \"The bridge is currently unsafe for vehicles under 30 tons.\" Does this conclusion follow beyond a reasonable doubt from the passage alone?", "required": true, "options": [
+      { "label": "Yes, it follows beyond reasonable doubt", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "No — the passage gives no information suggesting it's unsafe under 30 tons", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "interpretation", "points": 1 }] }
+    ]},
+    { "key": "ctd-int-04", "sectionKey": "interpretation", "order": 16, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Passage: \"Of the 200 emails sent, 198 were marked as delivered and 2 bounced due to invalid addresses.\" Proposed conclusion: \"At least 198 of the intended recipients' inboxes accepted the email.\" Does this conclusion follow beyond a reasonable doubt from the passage alone?", "required": true, "options": [
+      { "label": "Yes — \"delivered\" directly supports this", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "interpretation", "points": 1 }] },
+      { "label": "No — delivery doesn't mean it reached an inbox", "value": "1", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-arg-01", "sectionKey": "argument-evaluation", "order": 17, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Question: \"Should the city ban plastic straws?\" Argument: \"Yes — plastic straws are one of many single-use plastics contributing to ocean pollution, and viable paper/reusable alternatives already exist.\" Is this argument strong or weak?", "required": true, "options": [
+      { "label": "Strong — it's directly relevant and addresses feasibility", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "argument-evaluation", "points": 1 }] },
+      { "label": "Weak — it doesn't address the question", "value": "1", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-arg-02", "sectionKey": "argument-evaluation", "order": 18, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Question: \"Should the city ban plastic straws?\" Argument: \"No — my uncle owns a restaurant and he says paper straws get soggy.\" Is this argument strong or weak?", "required": true, "options": [
+      { "label": "Strong — direct industry experience settles it", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Weak — a single anecdote doesn't address the policy's core rationale", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "argument-evaluation", "points": 1 }] }
+    ]},
+    { "key": "ctd-arg-03", "sectionKey": "argument-evaluation", "order": 19, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "Question: \"Should employees be allowed to work fully remote?\" Argument: \"Yes — remote-eligible roles at comparable companies show no measurable drop in output, and it widens the hiring pool significantly.\" Is this argument strong or weak?", "required": true, "options": [
+      { "label": "Strong — it's relevant and cites the important, checkable considerations", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "argument-evaluation", "points": 1 }] },
+      { "label": "Weak — it assumes without evidence", "value": "1", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] }
+    ]},
+    { "key": "ctd-arg-04", "sectionKey": "argument-evaluation", "order": 20, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Question: \"Should employees be allowed to work fully remote?\" Argument: \"No — I just don't like the idea of not seeing my team.\" Is this argument strong or weak?", "required": true, "options": [
+      { "label": "Strong — personal preference is a valid business reason", "value": "0", "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 0 }] },
+      { "label": "Weak — it's a personal preference, not a reason tied to the policy's actual tradeoffs", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "critical-thinking", "points": 1 }, { "dimensionKey": "argument-evaluation", "points": 1 }] }
+    ]}
+  ]
+}

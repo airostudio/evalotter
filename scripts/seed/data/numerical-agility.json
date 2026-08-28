@@ -1,0 +1,198 @@
+{
+  "slug": "numerical-agility",
+  "title": "Numerical Agility",
+  "shortDescription": "Rapid-fire mental math and estimation under a tight clock — built for speed as much as accuracy.",
+  "longDescription": "Numerical Agility is built around the numerical-reasoning item types published for the Wonderlic Personnel Test (now Wonderlic Cognitive Ability Test) — one of the most widely used short-form cognitive ability tests, run under a strict time limit specifically to measure how much correct reasoning you can produce per minute, not just whether you can eventually get there. This assessment isolates the numerical portion (arithmetic, percentages/ratios, number series, word problems) under the same kind of time pressure.",
+  "icon": "zap",
+  "categoryKey": "numerical",
+  "engineType": "timed_questionnaire",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 10,
+  "access": "free",
+  "sourceNote": "Original items written to implement the Wonderlic's published numerical item types (arithmetic, percentages/ratios, number series, word problems) under the same speed-over-power design — the Wonderlic itself is a copyrighted, commercially licensed instrument (Wonderlic Inc.), so its actual items and norms are not reproduced here. Only the numerical subset is used (the full Wonderlic also has verbal/vocabulary items, out of scope for a numerical-specific assessment) and this version is untimed-per-item with a single overall 10-minute clock, matching how the real test is administered (one clock for the whole set, not per-question).",
+
+  "runnerSettings": { "totalTimeLimitSeconds": 600 },
+
+  "sections": [
+    { "key": "arithmetic", "name": "Arithmetic & Percentages", "description": "Direct computation under time pressure — no calculator, mental math only.", "instructions": "Solve each problem as quickly and accurately as you can. There's one clock for the whole assessment, not per question — move on if you get stuck.", "timeLimitSeconds": null, "weight": 0.25, "order": 1 },
+    { "key": "ratios", "name": "Ratios & Proportions", "description": "Scaling quantities and rates correctly under time pressure.", "instructions": "Solve each ratio or proportion problem.", "timeLimitSeconds": null, "weight": 0.25, "order": 2 },
+    { "key": "number-series", "name": "Number Series", "description": "Identifying the rule governing a sequence of numbers and extrapolating it.", "instructions": "Find the pattern and choose what comes next.", "timeLimitSeconds": null, "weight": 0.25, "order": 3 },
+    { "key": "word-problems", "name": "Word Problems", "description": "Translating a real-world scenario into the right calculation.", "instructions": "Read carefully — the hard part is usually setting up the right equation, not the arithmetic itself.", "timeLimitSeconds": null, "weight": 0.25, "order": 4 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "numerical-agility", "label": "Numerical Agility", "description": "Composite score across arithmetic, ratios, number series, and word problems, all under a single overall time limit.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "logical", "order": 1 },
+    { "key": "arithmetic", "label": "Arithmetic & Percentages", "description": "Speed and accuracy on direct computation.", "contributesToBrainProfile": false, "order": 2 },
+    { "key": "ratios", "label": "Ratios & Proportions", "description": "Correctly scaling quantities and rates.", "contributesToBrainProfile": false, "order": 3 },
+    { "key": "number-series", "label": "Number Series", "description": "Identifying numeric patterns and extrapolating them.", "contributesToBrainProfile": false, "order": 4 },
+    { "key": "word-problems", "label": "Word Problems", "description": "Translating scenarios into correct calculations.", "contributesToBrainProfile": false, "order": 5 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "numerical-agility", "formula": "average" },
+    { "dimensionKey": "arithmetic", "formula": "sum", "normalization": { "min": 0, "max": 6 } },
+    { "dimensionKey": "ratios", "formula": "sum", "normalization": { "min": 0, "max": 6 } },
+    { "dimensionKey": "number-series", "formula": "sum", "normalization": { "min": 0, "max": 6 } },
+    { "dimensionKey": "word-problems", "formula": "sum", "normalization": { "min": 0, "max": 6 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Under time pressure, numerical problem-solving slows down considerably — the reasoning is there, but not yet fast enough to finish under a tight clock.", "recommendations": ["Practice mental math (percentages, simple ratios) without a calculator, daily, for a few minutes", "Work on recognizing common word-problem structures (rate, ratio, percent-change) so setup is faster", "Time yourself on easy problems first to build speed before tackling harder ones"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "Solid accuracy on problems you have time for, but the clock is clearly a limiting factor — some items are likely left unanswered or rushed.", "recommendations": ["Practice number series specifically — pattern recognition speeds up a lot with exposure", "Build a mental toolkit of shortcuts for percentages (10% then adjust, rather than long division)"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Good speed-accuracy balance — most problem types are handled comfortably within the time limit, with occasional slowdowns on multi-step word problems.", "recommendations": ["Push on the hardest word-problem types (multi-step, rate-and-distance) to close remaining gaps", "Practice number series with less obvious rules (alternating operations, not just +/- constant)"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Fast and accurate across arithmetic, ratios, series, and word problems — the kind of numerical fluency that shows up as an advantage under any deadline.", "recommendations": ["This speed-accuracy combination transfers directly to data-heavy or finance-adjacent work", "Try timed practice sets with a shorter clock to push the ceiling further"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Elite numerical agility — correct, fast, and consistent across every problem type under real time pressure.", "recommendations": ["Consider roles that reward rapid quantitative judgment — trading, analytics, engineering estimation", "Mentor others on mental-math shortcuts that build this kind of speed"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "numerical-agility", "targetBrainProfileDimensionKey": "logical", "weight": 0.5 }],
+
+  "questions": [
+    { "key": "na-ari-01", "sectionKey": "arithmetic", "order": 1, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "What is 15% of 240?", "required": true, "options": [
+      { "label": "36", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "arithmetic", "points": 1 }] },
+      { "label": "32", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "24", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "40", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-ari-02", "sectionKey": "arithmetic", "order": 2, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "A shirt costs $48 after a 20% discount. What was the original price?", "required": true, "options": [
+      { "label": "$60", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "arithmetic", "points": 1 }] },
+      { "label": "$58", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "$68", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "$57.60", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-ari-03", "sectionKey": "arithmetic", "order": 3, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "37 + 48 − 19 = ?", "required": true, "options": [
+      { "label": "66", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "arithmetic", "points": 1 }] },
+      { "label": "64", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "76", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "56", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-ari-04", "sectionKey": "arithmetic", "order": 4, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "A stock priced at $80 rises 25%, then falls 20% from its new price. What is it worth now?", "required": true, "options": [
+      { "label": "$80", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "arithmetic", "points": 1 }] },
+      { "label": "$85", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "$76", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "$100", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-ari-05", "sectionKey": "arithmetic", "order": 5, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "What is 8% of 350, rounded to the nearest whole number?", "required": true, "options": [
+      { "label": "28", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "arithmetic", "points": 1 }] },
+      { "label": "24", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "32", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "35", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-ari-06", "sectionKey": "arithmetic", "order": 6, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "A $150 item is marked up 40%, then discounted 40% off the marked-up price. What's the final price?", "required": true, "options": [
+      { "label": "$126", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "arithmetic", "points": 1 }] },
+      { "label": "$150", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "$90", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "$120", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+
+    { "key": "na-rat-01", "sectionKey": "ratios", "order": 7, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "A recipe uses flour and sugar in a 3:1 ratio. If you use 9 cups of flour, how much sugar do you need?", "required": true, "options": [
+      { "label": "3 cups", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "ratios", "points": 1 }] },
+      { "label": "27 cups", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "4 cups", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "9 cups", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-rat-02", "sectionKey": "ratios", "order": 8, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "A car travels 180 miles in 3 hours at a constant speed. How far will it travel in 5 hours?", "required": true, "options": [
+      { "label": "300 miles", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "ratios", "points": 1 }] },
+      { "label": "280 miles", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "360 miles", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "240 miles", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-rat-03", "sectionKey": "ratios", "order": 9, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Two workers can paint a fence in 6 hours together. Working at the same combined rate, how long would it take 3 workers to paint the same fence?", "required": true, "options": [
+      { "label": "4 hours", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "ratios", "points": 1 }] },
+      { "label": "3 hours", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "2 hours", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "9 hours", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-rat-04", "sectionKey": "ratios", "order": 10, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "A map has a scale of 1 inch = 25 miles. Two cities are 3.5 inches apart on the map. How far apart are they in reality?", "required": true, "options": [
+      { "label": "87.5 miles", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "ratios", "points": 1 }] },
+      { "label": "75 miles", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "90 miles", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "82.5 miles", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-rat-05", "sectionKey": "ratios", "order": 11, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "A class has a 5:4 ratio of girls to boys. If there are 20 girls, how many boys are there?", "required": true, "options": [
+      { "label": "16", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "ratios", "points": 1 }] },
+      { "label": "25", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "15", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "18", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-rat-06", "sectionKey": "ratios", "order": 12, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "A mixture is 40% concentrate and the rest water, totaling 15 liters. How many liters of concentrate does it contain?", "required": true, "options": [
+      { "label": "6 liters", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "ratios", "points": 1 }] },
+      { "label": "9 liters", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "4 liters", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "5 liters", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+
+    { "key": "na-ser-01", "sectionKey": "number-series", "order": 13, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "2, 5, 8, 11, ?", "required": true, "options": [
+      { "label": "14", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "number-series", "points": 1 }] },
+      { "label": "13", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "15", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "12", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-ser-02", "sectionKey": "number-series", "order": 14, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "3, 6, 12, 24, ?", "required": true, "options": [
+      { "label": "48", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "number-series", "points": 1 }] },
+      { "label": "36", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "30", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "42", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-ser-03", "sectionKey": "number-series", "order": 15, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "1, 4, 9, 16, 25, ?", "required": true, "options": [
+      { "label": "36", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "number-series", "points": 1 }] },
+      { "label": "30", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "32", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "49", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-ser-04", "sectionKey": "number-series", "order": 16, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "1, 1, 2, 3, 5, 8, ?", "required": true, "options": [
+      { "label": "13", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "number-series", "points": 1 }] },
+      { "label": "11", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "12", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "16", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-ser-05", "sectionKey": "number-series", "order": 17, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "100, 91, 83, 76, 70, ?", "required": true, "options": [
+      { "label": "65", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "number-series", "points": 1 }] },
+      { "label": "64", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "63", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "66", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-ser-06", "sectionKey": "number-series", "order": 18, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "5, 10, 20, 40, ?", "required": true, "options": [
+      { "label": "80", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "number-series", "points": 1 }] },
+      { "label": "60", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "70", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "45", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+
+    { "key": "na-wp-01", "sectionKey": "word-problems", "order": 19, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "A movie ticket costs $12. A family of 2 adults and 3 children buys tickets, where children's tickets are half price. What's the total cost?", "required": true, "options": [
+      { "label": "$42", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "word-problems", "points": 1 }] },
+      { "label": "$60", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "$36", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "$48", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-wp-02", "sectionKey": "word-problems", "order": 20, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "A tank holds 500 liters and is currently 30% full. How many more liters are needed to fill it completely?", "required": true, "options": [
+      { "label": "350 liters", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "word-problems", "points": 1 }] },
+      { "label": "150 liters", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "300 liters", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "470 liters", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-wp-03", "sectionKey": "word-problems", "order": 21, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Two trains leave the same station at the same time, traveling in opposite directions — one at 60 mph, the other at 75 mph. How far apart are they after 2 hours?", "required": true, "options": [
+      { "label": "270 miles", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "word-problems", "points": 1 }] },
+      { "label": "135 miles", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "150 miles", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "300 miles", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-wp-04", "sectionKey": "word-problems", "order": 22, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "An investment of $2,000 grows by 10% in year one, then loses 10% in year two. What is it worth at the end of year two?", "required": true, "options": [
+      { "label": "$1,980", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "word-problems", "points": 1 }] },
+      { "label": "$2,000", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "$1,800", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "$2,200", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-wp-05", "sectionKey": "word-problems", "order": 23, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "A printer prints 15 pages per minute. A second, faster printer prints 25 pages per minute. Working together, how many minutes will it take to print 800 pages?", "required": true, "options": [
+      { "label": "20 minutes", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "word-problems", "points": 1 }] },
+      { "label": "32 minutes", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "40 minutes", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "16 minutes", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]},
+    { "key": "na-wp-06", "sectionKey": "word-problems", "order": 24, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "A store buys a product for $40 and sells it for $56. What is the markup as a percentage of the cost?", "required": true, "options": [
+      { "label": "40%", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 1 }, { "dimensionKey": "word-problems", "points": 1 }] },
+      { "label": "16%", "value": "1", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "28%", "value": "2", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] },
+      { "label": "56%", "value": "3", "scoreConfig": [{ "dimensionKey": "numerical-agility", "points": 0 }] }
+    ]}
+  ]
+}
