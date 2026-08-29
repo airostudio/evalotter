@@ -1,0 +1,50 @@
+{
+  "slug": "full-iq-estimation-report",
+  "title": "Full IQ Estimation Report",
+  "shortDescription": "A comprehensive, multi-battery composite drawing on every completed assessment to estimate a full-scale IQ range.",
+  "longDescription": "Full IQ Estimation Report doesn't ask its own questions — it computes a composite from the Logical, Verbal, Spatial, and Memory scores in your existing Brain Profile, the same four cognitive-ability domains real full-scale IQ batteries combine (e.g. the WAIS's Verbal Comprehension, Perceptual Reasoning, Working Memory, and Processing Speed indices). Emotional Intelligence and Creative scores are deliberately excluded from this composite, the same way Palmistry is excluded from the Brain Profile aggregate — they measure real things, just not what \"IQ\" traditionally refers to.",
+  "icon": "file-text",
+  "categoryKey": "ai-analysis",
+  "engineType": "ai_analysis",
+  "difficulty": "hard",
+  "estimatedDurationMinutes": 45,
+  "access": "premium",
+  "sourceNote": "Structurally different from every other assessment on the platform: it's not scored from its own responses at all. Its engine (src/lib/assessment-engine/engines/composite-report.tsx) reads the user's existing brain_profile_dimensions rows for the four cognitive-ability axes (logical, verbal, spatial, memory) and averages them, ignoring the single acknowledgment question's answer entirely. If fewer than 3 of those 4 domains have real completed-assessment data, it returns the sentinel score 0, which lands in a dedicated \"not enough data\" result range rather than presenting a fabricated result from sparse or absent data — no shortcut around that gate. IMPORTANT: this is an estimate for self-reflection, explicitly not a validated psychometric IQ score — this platform has no standardization sample or clinical norming behind it, unlike a real administered IQ test (WAIS, Stanford-Binet, etc.). The result-range titles say \"estimated range,\" and the 45-minute duration in the catalogue reflects the time to complete the underlying assessments it draws from, not this report screen itself.",
+
+  "sections": [
+    { "key": "acknowledgment", "name": "Before You Continue", "description": "A one-step confirmation before generating your composite.", "instructions": "This isn't a new test — it reads your existing results.", "timeLimitSeconds": null, "weight": 1, "order": 1 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "iq-composite", "label": "Full-Scale Composite Estimate", "description": "Average of your Logical, Verbal, Spatial, and Memory Brain Profile scores — not scored from a new test.", "contributesToBrainProfile": false, "order": 1 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "iq-composite", "formula": "custom" }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 5, "title": "Not Enough Data Yet", "description": "You haven't completed enough of the four core assessments (Logical Reasoning or Abstract Reasoning Pro or Fluid Intelligence Peak, Verbal Reasoning or Verbal Intelligence, Spatial Intelligence or Visuospatial Rotation, Memory Recall) for a meaningful composite. Complete at least 3 of those 4 domains, then come back.", "recommendations": ["Complete at least one assessment in each of the Logical, Verbal, Spatial, and Memory categories", "The more of the ten-plus assessments in each domain you complete, the more stable this composite becomes", "This report re-checks your data every time you take it — no need to \"reset\" anything"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 6, "maxScore": 30, "title": "Estimated range: below 90", "description": "Based on your completed assessments across the four core domains. Remember this is a self-reflection estimate, not a clinically validated IQ score — this platform has no standardization sample behind it.", "recommendations": ["Look at your Brain Profile page for which specific domain is pulling the composite down", "Complete more assessments in your weaker domain(s) — this composite updates automatically as you do"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Estimated range: 90-100", "description": "Based on your completed assessments across the four core domains — an estimate for self-reflection, not a clinically validated score.", "recommendations": ["Check your Brain Profile for your strongest and weakest of the four core domains", "Retaking assessments you've improved on since your first attempt will refresh this composite"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Estimated range: 100-115", "description": "Based on your completed assessments across the four core domains — an estimate for self-reflection, not a clinically validated score.", "recommendations": ["This composite reflects fairly balanced performance across Logical, Verbal, Spatial, and Memory", "Consider Fluid Intelligence Peak or Verbal Reasoning Mastery if you want to stress-test your ceiling in a specific domain"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Estimated range: 115-130", "description": "Based on your completed assessments across the four core domains — an estimate for self-reflection, not a clinically validated score.", "recommendations": ["A strong composite across all four domains — check your Brain Profile to see if one domain leads the others", "For an actual clinical or professionally normed IQ score, a licensed psychologist administering a standardized instrument is the real route — this report doesn't replace that"], "order": 5 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Estimated range: 130+", "description": "Based on your completed assessments across the four core domains — an estimate for self-reflection, not a clinically validated score.", "recommendations": ["An exceptional composite across Logical, Verbal, Spatial, and Memory domains", "As with any tier here: this is a self-assessment composite, not a substitute for a professionally administered, normed IQ test"], "order": 6 }
+  ],
+
+  "questions": [
+    {
+      "key": "fier-ack-01",
+      "sectionKey": "acknowledgment",
+      "order": 1,
+      "difficulty": "easy",
+      "questionType": "multiple_choice",
+      "questionText": "This report reads your existing Brain Profile results rather than asking new questions. Ready to generate your composite estimate?",
+      "required": true,
+      "options": [
+        { "label": "Yes, generate my composite estimate", "value": "0" },
+        { "label": "I understand this is an estimate, not a clinical score", "value": "1" }
+      ]
+    }
+  ]
+}

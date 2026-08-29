@@ -266,7 +266,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Auditory Processing Speed",
     shortDescription: "How quickly and accurately you process spoken information — sequences, tones, and rapid verbal instructions.",
     category: "Cognitive", categoryKey: "cognitive", icon: "ear",
-    engineType: "timed_questionnaire", difficulty: "medium", estimatedDurationMinutes: 12, questionCount: 20, access: "premium", comingSoon: true,
+    engineType: "timed_questionnaire", difficulty: "medium", estimatedDurationMinutes: 12, questionCount: 20, access: "premium",
   },
   {
     slug: "attention-control-test",
@@ -294,7 +294,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Cognitive Flexibility Index",
     shortDescription: "Task-switching and rule-reversal exercises measuring how easily you adapt when the rules change mid-task.",
     category: "Cognitive", categoryKey: "cognitive", icon: "shuffle",
-    engineType: "hybrid", difficulty: "medium", estimatedDurationMinutes: 12, questionCount: 20, access: "free", comingSoon: true,
+    engineType: "hybrid", difficulty: "medium", estimatedDurationMinutes: 12, questionCount: 1, access: "free",
   },
   {
     slug: "language-acquisition",
@@ -329,6 +329,6 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Full IQ Estimation Report",
     shortDescription: "A comprehensive, multi-battery composite drawing on every completed assessment to estimate a full-scale IQ range.",
     category: "AI Analysis", categoryKey: "ai-analysis", icon: "file-text",
-    engineType: "ai_analysis", difficulty: "hard", estimatedDurationMinutes: 45, questionCount: 60, access: "premium", comingSoon: true,
+    engineType: "ai_analysis", difficulty: "hard", estimatedDurationMinutes: 45, questionCount: 1, access: "premium",
   },
 ];

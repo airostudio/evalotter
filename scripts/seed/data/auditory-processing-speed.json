@@ -1,0 +1,1545 @@
+{
+  "slug": "auditory-processing-speed",
+  "title": "Auditory Processing Speed",
+  "shortDescription": "How quickly and accurately you process spoken information — sequences, tones, and rapid verbal instructions.",
+  "longDescription": "Auditory Processing Speed combines two real, established auditory paradigms: WAIS/WMS Digit Span (Wechsler) — recalling a spoken digit sequence forward, then a separate set backward, the standard clinical measure of auditory working memory — and Wepman's Auditory Discrimination Test (Wepman, 1958) — quickly judging whether two spoken words are the same or minimally different (like \"pin\" vs. \"pen\"), timed since the point is fast, accurate auditory discrimination, not eventually getting it right. Every sequence and word pair is real synthesized speech played through your device, not a text substitute.",
+  "icon": "ear",
+  "categoryKey": "cognitive",
+  "engineType": "timed_questionnaire",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 12,
+  "access": "premium",
+  "sourceNote": "Original digit sequences and word pairs implementing two real, named auditory paradigms (WAIS/WMS Digit Span forward/backward; Wepman's Auditory Discrimination Test's minimal-pair format) — both are copyrighted, commercially administered clinical instruments (Pearson; the Wepman test's publisher), so their actual stimuli/norms aren't reproduced here. This is the first assessment on the platform to use real audio: every sequence and word pair plays through the browser's Web Speech API (QuestionMediaBlock.tsx, a `speech:<text>` media URL) as actual synthesized speech, not a text description standing in for sound — the exact capability that was missing when this assessment was first scoped as blocked. Digit Span items use the `sequence` question type (tap the digits back in order — forward or reverse); auditory discrimination items use time-weighted `timed_choice`, both scored via the engine's existing mechanisms (see README \"Engine fixes\").",
+  "sections": [
+    {
+      "key": "digit-span-forward",
+      "name": "Digit Span Forward",
+      "description": "Listen to a spoken digit sequence, then recall it in the same order.",
+      "instructions": "Each round plays once. Tap the digits back in the order you heard them.",
+      "timeLimitSeconds": null,
+      "weight": 0.35,
+      "order": 1
+    },
+    {
+      "key": "digit-span-backward",
+      "name": "Digit Span Backward",
+      "description": "Listen to a spoken digit sequence, then recall it in reverse order.",
+      "instructions": "Each round plays once. Tap the digits back in the REVERSE of the order you heard them — this is harder than it sounds.",
+      "timeLimitSeconds": null,
+      "weight": 0.35,
+      "order": 2
+    },
+    {
+      "key": "auditory-discrimination",
+      "name": "Auditory Discrimination",
+      "description": "Quickly judge whether two spoken words are the same or different.",
+      "instructions": "Listen carefully — some pairs differ by only one sound.",
+      "timeLimitSeconds": null,
+      "weight": 0.3,
+      "order": 3
+    }
+  ],
+  "scoringDimensions": [
+    {
+      "key": "auditory-processing",
+      "label": "Auditory Processing",
+      "description": "Composite score across digit span (forward and backward) and auditory discrimination.",
+      "contributesToBrainProfile": true,
+      "brainProfileDimensionKey": "memory",
+      "order": 1
+    },
+    {
+      "key": "digit-span-forward",
+      "label": "Digit Span Forward",
+      "description": "Auditory working memory — recalling a spoken sequence in order.",
+      "contributesToBrainProfile": false,
+      "order": 2
+    },
+    {
+      "key": "digit-span-backward",
+      "label": "Digit Span Backward",
+      "description": "Auditory working memory under mental manipulation — recalling a spoken sequence in reverse.",
+      "contributesToBrainProfile": false,
+      "order": 3
+    },
+    {
+      "key": "auditory-discrimination",
+      "label": "Auditory Discrimination",
+      "description": "Speed and accuracy distinguishing same vs. minimally different spoken words.",
+      "contributesToBrainProfile": false,
+      "order": 4
+    }
+  ],
+  "scoringRules": [
+    {
+      "dimensionKey": "auditory-processing",
+      "formula": "average"
+    },
+    {
+      "dimensionKey": "digit-span-forward",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 25
+      }
+    },
+    {
+      "dimensionKey": "digit-span-backward",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 25
+      }
+    },
+    {
+      "dimensionKey": "auditory-discrimination",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 10
+      }
+    }
+  ],
+  "resultRanges": [
+    {
+      "dimensionKey": "overall",
+      "minScore": 0,
+      "maxScore": 30,
+      "title": "Developing",
+      "description": "Holding a spoken sequence in mind — especially in reverse — is difficult right now, and minimally-different word pairs are easy to mishear.",
+      "recommendations": [
+        "Practice with shorter sequences first (3-4 digits) before attempting longer ones",
+        "For backward spans, try picturing the digits appearing one at a time, then read them off in reverse from that mental image",
+        "Listen for the specific sound that differs in word pairs (first sound, middle vowel, last sound) rather than judging the whole word at once"
+      ],
+      "order": 1
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 31,
+      "maxScore": 50,
+      "title": "Average",
+      "description": "Shorter spans are manageable, but longer sequences and backward recall specifically show real strain.",
+      "recommendations": [
+        "Backward span is meant to be substantially harder than forward — a big gap between the two is normal, not a red flag",
+        "Practice minimal-pair listening specifically (many free speech-perception exercises use exactly this format)"
+      ],
+      "order": 2
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 51,
+      "maxScore": 70,
+      "title": "Strong",
+      "description": "Reliable recall across most sequence lengths, both forward and backward, with solid auditory discrimination.",
+      "recommendations": [
+        "Push toward longer sequences (7+ digits) to find your actual ceiling",
+        "Notice whether forward or backward span is your relative strength — that's informative about your auditory working-memory style"
+      ],
+      "order": 3
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 71,
+      "maxScore": 85,
+      "title": "Very Strong",
+      "description": "Strong auditory working memory in both directions, plus fast, accurate discrimination of similar-sounding words.",
+      "recommendations": [
+        "This is a genuine asset for verbal-heavy, listening-intensive work — meetings, interpretation, live instruction-following",
+        "Compare this with your visual/spatial memory results — auditory and visual working memory don't always track together"
+      ],
+      "order": 4
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 86,
+      "maxScore": 100,
+      "title": "Exceptional",
+      "description": "Near-ceiling performance across digit span forward, backward, and auditory discrimination.",
+      "recommendations": [
+        "This is an elite auditory-processing result across every task type tested",
+        "Consider fields that specifically reward fast, accurate listening under real time pressure"
+      ],
+      "order": 5
+    }
+  ],
+  "brainProfileContributions": [
+    {
+      "sourceDimensionKey": "auditory-processing",
+      "targetBrainProfileDimensionKey": "memory",
+      "weight": 0.4
+    }
+  ],
+  "questions": [
+    {
+      "key": "aps-fwd-3",
+      "sectionKey": "digit-span-forward",
+      "order": 1,
+      "difficulty": "easy",
+      "questionType": "sequence",
+      "questionText": "Tap the 3 digits in the SAME order you heard them.",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:9, 4, 5",
+          "alt": "3-digit sequence"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "9",
+          "value": "1",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "value": "2",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "value": "3",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-fwd-4",
+      "sectionKey": "digit-span-forward",
+      "order": 2,
+      "difficulty": "easy",
+      "questionType": "sequence",
+      "questionText": "Tap the 4 digits in the SAME order you heard them.",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:8, 0, 7, 6",
+          "alt": "4-digit sequence"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "8",
+          "value": "1",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "0",
+          "value": "2",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "7",
+          "value": "3",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "value": "4",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-fwd-5",
+      "sectionKey": "digit-span-forward",
+      "order": 3,
+      "difficulty": "medium",
+      "questionType": "sequence",
+      "questionText": "Tap the 5 digits in the SAME order you heard them.",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:3, 0, 2, 8, 7",
+          "alt": "5-digit sequence"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "3",
+          "value": "1",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "0",
+          "value": "2",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "value": "3",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "8",
+          "value": "4",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "7",
+          "value": "5",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-fwd-6",
+      "sectionKey": "digit-span-forward",
+      "order": 4,
+      "difficulty": "medium",
+      "questionType": "sequence",
+      "questionText": "Tap the 6 digits in the SAME order you heard them.",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:7, 3, 6, 4, 0, 9",
+          "alt": "6-digit sequence"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "7",
+          "value": "1",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "value": "2",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "value": "3",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "value": "4",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "0",
+          "value": "5",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": "6",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-fwd-7",
+      "sectionKey": "digit-span-forward",
+      "order": 5,
+      "difficulty": "hard",
+      "questionType": "sequence",
+      "questionText": "Tap the 7 digits in the SAME order you heard them.",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:3, 0, 9, 7, 2, 1, 6",
+          "alt": "7-digit sequence"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "3",
+          "value": "1",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "0",
+          "value": "2",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": "3",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "7",
+          "value": "4",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "value": "5",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "1",
+          "value": "6",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "value": "7",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-forward",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-bwd-3",
+      "sectionKey": "digit-span-backward",
+      "order": 6,
+      "difficulty": "medium",
+      "questionType": "sequence",
+      "questionText": "Tap the 3 digits in REVERSE of the order you heard them.",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:2, 1, 9",
+          "alt": "3-digit sequence"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "9",
+          "value": "1",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "1",
+          "value": "2",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "value": "3",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-bwd-4",
+      "sectionKey": "digit-span-backward",
+      "order": 7,
+      "difficulty": "medium",
+      "questionType": "sequence",
+      "questionText": "Tap the 4 digits in REVERSE of the order you heard them.",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:9, 7, 2, 1",
+          "alt": "4-digit sequence"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "1",
+          "value": "1",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "value": "2",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "7",
+          "value": "3",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": "4",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-bwd-5",
+      "sectionKey": "digit-span-backward",
+      "order": 8,
+      "difficulty": "hard",
+      "questionType": "sequence",
+      "questionText": "Tap the 5 digits in REVERSE of the order you heard them.",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:0, 9, 3, 6, 1",
+          "alt": "5-digit sequence"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "1",
+          "value": "1",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "value": "2",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "value": "3",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": "4",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "0",
+          "value": "5",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-bwd-6",
+      "sectionKey": "digit-span-backward",
+      "order": 9,
+      "difficulty": "hard",
+      "questionType": "sequence",
+      "questionText": "Tap the 6 digits in REVERSE of the order you heard them.",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:2, 9, 4, 8, 1, 7",
+          "alt": "6-digit sequence"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "7",
+          "value": "1",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "1",
+          "value": "2",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "8",
+          "value": "3",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "value": "4",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": "5",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "value": "6",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-bwd-7",
+      "sectionKey": "digit-span-backward",
+      "order": 10,
+      "difficulty": "hard",
+      "questionType": "sequence",
+      "questionText": "Tap the 7 digits in REVERSE of the order you heard them.",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:3, 2, 9, 7, 8, 0, 5",
+          "alt": "7-digit sequence"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "5",
+          "value": "1",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "0",
+          "value": "2",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "8",
+          "value": "3",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "7",
+          "value": "4",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "9",
+          "value": "5",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "value": "6",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "value": "7",
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "digit-span-backward",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-disc-11",
+      "sectionKey": "auditory-discrimination",
+      "order": 11,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "Did you hear the SAME word twice, or two DIFFERENT words?",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:pin... pen",
+          "alt": "two spoken words"
+        }
+      ],
+      "timeLimitSeconds": 4,
+      "required": true,
+      "options": [
+        {
+          "label": "Same word",
+          "value": "same",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 0
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Different words",
+          "value": "different",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-disc-12",
+      "sectionKey": "auditory-discrimination",
+      "order": 12,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "Did you hear the SAME word twice, or two DIFFERENT words?",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:cat... cat",
+          "alt": "two spoken words"
+        }
+      ],
+      "timeLimitSeconds": 4,
+      "required": true,
+      "options": [
+        {
+          "label": "Same word",
+          "value": "same",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Different words",
+          "value": "different",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 0
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-disc-13",
+      "sectionKey": "auditory-discrimination",
+      "order": 13,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "Did you hear the SAME word twice, or two DIFFERENT words?",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:bat... bad",
+          "alt": "two spoken words"
+        }
+      ],
+      "timeLimitSeconds": 4,
+      "required": true,
+      "options": [
+        {
+          "label": "Same word",
+          "value": "same",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 0
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Different words",
+          "value": "different",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-disc-14",
+      "sectionKey": "auditory-discrimination",
+      "order": 14,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "Did you hear the SAME word twice, or two DIFFERENT words?",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:sheep... sheep",
+          "alt": "two spoken words"
+        }
+      ],
+      "timeLimitSeconds": 4,
+      "required": true,
+      "options": [
+        {
+          "label": "Same word",
+          "value": "same",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Different words",
+          "value": "different",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 0
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-disc-15",
+      "sectionKey": "auditory-discrimination",
+      "order": 15,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "Did you hear the SAME word twice, or two DIFFERENT words?",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:thin... fin",
+          "alt": "two spoken words"
+        }
+      ],
+      "timeLimitSeconds": 4,
+      "required": true,
+      "options": [
+        {
+          "label": "Same word",
+          "value": "same",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 0
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Different words",
+          "value": "different",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-disc-16",
+      "sectionKey": "auditory-discrimination",
+      "order": 16,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "Did you hear the SAME word twice, or two DIFFERENT words?",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:lock... lock",
+          "alt": "two spoken words"
+        }
+      ],
+      "timeLimitSeconds": 4,
+      "required": true,
+      "options": [
+        {
+          "label": "Same word",
+          "value": "same",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Different words",
+          "value": "different",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 0
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-disc-17",
+      "sectionKey": "auditory-discrimination",
+      "order": 17,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "Did you hear the SAME word twice, or two DIFFERENT words?",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:witch... which",
+          "alt": "two spoken words"
+        }
+      ],
+      "timeLimitSeconds": 4,
+      "required": true,
+      "options": [
+        {
+          "label": "Same word",
+          "value": "same",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Different words",
+          "value": "different",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 0
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-disc-18",
+      "sectionKey": "auditory-discrimination",
+      "order": 18,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "Did you hear the SAME word twice, or two DIFFERENT words?",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:rush... rash",
+          "alt": "two spoken words"
+        }
+      ],
+      "timeLimitSeconds": 4,
+      "required": true,
+      "options": [
+        {
+          "label": "Same word",
+          "value": "same",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 0
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Different words",
+          "value": "different",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-disc-19",
+      "sectionKey": "auditory-discrimination",
+      "order": 19,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "Did you hear the SAME word twice, or two DIFFERENT words?",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:ball... bell",
+          "alt": "two spoken words"
+        }
+      ],
+      "timeLimitSeconds": 4,
+      "required": true,
+      "options": [
+        {
+          "label": "Same word",
+          "value": "same",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 0
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Different words",
+          "value": "different",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aps-disc-20",
+      "sectionKey": "auditory-discrimination",
+      "order": 20,
+      "difficulty": "medium",
+      "questionType": "timed_choice",
+      "questionText": "Did you hear the SAME word twice, or two DIFFERENT words?",
+      "media": [
+        {
+          "type": "audio",
+          "url": "speech:moon... moon",
+          "alt": "two spoken words"
+        }
+      ],
+      "timeLimitSeconds": 4,
+      "required": true,
+      "options": [
+        {
+          "label": "Same word",
+          "value": "same",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 1
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Different words",
+          "value": "different",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "auditory-processing",
+              "points": 0
+            },
+            {
+              "dimensionKey": "auditory-discrimination",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

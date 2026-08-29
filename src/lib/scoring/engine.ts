@@ -196,6 +196,24 @@ function collectImpacts(
     return answer.value ? [...(questionScoreConfig ?? [])] : [];
   }
 
+  // Self-contained interactive games (e.g. a live adaptive card-sorting
+  // task) compute their own normalized 0-1 performance score internally —
+  // only the component itself knows how to fairly weigh whatever metrics
+  // its specific game produces (trials, errors, streaks, etc.). It reports
+  // that back as `payload.score`, which scales the question's scoreConfig
+  // the same way a value-based question's answer value does. A payload
+  // with no numeric `score` contributes nothing, same as any other
+  // non-deterministic type below.
+  if (answer.type === "custom_interactive") {
+    const score = (answer.payload as { score?: unknown } | undefined)?.score;
+    if (typeof score !== "number" || Number.isNaN(score)) return [];
+    const clamped = clamp(score, 0, 1);
+    return (questionScoreConfig ?? []).map((impact) => ({
+      dimensionKey: impact.dimensionKey,
+      points: clamped * impact.points,
+    }));
+  }
+
   // Open-ended / non-deterministic types (text, long_text, open_creative,
   // image_upload, etc.) never contribute to the deterministic score.
   return [];

@@ -8,9 +8,9 @@ import {
   imageBasedEngine,
   hybridEngine,
   customInteractiveEngine,
-  aiAnalysisEngine,
 } from "./standard-questionnaire";
 import { visionAnalysisEngine } from "./vision-analysis";
+import { compositeReportEngine } from "./composite-report";
 
 let bootstrapped = false;
 
@@ -32,7 +32,7 @@ export function registerBuiltInAssessmentEngines() {
     imageBasedEngine,
     hybridEngine,
     customInteractiveEngine,
-    aiAnalysisEngine,
+    compositeReportEngine,
     visionAnalysisEngine,
   ];
 

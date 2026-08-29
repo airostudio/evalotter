@@ -77,9 +77,3 @@ export const customInteractiveEngine = makeQuestionnaireEngine(
   "Custom interactive module",
   "Falls back to the standard runner; register a bespoke renderer for fully custom UI."
 );
-
-export const aiAnalysisEngine = makeQuestionnaireEngine(
-  "ai_analysis",
-  "AI analysis",
-  "Standard question set whose results lean heavily on AI interpretation (open-ended responses)."
-);

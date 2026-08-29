@@ -1,0 +1,49 @@
+{
+  "slug": "cognitive-flexibility-index",
+  "title": "Cognitive Flexibility Index",
+  "shortDescription": "Task-switching and rule-reversal exercises measuring how easily you adapt when the rules change mid-task.",
+  "longDescription": "Cognitive Flexibility Index is a real, live implementation of the Wisconsin Card Sorting Test (Berg, 1948; Grant & Berg, 1948) — the defining neuropsychological measure of set-shifting. You sort cards under four key cards by a rule (color, shape, or number) that is never stated — you infer it from right/wrong feedback, and once you've found it, it silently shifts to a new rule after 6 consecutive correct sorts. Getting caught applying the old rule after a shift (a \"perseverative error\") is the classic clinical signal WCST is built to detect.",
+  "icon": "shuffle",
+  "categoryKey": "cognitive",
+  "engineType": "hybrid",
+  "difficulty": "medium",
+  "estimatedDurationMinutes": 12,
+  "access": "free",
+  "sourceNote": "This is a genuinely live, adaptive implementation of WCST's mechanic, not a static approximation — the correct answer isn't fixed at authoring time, it's a hidden rule the runner tracks and shifts after 6 consecutive correct sorts, exactly like the real test. That required a real interactive component (src/components/questions/WCSTGameQuestion.tsx, a single `custom_interactive` question tagged \"wcst\") rather than seed content, since the standard question-and-answer runner has no way to give live feedback or branch on prior answers within an assessment. Parameterized after the published WCST-64 short form (64 cards, 4 categories) rather than the full 128-card/6-category version, to keep the session length realistic. The component computes its own normalized 0-1 performance score (category completion weighted 70%, resistance to perseverative errors weighted 30%) and reports it through the engine's generic custom_interactive scoring path (src/lib/scoring/engine.ts) — the same mechanism any future live interactive game would use, not a WCST-specific hack. The genuine published WCST is a commercially distributed clinical instrument (PAR Inc.) with its own card deck and norms; this uses an original 4-color/4-shape/4-count card set implementing the same paradigm.",
+
+  "sections": [
+    { "key": "card-sorting", "name": "Card Sorting", "description": "Sort cards under the four key cards by an unstated, shifting rule.", "instructions": "Watch the feedback after each sort — that's the only way to find (and re-find) the rule.", "timeLimitSeconds": null, "weight": 1, "order": 1 }
+  ],
+
+  "scoringDimensions": [
+    { "key": "cognitive-flexibility", "label": "Cognitive Flexibility", "description": "Set-shifting ability — finding a hidden sorting rule and adapting when it changes, measured live via category completions and resistance to perseverative errors.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "logical", "order": 1 }
+  ],
+
+  "scoringRules": [
+    { "dimensionKey": "cognitive-flexibility", "formula": "sum", "normalization": { "min": 0, "max": 10 } }
+  ],
+
+  "resultRanges": [
+    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Finding the hidden rule (and re-finding it after a shift) was difficult this round — a very common pattern, since WCST is specifically designed to be hard to game.", "recommendations": ["After a run of wrong answers, deliberately try a different attribute (color, then shape, then count) rather than repeating your last guess", "When you notice several sorts in a row going wrong after previously doing well, that's the signal the rule just shifted — treat it as new information, not bad luck", "Retake later — this measure is sensitive to mental fatigue and rushing"], "order": 1 },
+    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "Found the rule reliably at least once, but shifts cost several extra wrong sorts before adapting.", "recommendations": ["Practice noticing a shift faster — 2-3 wrong sorts in a row after previously being consistent is a strong shift signal", "Consciously test a *different* attribute after a few wrong sorts rather than persisting with what worked before"], "order": 2 },
+    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Adapts to rule shifts reasonably quickly, with occasional perseveration right after a shift.", "recommendations": ["Push for faster shift detection — aim to catch a shift within 1-2 wrong sorts", "Notice which of the three rule types (color/shape/number) you personally find hardest to switch to"], "order": 3 },
+    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Detects rule shifts quickly and rarely perseverates on an outdated rule.", "recommendations": ["This is a strong, genuine set-shifting result — a real asset in fast-changing work environments", "Notice how this compares to your Executive Function Profiling 'Shift' scale, if you've taken it"], "order": 4 },
+    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Near-optimal set-shifting — categories completed quickly with minimal perseverative errors.", "recommendations": ["This is an elite cognitive-flexibility result on one of neuropsychology's most established measures", "Consider how this shows up as an advantage in ambiguous or frequently-changing work"], "order": 5 }
+  ],
+
+  "brainProfileContributions": [{ "sourceDimensionKey": "cognitive-flexibility", "targetBrainProfileDimensionKey": "logical", "weight": 0.5 }],
+
+  "questions": [
+    {
+      "key": "cfi-wcst-01",
+      "sectionKey": "card-sorting",
+      "order": 1,
+      "difficulty": "medium",
+      "questionType": "custom_interactive",
+      "questionText": "Sort each card under the key card you believe it matches.",
+      "tags": ["wcst"],
+      "required": true,
+      "scoreConfig": [{ "dimensionKey": "cognitive-flexibility", "points": 10 }]
+    }
+  ]
+}

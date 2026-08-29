@@ -99,10 +99,11 @@ per-file in each JSON's `sourceNote`:
 | Palmistry | — | no source repo existed; authored fresh, no scoring |
 | EvalOtter Intelligence Profile (flagship) | shared library | composed by reusing real questions from the assessments above — see below |
 
-Sixteen former "coming soon" entries have since been built out the same
-way, each modeled on a real, named, world-standard instrument rather than
-invented from scratch — see **Graduated coming-soon assessments** below for
-the copyright caveat that applies to all of them.
+All eighteen former "coming soon" entries have since been built out the
+same way, each modeled on a real, named, world-standard instrument rather
+than invented from scratch — see **Graduated coming-soon assessments**
+below for the copyright caveat that applies to all of them. There is no
+more roadmap; every assessment in the catalogue is real, scored content.
 
 | Assessment | Modeled on | Notes |
 |---|---|---|
@@ -122,6 +123,9 @@ the copyright caveat that applies to all of them.
 | Abstract Reasoning Pro | Raven's Progressive Matrices | 20 3x3 matrix items, real programmatically-generated SVG grids (not text descriptions) — see **Image pipeline** below |
 | Fluid Intelligence Peak | Raven's Progressive Matrices ("distribution of three" rule family) | 25 items weighted toward Latin-square/multi-attribute rules, same real-SVG approach |
 | Visuospatial Rotation | Vandenberg & Kuse Mental Rotation Test | 18 items — asymmetric 2D polygons (not the original's 3D blocks, see caveat below), real rotated/mirrored SVG options |
+| Cognitive Flexibility Index | Wisconsin Card Sorting Test | A genuinely live, adaptive implementation (WCST-64 parameters) — not static content, see **Adaptive engine** below |
+| Auditory Processing Speed | WAIS/WMS Digit Span (forward + backward) + Wepman's Auditory Discrimination Test | 20 items — real synthesized speech via the Web Speech API, not text standing in for audio |
+| Full IQ Estimation Report | Composite of the platform's own Logical/Verbal/Spatial/Memory Brain Profile scores | Not scored from its own questions at all — see **Composite engine** below; explicitly framed as a self-reflection estimate, not a validated IQ score |
 
 **The flagship deliberately does not port the old `airostudio/brainyak`
 repo's "pattern recognition" content.** That repo hardcodes
@@ -152,8 +156,8 @@ the reusing assessment never declared (silently contributes nothing there).
 
 ## Graduated coming-soon assessments
 
-Sixteen assessments have moved from the roadmap into real, scored ones
-(see the table above), across four batches:
+All eighteen assessments have moved from the roadmap into real, scored
+ones (see the table above), across five batches:
 
 - **Batch 1**: Critical Thinking Depth, Phonological Awareness, Social
   Cognition Assessment, Numerical Agility.
@@ -167,45 +171,39 @@ Sixteen assessments have moved from the roadmap into real, scored ones
 - **Batch 4**: Abstract Reasoning Pro, Fluid Intelligence Peak, Visuospatial
   Rotation — all three only became buildable *during* this batch, after
   wiring up real image rendering (see **Image pipeline** below).
+- **Batch 5**: Cognitive Flexibility Index, Auditory Processing Speed, Full
+  IQ Estimation Report — the last three roadmap entries, each needing a
+  genuinely different piece of infrastructure rather than content (see
+  **Adaptive engine** and **Composite engine** below).
 
-3 remain on the roadmap: Cognitive Flexibility Index, Auditory Processing
-Speed, Full IQ Estimation Report. The approach for all of them, and for
-whichever get built out next:
+Nothing remains on the roadmap. The approach that got all eighteen here,
+for whenever new assessments get added later:
 
 - **Research the real, named, world-standard instrument for the domain
   first**, then model the assessment's structure (subtests/facets, item
   types, scoring logic) on it — the same thing Emotional Intelligence
   already did with EQ-i/MSCEIT.
 - **Never reproduce the actual copyrighted items.** Watson-Glaser, CTOPP-2,
-  the Wonderlic, etc. are commercially licensed instruments — their real
-  passages/stimuli/norms aren't reproduced here. What's ported is the
-  *paradigm* (the skills it isolates, how it's structured, how it's
-  scored), with original items written to implement that paradigm — the
-  same approach legitimate cognitive-assessment platforms use.
-- **Only build what the existing infrastructure can score for real.** Three
-  domains remain deliberately skipped, each for a concrete infrastructure
-  gap rather than an oversight:
-  - **Cognitive Flexibility Index** — the Wisconsin Card Sorting Test's
-    defining mechanic is inferring a hidden sorting rule from right/wrong
-    feedback, then re-inferring it after an unannounced switch. The runner
-    has no adaptive branching (every question is scored independently of
-    prior answers), so there's no way to give that feedback loop without
-    faking the one thing WCST actually measures.
-  - **Auditory Processing Speed** — the trait itself is about processing
-    spoken input. `QuestionMediaBlock.tsx` (see **Image pipeline** below)
-    can already play real synthesized speech via the Web Speech API, so
-    this is now closer to buildable than it was — what's still missing is
-    a genuine reaction-time-plus-accuracy task design around spoken
-    sequences (e.g. digit spans read aloud) rather than a fully worked-out
-    item bank.
-  - **Full IQ Estimation Report** — structurally different from the others:
-    it's meant to be a composite drawn from a user's *other* completed
-    results, not a battery of its own questions. That needs a "reads
-    existing attempts" engine rather than a seed-content assessment, which
-    is a real feature to design, not content to author.
-  All three are legitimate infrastructure/design work for a future batch
-  (an adaptive-questionnaire engine, a spoken-sequence item design, an
-  aggregate-report engine), not something to fake around.
+  the Wonderlic, WCST, WAIS/WMS Digit Span, etc. are commercially licensed
+  instruments — their real passages/stimuli/norms aren't reproduced here.
+  What's ported is the *paradigm* (the skills it isolates, how it's
+  structured, how it's scored), with original items written to implement
+  that paradigm — the same approach legitimate cognitive-assessment
+  platforms use.
+- **Only build what the infrastructure can score for real — and build the
+  infrastructure when a domain genuinely needs it, rather than faking
+  around the gap.** This is how all three of batch 5's harder holdouts
+  actually got built:
+  - **Cognitive Flexibility Index** needed WCST's defining mechanic — a
+    hidden sorting rule inferred from live right/wrong feedback, shifting
+    after a streak — which a static, pre-scored question set fundamentally
+    can't provide. So it got a real one: see **Adaptive engine** below.
+  - **Auditory Processing Speed** needed the trait itself, spoken input,
+    not a text stand-in for it. See **Image pipeline** below for the
+    speech-synthesis mechanism this uses.
+  - **Full IQ Estimation Report** needed to read a user's *other* completed
+    results rather than have its own question bank. See **Composite
+    engine** below.
 - **Note real adaptations openly, in the file's `sourceNote`.**
   Phonological Awareness's source (CTOPP-2) is administered orally; this
   platform has no audio-recording input, so every item is presented and
@@ -246,8 +244,53 @@ item's generation asserted exactly one option matches the derived correct
 attributes before being included, and a sample was also rendered to PNG
 and visually spot-checked during authoring. The same `QuestionMediaBlock`
 also plays real synthesized speech client-side for a `speech:<text>` media
-URL via the Web Speech API — built for Auditory Processing Speed, though
-that assessment isn't built out yet (see below).
+URL via the Web Speech API — Auditory Processing Speed's Digit Span and
+auditory-discrimination items are real synthesized speech played through
+this exact mechanism, not a text stand-in.
+
+**Adaptive engine** (`src/components/questions/WCSTGameQuestion.tsx`),
+built during batch 5 for Cognitive Flexibility Index: the standard
+question-and-answer runner scores every question independently, with no
+way to give live feedback or branch on prior answers within an attempt —
+fundamentally incompatible with WCST, whose entire mechanic is inferring a
+hidden rule from feedback and re-inferring it after a silent shift. So
+this is a real, live, adaptive card-sorting game (parameterized after the
+published WCST-64 short form: 64 cards, 4 categories, a shift after 6
+consecutive correct sorts), not a static approximation — the "correct"
+answer for each card genuinely isn't known until the game resolves the
+current hidden rule at runtime. It's a single `custom_interactive`
+question tagged `"wcst"`; `CustomInteractiveQuestion.tsx` now dispatches
+on tags rather than being one fixed fallback, so future interactive games
+can register alongside it without conflict. The component computes its
+own normalized 0-1 performance score (category completions weighted 70%,
+resistance to perseverative errors weighted 30%) and reports it through a
+new generic `custom_interactive` branch in
+`src/lib/scoring/engine.ts` — the same value-scales-the-scoreConfig
+pattern a slider or rating scale already used, just computed by the game
+itself. That branch is deliberately generic (any future live interactive
+game reports back the same way), not WCST-specific, and was verified with
+a throwaway synthetic-payload script (including the edge cases a first
+pass missed — `NaN` passes `typeof x === "number"` in JS, and an
+out-of-range score needed clamping) before being relied on.
+
+**Composite engine**
+(`src/lib/assessment-engine/engines/composite-report.tsx`), built during
+batch 5 for Full IQ Estimation Report: this is the one assessment on the
+platform that isn't scored from its own responses at all. Its engine
+reads the user's `brain_profile_dimensions` rows for the four
+cognitive-ability axes (Logical, Verbal, Spatial, Memory — Emotional and
+Creative are deliberately excluded from an IQ-framed composite, the same
+way Palmistry is excluded from the Brain Profile aggregate) and averages
+them; the assessment's single question is just an acknowledgment step. If
+fewer than 3 of those 4 domains have real completed-assessment data yet,
+it returns the sentinel score 0, landing in a dedicated "not enough data"
+result range instead of presenting a fabricated result from sparse or
+absent data — there's no path that skips this gate. The result-range
+titles throughout say "estimated range," and both the assessment's
+`longDescription` and every tier's description state plainly that this is
+a self-reflection estimate, not a validated psychometric IQ score — the
+platform has no standardization sample or clinical norming behind it, and
+never claims otherwise.
 
 **Engine fixes** (`src/lib/scoring/engine.ts`), made during batch 3 because
 they were needed for real, not preemptively:
@@ -271,23 +314,22 @@ they were needed for real, not preemptively:
 `npm run seed:validate` catches structural bugs before any of this reaches
 a database — always run it on new content before `npm run seed`.
 
-## Coming-soon assessments
+## Adding a new assessment (the roadmap mechanism, now empty)
 
-`scripts/seed/data/coming-soon.json` now holds the remaining 3 roadmap
-entries (Auditory Processing Speed, Cognitive Flexibility Index, Full IQ
-Estimation Report) with catalogue metadata only — no sections, questions,
-or scoring. They're `status: "coming_soon"`
-(a distinct DB status from `draft`, since coming-soon entries are
-deliberately public-facing — see `0007`/`0008` migrations for the enum
-value and RLS policy). The catalogue shows them with a "Coming soon" badge
-and a disabled button (`AssessmentCard.tsx`, `assessments/[slug]/page.tsx`).
-
-To build one out later: rename its entry in `coming-soon.json` out of that
-file into its own `scripts/seed/data/<slug>.json` matching the shape of the
-ten real assessments (see any of those for the pattern), add real
+`scripts/seed/data/coming-soon.json` is currently `[]` — every assessment
+originally seeded there has been built out into real content (see
+**Graduated coming-soon assessments** above). The mechanism it used is
+still how a *new* one would get added later: a lightweight entry there
+(catalogue metadata only, `status: "coming_soon"` — a distinct DB status
+from `draft`, since coming-soon entries are deliberately public-facing,
+shown with a "Coming soon" badge and a disabled button in
+`AssessmentCard.tsx`/`assessments/[slug]/page.tsx` — see `0007`/`0008`
+migrations for the enum value and RLS policy) that gets promoted once
+built out: move it into its own `scripts/seed/data/<slug>.json` matching
+the shape of any real assessment, add real
 sections/questions/scoringDimensions/resultRanges, drop `"status":
-"coming_soon"` so it defaults to `"published"`, then `npm run seed:validate`
-and `npm run seed`.
+"coming_soon"` so it defaults to `"published"`, then `npm run
+seed:validate` and `npm run seed`.
 
 ## AI interpretation & Palmistry vision
 
