@@ -6,6 +6,31 @@ type CookieToSet = { name: string; value: string; options?: CookieOptions };
 const PROTECTED_PREFIXES = ["/dashboard", "/brain-profile", "/admin", "/results"];
 const ADMIN_PREFIXES = ["/admin"];
 
+/**
+ * A hung network call (Supabase slow/unreachable from the edge region) never
+ * throws, so a bare `await` on it isn't caught by try/catch — the platform's
+ * own middleware execution limit eventually kills the invocation instead,
+ * surfacing as a much worse, opaque MIDDLEWARE_INVOCATION_TIMEOUT/504 to the
+ * user. Racing every Supabase call against a short internal timeout turns
+ * that into a normal, catchable error well before the platform limit, so the
+ * existing fail-open handling below actually gets to run.
+ */
+function withTimeout<T>(promise: PromiseLike<T>, ms: number): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`Supabase call timed out after ${ms}ms`)), ms);
+    Promise.resolve(promise).then(
+      (value) => {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      (err) => {
+        clearTimeout(timer);
+        reject(err);
+      }
+    );
+  });
+}
+
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
 
@@ -48,7 +73,7 @@ export async function updateSession(request: NextRequest) {
 
     const {
       data: { user },
-    } = await supabase.auth.getUser();
+    } = await withTimeout(supabase.auth.getUser(), 5000);
 
     if (isProtected && !user) {
       const redirectUrl = new URL("/login", request.url);
@@ -57,11 +82,10 @@ export async function updateSession(request: NextRequest) {
     }
 
     if (isAdminRoute && user) {
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("role")
-        .eq("id", user.id)
-        .single();
+      const { data: profile } = await withTimeout(
+        supabase.from("profiles").select("role").eq("id", user.id).single(),
+        5000
+      );
 
       const role = (profile as { role?: string } | null)?.role;
       if (role !== "admin" && role !== "super_admin") {

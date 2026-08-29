@@ -115,6 +115,13 @@ export interface SeedQuestionOption {
   scoreConfig?: { dimensionKey: string; points: number }[];
 }
 
+export interface SeedQuestionMedia {
+  type: "image" | "svg" | "audio";
+  /** For images/svg: a URL or data URI (an inline SVG data URI needs no asset pipeline). For audio: either a real file URL, or `speech:<text>` to have the runner synthesize and play that text via the browser's Web Speech API (see QuestionMediaBlock.tsx). */
+  url: string;
+  alt?: string;
+}
+
 export interface SeedQuestion {
   /** Stable slug unique across the whole seed set (not just this assessment) — enables reuse via reuseQuestionKeys. */
   key: string;
@@ -122,6 +129,8 @@ export interface SeedQuestion {
   questionType: QuestionType;
   questionText: string;
   instructions?: string | null;
+  /** Stimulus media shown above the question's answer UI — see SeedQuestionMedia. */
+  media?: SeedQuestionMedia[];
   difficulty?: "easy" | "medium" | "hard" | null;
   category?: string | null;
   tags?: string[];

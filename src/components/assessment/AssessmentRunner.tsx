@@ -10,6 +10,7 @@ import { saveResponseAction, completeAttemptAction } from "@/actions/attempts";
 import type { AnswerValue, AssessmentQuestion } from "@/types";
 import type { AssessmentRendererProps } from "@/lib/assessment-engine/types";
 import { ProgressBar } from "./ProgressBar";
+import { QuestionMediaBlock } from "./QuestionMediaBlock";
 import { SectionInstructions } from "./SectionInstructions";
 import { SectionTimer } from "./SectionTimer";
 
@@ -188,6 +189,10 @@ export function AssessmentRunner({ assessment, attempt, responses }: AssessmentR
               {question.questionText}
             </h2>
           </div>
+
+          {question.media && question.media.length > 0 && (
+            <QuestionMediaBlock media={question.media} />
+          )}
 
           {QuestionComponent ? (
             <QuestionComponent question={question} value={currentValue} onChange={handleAnswer} autoFocus />
