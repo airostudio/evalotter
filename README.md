@@ -99,7 +99,7 @@ per-file in each JSON's `sourceNote`:
 | Palmistry | — | no source repo existed; authored fresh, no scoring |
 | EvalOtter Intelligence Profile (flagship) | shared library | composed by reusing real questions from the assessments above — see below |
 
-Thirteen former "coming soon" entries have since been built out the same
+Sixteen former "coming soon" entries have since been built out the same
 way, each modeled on a real, named, world-standard instrument rather than
 invented from scratch — see **Graduated coming-soon assessments** below for
 the copyright caveat that applies to all of them.
@@ -119,6 +119,9 @@ the copyright caveat that applies to all of them.
 | Memory Palace Challenge | Method of Loci ("memory palace") | 4 themed routes (5-8 stops each), ordered recall scored via the newly-fixed `sequence` question type — see engine fixes below |
 | Attention Control Test | Eriksen Flanker Task | 30 congruent/incongruent arrow trials, response-time-weighted scoring via the newly-fixed `timed_choice` handling — see below (catalogue copy corrected from "Stroop-style" to "flanker-style" to match what was actually built) |
 | Speed Processing Index | Jensen's simple/choice reaction-time paradigm | 40 trivial-difficulty judgments (string matching, arithmetic, number comparison, category membership) across 4 sections, response-time-weighted |
+| Abstract Reasoning Pro | Raven's Progressive Matrices | 20 3x3 matrix items, real programmatically-generated SVG grids (not text descriptions) — see **Image pipeline** below |
+| Fluid Intelligence Peak | Raven's Progressive Matrices ("distribution of three" rule family) | 25 items weighted toward Latin-square/multi-attribute rules, same real-SVG approach |
+| Visuospatial Rotation | Vandenberg & Kuse Mental Rotation Test | 18 items — asymmetric 2D polygons (not the original's 3D blocks, see caveat below), real rotated/mirrored SVG options |
 
 **The flagship deliberately does not port the old `airostudio/brainyak`
 repo's "pattern recognition" content.** That repo hardcodes
@@ -149,8 +152,8 @@ the reusing assessment never declared (silently contributes nothing there).
 
 ## Graduated coming-soon assessments
 
-Thirteen assessments have moved from the roadmap into real, scored ones
-(see the table above), across three batches:
+Sixteen assessments have moved from the roadmap into real, scored ones
+(see the table above), across four batches:
 
 - **Batch 1**: Critical Thinking Depth, Phonological Awareness, Social
   Cognition Assessment, Numerical Agility.
@@ -161,9 +164,13 @@ Thirteen assessments have moved from the roadmap into real, scored ones
   the last three only became buildable *during* this batch, after fixing
   the `sequence` and response-time-weighted `timed_choice` scoring gaps
   batch 2's README had flagged (see **Engine fixes** below).
+- **Batch 4**: Abstract Reasoning Pro, Fluid Intelligence Peak, Visuospatial
+  Rotation — all three only became buildable *during* this batch, after
+  wiring up real image rendering (see **Image pipeline** below).
 
-6 remain on the roadmap. The approach for all of them, and for whichever
-get built out next:
+3 remain on the roadmap: Cognitive Flexibility Index, Auditory Processing
+Speed, Full IQ Estimation Report. The approach for all of them, and for
+whichever get built out next:
 
 - **Research the real, named, world-standard instrument for the domain
   first**, then model the assessment's structure (subtests/facets, item
@@ -175,16 +182,9 @@ get built out next:
   *paradigm* (the skills it isolates, how it's structured, how it's
   scored), with original items written to implement that paradigm — the
   same approach legitimate cognitive-assessment platforms use.
-- **Only build what the existing infrastructure can score for real.** Four
+- **Only build what the existing infrastructure can score for real.** Three
   domains remain deliberately skipped, each for a concrete infrastructure
   gap rather than an oversight:
-  - **Abstract Reasoning Pro / Visuospatial Rotation / Fluid Intelligence
-    Peak** — Raven's-style matrices and the Vandenberg & Kuse Mental
-    Rotation Test need real rendered visuals; `pattern_question`/
-    `visual_rotation` currently fall back to `ImageChoiceQuestion.tsx`'s
-    plain-text-label mode with no image asset pipeline behind it. Building
-    these without real images would mean a text-description task
-    masquerading as a visual reasoning test.
   - **Cognitive Flexibility Index** — the Wisconsin Card Sorting Test's
     defining mechanic is inferring a hidden sorting rule from right/wrong
     feedback, then re-inferring it after an unannounced switch. The runner
@@ -192,18 +192,19 @@ get built out next:
     prior answers), so there's no way to give that feedback loop without
     faking the one thing WCST actually measures.
   - **Auditory Processing Speed** — the trait itself is about processing
-    spoken input, and this platform has no audio playback infrastructure.
-    Substituting text (the way Phonological Awareness's adaptation does)
-    would drop the "auditory" part of what's being measured entirely,
-    unlike Phonological Awareness where the underlying phonemic skill
-    survives a text presentation.
+    spoken input. `QuestionMediaBlock.tsx` (see **Image pipeline** below)
+    can already play real synthesized speech via the Web Speech API, so
+    this is now closer to buildable than it was — what's still missing is
+    a genuine reaction-time-plus-accuracy task design around spoken
+    sequences (e.g. digit spans read aloud) rather than a fully worked-out
+    item bank.
   - **Full IQ Estimation Report** — structurally different from the others:
     it's meant to be a composite drawn from a user's *other* completed
     results, not a battery of its own questions. That needs a "reads
     existing attempts" engine rather than a seed-content assessment, which
     is a real feature to design, not content to author.
-  All four are legitimate infrastructure work for a future batch (an image
-  pipeline, an adaptive-questionnaire engine, audio input, an
+  All three are legitimate infrastructure/design work for a future batch
+  (an adaptive-questionnaire engine, a spoken-sequence item design, an
   aggregate-report engine), not something to fake around.
 - **Note real adaptations openly, in the file's `sourceNote`.**
   Phonological Awareness's source (CTOPP-2) is administered orally; this
@@ -222,7 +223,31 @@ get built out next:
   Frederick's original three (bat-and-ball, widget-machine, lily-pad) since
   those are now widely circulated enough that many test-takers have already
   seen them — a documented limitation of the original CRT that published
-  extended batteries work around the same way.
+  extended batteries work around the same way. Visuospatial Rotation uses
+  original 2D asymmetric polygons rather than the Vandenberg & Kuse test's
+  3D cube-block figures — a shape with genuine chirality (mirroring
+  produces a different-handed shape than any rotation) tests the same
+  rotation-vs-mirror discrimination without needing 3D rendering, a
+  simplification some digital cognitive-test platforms use too.
+
+**Image pipeline** (`src/components/assessment/QuestionMediaBlock.tsx`),
+built during batch 4: `Question.media` (typed `"image" | "svg" | "audio"`
+since the schema's original design) was mapped through from the DB but
+never actually rendered anywhere in the runner — a real gap, but a much
+smaller one than initially scoped as "needs an image pipeline." Fixing
+just the rendering, plus generating real SVGs as `data:` URIs at
+seed-authoring time (`option.imageUrl` already supported arbitrary image
+URLs — an inline SVG data URI needs no asset storage or pipeline at all),
+was enough. Abstract Reasoning Pro and Fluid Intelligence Peak's matrix
+grids, and Visuospatial Rotation's target/option shapes, are all real
+rendered SVGs generated programmatically with the correct answer derived
+from each item's rule *in code* (not hand-asserted) and verified — every
+item's generation asserted exactly one option matches the derived correct
+attributes before being included, and a sample was also rendered to PNG
+and visually spot-checked during authoring. The same `QuestionMediaBlock`
+also plays real synthesized speech client-side for a `speech:<text>` media
+URL via the Web Speech API — built for Auditory Processing Speed, though
+that assessment isn't built out yet (see below).
 
 **Engine fixes** (`src/lib/scoring/engine.ts`), made during batch 3 because
 they were needed for real, not preemptively:
@@ -248,11 +273,10 @@ a database — always run it on new content before `npm run seed`.
 
 ## Coming-soon assessments
 
-`scripts/seed/data/coming-soon.json` now holds the remaining 6 roadmap
-entries (Visuospatial Rotation, Auditory Processing Speed, Abstract
-Reasoning Pro, Cognitive Flexibility Index, Fluid Intelligence Peak, Full
-IQ Estimation Report) with catalogue metadata only — no sections,
-questions, or scoring. They're `status: "coming_soon"`
+`scripts/seed/data/coming-soon.json` now holds the remaining 3 roadmap
+entries (Auditory Processing Speed, Cognitive Flexibility Index, Full IQ
+Estimation Report) with catalogue metadata only — no sections, questions,
+or scoring. They're `status: "coming_soon"`
 (a distinct DB status from `draft`, since coming-soon entries are
 deliberately public-facing — see `0007`/`0008` migrations for the enum
 value and RLS policy). The catalogue shows them with a "Coming soon" badge

@@ -259,7 +259,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Visuospatial Rotation",
     shortDescription: "Mental rotation of 3D objects — identify which option is the same shape rotated, not a mirrored fake.",
     category: "Spatial", categoryKey: "spatial", icon: "rotate-cw",
-    engineType: "pattern_recognition", difficulty: "hard", estimatedDurationMinutes: 15, questionCount: 18, access: "premium", comingSoon: true,
+    engineType: "pattern_recognition", difficulty: "hard", estimatedDurationMinutes: 15, questionCount: 18, access: "premium",
   },
   {
     slug: "auditory-processing-speed",
@@ -280,7 +280,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Abstract Reasoning Pro",
     shortDescription: "Advanced non-verbal matrix reasoning beyond Spatial Intelligence — denser rule sets, higher ceiling.",
     category: "Logical", categoryKey: "logical", icon: "box",
-    engineType: "pattern_recognition", difficulty: "hard", estimatedDurationMinutes: 20, questionCount: 20, access: "premium", comingSoon: true,
+    engineType: "pattern_recognition", difficulty: "hard", estimatedDurationMinutes: 20, questionCount: 20, access: "premium",
   },
   {
     slug: "decision-making-under-pressure",
@@ -315,7 +315,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     title: "Fluid Intelligence Peak",
     shortDescription: "Novel-problem reasoning with no reliance on prior knowledge — solving patterns you've genuinely never seen before.",
     category: "Logical", categoryKey: "logical", icon: "brain",
-    engineType: "pattern_recognition", difficulty: "hard", estimatedDurationMinutes: 25, questionCount: 25, access: "premium", comingSoon: true,
+    engineType: "pattern_recognition", difficulty: "hard", estimatedDurationMinutes: 25, questionCount: 25, access: "premium",
   },
   {
     slug: "career-aptitude-profile",

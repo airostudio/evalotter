@@ -1,0 +1,1436 @@
+{
+  "slug": "abstract-reasoning-pro",
+  "title": "Abstract Reasoning Pro",
+  "shortDescription": "Advanced non-verbal matrix reasoning beyond Spatial Intelligence — denser rule sets, higher ceiling.",
+  "longDescription": "Abstract Reasoning Pro is built on the Raven's Progressive Matrices paradigm (Raven, 1936) — the archetypal non-verbal matrix-reasoning test, still one of the most widely used non-verbal intelligence measures today. Each item shows a 3x3 grid following a rule across shape, color, rotation, and/or count; you identify the rule and pick the option that completes the missing cell. This version runs denser than Spatial Intelligence's matrix section — most items combine two or three simultaneously-changing attributes rather than one.",
+  "icon": "box",
+  "categoryKey": "logical",
+  "engineType": "pattern_recognition",
+  "difficulty": "hard",
+  "estimatedDurationMinutes": 20,
+  "access": "premium",
+  "sourceNote": "Every grid and answer option is a real, programmatically generated and rendered SVG (embedded as data URIs in question.media and option.imageUrl — no external asset pipeline needed) — not a text description standing in for an image, which is what blocked this assessment in earlier batches. Each item's rule (which attribute varies by row/column/diagonal) is applied in code to derive the correct cell, and every item was verified programmatically (exactly one option matches the derived correct attributes) before being included; several were also spot-checked visually by rendering to PNG. Raven's Progressive Matrices itself is a copyrighted, commercially published instrument (its current edition), so these are original grids implementing the same paradigm and rule families (constant-in-a-row/column, pairwise progression, distribution-of-three), not reproductions of the actual published matrices.",
+  "sections": [
+    {
+      "key": "matrix-reasoning",
+      "name": "Matrix Reasoning",
+      "description": "3x3 grids following a rule across shape, color, rotation, and count.",
+      "instructions": "Identify the rule governing the grid, then choose the option that correctly completes the missing cell.",
+      "timeLimitSeconds": null,
+      "weight": 1,
+      "order": 1
+    }
+  ],
+  "scoringDimensions": [
+    {
+      "key": "abstract-reasoning",
+      "label": "Abstract Reasoning",
+      "description": "Non-verbal pattern reasoning across simultaneously-varying attributes.",
+      "contributesToBrainProfile": true,
+      "brainProfileDimensionKey": "logical",
+      "order": 1
+    }
+  ],
+  "scoringRules": [
+    {
+      "dimensionKey": "abstract-reasoning",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 20
+      }
+    }
+  ],
+  "resultRanges": [
+    {
+      "dimensionKey": "overall",
+      "minScore": 0,
+      "maxScore": 30,
+      "title": "Developing",
+      "description": "Spotting a single rule is manageable, but grids with two or three attributes changing at once are difficult to fully untangle right now.",
+      "recommendations": [
+        "Work through one attribute at a time — check shape first, then color, then rotation, rather than all at once",
+        "Practice on Spatial Intelligence's single-attribute matrices before returning here",
+        "For each row and column, name out loud what stays the same and what changes"
+      ],
+      "order": 1
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 31,
+      "maxScore": 50,
+      "title": "Average",
+      "description": "Two-attribute grids are usually solvable, but three-attribute or distribution-of-three items are still error-prone.",
+      "recommendations": [
+        "When a grid feels ambiguous, check whether the rule might be a row/column pattern rather than a simple repeat",
+        "Practice specifically on items where every row (or column) contains the same three values in different positions"
+      ],
+      "order": 2
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 51,
+      "maxScore": 70,
+      "title": "Strong",
+      "description": "Reliable across most rule types, including grids with two or three simultaneously-changing attributes.",
+      "recommendations": [
+        "Push into distribution-of-three items specifically — they require checking rows AND columns, not just one",
+        "Time yourself to build speed once accuracy feels solid"
+      ],
+      "order": 3
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 71,
+      "maxScore": 85,
+      "title": "Very Strong",
+      "description": "Consistently identifies the governing rule quickly, even across dense, multi-attribute grids.",
+      "recommendations": [
+        "This level of abstract pattern reasoning transfers directly to Fluid Intelligence Peak's even more novel rule types",
+        "Notice which specific rule family (row/column constant, progression, distribution) you solve fastest"
+      ],
+      "order": 4
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 86,
+      "maxScore": 100,
+      "title": "Exceptional",
+      "description": "Near-perfect performance across every rule type and density level tested.",
+      "recommendations": [
+        "Try Fluid Intelligence Peak for even more novel, less familiar rule structures",
+        "This is a strong general-reasoning signal independent of specific knowledge or vocabulary"
+      ],
+      "order": 5
+    }
+  ],
+  "brainProfileContributions": [
+    {
+      "sourceDimensionKey": "abstract-reasoning",
+      "targetBrainProfileDimensionKey": "logical",
+      "weight": 0.5
+    }
+  ],
+  "questions": [
+    {
+      "key": "arp-01",
+      "sectionKey": "matrix-reasoning",
+      "order": 1,
+      "difficulty": "easy",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48Y2lyY2xlIGN4PSI0NS4wIiBjeT0iNDUuMCIgcj0iMjUuMCIgZmlsbD0iIzA2YjZkNCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDYpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHJlY3QgeD0iMjAuMCIgeT0iMjAuMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjMDZiNmQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjMDZiNmQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48Y2lyY2xlIGN4PSI0NS4wIiBjeT0iNDUuMCIgcj0iMjUuMCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cmVjdCB4PSIyMC4wIiB5PSIyMC4wIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5OCwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA3MC4wMCw0NS4wMCA0NS4wMCw3MC4wMCAyMC4wMCw0NS4wMCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PGNpcmNsZSBjeD0iNDUuMCIgY3k9IjQ1LjAiIHI9IjI1LjAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHJlY3QgeD0iMjAuMCIgeT0iMjAuMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iODYiIGhlaWdodD0iODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRiNTU2MyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2LDQiIHJ4PSI2Ii8+PHRleHQgeD0iNDUuMCIgeT0iNTMuMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPj88L3RleHQ+PC9zdmc+PC9nPjwvc3ZnPg==",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzUuMDAsNTAuMDAgNTAuMDAsNzUuMDAgMjUuMDAsNTAuMDAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzEuNjUsMzcuNTAgNzEuNjUsNjIuNTAgNTAuMDAsNzUuMDAgMjguMzUsNjIuNTAgMjguMzUsMzcuNTAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxjaXJjbGUgY3g9IjUwLjAiIGN5PSI1MC4wIiByPSIyNS4wIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzUuMDAsNTAuMDAgNTAuMDAsNzUuMDAgMjUuMDAsNTAuMDAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-02",
+      "sectionKey": "matrix-reasoning",
+      "order": 2,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDU3LjUwIDIzLjM1LDU3LjUwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2Ni42NSw1Ny41MCAyMy4zNSw1Ny41MCIgZmlsbD0iI2VmNDQ0NCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDYpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDE4MCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDU3LjUwIDIzLjM1LDU3LjUwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cmVjdCB4PSIyMC4wIiB5PSIyMC4wIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDQ1LjAgNDUuMCkiPjxyZWN0IHg9IjIwLjAiIHk9IjIwLjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2VmNDQ0NCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDQ1LjAgNDUuMCkiPjxyZWN0IHg9IjIwLjAiIHk9IjIwLjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA1MS42MSwzNS45MCA2OC43OCwzNy4yNyA1NS43MCw0OC40OCA1OS42OSw2NS4yMyA0NS4wMCw1Ni4yNSAzMC4zMSw2NS4yMyAzNC4zMCw0OC40OCAyMS4yMiwzNy4yNyAzOC4zOSwzNS45MCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA1MS42MSwzNS45MCA2OC43OCwzNy4yNyA1NS43MCw0OC40OCA1OS42OSw2NS4yMyA0NS4wMCw1Ni4yNSAzMC4zMSw2NS4yMyAzNC4zMCw0OC40OCAyMS4yMiwzNy4yNyAzOC4zOSwzNS45MCIgZmlsbD0iI2VmNDQ0NCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9Ijg2IiBoZWlnaHQ9Ijg2IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YjU1NjMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWRhc2hhcnJheT0iNiw0IiByeD0iNiIvPjx0ZXh0IHg9IjQ1LjAiIHk9IjUzLjAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiM2YjcyODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj4/PC90ZXh0Pjwvc3ZnPjwvZz48L3N2Zz4=",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIzMi41MCwzNS4wMCAzNi40Nyw0NC41NCA0Ni43Nyw0NS4zNiAzOC45Miw1Mi4wOSA0MS4zMiw2Mi4xNCAzMi41MCw1Ni43NSAyMy42OCw2Mi4xNCAyNi4wOCw1Mi4wOSAxOC4yMyw0NS4zNiAyOC41Myw0NC41NCIgZmlsbD0iIzYzNjZmMSIvPjxwb2x5Z29uIHBvaW50cz0iNjcuNTAsMzUuMDAgNzEuNDcsNDQuNTQgODEuNzcsNDUuMzYgNzMuOTIsNTIuMDkgNzYuMzIsNjIuMTQgNjcuNTAsNTYuNzUgNTguNjgsNjIuMTQgNjEuMDgsNTIuMDkgNTMuMjMsNDUuMzYgNjMuNTMsNDQuNTQiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA3My43OCw0Mi4yNyA2NC42OSw3MC4yMyAzNS4zMSw3MC4yMyAyNi4yMiw0Mi4yNyIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA1Ni42MSw0MC45MCA3My43OCw0Mi4yNyA2MC43MCw1My40OCA2NC42OSw3MC4yMyA1MC4wMCw2MS4yNSAzNS4zMSw3MC4yMyAzOS4zMCw1My40OCAyNi4yMiw0Mi4yNyA0My4zOSw0MC45MCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz4=",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHJlY3QgeD0iMjUuMCIgeT0iMjUuMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-03",
+      "sectionKey": "matrix-reasoning",
+      "order": 3,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48Y2lyY2xlIGN4PSI0NS4wIiBjeT0iNDUuMCIgcj0iMjUuMCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDYpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PGNpcmNsZSBjeD0iMjcuNSIgY3k9IjQ1LjAiIHI9IjE1LjAiIGZpbGw9IiNhODU1ZjciLz48Y2lyY2xlIGN4PSI2Mi41IiBjeT0iNDUuMCIgcj0iMTUuMCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDYpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PGNpcmNsZSBjeD0iMTAuMCIgY3k9IjQ1LjAiIHI9IjE1LjAiIGZpbGw9IiNhODU1ZjciLz48Y2lyY2xlIGN4PSI0NS4wIiBjeT0iNDUuMCIgcj0iMTUuMCIgZmlsbD0iI2E4NTVmNyIvPjxjaXJjbGUgY3g9IjgwLjAiIGN5PSI0NS4wIiByPSIxNS4wIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iMjcuNTAsMzAuMDAgNDIuNTAsNDUuMDAgMjcuNTAsNjAuMDAgMTIuNTAsNDUuMDAiIGZpbGw9IiNhODU1ZjciLz48cG9seWdvbiBwb2ludHM9IjYyLjUwLDMwLjAwIDc3LjUwLDQ1LjAwIDYyLjUwLDYwLjAwIDQ3LjUwLDQ1LjAwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTAuMDAsMzAuMDAgMjUuMDAsNDUuMDAgMTAuMDAsNjAuMDAgLTUuMDAsNDUuMDAiIGZpbGw9IiNhODU1ZjciLz48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDMwLjAwIDYwLjAwLDQ1LjAwIDQ1LjAwLDYwLjAwIDMwLjAwLDQ1LjAwIiBmaWxsPSIjYTg1NWY3Ii8+PHBvbHlnb24gcG9pbnRzPSI4MC4wMCwzMC4wMCA5NS4wMCw0NS4wMCA4MC4wMCw2MC4wMCA2NS4wMCw0NS4wMCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHJlY3QgeD0iMjAuMCIgeT0iMjAuMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxyZWN0IHg9IjEyLjUiIHk9IjMwLjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiNhODU1ZjciLz48cmVjdCB4PSI0Ny41IiB5PSIzMC4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iODYiIGhlaWdodD0iODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRiNTU2MyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2LDQiIHJ4PSI2Ii8+PHRleHQgeD0iNDUuMCIgeT0iNTMuMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPj88L3RleHQ+PC9zdmc+PC9nPjwvc3ZnPg==",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgyNzAgNTAuMCA1MC4wKSI+PHJlY3QgeD0iMC4wIiB5PSIzNS4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjYTg1NWY3Ii8+PHJlY3QgeD0iMzUuMCIgeT0iMzUuMCIgd2lkdGg9IjMwLjAiIGhlaWdodD0iMzAuMCIgZmlsbD0iI2E4NTVmNyIvPjxyZWN0IHg9IjcwLjAiIHk9IjM1LjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjAuMCIgeT0iMzUuMCIgd2lkdGg9IjMwLjAiIGhlaWdodD0iMzAuMCIgZmlsbD0iI2E4NTVmNyIvPjxyZWN0IHg9IjM1LjAiIHk9IjM1LjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiNhODU1ZjciLz48cmVjdCB4PSI3MC4wIiB5PSIzNS4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPg==",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjAuMCIgeT0iMzUuMCIgd2lkdGg9IjMwLjAiIGhlaWdodD0iMzAuMCIgZmlsbD0iIzYzNjZmMSIvPjxyZWN0IHg9IjM1LjAiIHk9IjM1LjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiM2MzY2ZjEiLz48cmVjdCB4PSI3MC4wIiB5PSIzNS4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTUuMDAsMzUuMDAgMjcuOTksNDIuNTAgMjcuOTksNTcuNTAgMTUuMDAsNjUuMDAgMi4wMSw1Ny41MCAyLjAxLDQyLjUwIiBmaWxsPSIjYTg1NWY3Ii8+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwzNS4wMCA2Mi45OSw0Mi41MCA2Mi45OSw1Ny41MCA1MC4wMCw2NS4wMCAzNy4wMSw1Ny41MCAzNy4wMSw0Mi41MCIgZmlsbD0iI2E4NTVmNyIvPjxwb2x5Z29uIHBvaW50cz0iODUuMDAsMzUuMDAgOTcuOTksNDIuNTAgOTcuOTksNTcuNTAgODUuMDAsNjUuMDAgNzIuMDEsNTcuNTAgNzIuMDEsNDIuNTAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-04",
+      "sectionKey": "matrix-reasoning",
+      "order": 4,
+      "difficulty": "hard",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY4Ljc4LDM3LjI3IDU5LjY5LDY1LjIzIDMwLjMxLDY1LjIzIDIxLjIyLDM3LjI3IiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDMyLjUwIDY2LjY1LDU3LjUwIDQ1LjAwLDcwLjAwIDIzLjM1LDU3LjUwIDIzLjM1LDMyLjUwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDU3LjUwIDIzLjM1LDU3LjUwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDMyLjUwIDY2LjY1LDU3LjUwIDQ1LjAwLDcwLjAwIDIzLjM1LDU3LjUwIDIzLjM1LDMyLjUwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjYuNjUsNTcuNTAgMjMuMzUsNTcuNTAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5OCwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2OC43OCwzNy4yNyA1OS42OSw2NS4yMyAzMC4zMSw2NS4yMyAyMS4yMiwzNy4yNyIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2Ni42NSw1Ny41MCAyMy4zNSw1Ny41MCIgZmlsbD0iI2Y1OWUwYiIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY4Ljc4LDM3LjI3IDU5LjY5LDY1LjIzIDMwLjMxLDY1LjIzIDIxLjIyLDM3LjI3IiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iODYiIGhlaWdodD0iODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRiNTU2MyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2LDQiIHJ4PSI2Ii8+PHRleHQgeD0iNDUuMCIgeT0iNTMuMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPj88L3RleHQ+PC9zdmc+PC9nPjwvc3ZnPg==",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSg5MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjUwLjAwLDI1LjAwIDcxLjY1LDM3LjUwIDcxLjY1LDYyLjUwIDUwLjAwLDc1LjAwIDI4LjM1LDYyLjUwIDI4LjM1LDM3LjUwIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzEuNjUsMzcuNTAgNzEuNjUsNjIuNTAgNTAuMDAsNzUuMDAgMjguMzUsNjIuNTAgMjguMzUsMzcuNTAiIGZpbGw9IiNmNTllMGIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA3MS42NSwzNy41MCA3MS42NSw2Mi41MCA1MC4wMCw3NS4wMCAyOC4zNSw2Mi41MCAyOC4zNSwzNy41MCIgZmlsbD0iI2Y1OWUwYiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTUuMDAsMzUuMDAgMjcuOTksNDIuNTAgMjcuOTksNTcuNTAgMTUuMDAsNjUuMDAgMi4wMSw1Ny41MCAyLjAxLDQyLjUwIiBmaWxsPSIjZjU5ZTBiIi8+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwzNS4wMCA2Mi45OSw0Mi41MCA2Mi45OSw1Ny41MCA1MC4wMCw2NS4wMCAzNy4wMSw1Ny41MCAzNy4wMSw0Mi41MCIgZmlsbD0iI2Y1OWUwYiIvPjxwb2x5Z29uIHBvaW50cz0iODUuMDAsMzUuMDAgOTcuOTksNDIuNTAgOTcuOTksNTcuNTAgODUuMDAsNjUuMDAgNzIuMDEsNTcuNTAgNzIuMDEsNDIuNTAiIGZpbGw9IiNmNTllMGIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-05",
+      "sectionKey": "matrix-reasoning",
+      "order": 5,
+      "difficulty": "hard",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDU3LjUwIDIzLjM1LDU3LjUwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoNDUgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2OC43OCwzNy4yNyA1OS42OSw2NS4yMyAzMC4zMSw2NS4yMyAyMS4yMiwzNy4yNyIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDYpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDQ1LjAgNDUuMCkiPjxjaXJjbGUgY3g9IjQ1LjAiIGN5PSI0NS4wIiByPSIyNS4wIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoNDUgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2Ni42NSw1Ny41MCAyMy4zNSw1Ny41MCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2OC43OCwzNy4yNyA1OS42OSw2NS4yMyAzMC4zMSw2NS4yMyAyMS4yMiwzNy4yNyIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTM1IDQ1LjAgNDUuMCkiPjxjaXJjbGUgY3g9IjQ1LjAiIGN5PSI0NS4wIiByPSIyNS4wIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2Ni42NSw1Ny41MCAyMy4zNSw1Ny41MCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTM1IDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjguNzgsMzcuMjcgNTkuNjksNjUuMjMgMzAuMzEsNjUuMjMgMjEuMjIsMzcuMjciIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5OCwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxyZWN0IHg9IjIiIHk9IjIiIHdpZHRoPSI4NiIgaGVpZ2h0PSI4NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGI1NTYzIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1kYXNoYXJyYXk9IjYsNCIgcng9IjYiLz48dGV4dCB4PSI0NS4wIiB5PSI1My4wIiBmb250LXNpemU9IjI4IiBmaWxsPSIjNmI3MjgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+PzwvdGV4dD48L3N2Zz48L2c+PC9zdmc+",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PGNpcmNsZSBjeD0iMzIuNSIgY3k9IjUwLjAiIHI9IjE1LjAiIGZpbGw9IiNhODU1ZjciLz48Y2lyY2xlIGN4PSI2Ny41IiBjeT0iNTAuMCIgcj0iMTUuMCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PGNpcmNsZSBjeD0iMTUuMCIgY3k9IjUwLjAiIHI9IjE1LjAiIGZpbGw9IiNhODU1ZjciLz48Y2lyY2xlIGN4PSI1MC4wIiBjeT0iNTAuMCIgcj0iMTUuMCIgZmlsbD0iI2E4NTVmNyIvPjxjaXJjbGUgY3g9Ijg1LjAiIGN5PSI1MC4wIiByPSIxNS4wIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PGNpcmNsZSBjeD0iNTAuMCIgY3k9IjUwLjAiIHI9IjI1LjAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA3MS42NSw2Mi41MCAyOC4zNSw2Mi41MCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-06",
+      "sectionKey": "matrix-reasoning",
+      "order": 6,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjMDZiNmQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjMTBiOTgxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjI3LjUwLDMwLjAwIDQyLjUwLDQ1LjAwIDI3LjUwLDYwLjAwIDEyLjUwLDQ1LjAwIiBmaWxsPSIjNjM2NmYxIi8+PHBvbHlnb24gcG9pbnRzPSI2Mi41MCwzMC4wMCA3Ny41MCw0NS4wMCA2Mi41MCw2MC4wMCA0Ny41MCw0NS4wMCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjI3LjUwLDMwLjAwIDQyLjUwLDQ1LjAwIDI3LjUwLDYwLjAwIDEyLjUwLDQ1LjAwIiBmaWxsPSIjMDZiNmQ0Ii8+PHBvbHlnb24gcG9pbnRzPSI2Mi41MCwzMC4wMCA3Ny41MCw0NS4wMCA2Mi41MCw2MC4wMCA0Ny41MCw0NS4wMCIgZmlsbD0iIzA2YjZkNCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjI3LjUwLDMwLjAwIDQyLjUwLDQ1LjAwIDI3LjUwLDYwLjAwIDEyLjUwLDQ1LjAwIiBmaWxsPSIjMTBiOTgxIi8+PHBvbHlnb24gcG9pbnRzPSI2Mi41MCwzMC4wMCA3Ny41MCw0NS4wMCA2Mi41MCw2MC4wMCA0Ny41MCw0NS4wMCIgZmlsbD0iIzEwYjk4MSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSIxMC4wMCwzMC4wMCAyNS4wMCw0NS4wMCAxMC4wMCw2MC4wMCAtNS4wMCw0NS4wMCIgZmlsbD0iIzYzNjZmMSIvPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMzAuMDAgNjAuMDAsNDUuMDAgNDUuMDAsNjAuMDAgMzAuMDAsNDUuMDAiIGZpbGw9IiM2MzY2ZjEiLz48cG9seWdvbiBwb2ludHM9IjgwLjAwLDMwLjAwIDk1LjAwLDQ1LjAwIDgwLjAwLDYwLjAwIDY1LjAwLDQ1LjAwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTAuMDAsMzAuMDAgMjUuMDAsNDUuMDAgMTAuMDAsNjAuMDAgLTUuMDAsNDUuMDAiIGZpbGw9IiMwNmI2ZDQiLz48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDMwLjAwIDYwLjAwLDQ1LjAwIDQ1LjAwLDYwLjAwIDMwLjAwLDQ1LjAwIiBmaWxsPSIjMDZiNmQ0Ii8+PHBvbHlnb24gcG9pbnRzPSI4MC4wMCwzMC4wMCA5NS4wMCw0NS4wMCA4MC4wMCw2MC4wMCA2NS4wMCw0NS4wMCIgZmlsbD0iIzA2YjZkNCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9Ijg2IiBoZWlnaHQ9Ijg2IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YjU1NjMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWRhc2hhcnJheT0iNiw0IiByeD0iNiIvPjx0ZXh0IHg9IjQ1LjAiIHk9IjUzLjAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiM2YjcyODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj4/PC90ZXh0Pjwvc3ZnPjwvZz48L3N2Zz4=",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTUuMDAsMzUuMDAgMjcuOTksNTcuNTAgMi4wMSw1Ny41MCIgZmlsbD0iIzEwYjk4MSIvPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMzUuMDAgNjIuOTksNTcuNTAgMzcuMDEsNTcuNTAiIGZpbGw9IiMxMGI5ODEiLz48cG9seWdvbiBwb2ludHM9Ijg1LjAwLDM1LjAwIDk3Ljk5LDU3LjUwIDcyLjAxLDU3LjUwIiBmaWxsPSIjMTBiOTgxIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTUuMDAsMzUuMDAgMzAuMDAsNTAuMDAgMTUuMDAsNjUuMDAgMC4wMCw1MC4wMCIgZmlsbD0iIzEwYjk4MSIvPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMzUuMDAgNjUuMDAsNTAuMDAgNTAuMDAsNjUuMDAgMzUuMDAsNTAuMDAiIGZpbGw9IiMxMGI5ODEiLz48cG9seWdvbiBwb2ludHM9Ijg1LjAwLDM1LjAwIDEwMC4wMCw1MC4wMCA4NS4wMCw2NS4wMCA3MC4wMCw1MC4wMCIgZmlsbD0iIzEwYjk4MSIvPjwvZz48L3N2Zz4=",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgyNzAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIxNS4wMCwzNS4wMCAzMC4wMCw1MC4wMCAxNS4wMCw2NS4wMCAwLjAwLDUwLjAwIiBmaWxsPSIjMTBiOTgxIi8+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwzNS4wMCA2NS4wMCw1MC4wMCA1MC4wMCw2NS4wMCAzNS4wMCw1MC4wMCIgZmlsbD0iIzEwYjk4MSIvPjxwb2x5Z29uIHBvaW50cz0iODUuMDAsMzUuMDAgMTAwLjAwLDUwLjAwIDg1LjAwLDY1LjAwIDcwLjAwLDUwLjAwIiBmaWxsPSIjMTBiOTgxIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMzIuNTAsMzUuMDAgNDcuNTAsNTAuMDAgMzIuNTAsNjUuMDAgMTcuNTAsNTAuMDAiIGZpbGw9IiMxMGI5ODEiLz48cG9seWdvbiBwb2ludHM9IjY3LjUwLDM1LjAwIDgyLjUwLDUwLjAwIDY3LjUwLDY1LjAwIDUyLjUwLDUwLjAwIiBmaWxsPSIjMTBiOTgxIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-07",
+      "sectionKey": "matrix-reasoning",
+      "order": 7,
+      "difficulty": "hard",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDU3LjUwIDIzLjM1LDU3LjUwIiBmaWxsPSIjMDZiNmQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDMyLjUwIDY2LjY1LDU3LjUwIDQ1LjAwLDcwLjAwIDIzLjM1LDU3LjUwIDIzLjM1LDMyLjUwIiBmaWxsPSIjMDZiNmQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48Y2lyY2xlIGN4PSI0NS4wIiBjeT0iNDUuMCIgcj0iMjUuMCIgZmlsbD0iIzA2YjZkNCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjYuNjUsNTcuNTAgMjMuMzUsNTcuNTAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjYuNjUsMzIuNTAgNjYuNjUsNTcuNTAgNDUuMDAsNzAuMDAgMjMuMzUsNTcuNTAgMjMuMzUsMzIuNTAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5OCwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDQ1LjAgNDUuMCkiPjxjaXJjbGUgY3g9IjQ1LjAiIGN5PSI0NS4wIiByPSIyNS4wIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjYuNjUsNTcuNTAgMjMuMzUsNTcuNTAiIGZpbGw9IiNlZjQ0NDQiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDE4MCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDMyLjUwIDY2LjY1LDU3LjUwIDQ1LjAwLDcwLjAwIDIzLjM1LDU3LjUwIDIzLjM1LDMyLjUwIiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iODYiIGhlaWdodD0iODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRiNTU2MyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2LDQiIHJ4PSI2Ii8+PHRleHQgeD0iNDUuMCIgeT0iNTMuMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPj88L3RleHQ+PC9zdmc+PC9nPjwvc3ZnPg==",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgyNzAgNTAuMCA1MC4wKSI+PGNpcmNsZSBjeD0iNTAuMCIgY3k9IjUwLjAiIHI9IjI1LjAiIGZpbGw9IiNlZjQ0NDQiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA3My43OCw0Mi4yNyA2NC42OSw3MC4yMyAzNS4zMSw3MC4yMyAyNi4yMiw0Mi4yNyIgZmlsbD0iI2VmNDQ0NCIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PGNpcmNsZSBjeD0iNTAuMCIgY3k9IjUwLjAiIHI9IjI1LjAiIGZpbGw9IiNlZjQ0NDQiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PGNpcmNsZSBjeD0iMTUuMCIgY3k9IjUwLjAiIHI9IjE1LjAiIGZpbGw9IiNlZjQ0NDQiLz48Y2lyY2xlIGN4PSI1MC4wIiBjeT0iNTAuMCIgcj0iMTUuMCIgZmlsbD0iI2VmNDQ0NCIvPjxjaXJjbGUgY3g9Ijg1LjAiIGN5PSI1MC4wIiByPSIxNS4wIiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-08",
+      "sectionKey": "matrix-reasoning",
+      "order": 8,
+      "difficulty": "hard",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjMTBiOTgxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDU3LjUwIDIzLjM1LDU3LjUwIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cmVjdCB4PSIyMC4wIiB5PSIyMC4wIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNzAuMDAsNDUuMDAgNDUuMDAsNzAuMDAgMjAuMDAsNDUuMDAiIGZpbGw9IiNmNTllMGIiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2Ni42NSw1Ny41MCAyMy4zNSw1Ny41MCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cmVjdCB4PSIyMC4wIiB5PSIyMC4wIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiMxMGI5ODEiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNzAuMDAsNDUuMDAgNDUuMDAsNzAuMDAgMjAuMDAsNDUuMDAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2Ni42NSw1Ny41MCAyMy4zNSw1Ny41MCIgZmlsbD0iIzEwYjk4MSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9Ijg2IiBoZWlnaHQ9Ijg2IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YjU1NjMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWRhc2hhcnJheT0iNiw0IiByeD0iNiIvPjx0ZXh0IHg9IjQ1LjAiIHk9IjUzLjAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiM2YjcyODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj4/PC90ZXh0Pjwvc3ZnPjwvZz48L3N2Zz4=",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjI1LjAiIHk9IjI1LjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2Y1OWUwYiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjAuMCIgeT0iMzUuMCIgd2lkdGg9IjMwLjAiIGhlaWdodD0iMzAuMCIgZmlsbD0iI2Y1OWUwYiIvPjxyZWN0IHg9IjM1LjAiIHk9IjM1LjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiNmNTllMGIiLz48cmVjdCB4PSI3MC4wIiB5PSIzNS4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjE3LjUiIHk9IjM1LjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiNmNTllMGIiLz48cmVjdCB4PSI1Mi41IiB5PSIzNS4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjI1LjAiIHk9IjI1LjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-09",
+      "sectionKey": "matrix-reasoning",
+      "order": 9,
+      "difficulty": "easy",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cmVjdCB4PSIyMC4wIiB5PSIyMC4wIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiMxMGI5ODEiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiw2KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNzAuMDAsNDUuMDAgNDUuMDAsNzAuMDAgMjAuMDAsNDUuMDAiIGZpbGw9IiMxMGI5ODEiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5OCw2KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjguNzgsMzcuMjcgNTkuNjksNjUuMjMgMzAuMzEsNjUuMjMgMjEuMjIsMzcuMjciIGZpbGw9IiMxMGI5ODEiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxyZWN0IHg9IjIwLjAiIHk9IjIwLjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2VmNDQ0NCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjguNzgsMzcuMjcgNTkuNjksNjUuMjMgMzAuMzEsNjUuMjMgMjEuMjIsMzcuMjciIGZpbGw9IiNlZjQ0NDQiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxyZWN0IHg9IjIwLjAiIHk9IjIwLjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzA2YjZkNCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjMDZiNmQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iODYiIGhlaWdodD0iODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRiNTU2MyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2LDQiIHJ4PSI2Ii8+PHRleHQgeD0iNDUuMCIgeT0iNTMuMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPj88L3RleHQ+PC9zdmc+PC9nPjwvc3ZnPg==",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzMuNzgsNDIuMjcgNjQuNjksNzAuMjMgMzUuMzEsNzAuMjMgMjYuMjIsNDIuMjciIGZpbGw9IiNmNTllMGIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzMuNzgsNDIuMjcgNjQuNjksNzAuMjMgMzUuMzEsNzAuMjMgMjYuMjIsNDIuMjciIGZpbGw9IiMwNmI2ZDQiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzMuNzgsNDIuMjcgNjQuNjksNzAuMjMgMzUuMzEsNzAuMjMgMjYuMjIsNDIuMjciIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMzIuNTAsMzUuMDAgNDYuNzcsNDUuMzYgNDEuMzIsNjIuMTQgMjMuNjgsNjIuMTQgMTguMjMsNDUuMzYiIGZpbGw9IiMwNmI2ZDQiLz48cG9seWdvbiBwb2ludHM9IjY3LjUwLDM1LjAwIDgxLjc3LDQ1LjM2IDc2LjMyLDYyLjE0IDU4LjY4LDYyLjE0IDUzLjIzLDQ1LjM2IiBmaWxsPSIjMDZiNmQ0Ii8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-10",
+      "sectionKey": "matrix-reasoning",
+      "order": 10,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDU3LjUwIDIzLjM1LDU3LjUwIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2Ni42NSw1Ny41MCAyMy4zNSw1Ny41MCIgZmlsbD0iIzEwYjk4MSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDYpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDE4MCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDU3LjUwIDIzLjM1LDU3LjUwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSg5MCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjMTBiOTgxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA3MC4wMCw0NS4wMCA0NS4wMCw3MC4wMCAyMC4wMCw0NS4wMCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2OC43OCwzNy4yNyA1OS42OSw2NS4yMyAzMC4zMSw2NS4yMyAyMS4yMiwzNy4yNyIgZmlsbD0iI2Y1OWUwYiIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2OC43OCwzNy4yNyA1OS42OSw2NS4yMyAzMC4zMSw2NS4yMyAyMS4yMiwzNy4yNyIgZmlsbD0iIzEwYjk4MSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9Ijg2IiBoZWlnaHQ9Ijg2IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YjU1NjMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWRhc2hhcnJheT0iNiw0IiByeD0iNiIvPjx0ZXh0IHg9IjQ1LjAiIHk9IjUzLjAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiM2YjcyODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj4/PC90ZXh0Pjwvc3ZnPjwvZz48L3N2Zz4=",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzMuNzgsNDIuMjcgNjQuNjksNzAuMjMgMzUuMzEsNzAuMjMgMjYuMjIsNDIuMjciIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIxNS4wMCwzNS4wMCAyOS4yNyw0NS4zNiAyMy44Miw2Mi4xNCA2LjE4LDYyLjE0IDAuNzMsNDUuMzYiIGZpbGw9IiNhODU1ZjciLz48cG9seWdvbiBwb2ludHM9IjUwLjAwLDM1LjAwIDY0LjI3LDQ1LjM2IDU4LjgyLDYyLjE0IDQxLjE4LDYyLjE0IDM1LjczLDQ1LjM2IiBmaWxsPSIjYTg1NWY3Ii8+PHBvbHlnb24gcG9pbnRzPSI4NS4wMCwzNS4wMCA5OS4yNyw0NS4zNiA5My44Miw2Mi4xNCA3Ni4xOCw2Mi4xNCA3MC43Myw0NS4zNiIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHJlY3QgeD0iMjUuMCIgeT0iMjUuMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA3My43OCw0Mi4yNyA2NC42OSw3MC4yMyAzNS4zMSw3MC4yMyAyNi4yMiw0Mi4yNyIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz4=",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-11",
+      "sectionKey": "matrix-reasoning",
+      "order": 11,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjI3LjUwLDMwLjAwIDQyLjUwLDQ1LjAwIDI3LjUwLDYwLjAwIDEyLjUwLDQ1LjAwIiBmaWxsPSIjNjM2NmYxIi8+PHBvbHlnb24gcG9pbnRzPSI2Mi41MCwzMC4wMCA3Ny41MCw0NS4wMCA2Mi41MCw2MC4wMCA0Ny41MCw0NS4wMCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDYpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSIxMC4wMCwzMC4wMCAyNS4wMCw0NS4wMCAxMC4wMCw2MC4wMCAtNS4wMCw0NS4wMCIgZmlsbD0iIzYzNjZmMSIvPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMzAuMDAgNjAuMDAsNDUuMDAgNDUuMDAsNjAuMDAgMzAuMDAsNDUuMDAiIGZpbGw9IiM2MzY2ZjEiLz48cG9seWdvbiBwb2ludHM9IjgwLjAwLDMwLjAwIDk1LjAwLDQ1LjAwIDgwLjAwLDYwLjAwIDY1LjAwLDQ1LjAwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDUxLjYxLDM1LjkwIDY4Ljc4LDM3LjI3IDU1LjcwLDQ4LjQ4IDU5LjY5LDY1LjIzIDQ1LjAwLDU2LjI1IDMwLjMxLDY1LjIzIDM0LjMwLDQ4LjQ4IDIxLjIyLDM3LjI3IDM4LjM5LDM1LjkwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iMjcuNTAsMzAuMDAgMzEuNDcsMzkuNTQgNDEuNzcsNDAuMzYgMzMuOTIsNDcuMDkgMzYuMzIsNTcuMTQgMjcuNTAsNTEuNzUgMTguNjgsNTcuMTQgMjEuMDgsNDcuMDkgMTMuMjMsNDAuMzYgMjMuNTMsMzkuNTQiIGZpbGw9IiM2MzY2ZjEiLz48cG9seWdvbiBwb2ludHM9IjYyLjUwLDMwLjAwIDY2LjQ3LDM5LjU0IDc2Ljc3LDQwLjM2IDY4LjkyLDQ3LjA5IDcxLjMyLDU3LjE0IDYyLjUwLDUxLjc1IDUzLjY4LDU3LjE0IDU2LjA4LDQ3LjA5IDQ4LjIzLDQwLjM2IDU4LjUzLDM5LjU0IiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTAuMDAsMzAuMDAgMTMuOTcsMzkuNTQgMjQuMjcsNDAuMzYgMTYuNDIsNDcuMDkgMTguODIsNTcuMTQgMTAuMDAsNTEuNzUgMS4xOCw1Ny4xNCAzLjU4LDQ3LjA5IC00LjI3LDQwLjM2IDYuMDMsMzkuNTQiIGZpbGw9IiM2MzY2ZjEiLz48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDMwLjAwIDQ4Ljk3LDM5LjU0IDU5LjI3LDQwLjM2IDUxLjQyLDQ3LjA5IDUzLjgyLDU3LjE0IDQ1LjAwLDUxLjc1IDM2LjE4LDU3LjE0IDM4LjU4LDQ3LjA5IDMwLjczLDQwLjM2IDQxLjAzLDM5LjU0IiBmaWxsPSIjNjM2NmYxIi8+PHBvbHlnb24gcG9pbnRzPSI4MC4wMCwzMC4wMCA4My45NywzOS41NCA5NC4yNyw0MC4zNiA4Ni40Miw0Ny4wOSA4OC44Miw1Ny4xNCA4MC4wMCw1MS43NSA3MS4xOCw1Ny4xNCA3My41OCw0Ny4wOSA2NS43Myw0MC4zNiA3Ni4wMywzOS41NCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2Ni42NSwzMi41MCA2Ni42NSw1Ny41MCA0NS4wMCw3MC4wMCAyMy4zNSw1Ny41MCAyMy4zNSwzMi41MCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjI3LjUwLDMwLjAwIDQwLjQ5LDM3LjUwIDQwLjQ5LDUyLjUwIDI3LjUwLDYwLjAwIDE0LjUxLDUyLjUwIDE0LjUxLDM3LjUwIiBmaWxsPSIjNjM2NmYxIi8+PHBvbHlnb24gcG9pbnRzPSI2Mi41MCwzMC4wMCA3NS40OSwzNy41MCA3NS40OSw1Mi41MCA2Mi41MCw2MC4wMCA0OS41MSw1Mi41MCA0OS41MSwzNy41MCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9Ijg2IiBoZWlnaHQ9Ijg2IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YjU1NjMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWRhc2hhcnJheT0iNiw0IiByeD0iNiIvPjx0ZXh0IHg9IjQ1LjAiIHk9IjUzLjAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiM2YjcyODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj4/PC90ZXh0Pjwvc3ZnPjwvZz48L3N2Zz4=",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjAuMCIgeT0iMzUuMCIgd2lkdGg9IjMwLjAiIGhlaWdodD0iMzAuMCIgZmlsbD0iIzYzNjZmMSIvPjxyZWN0IHg9IjM1LjAiIHk9IjM1LjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiM2MzY2ZjEiLz48cmVjdCB4PSI3MC4wIiB5PSIzNS4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzEuNjUsMzcuNTAgNzEuNjUsNjIuNTAgNTAuMDAsNzUuMDAgMjguMzUsNjIuNTAgMjguMzUsMzcuNTAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMzIuNTAsMzUuMDAgNDUuNDksNDIuNTAgNDUuNDksNTcuNTAgMzIuNTAsNjUuMDAgMTkuNTEsNTcuNTAgMTkuNTEsNDIuNTAiIGZpbGw9IiM2MzY2ZjEiLz48cG9seWdvbiBwb2ludHM9IjY3LjUwLDM1LjAwIDgwLjQ5LDQyLjUwIDgwLjQ5LDU3LjUwIDY3LjUwLDY1LjAwIDU0LjUxLDU3LjUwIDU0LjUxLDQyLjUwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTUuMDAsMzUuMDAgMjcuOTksNDIuNTAgMjcuOTksNTcuNTAgMTUuMDAsNjUuMDAgMi4wMSw1Ny41MCAyLjAxLDQyLjUwIiBmaWxsPSIjNjM2NmYxIi8+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwzNS4wMCA2Mi45OSw0Mi41MCA2Mi45OSw1Ny41MCA1MC4wMCw2NS4wMCAzNy4wMSw1Ny41MCAzNy4wMSw0Mi41MCIgZmlsbD0iIzYzNjZmMSIvPjxwb2x5Z29uIHBvaW50cz0iODUuMDAsMzUuMDAgOTcuOTksNDIuNTAgOTcuOTksNTcuNTAgODUuMDAsNjUuMDAgNzIuMDEsNTcuNTAgNzIuMDEsNDIuNTAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-12",
+      "sectionKey": "matrix-reasoning",
+      "order": 12,
+      "difficulty": "hard",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDU3LjUwIDIzLjM1LDU3LjUwIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDUxLjYxLDM1LjkwIDY4Ljc4LDM3LjI3IDU1LjcwLDQ4LjQ4IDU5LjY5LDY1LjIzIDQ1LjAwLDU2LjI1IDMwLjMxLDY1LjIzIDM0LjMwLDQ4LjQ4IDIxLjIyLDM3LjI3IDM4LjM5LDM1LjkwIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY4Ljc4LDM3LjI3IDU5LjY5LDY1LjIzIDMwLjMxLDY1LjIzIDIxLjIyLDM3LjI3IiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDUxLjYxLDM1LjkwIDY4Ljc4LDM3LjI3IDU1LjcwLDQ4LjQ4IDU5LjY5LDY1LjIzIDQ1LjAwLDU2LjI1IDMwLjMxLDY1LjIzIDM0LjMwLDQ4LjQ4IDIxLjIyLDM3LjI3IDM4LjM5LDM1LjkwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjguNzgsMzcuMjcgNTkuNjksNjUuMjMgMzAuMzEsNjUuMjMgMjEuMjIsMzcuMjciIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5OCwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2Ni42NSw1Ny41MCAyMy4zNSw1Ny41MCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2OC43OCwzNy4yNyA1OS42OSw2NS4yMyAzMC4zMSw2NS4yMyAyMS4yMiwzNy4yNyIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDU3LjUwIDIzLjM1LDU3LjUwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iODYiIGhlaWdodD0iODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRiNTU2MyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2LDQiIHJ4PSI2Ii8+PHRleHQgeD0iNDUuMCIgeT0iNTMuMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPj88L3RleHQ+PC9zdmc+PC9nPjwvc3ZnPg==",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzEuNjUsNjIuNTAgMjguMzUsNjIuNTAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgyNzAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA1Ni42MSw0MC45MCA3My43OCw0Mi4yNyA2MC43MCw1My40OCA2NC42OSw3MC4yMyA1MC4wMCw2MS4yNSAzNS4zMSw3MC4yMyAzOS4zMCw1My40OCAyNi4yMiw0Mi4yNyA0My4zOSw0MC45MCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNTYuNjEsNDAuOTAgNzMuNzgsNDIuMjcgNjAuNzAsNTMuNDggNjQuNjksNzAuMjMgNTAuMDAsNjEuMjUgMzUuMzEsNzAuMjMgMzkuMzAsNTMuNDggMjYuMjIsNDIuMjcgNDMuMzksNDAuOTAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNTYuNjEsNDAuOTAgNzMuNzgsNDIuMjcgNjAuNzAsNTMuNDggNjQuNjksNzAuMjMgNTAuMDAsNjEuMjUgMzUuMzEsNzAuMjMgMzkuMzAsNTMuNDggMjYuMjIsNDIuMjcgNDMuMzksNDAuOTAiIGZpbGw9IiMwNmI2ZDQiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-13",
+      "sectionKey": "matrix-reasoning",
+      "order": 13,
+      "difficulty": "hard",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48Y2lyY2xlIGN4PSI0NS4wIiBjeT0iNDUuMCIgcj0iMjUuMCIgZmlsbD0iI2VmNDQ0NCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDYpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDQ1IDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjguNzgsMzcuMjcgNTkuNjksNjUuMjMgMzAuMzEsNjUuMjMgMjEuMjIsMzcuMjciIGZpbGw9IiNlZjQ0NDQiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5OCw2KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSg5MCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDUxLjYxLDM1LjkwIDY4Ljc4LDM3LjI3IDU1LjcwLDQ4LjQ4IDU5LjY5LDY1LjIzIDQ1LjAwLDU2LjI1IDMwLjMxLDY1LjIzIDM0LjMwLDQ4LjQ4IDIxLjIyLDM3LjI3IDM4LjM5LDM1LjkwIiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoNDUgNDUuMCA0NS4wKSI+PGNpcmNsZSBjeD0iNDUuMCIgY3k9IjQ1LjAiIHI9IjI1LjAiIGZpbGw9IiNlZjQ0NDQiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjguNzgsMzcuMjcgNTkuNjksNjUuMjMgMzAuMzEsNjUuMjMgMjEuMjIsMzcuMjciIGZpbGw9IiNlZjQ0NDQiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5OCwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDEzNSA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDUxLjYxLDM1LjkwIDY4Ljc4LDM3LjI3IDU1LjcwLDQ4LjQ4IDU5LjY5LDY1LjIzIDQ1LjAwLDU2LjI1IDMwLjMxLDY1LjIzIDM0LjMwLDQ4LjQ4IDIxLjIyLDM3LjI3IDM4LjM5LDM1LjkwIiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNDUuMCA0NS4wKSI+PGNpcmNsZSBjeD0iNDUuMCIgY3k9IjQ1LjAiIHI9IjI1LjAiIGZpbGw9IiNlZjQ0NDQiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDEzNSA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY4Ljc4LDM3LjI3IDU5LjY5LDY1LjIzIDMwLjMxLDY1LjIzIDIxLjIyLDM3LjI3IiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iODYiIGhlaWdodD0iODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRiNTU2MyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2LDQiIHJ4PSI2Ii8+PHRleHQgeD0iNDUuMCIgeT0iNTMuMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPj88L3RleHQ+PC9zdmc+PC9nPjwvc3ZnPg==",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIxNS4wMCwzNS4wMCAxOC45Nyw0NC41NCAyOS4yNyw0NS4zNiAyMS40Miw1Mi4wOSAyMy44Miw2Mi4xNCAxNS4wMCw1Ni43NSA2LjE4LDYyLjE0IDguNTgsNTIuMDkgMC43Myw0NS4zNiAxMS4wMyw0NC41NCIgZmlsbD0iI2VmNDQ0NCIvPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMzUuMDAgNTMuOTcsNDQuNTQgNjQuMjcsNDUuMzYgNTYuNDIsNTIuMDkgNTguODIsNjIuMTQgNTAuMDAsNTYuNzUgNDEuMTgsNjIuMTQgNDMuNTgsNTIuMDkgMzUuNzMsNDUuMzYgNDYuMDMsNDQuNTQiIGZpbGw9IiNlZjQ0NDQiLz48cG9seWdvbiBwb2ludHM9Ijg1LjAwLDM1LjAwIDg4Ljk3LDQ0LjU0IDk5LjI3LDQ1LjM2IDkxLjQyLDUyLjA5IDkzLjgyLDYyLjE0IDg1LjAwLDU2Ljc1IDc2LjE4LDYyLjE0IDc4LjU4LDUyLjA5IDcwLjczLDQ1LjM2IDgxLjAzLDQ0LjU0IiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNTYuNjEsNDAuOTAgNzMuNzgsNDIuMjcgNjAuNzAsNTMuNDggNjQuNjksNzAuMjMgNTAuMDAsNjEuMjUgMzUuMzEsNzAuMjMgMzkuMzAsNTMuNDggMjYuMjIsNDIuMjcgNDMuMzksNDAuOTAiIGZpbGw9IiNlZjQ0NDQiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA1Ni42MSw0MC45MCA3My43OCw0Mi4yNyA2MC43MCw1My40OCA2NC42OSw3MC4yMyA1MC4wMCw2MS4yNSAzNS4zMSw3MC4yMyAzOS4zMCw1My40OCAyNi4yMiw0Mi4yNyA0My4zOSw0MC45MCIgZmlsbD0iI2VmNDQ0NCIvPjwvZz48L3N2Zz4=",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA3MS42NSw2Mi41MCAyOC4zNSw2Mi41MCIgZmlsbD0iI2VmNDQ0NCIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-14",
+      "sectionKey": "matrix-reasoning",
+      "order": 14,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDMyLjUwIDY2LjY1LDU3LjUwIDQ1LjAwLDcwLjAwIDIzLjM1LDU3LjUwIDIzLjM1LDMyLjUwIiBmaWxsPSIjMTBiOTgxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDMyLjUwIDY2LjY1LDU3LjUwIDQ1LjAwLDcwLjAwIDIzLjM1LDU3LjUwIDIzLjM1LDMyLjUwIiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDMyLjUwIDY2LjY1LDU3LjUwIDQ1LjAwLDcwLjAwIDIzLjM1LDU3LjUwIDIzLjM1LDMyLjUwIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjI3LjUwLDMwLjAwIDQwLjQ5LDM3LjUwIDQwLjQ5LDUyLjUwIDI3LjUwLDYwLjAwIDE0LjUxLDUyLjUwIDE0LjUxLDM3LjUwIiBmaWxsPSIjMTBiOTgxIi8+PHBvbHlnb24gcG9pbnRzPSI2Mi41MCwzMC4wMCA3NS40OSwzNy41MCA3NS40OSw1Mi41MCA2Mi41MCw2MC4wMCA0OS41MSw1Mi41MCA0OS41MSwzNy41MCIgZmlsbD0iIzEwYjk4MSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjI3LjUwLDMwLjAwIDQwLjQ5LDM3LjUwIDQwLjQ5LDUyLjUwIDI3LjUwLDYwLjAwIDE0LjUxLDUyLjUwIDE0LjUxLDM3LjUwIiBmaWxsPSIjZWY0NDQ0Ii8+PHBvbHlnb24gcG9pbnRzPSI2Mi41MCwzMC4wMCA3NS40OSwzNy41MCA3NS40OSw1Mi41MCA2Mi41MCw2MC4wMCA0OS41MSw1Mi41MCA0OS41MSwzNy41MCIgZmlsbD0iI2VmNDQ0NCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjI3LjUwLDMwLjAwIDQwLjQ5LDM3LjUwIDQwLjQ5LDUyLjUwIDI3LjUwLDYwLjAwIDE0LjUxLDUyLjUwIDE0LjUxLDM3LjUwIiBmaWxsPSIjZjU5ZTBiIi8+PHBvbHlnb24gcG9pbnRzPSI2Mi41MCwzMC4wMCA3NS40OSwzNy41MCA3NS40OSw1Mi41MCA2Mi41MCw2MC4wMCA0OS41MSw1Mi41MCA0OS41MSwzNy41MCIgZmlsbD0iI2Y1OWUwYiIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSIxMC4wMCwzMC4wMCAyMi45OSwzNy41MCAyMi45OSw1Mi41MCAxMC4wMCw2MC4wMCAtMi45OSw1Mi41MCAtMi45OSwzNy41MCIgZmlsbD0iIzEwYjk4MSIvPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMzAuMDAgNTcuOTksMzcuNTAgNTcuOTksNTIuNTAgNDUuMDAsNjAuMDAgMzIuMDEsNTIuNTAgMzIuMDEsMzcuNTAiIGZpbGw9IiMxMGI5ODEiLz48cG9seWdvbiBwb2ludHM9IjgwLjAwLDMwLjAwIDkyLjk5LDM3LjUwIDkyLjk5LDUyLjUwIDgwLjAwLDYwLjAwIDY3LjAxLDUyLjUwIDY3LjAxLDM3LjUwIiBmaWxsPSIjMTBiOTgxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTAuMDAsMzAuMDAgMjIuOTksMzcuNTAgMjIuOTksNTIuNTAgMTAuMDAsNjAuMDAgLTIuOTksNTIuNTAgLTIuOTksMzcuNTAiIGZpbGw9IiNlZjQ0NDQiLz48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDMwLjAwIDU3Ljk5LDM3LjUwIDU3Ljk5LDUyLjUwIDQ1LjAwLDYwLjAwIDMyLjAxLDUyLjUwIDMyLjAxLDM3LjUwIiBmaWxsPSIjZWY0NDQ0Ii8+PHBvbHlnb24gcG9pbnRzPSI4MC4wMCwzMC4wMCA5Mi45OSwzNy41MCA5Mi45OSw1Mi41MCA4MC4wMCw2MC4wMCA2Ny4wMSw1Mi41MCA2Ny4wMSwzNy41MCIgZmlsbD0iI2VmNDQ0NCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9Ijg2IiBoZWlnaHQ9Ijg2IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YjU1NjMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWRhc2hhcnJheT0iNiw0IiByeD0iNiIvPjx0ZXh0IHg9IjQ1LjAiIHk9IjUzLjAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiM2YjcyODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj4/PC90ZXh0Pjwvc3ZnPjwvZz48L3N2Zz4=",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjAuMCIgeT0iMzUuMCIgd2lkdGg9IjMwLjAiIGhlaWdodD0iMzAuMCIgZmlsbD0iI2Y1OWUwYiIvPjxyZWN0IHg9IjM1LjAiIHk9IjM1LjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiNmNTllMGIiLz48cmVjdCB4PSI3MC4wIiB5PSIzNS4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTUuMDAsMzUuMDAgMjcuOTksNDIuNTAgMjcuOTksNTcuNTAgMTUuMDAsNjUuMDAgMi4wMSw1Ny41MCAyLjAxLDQyLjUwIiBmaWxsPSIjZjU5ZTBiIi8+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwzNS4wMCA2Mi45OSw0Mi41MCA2Mi45OSw1Ny41MCA1MC4wMCw2NS4wMCAzNy4wMSw1Ny41MCAzNy4wMSw0Mi41MCIgZmlsbD0iI2Y1OWUwYiIvPjxwb2x5Z29uIHBvaW50cz0iODUuMDAsMzUuMDAgOTcuOTksNDIuNTAgOTcuOTksNTcuNTAgODUuMDAsNjUuMDAgNzIuMDEsNTcuNTAgNzIuMDEsNDIuNTAiIGZpbGw9IiNmNTllMGIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTUuMDAsMzUuMDAgMjkuMjcsNDUuMzYgMjMuODIsNjIuMTQgNi4xOCw2Mi4xNCAwLjczLDQ1LjM2IiBmaWxsPSIjZjU5ZTBiIi8+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwzNS4wMCA2NC4yNyw0NS4zNiA1OC44Miw2Mi4xNCA0MS4xOCw2Mi4xNCAzNS43Myw0NS4zNiIgZmlsbD0iI2Y1OWUwYiIvPjxwb2x5Z29uIHBvaW50cz0iODUuMDAsMzUuMDAgOTkuMjcsNDUuMzYgOTMuODIsNjIuMTQgNzYuMTgsNjIuMTQgNzAuNzMsNDUuMzYiIGZpbGw9IiNmNTllMGIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSg5MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjE1LjAwLDM1LjAwIDI3Ljk5LDQyLjUwIDI3Ljk5LDU3LjUwIDE1LjAwLDY1LjAwIDIuMDEsNTcuNTAgMi4wMSw0Mi41MCIgZmlsbD0iI2Y1OWUwYiIvPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMzUuMDAgNjIuOTksNDIuNTAgNjIuOTksNTcuNTAgNTAuMDAsNjUuMDAgMzcuMDEsNTcuNTAgMzcuMDEsNDIuNTAiIGZpbGw9IiNmNTllMGIiLz48cG9seWdvbiBwb2ludHM9Ijg1LjAwLDM1LjAwIDk3Ljk5LDQyLjUwIDk3Ljk5LDU3LjUwIDg1LjAwLDY1LjAwIDcyLjAxLDU3LjUwIDcyLjAxLDQyLjUwIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-15",
+      "sectionKey": "matrix-reasoning",
+      "order": 15,
+      "difficulty": "hard",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDMyLjUwIDY2LjY1LDU3LjUwIDQ1LjAwLDcwLjAwIDIzLjM1LDU3LjUwIDIzLjM1LDMyLjUwIiBmaWxsPSIjMTBiOTgxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48Y2lyY2xlIGN4PSI0NS4wIiBjeT0iNDUuMCIgcj0iMjUuMCIgZmlsbD0iIzEwYjk4MSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDYpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2OC43OCwzNy4yNyA1OS42OSw2NS4yMyAzMC4zMSw2NS4yMyAyMS4yMiwzNy4yNyIgZmlsbD0iIzEwYjk4MSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjYuNjUsMzIuNTAgNjYuNjUsNTcuNTAgNDUuMDAsNzAuMDAgMjMuMzUsNTcuNTAgMjMuMzUsMzIuNTAiIGZpbGw9IiNmNTllMGIiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDQ1LjAgNDUuMCkiPjxjaXJjbGUgY3g9IjQ1LjAiIGN5PSI0NS4wIiByPSIyNS4wIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSg5MCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY4Ljc4LDM3LjI3IDU5LjY5LDY1LjIzIDMwLjMxLDY1LjIzIDIxLjIyLDM3LjI3IiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjYuNjUsMzIuNTAgNjYuNjUsNTcuNTAgNDUuMDAsNzAuMDAgMjMuMzUsNTcuNTAgMjMuMzUsMzIuNTAiIGZpbGw9IiMwNmI2ZDQiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDE4MCA0NS4wIDQ1LjApIj48Y2lyY2xlIGN4PSI0NS4wIiBjeT0iNDUuMCIgcj0iMjUuMCIgZmlsbD0iIzA2YjZkNCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9Ijg2IiBoZWlnaHQ9Ijg2IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YjU1NjMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWRhc2hhcnJheT0iNiw0IiByeD0iNiIvPjx0ZXh0IHg9IjQ1LjAiIHk9IjUzLjAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiM2YjcyODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj4/PC90ZXh0Pjwvc3ZnPjwvZz48L3N2Zz4=",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA3My43OCw0Mi4yNyA2NC42OSw3MC4yMyAzNS4zMSw3MC4yMyAyNi4yMiw0Mi4yNyIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA3My43OCw0Mi4yNyA2NC42OSw3MC4yMyAzNS4zMSw3MC4yMyAyNi4yMiw0Mi4yNyIgZmlsbD0iIzA2YjZkNCIvPjwvZz48L3N2Zz4=",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgyNzAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA3My43OCw0Mi4yNyA2NC42OSw3MC4yMyAzNS4zMSw3MC4yMyAyNi4yMiw0Mi4yNyIgZmlsbD0iIzA2YjZkNCIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA3My43OCw0Mi4yNyA2NC42OSw3MC4yMyAzNS4zMSw3MC4yMyAyNi4yMiw0Mi4yNyIgZmlsbD0iI2Y1OWUwYiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-16",
+      "sectionKey": "matrix-reasoning",
+      "order": 16,
+      "difficulty": "hard",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cmVjdCB4PSIyMC4wIiB5PSIyMC4wIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiMxMGI5ODEiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiw2KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjguNzgsMzcuMjcgNTkuNjksNjUuMjMgMzAuMzEsNjUuMjMgMjEuMjIsMzcuMjciIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5OCw2KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNzAuMDAsNDUuMDAgNDUuMDAsNzAuMDAgMjAuMDAsNDUuMDAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxyZWN0IHg9IjIwLjAiIHk9IjIwLjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY4Ljc4LDM3LjI3IDU5LjY5LDY1LjIzIDMwLjMxLDY1LjIzIDIxLjIyLDM3LjI3IiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNzAuMDAsNDUuMDAgNDUuMDAsNzAuMDAgMjAuMDAsNDUuMDAiIGZpbGw9IiMxMGI5ODEiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxyZWN0IHg9IjIwLjAiIHk9IjIwLjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY4Ljc4LDM3LjI3IDU5LjY5LDY1LjIzIDMwLjMxLDY1LjIzIDIxLjIyLDM3LjI3IiBmaWxsPSIjMTBiOTgxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iODYiIGhlaWdodD0iODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRiNTU2MyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2LDQiIHJ4PSI2Ii8+PHRleHQgeD0iNDUuMCIgeT0iNTMuMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPj88L3RleHQ+PC9zdmc+PC9nPjwvc3ZnPg==",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSg5MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjUwLjAwLDI1LjAwIDc1LjAwLDUwLjAwIDUwLjAwLDc1LjAwIDI1LjAwLDUwLjAwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSI1MC4wMCwyNS4wMCA3NS4wMCw1MC4wMCA1MC4wMCw3NS4wMCAyNS4wMCw1MC4wMCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjI1LjAiIHk9IjI1LjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzUuMDAsNTAuMDAgNTAuMDAsNzUuMDAgMjUuMDAsNTAuMDAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-17",
+      "sectionKey": "matrix-reasoning",
+      "order": 17,
+      "difficulty": "easy",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cmVjdCB4PSIyMC4wIiB5PSIyMC4wIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNlZjQ0NDQiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiw2KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxjaXJjbGUgY3g9IjQ1LjAiIGN5PSI0NS4wIiByPSIyNS4wIiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDUxLjYxLDM1LjkwIDY4Ljc4LDM3LjI3IDU1LjcwLDQ4LjQ4IDU5LjY5LDY1LjIzIDQ1LjAwLDU2LjI1IDMwLjMxLDY1LjIzIDM0LjMwLDQ4LjQ4IDIxLjIyLDM3LjI3IDM4LjM5LDM1LjkwIiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cmVjdCB4PSIyMC4wIiB5PSIyMC4wIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PGNpcmNsZSBjeD0iNDUuMCIgY3k9IjQ1LjAiIHI9IjI1LjAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5OCwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA1MS42MSwzNS45MCA2OC43OCwzNy4yNyA1NS43MCw0OC40OCA1OS42OSw2NS4yMyA0NS4wMCw1Ni4yNSAzMC4zMSw2NS4yMyAzNC4zMCw0OC40OCAyMS4yMiwzNy4yNyAzOC4zOSwzNS45MCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHJlY3QgeD0iMjAuMCIgeT0iMjAuMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxjaXJjbGUgY3g9IjQ1LjAiIGN5PSI0NS4wIiByPSIyNS4wIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iODYiIGhlaWdodD0iODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRiNTU2MyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2LDQiIHJ4PSI2Ii8+PHRleHQgeD0iNDUuMCIgeT0iNTMuMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPj88L3RleHQ+PC9zdmc+PC9nPjwvc3ZnPg==",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzEuNjUsMzcuNTAgNzEuNjUsNjIuNTAgNTAuMDAsNzUuMDAgMjguMzUsNjIuNTAgMjguMzUsMzcuNTAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNTYuNjEsNDAuOTAgNzMuNzgsNDIuMjcgNjAuNzAsNTMuNDggNjQuNjksNzAuMjMgNTAuMDAsNjEuMjUgMzUuMzEsNzAuMjMgMzkuMzAsNTMuNDggMjYuMjIsNDIuMjcgNDMuMzksNDAuOTAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzUuMDAsNTAuMDAgNTAuMDAsNzUuMDAgMjUuMDAsNTAuMDAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTUuMDAsMzUuMDAgMTguOTcsNDQuNTQgMjkuMjcsNDUuMzYgMjEuNDIsNTIuMDkgMjMuODIsNjIuMTQgMTUuMDAsNTYuNzUgNi4xOCw2Mi4xNCA4LjU4LDUyLjA5IDAuNzMsNDUuMzYgMTEuMDMsNDQuNTQiIGZpbGw9IiM2MzY2ZjEiLz48cG9seWdvbiBwb2ludHM9IjUwLjAwLDM1LjAwIDUzLjk3LDQ0LjU0IDY0LjI3LDQ1LjM2IDU2LjQyLDUyLjA5IDU4LjgyLDYyLjE0IDUwLjAwLDU2Ljc1IDQxLjE4LDYyLjE0IDQzLjU4LDUyLjA5IDM1LjczLDQ1LjM2IDQ2LjAzLDQ0LjU0IiBmaWxsPSIjNjM2NmYxIi8+PHBvbHlnb24gcG9pbnRzPSI4NS4wMCwzNS4wMCA4OC45Nyw0NC41NCA5OS4yNyw0NS4zNiA5MS40Miw1Mi4wOSA5My44Miw2Mi4xNCA4NS4wMCw1Ni43NSA3Ni4xOCw2Mi4xNCA3OC41OCw1Mi4wOSA3MC43Myw0NS4zNiA4MS4wMyw0NC41NCIgZmlsbD0iIzYzNjZmMSIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-18",
+      "sectionKey": "matrix-reasoning",
+      "order": 18,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA3MC4wMCw0NS4wMCA0NS4wMCw3MC4wMCAyMC4wMCw0NS4wMCIgZmlsbD0iI2VmNDQ0NCIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDYpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDE4MCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDcwLjAwLDQ1LjAwIDQ1LjAwLDcwLjAwIDIwLjAwLDQ1LjAwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDMyLjUwIDY2LjY1LDU3LjUwIDQ1LjAwLDcwLjAwIDIzLjM1LDU3LjUwIDIzLjM1LDMyLjUwIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSg5MCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDMyLjUwIDY2LjY1LDU3LjUwIDQ1LjAwLDcwLjAwIDIzLjM1LDU3LjUwIDIzLjM1LDMyLjUwIiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSI0NS4wMCwyMC4wMCA2Ni42NSwzMi41MCA2Ni42NSw1Ny41MCA0NS4wMCw3MC4wMCAyMy4zNSw1Ny41MCAyMy4zNSwzMi41MCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PGNpcmNsZSBjeD0iNDUuMCIgY3k9IjQ1LjAiIHI9IjI1LjAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDQ1LjAgNDUuMCkiPjxjaXJjbGUgY3g9IjQ1LjAiIGN5PSI0NS4wIiByPSIyNS4wIiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iODYiIGhlaWdodD0iODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRiNTU2MyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2LDQiIHJ4PSI2Ii8+PHRleHQgeD0iNDUuMCIgeT0iNTMuMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPj88L3RleHQ+PC9zdmc+PC9nPjwvc3ZnPg==",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PGNpcmNsZSBjeD0iNTAuMCIgY3k9IjUwLjAiIHI9IjI1LjAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PGNpcmNsZSBjeD0iNTAuMCIgY3k9IjUwLjAiIHI9IjI1LjAiIGZpbGw9IiM2MzY2ZjEiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PGNpcmNsZSBjeD0iNTAuMCIgY3k9IjUwLjAiIHI9IjI1LjAiIGZpbGw9IiNmNTllMGIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAuMCA1MC4wKSI+PGNpcmNsZSBjeD0iMzIuNSIgY3k9IjUwLjAiIHI9IjE1LjAiIGZpbGw9IiNhODU1ZjciLz48Y2lyY2xlIGN4PSI2Ny41IiBjeT0iNTAuMCIgcj0iMTUuMCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-19",
+      "sectionKey": "matrix-reasoning",
+      "order": 19,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDUxLjYxLDM1LjkwIDY4Ljc4LDM3LjI3IDU1LjcwLDQ4LjQ4IDU5LjY5LDY1LjIzIDQ1LjAwLDU2LjI1IDMwLjMxLDY1LjIzIDM0LjMwLDQ4LjQ4IDIxLjIyLDM3LjI3IDM4LjM5LDM1LjkwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjI3LjUwLDMwLjAwIDMxLjQ3LDM5LjU0IDQxLjc3LDQwLjM2IDMzLjkyLDQ3LjA5IDM2LjMyLDU3LjE0IDI3LjUwLDUxLjc1IDE4LjY4LDU3LjE0IDIxLjA4LDQ3LjA5IDEzLjIzLDQwLjM2IDIzLjUzLDM5LjU0IiBmaWxsPSIjYTg1NWY3Ii8+PHBvbHlnb24gcG9pbnRzPSI2Mi41MCwzMC4wMCA2Ni40NywzOS41NCA3Ni43Nyw0MC4zNiA2OC45Miw0Ny4wOSA3MS4zMiw1Ny4xNCA2Mi41MCw1MS43NSA1My42OCw1Ny4xNCA1Ni4wOCw0Ny4wOSA0OC4yMyw0MC4zNiA1OC41MywzOS41NCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTk4LDYpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHBvbHlnb24gcG9pbnRzPSIxMC4wMCwzMC4wMCAxMy45NywzOS41NCAyNC4yNyw0MC4zNiAxNi40Miw0Ny4wOSAxOC44Miw1Ny4xNCAxMC4wMCw1MS43NSAxLjE4LDU3LjE0IDMuNTgsNDcuMDkgLTQuMjcsNDAuMzYgNi4wMywzOS41NCIgZmlsbD0iI2E4NTVmNyIvPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMzAuMDAgNDguOTcsMzkuNTQgNTkuMjcsNDAuMzYgNTEuNDIsNDcuMDkgNTMuODIsNTcuMTQgNDUuMDAsNTEuNzUgMzYuMTgsNTcuMTQgMzguNTgsNDcuMDkgMzAuNzMsNDAuMzYgNDEuMDMsMzkuNTQiIGZpbGw9IiNhODU1ZjciLz48cG9seWdvbiBwb2ludHM9IjgwLjAwLDMwLjAwIDgzLjk3LDM5LjU0IDk0LjI3LDQwLjM2IDg2LjQyLDQ3LjA5IDg4LjgyLDU3LjE0IDgwLjAwLDUxLjc1IDcxLjE4LDU3LjE0IDczLjU4LDQ3LjA5IDY1LjczLDQwLjM2IDc2LjAzLDM5LjU0IiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2LDEwMikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDMyLjUwIDY2LjY1LDU3LjUwIDQ1LjAwLDcwLjAwIDIzLjM1LDU3LjUwIDIzLjM1LDMyLjUwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iMjcuNTAsMzAuMDAgNDAuNDksMzcuNTAgNDAuNDksNTIuNTAgMjcuNTAsNjAuMDAgMTQuNTEsNTIuNTAgMTQuNTEsMzcuNTAiIGZpbGw9IiNhODU1ZjciLz48cG9seWdvbiBwb2ludHM9IjYyLjUwLDMwLjAwIDc1LjQ5LDM3LjUwIDc1LjQ5LDUyLjUwIDYyLjUwLDYwLjAwIDQ5LjUxLDUyLjUwIDQ5LjUxLDM3LjUwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iMTAuMDAsMzAuMDAgMjIuOTksMzcuNTAgMjIuOTksNTIuNTAgMTAuMDAsNjAuMDAgLTIuOTksNTIuNTAgLTIuOTksMzcuNTAiIGZpbGw9IiNhODU1ZjciLz48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDMwLjAwIDU3Ljk5LDM3LjUwIDU3Ljk5LDUyLjUwIDQ1LjAwLDYwLjAwIDMyLjAxLDUyLjUwIDMyLjAxLDM3LjUwIiBmaWxsPSIjYTg1NWY3Ii8+PHBvbHlnb24gcG9pbnRzPSI4MC4wMCwzMC4wMCA5Mi45OSwzNy41MCA5Mi45OSw1Mi41MCA4MC4wMCw2MC4wMCA2Ny4wMSw1Mi41MCA2Ny4wMSwzNy41MCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiwxOTgpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHJlY3QgeD0iMjAuMCIgeT0iMjAuMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxyZWN0IHg9IjEyLjUiIHk9IjMwLjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiNhODU1ZjciLz48cmVjdCB4PSI0Ny41IiB5PSIzMC4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iODYiIGhlaWdodD0iODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRiNTU2MyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2LDQiIHJ4PSI2Ii8+PHRleHQgeD0iNDUuMCIgeT0iNTMuMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPj88L3RleHQ+PC9zdmc+PC9nPjwvc3ZnPg==",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjE3LjUiIHk9IjM1LjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiNhODU1ZjciLz48cmVjdCB4PSI1Mi41IiB5PSIzNS4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjAuMCIgeT0iMzUuMCIgd2lkdGg9IjMwLjAiIGhlaWdodD0iMzAuMCIgZmlsbD0iIzYzNjZmMSIvPjxyZWN0IHg9IjM1LjAiIHk9IjM1LjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiM2MzY2ZjEiLz48cmVjdCB4PSI3MC4wIiB5PSIzNS4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjNjM2NmYxIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjAuMCIgeT0iMzUuMCIgd2lkdGg9IjMwLjAiIGhlaWdodD0iMzAuMCIgZmlsbD0iIzA2YjZkNCIvPjxyZWN0IHg9IjM1LjAiIHk9IjM1LjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiMwNmI2ZDQiLz48cmVjdCB4PSI3MC4wIiB5PSIzNS4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjMDZiNmQ0Ii8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxyZWN0IHg9IjAuMCIgeT0iMzUuMCIgd2lkdGg9IjMwLjAiIGhlaWdodD0iMzAuMCIgZmlsbD0iI2E4NTVmNyIvPjxyZWN0IHg9IjM1LjAiIHk9IjM1LjAiIHdpZHRoPSIzMC4wIiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiNhODU1ZjciLz48cmVjdCB4PSI3MC4wIiB5PSIzNS4wIiB3aWR0aD0iMzAuMCIgaGVpZ2h0PSIzMC4wIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPg==",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "arp-20",
+      "sectionKey": "matrix-reasoning",
+      "order": 20,
+      "difficulty": "hard",
+      "questionType": "pattern_question",
+      "questionText": "Which option completes the pattern in the missing cell?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTQgMjk0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjI5NCIgZmlsbD0iIzFhMjAzMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY4Ljc4LDM3LjI3IDU5LjY5LDY1LjIzIDMwLjMxLDY1LjIzIDIxLjIyLDM3LjI3IiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY2LjY1LDMyLjUwIDY2LjY1LDU3LjUwIDQ1LjAwLDcwLjAwIDIzLjM1LDU3LjUwIDIzLjM1LDMyLjUwIiBmaWxsPSIjZWY0NDQ0Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsNikiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cmVjdCB4PSIyMC4wIiB5PSIyMC4wIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNlZjQ0NDQiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjYuNjUsMzIuNTAgNjYuNjUsNTcuNTAgNDUuMDAsNzAuMDAgMjMuMzUsNTcuNTAgMjMuMzUsMzIuNTAiIGZpbGw9IiNmNTllMGIiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiwxMDIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9IiMwZjE0MjAiIHN0cm9rZT0iIzJhMzE0OCIgc3Ryb2tlLXdpZHRoPSIyIiByeD0iNiIvPjxzdmcgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgOTAgOTAiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNDUuMCA0NS4wKSI+PHJlY3QgeD0iMjAuMCIgeT0iMjAuMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjZjU5ZTBiIi8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTAyKSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxwb2x5Z29uIHBvaW50cz0iNDUuMDAsMjAuMDAgNjguNzgsMzcuMjcgNTkuNjksNjUuMjMgMzAuMzEsNjUuMjMgMjEuMjIsMzcuMjciIGZpbGw9IiNmNTllMGIiLz48L2c+PC9zdmc+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDQ1LjAgNDUuMCkiPjxyZWN0IHg9IjIwLjAiIHk9IjIwLjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2E4NTVmNyIvPjwvZz48L3N2Zz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAyLDE5OCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzBmMTQyMCIgc3Ryb2tlPSIjMmEzMTQ4IiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI2Ii8+PHN2ZyB4PSIwIiB5PSIwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA0NS4wIDQ1LjApIj48cG9seWdvbiBwb2ludHM9IjQ1LjAwLDIwLjAwIDY4Ljc4LDM3LjI3IDU5LjY5LDY1LjIzIDMwLjMxLDY1LjIzIDIxLjIyLDM3LjI3IiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTgsMTk4KSI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjMGYxNDIwIiBzdHJva2U9IiMyYTMxNDgiIHN0cm9rZS13aWR0aD0iMiIgcng9IjYiLz48c3ZnIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDkwIDkwIj48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iODYiIGhlaWdodD0iODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRiNTU2MyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2LDQiIHJ4PSI2Ii8+PHRleHQgeD0iNDUuMCIgeT0iNTMuMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPj88L3RleHQ+PC9zdmc+PC9nPjwvc3ZnPg==",
+          "alt": "3x3 matrix pattern with one missing cell"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzEuNjUsMzcuNTAgNzEuNjUsNjIuNTAgNTAuMDAsNzUuMDAgMjguMzUsNjIuNTAgMjguMzUsMzcuNTAiIGZpbGw9IiNhODU1ZjciLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzEuNjUsMzcuNTAgNzEuNjUsNjIuNTAgNTAuMDAsNzUuMDAgMjguMzUsNjIuNTAgMjguMzUsMzcuNTAiIGZpbGw9IiMwNmI2ZDQiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxjaXJjbGUgY3g9IjUwLjAiIGN5PSI1MC4wIiByPSIyNS4wIiBmaWxsPSIjYTg1NWY3Ii8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNTAuMDAsMjUuMDAgNzEuNjUsMzcuNTAgNzEuNjUsNjIuNTAgNTAuMDAsNzUuMDAgMjguMzUsNjIuNTAgMjguMzUsMzcuNTAiIGZpbGw9IiMxMGI5ODEiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "abstract-reasoning",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1304 @@
+{
+  "slug": "visuospatial-rotation",
+  "title": "Visuospatial Rotation",
+  "shortDescription": "Mental rotation of 3D objects — identify which option is the same shape rotated, not a mirrored fake.",
+  "longDescription": "Visuospatial Rotation is built on the Mental Rotation Test paradigm (Vandenberg & Kuse, 1978; originating from Shepard & Metzler, 1971) — the classic measure of the ability to mentally rotate a shape and recognize it from a different orientation. You're shown a target shape and must pick which option is a genuine rotation of it, rejecting mirrored (chirality-flipped) look-alikes — the core challenge the paradigm is built around.",
+  "icon": "rotate-cw",
+  "categoryKey": "spatial",
+  "engineType": "pattern_recognition",
+  "difficulty": "hard",
+  "estimatedDurationMinutes": 15,
+  "access": "premium",
+  "sourceNote": "Every target and option is a real, programmatically generated and rendered SVG (asymmetric 2D polygons, embedded as data URIs — no external asset pipeline needed), verified visually by rendering to PNG during authoring. Two adaptations from the original Vandenberg & Kuse test, both noted transparently: (1) it uses original 2D asymmetric polygons rather than the original's 3D cube-block figures, since 2D shapes with a genuine chirality (mirroring produces a different-handed shape than any rotation) test the same core rotation-vs-mirror discrimination without needing 3D rendering/projection — a simplification used by several digital cognitive-test platforms; (2) each item is single-correct-answer multiple choice rather than the original's \"select the 2 of 4 matches,\" a common adaptation for deterministic auto-scoring. Distractors are generated three ways per item — wrong rotation amount, mirrored at the correct angle, and mirrored at a wrong angle — so guessing based on rotation alone or mirroring alone isn't enough.",
+  "sections": [
+    {
+      "key": "rotation-trials",
+      "name": "Rotation Trials",
+      "description": "Identify the option that is a true rotation of the target shape, not a mirrored version.",
+      "instructions": "Mentally rotate the target shape and compare it to each option. Exactly one option is the same shape, just rotated — the others are either rotated by the wrong amount or mirrored.",
+      "timeLimitSeconds": null,
+      "weight": 1,
+      "order": 1
+    }
+  ],
+  "scoringDimensions": [
+    {
+      "key": "mental-rotation",
+      "label": "Mental Rotation",
+      "description": "Ability to mentally rotate a shape and distinguish a true rotation from a mirrored look-alike.",
+      "contributesToBrainProfile": true,
+      "brainProfileDimensionKey": "spatial",
+      "order": 1
+    }
+  ],
+  "scoringRules": [
+    {
+      "dimensionKey": "mental-rotation",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 18
+      }
+    }
+  ],
+  "resultRanges": [
+    {
+      "dimensionKey": "overall",
+      "minScore": 0,
+      "maxScore": 30,
+      "title": "Developing",
+      "description": "Distinguishing a true rotation from a mirrored look-alike is difficult right now — a very common starting point, since mirror-image confusion is exactly what this paradigm is designed to probe.",
+      "recommendations": [
+        "Trace one distinctive feature (a notch or corner) on the target and track where it ends up after rotating in your head, rather than judging the whole shape's silhouette at once",
+        "Practice with physical objects (rotate a real asymmetric object like a shoe or a hand) to build the underlying spatial-transformation skill",
+        "Slow down specifically on options that look 'almost right' — those are usually the mirrored distractors"
+      ],
+      "order": 1
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 31,
+      "maxScore": 50,
+      "title": "Average",
+      "description": "Catches obvious mismatches but the closely-matched mirrored distractors still cause errors.",
+      "recommendations": [
+        "Practice specifically on mirror-vs-rotation discrimination — cover the target and try to redraw it rotated before looking at the options",
+        "Pick one asymmetric feature as your anchor and check it first on every option before considering the rest"
+      ],
+      "order": 2
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 51,
+      "maxScore": 70,
+      "title": "Strong",
+      "description": "Reliably identifies true rotations and rejects mirrored distractors on most trials.",
+      "recommendations": [
+        "Push your speed on easier trials — accuracy is already solid there",
+        "Notice whether larger rotation angles (further from the target's original orientation) slow you down more — that's a normal, well-documented pattern"
+      ],
+      "order": 3
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 71,
+      "maxScore": 85,
+      "title": "Very Strong",
+      "description": "Fast, accurate rotation-vs-mirror discrimination across nearly every trial, including the harder rotation angles.",
+      "recommendations": [
+        "This is a strong, genuine spatial-reasoning advantage — fields like engineering, design, and surgery lean on exactly this skill",
+        "Compare this result with Spatial Intelligence's matrix-reasoning score — they draw on related but distinct spatial skills"
+      ],
+      "order": 4
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 86,
+      "maxScore": 100,
+      "title": "Exceptional",
+      "description": "Near-perfect mental rotation performance across every trial and angle tested.",
+      "recommendations": [
+        "This is an elite spatial-rotation result — notice where it shows up as a real advantage in 3D-reasoning-heavy work",
+        "Consider fields that specifically reward strong 3D spatial reasoning under time pressure"
+      ],
+      "order": 5
+    }
+  ],
+  "brainProfileContributions": [
+    {
+      "sourceDimensionKey": "mental-rotation",
+      "targetBrainProfileDimensionKey": "spatial",
+      "weight": 0.5
+    }
+  ],
+  "questions": [
+    {
+      "key": "vsr-01",
+      "sectionKey": "rotation-trials",
+      "order": 1,
+      "difficulty": "easy",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDI0LjUgNDEuNSwyNC41IDQxLjUsNDEuNSA1OC41LDQxLjUgNTguNSw1OC41IDc1LjUsNTguNSA3NS41LDc1LjUgMjQuNSw3NS41IiBmaWxsPSIjYTg1NWY3IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDQxLjUsNDEuNSA0MS41LDU4LjUgMjQuNSw1OC41IDI0LjUsNzUuNSA3NS41LDc1LjUiIGZpbGw9IiNhODU1ZjciIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIwMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDU4LjUsNDEuNSA1OC41LDU4LjUgNzUuNSw1OC41IDc1LjUsNzUuNSAyNC41LDc1LjUiIGZpbGw9IiNhODU1ZjciIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDU4LjUsNDEuNSA1OC41LDU4LjUgNzUuNSw1OC41IDc1LjUsNzUuNSAyNC41LDc1LjUiIGZpbGw9IiNhODU1ZjciIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDE0MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDQxLjUsNDEuNSA0MS41LDU4LjUgMjQuNSw1OC41IDI0LjUsNzUuNSA3NS41LDc1LjUiIGZpbGw9IiNhODU1ZjciIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-02",
+      "sectionKey": "rotation-trials",
+      "order": 2,
+      "difficulty": "easy",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDI0LjUgNDEuNSwyNC41IDQxLjUsNDEuNSA1OC41LDQxLjUgNTguNSw1OC41IDc1LjUsNTguNSA3NS41LDc1LjUgMjQuNSw3NS41IiBmaWxsPSIjZWY0NDQ0IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDQwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNzUuNSwyNC41IDU4LjUsMjQuNSA1OC41LDQxLjUgNDEuNSw0MS41IDQxLjUsNTguNSAyNC41LDU4LjUgMjQuNSw3NS41IDc1LjUsNzUuNSIgZmlsbD0iI2VmNDQ0NCIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI1MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDQxLjUsNDEuNSA0MS41LDU4LjUgMjQuNSw1OC41IDI0LjUsNzUuNSA3NS41LDc1LjUiIGZpbGw9IiNlZjQ0NDQiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDExNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDU4LjUsNDEuNSA1OC41LDU4LjUgNzUuNSw1OC41IDc1LjUsNzUuNSAyNC41LDc1LjUiIGZpbGw9IiNlZjQ0NDQiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI1MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDU4LjUsNDEuNSA1OC41LDU4LjUgNzUuNSw1OC41IDc1LjUsNzUuNSAyNC41LDc1LjUiIGZpbGw9IiNlZjQ0NDQiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-03",
+      "sectionKey": "rotation-trials",
+      "order": 3,
+      "difficulty": "easy",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDI0LjUgNTguNSwyNC41IDU4LjUsNDEuNSA3NS41LDQxLjUgNzUuNSw3NS41IDI0LjUsNzUuNSAyNC41LDU4LjUgNDEuNSw1OC41IDQxLjUsNDEuNSAyNC41LDQxLjUiIGZpbGw9IiNmNTllMGIiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDExNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDc1LjUsNDEuNSA3NS41LDc1LjUgMjQuNSw3NS41IDI0LjUsNTguNSA0MS41LDU4LjUgNDEuNSw0MS41IDI0LjUsNDEuNSIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIwMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDc1LjUsNDEuNSA3NS41LDc1LjUgMjQuNSw3NS41IDI0LjUsNTguNSA0MS41LDU4LjUgNDEuNSw0MS41IDI0LjUsNDEuNSIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDExNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDI0LjUsNDEuNSAyNC41LDc1LjUgNzUuNSw3NS41IDc1LjUsNTguNSA1OC41LDU4LjUgNTguNSw0MS41IDc1LjUsNDEuNSIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDQwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNzUuNSwyNC41IDQxLjUsMjQuNSA0MS41LDQxLjUgMjQuNSw0MS41IDI0LjUsNzUuNSA3NS41LDc1LjUgNzUuNSw1OC41IDU4LjUsNTguNSA1OC41LDQxLjUgNzUuNSw0MS41IiBmaWxsPSIjZjU5ZTBiIiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-04",
+      "sectionKey": "rotation-trials",
+      "order": 4,
+      "difficulty": "easy",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyOC44LDI0LjUgNjIuOCwyNC41IDYyLjgsNTAuMCA0NS44LDUwLjAgNDUuOCw3NS41IDI4LjgsNzUuNSIgZmlsbD0iIzVjZTFlNiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI5MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjcxLjIsMjQuNSAzNy4yLDI0LjUgMzcuMiw1MC4wIDU0LjIsNTAuMCA1NC4yLDc1LjUgNzEuMiw3NS41IiBmaWxsPSIjNWNlMWU2IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDMxMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI4LjgsMjQuNSA2Mi44LDI0LjUgNjIuOCw1MC4wIDQ1LjgsNTAuMCA0NS44LDc1LjUgMjguOCw3NS41IiBmaWxsPSIjNWNlMWU2IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDE2MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjcxLjIsMjQuNSAzNy4yLDI0LjUgMzcuMiw1MC4wIDU0LjIsNTAuMCA1NC4yLDc1LjUgNzEuMiw3NS41IiBmaWxsPSIjNWNlMWU2IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDE2MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI4LjgsMjQuNSA2Mi44LDI0LjUgNjIuOCw1MC4wIDQ1LjgsNTAuMCA0NS44LDc1LjUgMjguOCw3NS41IiBmaWxsPSIjNWNlMWU2IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-05",
+      "sectionKey": "rotation-trials",
+      "order": 5,
+      "difficulty": "medium",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDI0LjUgNTguNSwyNC41IDU4LjUsNDEuNSA3NS41LDQxLjUgNzUuNSw3NS41IDI0LjUsNzUuNSAyNC41LDU4LjUgNDEuNSw1OC41IDQxLjUsNDEuNSAyNC41LDQxLjUiIGZpbGw9IiNmNTllMGIiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDI0LjUsNDEuNSAyNC41LDc1LjUgNzUuNSw3NS41IDc1LjUsNTguNSA1OC41LDU4LjUgNTguNSw0MS41IDc1LjUsNDEuNSIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNzUuNSwyNC41IDQxLjUsMjQuNSA0MS41LDQxLjUgMjQuNSw0MS41IDI0LjUsNzUuNSA3NS41LDc1LjUgNzUuNSw1OC41IDU4LjUsNTguNSA1OC41LDQxLjUgNzUuNSw0MS41IiBmaWxsPSIjZjU5ZTBiIiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDY1IDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMjQuNSwyNC41IDU4LjUsMjQuNSA1OC41LDQxLjUgNzUuNSw0MS41IDc1LjUsNzUuNSAyNC41LDc1LjUgMjQuNSw1OC41IDQxLjUsNTguNSA0MS41LDQxLjUgMjQuNSw0MS41IiBmaWxsPSIjZjU5ZTBiIiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDc1LjUsNDEuNSA3NS41LDc1LjUgMjQuNSw3NS41IDI0LjUsNTguNSA0MS41LDU4LjUgNDEuNSw0MS41IDI0LjUsNDEuNSIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-06",
+      "sectionKey": "rotation-trials",
+      "order": 6,
+      "difficulty": "medium",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDMzLjAgNTAuMCwzMy4wIDUwLjAsMjQuNSA3NS41LDUwLjAgNTAuMCw3NS41IDUwLjAsNjcuMCAyNC41LDY3LjAiIGZpbGw9IiNhODU1ZjciIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIyNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMzMuMCA1MC4wLDMzLjAgNTAuMCwyNC41IDI0LjUsNTAuMCA1MC4wLDc1LjUgNTAuMCw2Ny4wIDc1LjUsNjcuMCIgZmlsbD0iI2E4NTVmNyIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDExNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMzMuMCA1MC4wLDMzLjAgNTAuMCwyNC41IDI0LjUsNTAuMCA1MC4wLDc1LjUgNTAuMCw2Ny4wIDc1LjUsNjcuMCIgZmlsbD0iI2E4NTVmNyIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMjQuNSwzMy4wIDUwLjAsMzMuMCA1MC4wLDI0LjUgNzUuNSw1MC4wIDUwLjAsNzUuNSA1MC4wLDY3LjAgMjQuNSw2Ny4wIiBmaWxsPSIjYTg1NWY3IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIyNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMzMuMCA1MC4wLDMzLjAgNTAuMCwyNC41IDc1LjUsNTAuMCA1MC4wLDc1LjUgNTAuMCw2Ny4wIDI0LjUsNjcuMCIgZmlsbD0iI2E4NTVmNyIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-07",
+      "sectionKey": "rotation-trials",
+      "order": 7,
+      "difficulty": "medium",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDI0LjUgNTguNSwyNC41IDU4LjUsNDEuNSA3NS41LDQxLjUgNzUuNSw3NS41IDI0LjUsNzUuNSAyNC41LDU4LjUgNDEuNSw1OC41IDQxLjUsNDEuNSAyNC41LDQxLjUiIGZpbGw9IiNmNTllMGIiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDExNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDc1LjUsNDEuNSA3NS41LDc1LjUgMjQuNSw3NS41IDI0LjUsNTguNSA0MS41LDU4LjUgNDEuNSw0MS41IDI0LjUsNDEuNSIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDY1IDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMjQuNSwyNC41IDU4LjUsMjQuNSA1OC41LDQxLjUgNzUuNSw0MS41IDc1LjUsNzUuNSAyNC41LDc1LjUgMjQuNSw1OC41IDQxLjUsNTguNSA0MS41LDQxLjUgMjQuNSw0MS41IiBmaWxsPSIjZjU5ZTBiIiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDExNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDI0LjUsNDEuNSAyNC41LDc1LjUgNzUuNSw3NS41IDc1LjUsNTguNSA1OC41LDU4LjUgNTguNSw0MS41IDc1LjUsNDEuNSIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDE2MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDI0LjUsNDEuNSAyNC41LDc1LjUgNzUuNSw3NS41IDc1LjUsNTguNSA1OC41LDU4LjUgNTguNSw0MS41IDc1LjUsNDEuNSIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-08",
+      "sectionKey": "rotation-trials",
+      "order": 8,
+      "difficulty": "medium",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDI0LjUgNDEuNSwyNC41IDQxLjUsNDEuNSA1OC41LDQxLjUgNTguNSw1OC41IDc1LjUsNTguNSA3NS41LDc1LjUgMjQuNSw3NS41IiBmaWxsPSIjMTBiOTgxIiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMjQuNSwyNC41IDQxLjUsMjQuNSA0MS41LDQxLjUgNTguNSw0MS41IDU4LjUsNTguNSA3NS41LDU4LjUgNzUuNSw3NS41IDI0LjUsNzUuNSIgZmlsbD0iIzEwYjk4MSIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI5MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDQxLjUsNDEuNSA0MS41LDU4LjUgMjQuNSw1OC41IDI0LjUsNzUuNSA3NS41LDc1LjUiIGZpbGw9IiMxMGI5ODEiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDU4LjUsNDEuNSA1OC41LDU4LjUgNzUuNSw1OC41IDc1LjUsNzUuNSAyNC41LDc1LjUiIGZpbGw9IiMxMGI5ODEiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNzUuNSwyNC41IDU4LjUsMjQuNSA1OC41LDQxLjUgNDEuNSw0MS41IDQxLjUsNTguNSAyNC41LDU4LjUgMjQuNSw3NS41IDc1LjUsNzUuNSIgZmlsbD0iIzEwYjk4MSIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-09",
+      "sectionKey": "rotation-trials",
+      "order": 9,
+      "difficulty": "medium",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyOC44LDI0LjUgNjIuOCwyNC41IDYyLjgsNTAuMCA0NS44LDUwLjAgNDUuOCw3NS41IDI4LjgsNzUuNSIgZmlsbD0iIzEwYjk4MSIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI5MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI4LjgsMjQuNSA2Mi44LDI0LjUgNjIuOCw1MC4wIDQ1LjgsNTAuMCA0NS44LDc1LjUgMjguOCw3NS41IiBmaWxsPSIjMTBiOTgxIiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIyNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjcxLjIsMjQuNSAzNy4yLDI0LjUgMzcuMiw1MC4wIDU0LjIsNTAuMCA1NC4yLDc1LjUgNzEuMiw3NS41IiBmaWxsPSIjMTBiOTgxIiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDE0MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjcxLjIsMjQuNSAzNy4yLDI0LjUgMzcuMiw1MC4wIDU0LjIsNTAuMCA1NC4yLDc1LjUgNzEuMiw3NS41IiBmaWxsPSIjMTBiOTgxIiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIyNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI4LjgsMjQuNSA2Mi44LDI0LjUgNjIuOCw1MC4wIDQ1LjgsNTAuMCA0NS44LDc1LjUgMjguOCw3NS41IiBmaWxsPSIjMTBiOTgxIiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-10",
+      "sectionKey": "rotation-trials",
+      "order": 10,
+      "difficulty": "medium",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyOC44LDI0LjUgNjIuOCwyNC41IDYyLjgsNTAuMCA0NS44LDUwLjAgNDUuOCw3NS41IDI4LjgsNzUuNSIgZmlsbD0iIzVjZTFlNiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDY1IDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMjguOCwyNC41IDYyLjgsMjQuNSA2Mi44LDUwLjAgNDUuOCw1MC4wIDQ1LjgsNzUuNSAyOC44LDc1LjUiIGZpbGw9IiM1Y2UxZTYiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIyNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI4LjgsMjQuNSA2Mi44LDI0LjUgNjIuOCw1MC4wIDQ1LjgsNTAuMCA0NS44LDc1LjUgMjguOCw3NS41IiBmaWxsPSIjNWNlMWU2IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDE0MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjcxLjIsMjQuNSAzNy4yLDI0LjUgMzcuMiw1MC4wIDU0LjIsNTAuMCA1NC4yLDc1LjUgNzEuMiw3NS41IiBmaWxsPSIjNWNlMWU2IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIyNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjcxLjIsMjQuNSAzNy4yLDI0LjUgMzcuMiw1MC4wIDU0LjIsNTAuMCA1NC4yLDc1LjUgNzEuMiw3NS41IiBmaWxsPSIjNWNlMWU2IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-11",
+      "sectionKey": "rotation-trials",
+      "order": 11,
+      "difficulty": "medium",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDI0LjUgNDEuNSwyNC41IDQxLjUsNDEuNSA1OC41LDQxLjUgNTguNSw1OC41IDc1LjUsNTguNSA3NS41LDc1LjUgMjQuNSw3NS41IiBmaWxsPSIjNjM2NmYxIiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMjQuNSwyNC41IDQxLjUsMjQuNSA0MS41LDQxLjUgNTguNSw0MS41IDU4LjUsNTguNSA3NS41LDU4LjUgNzUuNSw3NS41IDI0LjUsNzUuNSIgZmlsbD0iIzYzNjZmMSIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI1MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDU4LjUsNDEuNSA1OC41LDU4LjUgNzUuNSw1OC41IDc1LjUsNzUuNSAyNC41LDc1LjUiIGZpbGw9IiM2MzY2ZjEiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI5MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDQxLjUsNDEuNSA0MS41LDU4LjUgMjQuNSw1OC41IDI0LjUsNzUuNSA3NS41LDc1LjUiIGZpbGw9IiM2MzY2ZjEiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNzUuNSwyNC41IDU4LjUsMjQuNSA1OC41LDQxLjUgNDEuNSw0MS41IDQxLjUsNTguNSAyNC41LDU4LjUgMjQuNSw3NS41IDc1LjUsNzUuNSIgZmlsbD0iIzYzNjZmMSIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-12",
+      "sectionKey": "rotation-trials",
+      "order": 12,
+      "difficulty": "medium",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDI0LjUgNDEuNSwyNC41IDQxLjUsNDEuNSA1OC41LDQxLjUgNTguNSw1OC41IDc1LjUsNTguNSA3NS41LDc1LjUgMjQuNSw3NS41IiBmaWxsPSIjNWNlMWU2IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNzUuNSwyNC41IDU4LjUsMjQuNSA1OC41LDQxLjUgNDEuNSw0MS41IDQxLjUsNTguNSAyNC41LDU4LjUgMjQuNSw3NS41IDc1LjUsNzUuNSIgZmlsbD0iIzVjZTFlNiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMjQuNSwyNC41IDQxLjUsMjQuNSA0MS41LDQxLjUgNTguNSw0MS41IDU4LjUsNTguNSA3NS41LDU4LjUgNzUuNSw3NS41IDI0LjUsNzUuNSIgZmlsbD0iIzVjZTFlNiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDE0MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDU4LjUsNDEuNSA1OC41LDU4LjUgNzUuNSw1OC41IDc1LjUsNzUuNSAyNC41LDc1LjUiIGZpbGw9IiM1Y2UxZTYiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIwMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDQxLjUsNDEuNSA0MS41LDU4LjUgMjQuNSw1OC41IDI0LjUsNzUuNSA3NS41LDc1LjUiIGZpbGw9IiM1Y2UxZTYiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-13",
+      "sectionKey": "rotation-trials",
+      "order": 13,
+      "difficulty": "hard",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDI0LjUgNTguNSwyNC41IDU4LjUsNDEuNSA3NS41LDQxLjUgNzUuNSw3NS41IDI0LjUsNzUuNSAyNC41LDU4LjUgNDEuNSw1OC41IDQxLjUsNDEuNSAyNC41LDQxLjUiIGZpbGw9IiM2MzY2ZjEiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI5MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDI0LjUsNDEuNSAyNC41LDc1LjUgNzUuNSw3NS41IDc1LjUsNTguNSA1OC41LDU4LjUgNTguNSw0MS41IDc1LjUsNDEuNSIgZmlsbD0iIzYzNjZmMSIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI1MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDc1LjUsNDEuNSA3NS41LDc1LjUgMjQuNSw3NS41IDI0LjUsNTguNSA0MS41LDU4LjUgNDEuNSw0MS41IDI0LjUsNDEuNSIgZmlsbD0iIzYzNjZmMSIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI1MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDI0LjUsNDEuNSAyNC41LDc1LjUgNzUuNSw3NS41IDc1LjUsNTguNSA1OC41LDU4LjUgNTguNSw0MS41IDc1LjUsNDEuNSIgZmlsbD0iIzYzNjZmMSIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDExNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDc1LjUsNDEuNSA3NS41LDc1LjUgMjQuNSw3NS41IDI0LjUsNTguNSA0MS41LDU4LjUgNDEuNSw0MS41IDI0LjUsNDEuNSIgZmlsbD0iIzYzNjZmMSIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-14",
+      "sectionKey": "rotation-trials",
+      "order": 14,
+      "difficulty": "hard",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDMzLjAgNTAuMCwzMy4wIDUwLjAsMjQuNSA3NS41LDUwLjAgNTAuMCw3NS41IDUwLjAsNjcuMCAyNC41LDY3LjAiIGZpbGw9IiNhODU1ZjciIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDExNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMzMuMCA1MC4wLDMzLjAgNTAuMCwyNC41IDI0LjUsNTAuMCA1MC4wLDc1LjUgNTAuMCw2Ny4wIDc1LjUsNjcuMCIgZmlsbD0iI2E4NTVmNyIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI1MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMzMuMCA1MC4wLDMzLjAgNTAuMCwyNC41IDI0LjUsNTAuMCA1MC4wLDc1LjUgNTAuMCw2Ny4wIDc1LjUsNjcuMCIgZmlsbD0iI2E4NTVmNyIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI1MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMzMuMCA1MC4wLDMzLjAgNTAuMCwyNC41IDc1LjUsNTAuMCA1MC4wLDc1LjUgNTAuMCw2Ny4wIDI0LjUsNjcuMCIgZmlsbD0iI2E4NTVmNyIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIwMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMzMuMCA1MC4wLDMzLjAgNTAuMCwyNC41IDc1LjUsNTAuMCA1MC4wLDc1LjUgNTAuMCw2Ny4wIDI0LjUsNjcuMCIgZmlsbD0iI2E4NTVmNyIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-15",
+      "sectionKey": "rotation-trials",
+      "order": 15,
+      "difficulty": "hard",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyOC44LDI0LjUgNjIuOCwyNC41IDYyLjgsNTAuMCA0NS44LDUwLjAgNDUuOCw3NS41IDI4LjgsNzUuNSIgZmlsbD0iI2E4NTVmNyIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDQwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNzEuMiwyNC41IDM3LjIsMjQuNSAzNy4yLDUwLjAgNTQuMiw1MC4wIDU0LjIsNzUuNSA3MS4yLDc1LjUiIGZpbGw9IiNhODU1ZjciIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIyNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI4LjgsMjQuNSA2Mi44LDI0LjUgNjIuOCw1MC4wIDQ1LjgsNTAuMCA0NS44LDc1LjUgMjguOCw3NS41IiBmaWxsPSIjYTg1NWY3IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI4LjgsMjQuNSA2Mi44LDI0LjUgNjIuOCw1MC4wIDQ1LjgsNTAuMCA0NS44LDc1LjUgMjguOCw3NS41IiBmaWxsPSIjYTg1NWY3IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjcxLjIsMjQuNSAzNy4yLDI0LjUgMzcuMiw1MC4wIDU0LjIsNTAuMCA1NC4yLDc1LjUgNzEuMiw3NS41IiBmaWxsPSIjYTg1NWY3IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-16",
+      "sectionKey": "rotation-trials",
+      "order": 16,
+      "difficulty": "hard",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDMzLjAgNTAuMCwzMy4wIDUwLjAsMjQuNSA3NS41LDUwLjAgNTAuMCw3NS41IDUwLjAsNjcuMCAyNC41LDY3LjAiIGZpbGw9IiM1Y2UxZTYiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIwMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMzMuMCA1MC4wLDMzLjAgNTAuMCwyNC41IDI0LjUsNTAuMCA1MC4wLDc1LjUgNTAuMCw2Ny4wIDc1LjUsNjcuMCIgZmlsbD0iIzVjZTFlNiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDExNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMzMuMCA1MC4wLDMzLjAgNTAuMCwyNC41IDc1LjUsNTAuMCA1MC4wLDc1LjUgNTAuMCw2Ny4wIDI0LjUsNjcuMCIgZmlsbD0iIzVjZTFlNiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIwMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMzMuMCA1MC4wLDMzLjAgNTAuMCwyNC41IDc1LjUsNTAuMCA1MC4wLDc1LjUgNTAuMCw2Ny4wIDI0LjUsNjcuMCIgZmlsbD0iIzVjZTFlNiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNzUuNSwzMy4wIDUwLjAsMzMuMCA1MC4wLDI0LjUgMjQuNSw1MC4wIDUwLjAsNzUuNSA1MC4wLDY3LjAgNzUuNSw2Ny4wIiBmaWxsPSIjNWNlMWU2IiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-17",
+      "sectionKey": "rotation-trials",
+      "order": 17,
+      "difficulty": "hard",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDI0LjUgNDEuNSwyNC41IDQxLjUsNDEuNSA1OC41LDQxLjUgNTguNSw1OC41IDc1LjUsNTguNSA3NS41LDc1LjUgMjQuNSw3NS41IiBmaWxsPSIjZjU5ZTBiIiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDQwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iNzUuNSwyNC41IDU4LjUsMjQuNSA1OC41LDQxLjUgNDEuNSw0MS41IDQxLjUsNTguNSAyNC41LDU4LjUgMjQuNSw3NS41IDc1LjUsNzUuNSIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDIyNSA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDU4LjUsNDEuNSA1OC41LDU4LjUgNzUuNSw1OC41IDc1LjUsNzUuNSAyNC41LDc1LjUiIGZpbGw9IiNmNTllMGIiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDU4LjUsNDEuNSA1OC41LDU4LjUgNzUuNSw1OC41IDc1LjUsNzUuNSAyNC41LDc1LjUiIGZpbGw9IiNmNTllMGIiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDQxLjUsNDEuNSA0MS41LDU4LjUgMjQuNSw1OC41IDI0LjUsNzUuNSA3NS41LDc1LjUiIGZpbGw9IiNmNTllMGIiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "vsr-18",
+      "sectionKey": "rotation-trials",
+      "order": 18,
+      "difficulty": "hard",
+      "questionType": "visual_rotation",
+      "questionText": "Which option below is the SAME shape as the target, just rotated — not a mirrored version?",
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAuMCA1MC4wKSI+PHBvbHlnb24gcG9pbnRzPSIyNC41LDI0LjUgNTguNSwyNC41IDU4LjUsNDEuNSA3NS41LDQxLjUgNzUuNSw3NS41IDI0LjUsNzUuNSAyNC41LDU4LjUgNDEuNSw1OC41IDQxLjUsNDEuNSAyNC41LDQxLjUiIGZpbGw9IiNmNTllMGIiIHN0cm9rZT0iIzBiMGYxOSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==",
+          "alt": "Target shape to match"
+        }
+      ],
+      "required": true,
+      "options": [
+        {
+          "label": "Option A",
+          "value": "0",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDE2MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9IjI0LjUsMjQuNSA1OC41LDI0LjUgNTguNSw0MS41IDc1LjUsNDEuNSA3NS41LDc1LjUgMjQuNSw3NS41IDI0LjUsNTguNSA0MS41LDU4LjUgNDEuNSw0MS41IDI0LjUsNDEuNSIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Option B",
+          "value": "1",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDE2MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDI0LjUsNDEuNSAyNC41LDc1LjUgNzUuNSw3NS41IDc1LjUsNTguNSA1OC41LDU4LjUgNTguNSw0MS41IDc1LjUsNDEuNSIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option C",
+          "value": "2",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwLjAgNTAuMCkiPjxwb2x5Z29uIHBvaW50cz0iMjQuNSwyNC41IDU4LjUsMjQuNSA1OC41LDQxLjUgNzUuNSw0MS41IDc1LjUsNzUuNSAyNC41LDc1LjUgMjQuNSw1OC41IDQxLjUsNTguNSA0MS41LDQxLjUgMjQuNSw0MS41IiBmaWxsPSIjZjU5ZTBiIiBzdHJva2U9IiMwYjBmMTkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Option D",
+          "value": "3",
+          "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTQyMCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKDI1MCA1MC4wIDUwLjApIj48cG9seWdvbiBwb2ludHM9Ijc1LjUsMjQuNSA0MS41LDI0LjUgNDEuNSw0MS41IDI0LjUsNDEuNSAyNC41LDc1LjUgNzUuNSw3NS41IDc1LjUsNTguNSA1OC41LDU4LjUgNTguNSw0MS41IDc1LjUsNDEuNSIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjMGIwZjE5IiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "mental-rotation",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
