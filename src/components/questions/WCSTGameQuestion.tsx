@@ -207,14 +207,14 @@ export function WCSTGameQuestion({ onChange }: QuestionComponentProps) {
         once you find it.
       </p>
 
-      <div className="flex gap-4">
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
         {KEY_CARDS.map((key, i) => (
           <button
             key={i}
             type="button"
             onClick={() => chooseKey(i)}
             disabled={busy.current}
-            className="focus-ring flex h-24 w-24 items-center justify-center rounded-xl2 border border-ink-600 bg-ink-800/60 hover:border-signal-cyan/50 disabled:opacity-60"
+            className="focus-ring flex h-16 w-16 shrink-0 items-center justify-center rounded-xl2 border border-ink-600 bg-ink-800/60 hover:border-signal-cyan/50 disabled:opacity-60 sm:h-24 sm:w-24"
           >
             <CardShape shape={key.shape} color={key.color} count={key.count} />
           </button>
@@ -224,7 +224,7 @@ export function WCSTGameQuestion({ onChange }: QuestionComponentProps) {
       <div className="flex flex-col items-center gap-2">
         <div
           className={clsx(
-            "flex h-28 w-28 items-center justify-center rounded-xl2 border-2 bg-ink-900/60 transition-colors",
+            "flex h-20 w-20 items-center justify-center rounded-xl2 border-2 bg-ink-900/60 transition-colors sm:h-28 sm:w-28",
             feedback === "correct" && "border-green-500",
             feedback === "incorrect" && "border-red-500",
             !feedback && "border-ink-600"
