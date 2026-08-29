@@ -73,12 +73,18 @@ export function PalmistryCapture({ assessment, attempt }: AssessmentRendererProp
     return (
       <div className="mx-auto flex min-h-[70vh] max-w-lg flex-col items-center justify-center px-4 py-10 text-center">
         <ShieldCheck className="mb-4 h-8 w-8 text-signal-cyan" />
-        <h2 className="font-display text-2xl text-paper-100">Before you begin</h2>
+        <h2 className="font-display text-2xl text-paper-100">Your Palmistry photos</h2>
         <p className="mt-4 text-sm leading-relaxed text-paper-100/70">
-          Palmistry on EvalOtter is offered for <strong>entertainment and self-reflection</strong>{" "}
-          only — it is not a scientifically validated or clinical assessment. You&apos;ll be asked
-          to photograph both palms. Images are stored securely, visible only to you, and you can
-          delete them at any time from your account.
+          Palmistry is provided for entertainment and self-reflection only and is not scientifically
+          validated. To create your reading, EvalOtter will process photographs of your palms using
+          automated and AI-assisted systems. EvalOtter does not use these photographs to identify
+          you, authenticate you, match you against another person or create a biometric identity
+          database. Your photographs will be handled according to our{" "}
+          <a href="/privacy" target="_blank" rel="noreferrer" className="underline hover:text-paper-100">
+            Privacy Policy
+          </a>{" "}
+          and our Palmistry retention schedule. You must upload photographs of your own hands and
+          must be at least 18 years old.
         </p>
         <label className="mt-6 flex items-start gap-3 text-left text-sm text-paper-100/80">
           <input
@@ -87,7 +93,7 @@ export function PalmistryCapture({ assessment, attempt }: AssessmentRendererProp
             onChange={(e) => setConsented(e.target.checked)}
             className="mt-1 h-4 w-4 rounded border-ink-500 bg-ink-800 accent-signal-cyan"
           />
-          I understand and consent to uploading photos of my palms for this entertainment reading.
+          I consent to EvalOtter processing my palm photographs to generate my Palmistry reading.
         </label>
         <button
           type="button"

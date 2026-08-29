@@ -237,9 +237,11 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
               )}
 
               <p className="mt-5 text-xs text-paper-100/35">
-                AI-generated interpretation of your scores — for education and self-reflection, not a
-                clinical assessment. Your scores above are computed deterministically and are never
-                altered by this interpretation.
+                Parts of this report are generated using artificial intelligence. AI-generated
+                interpretations can contain errors or unexpected conclusions and should not be
+                treated as medical advice or objective statements of fact. Your underlying
+                assessment score is calculated separately from this explanation and is never altered
+                by it.
               </p>
             </div>
           </Gate>

@@ -42,6 +42,16 @@ export function SignupForm() {
         />
       </label>
 
+      <label className="flex items-start gap-3 text-left text-xs text-paper-100/70">
+        <input
+          name="ageConfirmed"
+          type="checkbox"
+          required
+          className="mt-0.5 h-4 w-4 rounded border-ink-500 bg-ink-800 accent-signal-cyan"
+        />
+        I confirm that I am at least 18 years old.
+      </label>
+
       {state.error && <p className="text-sm text-red-300">{state.error}</p>}
 
       <button

@@ -17,16 +17,18 @@ export async function signUpAction(
   const email = emailSchema.safeParse(formData.get("email"));
   const password = passwordSchema.safeParse(formData.get("password"));
   const fullName = String(formData.get("fullName") ?? "");
+  const ageConfirmed = formData.get("ageConfirmed") === "on";
 
   if (!email.success) return { error: "Enter a valid email address." };
   if (!password.success) return { error: password.error.issues[0]?.message ?? "Invalid password." };
+  if (!ageConfirmed) return { error: "You must confirm you are at least 18 years old to create an account." };
 
   const supabase = await createClient();
   const { error } = await supabase.auth.signUp({
     email: email.data,
     password: password.data,
     options: {
-      data: { full_name: fullName },
+      data: { full_name: fullName, age_confirmed: true },
       emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`,
     },
   });

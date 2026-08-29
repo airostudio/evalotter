@@ -7,6 +7,7 @@ import { AssessmentIcon } from "@/components/ui/AssessmentIcon";
 import { getAssessmentWithVersionBySlug } from "@/lib/assessment-engine/queries";
 import { getCurrentUser } from "@/lib/auth/current-user";
 import { startOrResumeAttemptAction } from "@/actions/attempts";
+import { AssessmentStartGate } from "@/components/assessment/AssessmentStartGate";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -83,24 +84,30 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
         </div>
       )}
 
-      <div className="mt-10 flex flex-wrap gap-3">
-        {fallback?.comingSoon ? (
+      {fallback?.comingSoon ? (
+        <div className="mt-10 flex flex-wrap gap-3">
           <span className="flex min-h-[48px] cursor-not-allowed items-center rounded-xl2 border border-ink-700 px-7 text-sm font-medium text-paper-100/40">
             Coming soon — not yet available
           </span>
-        ) : !live ? (
+        </div>
+      ) : !live ? (
+        <div className="mt-10 flex flex-wrap gap-3">
           <p className="text-sm text-paper-100/40">
             This assessment isn&apos;t connected to a live database in this environment yet — see
             the README for setup and seeding instructions.
           </p>
-        ) : !user ? (
+        </div>
+      ) : !user ? (
+        <div className="mt-10 flex flex-wrap gap-3">
           <Link
             href={`/login?next=/assessments/${slug}`}
             className="focus-ring flex min-h-[48px] items-center rounded-xl2 bg-signal-violet px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
             Log in to start
           </Link>
-        ) : (
+        </div>
+      ) : slug === "palmistry" ? (
+        <div className="mt-10 flex flex-wrap gap-3">
           <form action={startOrResumeAttemptAction.bind(null, slug)}>
             <button
               type="submit"
@@ -109,8 +116,10 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
               Start assessment
             </button>
           </form>
-        )}
-      </div>
+        </div>
+      ) : (
+        <AssessmentStartGate formAction={startOrResumeAttemptAction.bind(null, slug)} />
+      )}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BrandMark, BrandWordmark } from "./BrandMark";
+import { CookiePreferencesLink } from "./CookiePreferencesLink";
 
 const COLUMNS = [
   {
@@ -23,6 +24,8 @@ const COLUMNS = [
     links: [
       { href: "/privacy", label: "Privacy" },
       { href: "/terms", label: "Terms" },
+      { href: "/refund-policy", label: "Refund Policy" },
+      { href: "/cookie-policy", label: "Cookie Policy" },
     ],
   },
 ];
@@ -68,8 +71,9 @@ export function SiteFooter() {
             EvalOtter assessments are designed for education, entertainment and self-discovery and
             are not a substitute for professional psychological, medical or clinical assessment.
           </p>
-          <p className="mt-3 text-xs text-paper-100/30">
-            © {new Date().getFullYear()} EvalOtter. All rights reserved.
+          <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-paper-100/30">
+            <span>© {new Date().getFullYear()} EvalOtter. All rights reserved.</span>
+            <CookiePreferencesLink />
           </p>
         </div>
       </div>

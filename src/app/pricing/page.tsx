@@ -150,7 +150,11 @@ export default async function PricingPage() {
 
       <div className="mx-auto max-w-2xl px-4 pb-20 text-center text-sm text-paper-100/40 sm:px-6">
         All payments are one-time and processed securely by Stripe. No subscriptions, no recurring
-        charges, no auto-renewal.
+        charges, no auto-renewal. Reports are delivered immediately on payment — see our{" "}
+        <Link href="/refund-policy" className="underline hover:text-paper-100/70">
+          Refund Policy
+        </Link>
+        .
       </div>
     </div>
   );

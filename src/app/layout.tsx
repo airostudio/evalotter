@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
+import { CookieBanner } from "@/components/marketing/CookieBanner";
 import { getCurrentUser } from "@/lib/auth/current-user";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -41,6 +42,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <SiteHeader user={user} />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <CookieBanner />
       </body>
     </html>
   );

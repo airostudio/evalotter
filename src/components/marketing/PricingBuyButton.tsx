@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import { CheckoutConsentModal } from "./CheckoutConsentModal";
 
 interface PricingBuyButtonProps {
   type: "single" | "collection" | "collection_plus_love";
@@ -15,8 +16,9 @@ export function PricingBuyButton({ type, assessmentId, children, className }: Pr
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showConsent, setShowConsent] = useState(false);
 
-  async function handleClick() {
+  async function startCheckout() {
     setLoading(true);
     setError(null);
     try {
@@ -46,10 +48,19 @@ export function PricingBuyButton({ type, assessmentId, children, className }: Pr
 
   return (
     <div className="flex flex-col items-stretch gap-1.5">
-      <button type="button" onClick={handleClick} disabled={loading} className={className}>
+      <button type="button" onClick={() => setShowConsent(true)} disabled={loading} className={className}>
         {loading ? "…" : children}
       </button>
       {error && <p className="text-center text-xs text-red-300">{error}</p>}
+      {showConsent && (
+        <CheckoutConsentModal
+          onCancel={() => setShowConsent(false)}
+          onConfirm={() => {
+            setShowConsent(false);
+            startCheckout();
+          }}
+        />
+      )}
     </div>
   );
 }

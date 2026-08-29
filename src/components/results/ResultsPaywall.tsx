@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Lock, Sparkles, X, Check } from "lucide-react";
+import { CheckoutConsentModal } from "@/components/marketing/CheckoutConsentModal";
 
 interface ResultsPaywallProps {
   attemptId: string;
@@ -19,6 +20,7 @@ interface ResultsPaywallProps {
 export function ResultsPaywall({ attemptId, assessmentTitle, confirmFailed }: ResultsPaywallProps) {
   const [open, setOpen] = useState(true);
   const [loadingType, setLoadingType] = useState<null | "single" | "collection" | "collection_plus_love">(null);
+  const [pendingType, setPendingType] = useState<null | "single" | "collection" | "collection_plus_love">(null);
   const [error, setError] = useState<string | null>(
     confirmFailed ? "We couldn't confirm that payment automatically — if you were charged, it'll unlock within a minute." : null
   );
@@ -101,7 +103,7 @@ export function ResultsPaywall({ attemptId, assessmentTitle, confirmFailed }: Re
               <div className="mt-6 flex flex-col gap-3">
                 <button
                   type="button"
-                  onClick={() => checkout("single")}
+                  onClick={() => setPendingType("single")}
                   disabled={loadingType !== null}
                   className="focus-ring flex min-h-[52px] items-center justify-between rounded-xl2 border border-ink-600 px-5 text-left hover:border-ink-500 disabled:opacity-50"
                 >
@@ -116,7 +118,7 @@ export function ResultsPaywall({ attemptId, assessmentTitle, confirmFailed }: Re
 
                 <button
                   type="button"
-                  onClick={() => checkout("collection")}
+                  onClick={() => setPendingType("collection")}
                   disabled={loadingType !== null}
                   className="focus-ring relative flex min-h-[64px] flex-col justify-center rounded-xl2 border border-signal-cyan/60 bg-signal-cyan/[0.06] px-5 text-left hover:bg-signal-cyan/[0.1] disabled:opacity-50"
                 >
@@ -142,6 +144,17 @@ export function ResultsPaywall({ attemptId, assessmentTitle, confirmFailed }: Re
           </motion.div>
         )}
       </AnimatePresence>
+
+      {pendingType && (
+        <CheckoutConsentModal
+          onCancel={() => setPendingType(null)}
+          onConfirm={() => {
+            const type = pendingType;
+            setPendingType(null);
+            checkout(type);
+          }}
+        />
+      )}
     </>
   );
 }
