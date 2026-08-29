@@ -17,16 +17,12 @@ export function MemoryRecognitionQuestion({ question, value, onChange }: Questio
   const studyItems = useMemo(() => (question.options ?? []).filter((o) => o.isCorrect), [question.options]);
   const studySeconds = question.timeLimitSeconds ?? 20;
 
-  const [phase, setPhase] = useState<"study" | "recognize">("study");
   const [secondsLeft, setSecondsLeft] = useState(studySeconds);
+  const phase: "study" | "recognize" = secondsLeft > 0 ? "study" : "recognize";
 
   useEffect(() => {
     if (phase !== "study") return;
-    if (secondsLeft <= 0) {
-      setPhase("recognize");
-      return;
-    }
-    const timer = setTimeout(() => setSecondsLeft((s) => s - 1), 1000);
+    const timer = setTimeout(() => setSecondsLeft((s) => Math.max(0, s - 1)), 1000);
     return () => clearTimeout(timer);
   }, [phase, secondsLeft]);
 
@@ -57,7 +53,7 @@ export function MemoryRecognitionQuestion({ question, value, onChange }: Questio
         </ul>
         <button
           type="button"
-          onClick={() => setPhase("recognize")}
+          onClick={() => setSecondsLeft(0)}
           className="focus-ring text-xs text-paper-100/40 underline hover:text-paper-100/70"
         >
           Skip ahead

@@ -106,6 +106,7 @@ export function WCSTGameQuestion({ onChange }: QuestionComponentProps) {
   const [perseverativeErrors, setPerseverativeErrors] = useState(0);
   const [feedback, setFeedback] = useState<"correct" | "incorrect" | null>(null);
   const [done, setDone] = useState(false);
+  const [busyState, setBusyState] = useState(false);
   const justShiftedRuleIndex = useRef<number | null>(null);
   const busy = useRef(false);
 
@@ -134,6 +135,7 @@ export function WCSTGameQuestion({ onChange }: QuestionComponentProps) {
   function chooseKey(keyIdx: number) {
     if (busy.current || finished || !currentCard) return;
     busy.current = true;
+    setBusyState(true);
 
     const card = currentCard;
     const chosenKey = KEY_CARDS[keyIdx]!;
@@ -179,6 +181,7 @@ export function WCSTGameQuestion({ onChange }: QuestionComponentProps) {
     setTimeout(() => {
       setFeedback(null);
       busy.current = false;
+      setBusyState(false);
       if (nextCategories >= TARGET_CATEGORIES || nextTrialIndex >= MAX_TRIALS) {
         finish(nextCategories, nextErrors, nextPersev, nextTrialIndex);
       } else {
@@ -213,7 +216,7 @@ export function WCSTGameQuestion({ onChange }: QuestionComponentProps) {
             key={i}
             type="button"
             onClick={() => chooseKey(i)}
-            disabled={busy.current}
+            disabled={busyState}
             className="focus-ring flex h-16 w-16 shrink-0 items-center justify-center rounded-xl2 border border-ink-600 bg-ink-800/60 hover:border-signal-cyan/50 disabled:opacity-60 sm:h-24 sm:w-24"
           >
             <CardShape shape={key.shape} color={key.color} count={key.count} />

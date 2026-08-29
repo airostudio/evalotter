@@ -1,5 +1,8 @@
 "use client";
 
+/* eslint-disable react-hooks/static-components -- QuestionComponent is looked up
+   from a stable registry (registerBuiltInQuestionComponents), never created here. */
+
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
@@ -52,7 +55,7 @@ export function AssessmentRunner({ assessment, attempt, responses }: AssessmentR
     settings.showInstructionsBetweenSections
   );
   const [isPending, startTransition] = useTransition();
-  const questionStartedAt = useRef(performance.now());
+  const questionStartedAt = useRef<number | null>(null);
 
   const currentSection = sections[sectionIndex];
   const sectionQuestions = currentSection ? questionsBySection.get(currentSection.id) ?? [] : [];
@@ -78,7 +81,7 @@ export function AssessmentRunner({ assessment, attempt, responses }: AssessmentR
           questionId,
           sectionId,
           answer: value,
-          responseTimeMs: Math.round(performance.now() - questionStartedAt.current),
+          responseTimeMs: Math.round(performance.now() - (questionStartedAt.current ?? performance.now())),
           progressPercent: nextProgress,
           currentSectionId: sectionId,
           currentQuestionId: questionId,

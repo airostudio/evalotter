@@ -14,6 +14,13 @@ import { PalmistryResult } from "@/components/results/PalmistryResult";
 import { ResultsPaywall } from "@/components/results/ResultsPaywall";
 import { LockedOverlay } from "@/components/results/LockedOverlay";
 
+// Renders the exact same real data whether unlocked or not — locking only
+// ever adds a blur + overlay via LockedOverlay, never substitutes different
+// content. Nothing fake is ever rendered.
+function Gate({ unlocked, label, children }: { unlocked: boolean; label: string; children: ReactNode }) {
+  return unlocked ? <>{children}</> : <LockedOverlay label={label}>{children}</LockedOverlay>;
+}
+
 interface PageProps {
   params: Promise<{ attemptId: string }>;
   searchParams: Promise<{ checkout_session_id?: string }>;
@@ -118,13 +125,6 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
   const radarData = dimensions.map((d) => ({ dimension: d.label, score: Number(d.score) }));
   const barData = dimensions.map((d) => ({ label: d.label, score: Number(d.score) }));
 
-  // Every block below renders the exact same real data whether unlocked or
-  // not — locking only ever adds a blur + overlay via LockedOverlay, never
-  // substitutes different content. Nothing fake is ever rendered.
-  function Gate({ label, children }: { label: string; children: ReactNode }) {
-    return unlocked ? <>{children}</> : <LockedOverlay label={label}>{children}</LockedOverlay>;
-  }
-
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
       <span className="text-xs uppercase tracking-widest text-signal-cyan/80">
@@ -133,7 +133,7 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
       <h1 className="mt-2 font-display text-3xl text-paper-100 sm:text-4xl">Your results</h1>
 
       <div className="mt-10 flex flex-col items-center gap-4 rounded-xl2 border border-ink-700 bg-ink-800/50 p-10 text-center shadow-panel">
-        <Gate label="Unlock your score">
+        <Gate unlocked={unlocked} label="Unlock your score">
           <ScoreRing score={Number(result.overall_score)} />
           {result.result_ranges?.title && (
             <span className="mt-4 block rounded-full bg-signal-cyan/10 px-4 py-1.5 text-sm font-medium text-signal-cyan">
@@ -150,7 +150,7 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
 
       {dimensions.length > 0 && (
         <div className="mt-10">
-          <Gate label="Unlock dimension breakdown">
+          <Gate unlocked={unlocked} label="Unlock dimension breakdown">
             <div className="grid gap-6 md:grid-cols-2">
               <div className="rounded-xl2 border border-ink-700 bg-ink-800/40 p-6">
                 <h2 className="mb-2 text-sm font-medium text-paper-100/70">Dimension breakdown</h2>
@@ -167,7 +167,7 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
 
       {dimensions.some((d) => d.result_ranges?.recommendations?.length) && (
         <div className="mt-10">
-          <Gate label="Unlock strengths & development areas">
+          <Gate unlocked={unlocked} label="Unlock strengths & development areas">
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <h2 className="text-sm font-medium text-paper-100/70">Strengths</h2>
@@ -200,7 +200,7 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
 
       {interpretation && (
         <div className="mt-10">
-          <Gate label="Unlock AI interpretation">
+          <Gate unlocked={unlocked} label="Unlock AI interpretation">
             <div className="rounded-xl2 border border-signal-cyan/30 bg-signal-cyan/[0.04] p-6">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-signal-cyan" />

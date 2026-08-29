@@ -1,12 +1,12 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 import { clsx } from "clsx";
 import type { QuestionComponentProps } from "./registry";
 
 /** Multiple choice where response latency itself is scored (speed + accuracy). */
 export function TimedChoiceQuestion({ question, value, onChange }: QuestionComponentProps) {
-  const startedAt = useRef(performance.now());
+  const [startedAt] = useState(() => performance.now());
   const selected = value?.type === "timed_choice" ? value.optionId : undefined;
 
   return (
@@ -21,7 +21,7 @@ export function TimedChoiceQuestion({ question, value, onChange }: QuestionCompo
               onChange({
                 type: "timed_choice",
                 optionId: option.id,
-                responseTimeMs: Math.round(performance.now() - startedAt.current),
+                responseTimeMs: Math.round(performance.now() - startedAt),
               })
             }
             className={clsx(
