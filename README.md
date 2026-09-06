@@ -96,6 +96,36 @@ but nothing is playable end-to-end until a real database is connected:
   catalogue (assessments, questions, scoring config) is public-read,
   editor/admin-write. See `supabase/migrations/0003_row_level_security.sql`.
 
+## Admin dashboard
+
+`/admin` is the operator view: overview KPIs, users (searchable, with
+drill-down per user), financials, per-assessment funnel, and an activity
+feed. Sections live under `src/app/admin/`, data access in
+`src/lib/admin/queries.ts`.
+
+Access is restricted to the `admin` and `super_admin` roles, enforced twice:
+`src/lib/supabase/middleware.ts` redirects non-admins away from `/admin*`,
+and `src/app/admin/layout.tsx` re-checks on the server. The second check is
+not redundant — every query under `/admin` uses the service-role client
+(`src/lib/supabase/admin.ts`), which bypasses RLS, so the gate must not
+depend on middleware alone. The service role is also what makes user
+emails visible at all, since those live in `auth.users` rather than
+`profiles`.
+
+There is no UI for granting the role (deliberately — self-service admin
+promotion is the last thing this needs). Promote yourself once, directly
+in the database:
+
+```sql
+update profiles set role = 'super_admin'
+where id = (select id from auth.users where email = 'you@example.com');
+```
+
+Financial figures come from the `report_purchases` ledger written by the
+Stripe webhook, not from Stripe's API — a purchase whose webhook never
+landed will be missing. Reconcile against the Stripe dashboard before
+treating the numbers as accounts.
+
 ## Seed data
 
 `scripts/seed/data/*.json` holds real content for all ten launch assessments
