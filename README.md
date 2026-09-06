@@ -44,6 +44,11 @@ but nothing is playable end-to-end until a real database is connected:
    `npx supabase gen types typescript --project-id <ref> > src/lib/supabase/database.types.ts`
 5. Seed the catalogue: `npm run seed:validate` (static checks, no DB) then
    `npm run seed` (writes to the connected project — see **Seed data** below).
+   No network route to the Supabase host (locked-down CI, restricted egress)?
+   Paste `supabase/seed_data.sql` into the Supabase SQL editor instead — it is
+   generated from the same JSON by `npx tsx scripts/seed/generate-sql.ts` and
+   is equivalent and equally re-runnable. Regenerate it whenever seed data
+   changes.
 
 ## Architecture
 
