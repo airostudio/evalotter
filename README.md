@@ -45,10 +45,15 @@ but nothing is playable end-to-end until a real database is connected:
 5. Seed the catalogue: `npm run seed:validate` (static checks, no DB) then
    `npm run seed` (writes to the connected project — see **Seed data** below).
    No network route to the Supabase host (locked-down CI, restricted egress)?
-   Paste `supabase/seed_data.sql` into the Supabase SQL editor instead — it is
-   generated from the same JSON by `npx tsx scripts/seed/generate-sql.ts` and
-   is equivalent and equally re-runnable. Regenerate it whenever seed data
-   changes.
+   Paste `supabase/seed_data.part{1..5}of5.sql` into the Supabase SQL editor
+   instead, **in order** — they are generated from the same JSON by
+   `npx tsx scripts/seed/generate-sql.ts supabase/seed_data.sql 5`, and are
+   equivalent to `npm run seed` and equally re-runnable. Order is
+   load-bearing: categories, then every question, then the assessments that
+   link them (the flagship reuses other assessments' questions), so a later
+   part will fail if an earlier one was skipped. Each part is its own
+   transaction. Regenerate whenever seed data changes (pass a different
+   number to split differently, or omit it for one big file).
 
 ## Architecture
 
