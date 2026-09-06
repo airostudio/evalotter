@@ -78,7 +78,7 @@ export const CATALOGUE: CatalogueAssessment[] = [
     engineType: "standard_questionnaire",
     difficulty: "medium",
     estimatedDurationMinutes: 15,
-    questionCount: 20,
+    questionCount: 15,
     access: "free",
   },
   {
