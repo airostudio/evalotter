@@ -59,15 +59,28 @@ const DEFAULT_SETTINGS = {
 };
 
 /**
- * SQL text expression for a value. Quotes are doubled as usual; semicolons
- * become chr(59) concatenations so no raw ";" survives inside a literal.
+ * SQL text expression for a value.
+ *
+ * Anything containing a character that a naive SQL splitter can trip over is
+ * emitted base64-encoded and decoded back by Postgres, so the literal itself
+ * is nothing but [A-Za-z0-9+/=]. Plain values stay readable.
+ *
+ * The dangerous set, all of which occur in real seed content:
+ *   '   apostrophes in prose — doubled correctly, but some clients miscount
+ *   "   JSON payloads are full of them; a literal with an ODD number of them
+ *       desyncs any client that tracks double-quoted identifiers without
+ *       noticing it is inside a single-quoted string. That is what turned
+ *       "Push into distribution-of-three items" into INSERT INTO distribution.
+ *   ;   "data:image/svg+xml;base64,..." URIs and prose semicolons, which
+ *       clients that split on ";" cut mid-literal
+ *   --  would start a comment for a client that strips comments first
  */
 function s(v: unknown): string {
   if (v === null || v === undefined) return "NULL";
-  const escaped = String(v).replace(/'/g, "''");
-  if (!escaped.includes(";")) return `'${escaped}'`;
-  const pieces = escaped.split(";");
-  return pieces.map((p) => `'${p}'`).join(" || chr(59) || ");
+  const str = String(v);
+  if (!/['";]/.test(str) && !str.includes("--")) return `'${str}'`;
+  const b64 = Buffer.from(str, "utf8").toString("base64");
+  return `convert_from(decode('${b64}', 'base64'), 'UTF8')`;
 }
 /** Numeric/boolean literal, or NULL. */
 function n(v: unknown): string {

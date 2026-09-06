@@ -15,7 +15,7 @@ insert into questions (external_key, question_type, question_text, instructions,
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-01');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-01'), '195', 'a', NULL, NULL, 0, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-01'), '205', 'b', NULL, true, 1, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"arithmetic","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-01'), '205', 'b', NULL, true, 1, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6ImFyaXRobWV0aWMiLCJwb2ludHMiOjF9XQ==', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-01'), '215', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-01'), '225', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
@@ -25,7 +25,7 @@ delete from question_options where question_id = (select id from questions where
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-02'), '201', 'a', NULL, NULL, 0, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-02'), '211', 'b', NULL, NULL, 1, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-02'), '221', 'c', NULL, true, 2, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"arithmetic","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-02'), '221', 'c', NULL, true, 2, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6ImFyaXRobWV0aWMiLCJwb2ludHMiOjF9XQ==', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-02'), '231', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
 insert into questions (external_key, question_type, question_text, instructions, media, correct_answer, score_config, difficulty, category, tags, time_limit_seconds, required) values ('metrics-03', ('multiple_choice')::question_type, 'What is 504 ÷ 12?', NULL, ('[]')::jsonb, NULL, ('[]')::jsonb, ('medium')::assessment_difficulty, 'metrics', '{}'::text[], 25, true)
@@ -34,7 +34,7 @@ delete from question_options where question_id = (select id from questions where
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-03'), '36', 'a', NULL, NULL, 0, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-03'), '40', 'b', NULL, NULL, 1, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-03'), '42', 'c', NULL, true, 2, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"arithmetic","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-03'), '42', 'c', NULL, true, 2, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6ImFyaXRobWV0aWMiLCJwb2ludHMiOjF9XQ==', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-03'), '44', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
 insert into questions (external_key, question_type, question_text, instructions, media, correct_answer, score_config, difficulty, category, tags, time_limit_seconds, required) values ('metrics-04', ('multiple_choice')::question_type, 'What is 8 squared minus 15?', NULL, ('[]')::jsonb, NULL, ('[]')::jsonb, ('easy')::assessment_difficulty, 'metrics', '{}'::text[], 20, true)
@@ -43,7 +43,7 @@ delete from question_options where question_id = (select id from questions where
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-04'), '39', 'a', NULL, NULL, 0, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-04'), '45', 'b', NULL, NULL, 1, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-04'), '49', 'c', NULL, true, 2, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"arithmetic","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-04'), '49', 'c', NULL, true, 2, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6ImFyaXRobWV0aWMiLCJwb2ludHMiOjF9XQ==', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-04'), '53', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
 insert into questions (external_key, question_type, question_text, instructions, media, correct_answer, score_config, difficulty, category, tags, time_limit_seconds, required) values ('metrics-05', ('multiple_choice')::question_type, 'A jacket originally priced at $80 is discounted by 30%. What is the sale price?', NULL, ('[]')::jsonb, NULL, ('[]')::jsonb, ('easy')::assessment_difficulty, 'metrics', '{}'::text[], 30, true)
@@ -51,16 +51,16 @@ insert into questions (external_key, question_type, question_text, instructions,
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-05');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-05'), '$50', 'a', NULL, NULL, 0, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-05'), '$56', 'b', NULL, true, 1, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"percentages","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-05'), '$56', 'b', NULL, true, 1, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6InBlcmNlbnRhZ2VzIiwicG9pbnRzIjoxfV0=', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-05'), '$60', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-05'), '$24', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
-insert into questions (external_key, question_type, question_text, instructions, media, correct_answer, score_config, difficulty, category, tags, time_limit_seconds, required) values ('metrics-06', ('multiple_choice')::question_type, 'A company''s revenue grew from $2.4 million to $3.0 million. What was the percentage increase?', NULL, ('[]')::jsonb, NULL, ('[]')::jsonb, ('medium')::assessment_difficulty, 'metrics', '{}'::text[], 35, true)
+insert into questions (external_key, question_type, question_text, instructions, media, correct_answer, score_config, difficulty, category, tags, time_limit_seconds, required) values ('metrics-06', ('multiple_choice')::question_type, convert_from(decode('QSBjb21wYW55J3MgcmV2ZW51ZSBncmV3IGZyb20gJDIuNCBtaWxsaW9uIHRvICQzLjAgbWlsbGlvbi4gV2hhdCB3YXMgdGhlIHBlcmNlbnRhZ2UgaW5jcmVhc2U/', 'base64'), 'UTF8'), NULL, ('[]')::jsonb, NULL, ('[]')::jsonb, ('medium')::assessment_difficulty, 'metrics', '{}'::text[], 35, true)
   on conflict (external_key) do update set question_type = excluded.question_type, question_text = excluded.question_text, instructions = excluded.instructions, media = excluded.media, correct_answer = excluded.correct_answer, score_config = excluded.score_config, difficulty = excluded.difficulty, category = excluded.category, tags = excluded.tags, time_limit_seconds = excluded.time_limit_seconds, required = excluded.required;
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-06');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-06'), '20%', 'a', NULL, NULL, 0, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-06'), '25%', 'b', NULL, true, 1, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"percentages","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-06'), '25%', 'b', NULL, true, 1, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6InBlcmNlbnRhZ2VzIiwicG9pbnRzIjoxfV0=', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-06'), '30%', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-06'), '60%', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
@@ -69,7 +69,7 @@ insert into questions (external_key, question_type, question_text, instructions,
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-07');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-07'), 'Unchanged', 'a', NULL, NULL, 0, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-07'), '4% lower', 'b', NULL, true, 1, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"percentages","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-07'), '4% lower', 'b', NULL, true, 1, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6InBlcmNlbnRhZ2VzIiwicG9pbnRzIjoxfV0=', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-07'), '4% higher', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-07'), '2% lower', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
@@ -78,7 +78,7 @@ insert into questions (external_key, question_type, question_text, instructions,
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-08');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-08'), '20%', 'a', NULL, NULL, 0, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-08'), '25%', 'b', NULL, true, 1, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"percentages","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-08'), '25%', 'b', NULL, true, 1, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6InBlcmNlbnRhZ2VzIiwicG9pbnRzIjoxfV0=', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-08'), '30%', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-08'), '35%', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
@@ -87,7 +87,7 @@ insert into questions (external_key, question_type, question_text, instructions,
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-09');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-09'), '500g', 'a', NULL, NULL, 0, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-09'), '625g', 'b', NULL, true, 1, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"ratios","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-09'), '625g', 'b', NULL, true, 1, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6InJhdGlvcyIsInBvaW50cyI6MX1d', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-09'), '750g', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-09'), '1000g', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
@@ -97,7 +97,7 @@ delete from question_options where question_id = (select id from questions where
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-10'), '$24,000', 'a', NULL, NULL, 0, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-10'), '$30,000', 'b', NULL, NULL, 1, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-10'), '$36,000', 'c', NULL, true, 2, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"ratios","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-10'), '$36,000', 'c', NULL, true, 2, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6InJhdGlvcyIsInBvaW50cyI6MX1d', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-10'), '$40,000', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
 insert into questions (external_key, question_type, question_text, instructions, media, correct_answer, score_config, difficulty, category, tags, time_limit_seconds, required) values ('metrics-11', ('multiple_choice')::question_type, 'A car travels 210 miles using 7 gallons of fuel. At the same rate, how far can it travel on 12 gallons?', NULL, ('[]')::jsonb, NULL, ('[]')::jsonb, ('medium')::assessment_difficulty, 'metrics', '{}'::text[], 35, true)
@@ -106,7 +106,7 @@ delete from question_options where question_id = (select id from questions where
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-11'), '300 miles', 'a', NULL, NULL, 0, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-11'), '330 miles', 'b', NULL, NULL, 1, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-11'), '360 miles', 'c', NULL, true, 2, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"ratios","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-11'), '360 miles', 'c', NULL, true, 2, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6InJhdGlvcyIsInBvaW50cyI6MX1d', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-11'), '420 miles', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
 insert into questions (external_key, question_type, question_text, instructions, media, correct_answer, score_config, difficulty, category, tags, time_limit_seconds, required) values ('metrics-12', ('multiple_choice')::question_type, 'If 5 machines can complete a job in 12 hours, how long would 8 machines take, working at the same rate?', NULL, ('[]')::jsonb, NULL, ('[]')::jsonb, ('hard')::assessment_difficulty, 'metrics', '{}'::text[], 40, true)
@@ -114,7 +114,7 @@ insert into questions (external_key, question_type, question_text, instructions,
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-12');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-12'), '6 hours', 'a', NULL, NULL, 0, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-12'), '7.5 hours', 'b', NULL, true, 1, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"ratios","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-12'), '7.5 hours', 'b', NULL, true, 1, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6InJhdGlvcyIsInBvaW50cyI6MX1d', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-12'), '8 hours', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-12'), '19.2 hours', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
@@ -123,7 +123,7 @@ insert into questions (external_key, question_type, question_text, instructions,
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-13');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-13'), '47', 'a', NULL, NULL, 0, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-13'), '63', 'b', NULL, true, 1, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"sequences","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-13'), '63', 'b', NULL, true, 1, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6InNlcXVlbmNlcyIsInBvaW50cyI6MX1d', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-13'), '59', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-13'), '62', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
@@ -133,7 +133,7 @@ delete from question_options where question_id = (select id from questions where
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-14'), '40', 'a', NULL, NULL, 0, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-14'), '36', 'b', NULL, NULL, 1, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-14'), '42', 'c', NULL, true, 2, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"sequences","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-14'), '42', 'c', NULL, true, 2, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6InNlcXVlbmNlcyIsInBvaW50cyI6MX1d', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-14'), '38', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
 insert into questions (external_key, question_type, question_text, instructions, media, correct_answer, score_config, difficulty, category, tags, time_limit_seconds, required) values ('metrics-15', ('multiple_choice')::question_type, 'What comes next: 1, 4, 9, 16, 25, __?', NULL, ('[]')::jsonb, NULL, ('[]')::jsonb, ('easy')::assessment_difficulty, 'metrics', '{}'::text[], 25, true)
@@ -141,7 +141,7 @@ insert into questions (external_key, question_type, question_text, instructions,
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-15');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-15'), '30', 'a', NULL, NULL, 0, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-15'), '36', 'b', NULL, true, 1, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"sequences","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-15'), '36', 'b', NULL, true, 1, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6InNlcXVlbmNlcyIsInBvaW50cyI6MX1d', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-15'), '32', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-15'), '49', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
@@ -149,17 +149,17 @@ insert into questions (external_key, question_type, question_text, instructions,
   on conflict (external_key) do update set question_type = excluded.question_type, question_text = excluded.question_text, instructions = excluded.instructions, media = excluded.media, correct_answer = excluded.correct_answer, score_config = excluded.score_config, difficulty = excluded.difficulty, category = excluded.category, tags = excluded.tags, time_limit_seconds = excluded.time_limit_seconds, required = excluded.required;
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-16');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
-  ((select id from questions where external_key = 'metrics-16'), '25', 'a', NULL, true, 0, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"sequences","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-16'), '25', 'a', NULL, true, 0, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6InNlcXVlbmNlcyIsInBvaW50cyI6MX1d', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-16'), '35', 'b', NULL, NULL, 1, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-16'), '30', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-16'), '20', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
-insert into questions (external_key, question_type, question_text, instructions, media, correct_answer, score_config, difficulty, category, tags, time_limit_seconds, required) values ('metrics-17', ('multiple_choice')::question_type, 'A company''s quarterly sales (in thousands): Q1 = 420, Q2 = 380, Q3 = 510, Q4 = 490. What was the percentage change from Q2 to Q3?', NULL, ('[]')::jsonb, NULL, ('[]')::jsonb, ('medium')::assessment_difficulty, 'metrics', '{}'::text[], 45, true)
+insert into questions (external_key, question_type, question_text, instructions, media, correct_answer, score_config, difficulty, category, tags, time_limit_seconds, required) values ('metrics-17', ('multiple_choice')::question_type, convert_from(decode('QSBjb21wYW55J3MgcXVhcnRlcmx5IHNhbGVzIChpbiB0aG91c2FuZHMpOiBRMSA9IDQyMCwgUTIgPSAzODAsIFEzID0gNTEwLCBRNCA9IDQ5MC4gV2hhdCB3YXMgdGhlIHBlcmNlbnRhZ2UgY2hhbmdlIGZyb20gUTIgdG8gUTM/', 'base64'), 'UTF8'), NULL, ('[]')::jsonb, NULL, ('[]')::jsonb, ('medium')::assessment_difficulty, 'metrics', '{}'::text[], 45, true)
   on conflict (external_key) do update set question_type = excluded.question_type, question_text = excluded.question_text, instructions = excluded.instructions, media = excluded.media, correct_answer = excluded.correct_answer, score_config = excluded.score_config, difficulty = excluded.difficulty, category = excluded.category, tags = excluded.tags, time_limit_seconds = excluded.time_limit_seconds, required = excluded.required;
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-17');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-17'), 'About 26% increase', 'a', NULL, NULL, 0, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-17'), 'About 34% increase', 'b', NULL, true, 1, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"data-interpretation","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-17'), 'About 34% increase', 'b', NULL, true, 1, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6ImRhdGEtaW50ZXJwcmV0YXRpb24iLCJwb2ludHMiOjF9XQ==', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-17'), 'About 21% increase', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-17'), 'About 30% decrease', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
@@ -168,7 +168,7 @@ insert into questions (external_key, question_type, question_text, instructions,
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-18');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-18'), '425,000', 'a', NULL, NULL, 0, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-18'), '450,000', 'b', NULL, true, 1, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"data-interpretation","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-18'), '450,000', 'b', NULL, true, 1, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6ImRhdGEtaW50ZXJwcmV0YXRpb24iLCJwb2ludHMiOjF9XQ==', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-18'), '460,000', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-18'), '475,000', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
@@ -178,15 +178,15 @@ delete from question_options where question_id = (select id from questions where
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-19'), '25', 'a', NULL, NULL, 0, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-19'), '40', 'b', NULL, NULL, 1, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-19'), '50', 'c', NULL, true, 2, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"data-interpretation","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-19'), '50', 'c', NULL, true, 2, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6ImRhdGEtaW50ZXJwcmV0YXRpb24iLCJwb2ludHMiOjF9XQ==', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-19'), '60', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
-insert into questions (external_key, question_type, question_text, instructions, media, correct_answer, score_config, difficulty, category, tags, time_limit_seconds, required) values ('metrics-20', ('multiple_choice')::question_type, 'A store''s costs were $12,000 and revenue was $15,600. What was the profit margin (profit as a percentage of revenue)?', NULL, ('[]')::jsonb, NULL, ('[]')::jsonb, ('hard')::assessment_difficulty, 'metrics', '{}'::text[], 45, true)
+insert into questions (external_key, question_type, question_text, instructions, media, correct_answer, score_config, difficulty, category, tags, time_limit_seconds, required) values ('metrics-20', ('multiple_choice')::question_type, convert_from(decode('QSBzdG9yZSdzIGNvc3RzIHdlcmUgJDEyLDAwMCBhbmQgcmV2ZW51ZSB3YXMgJDE1LDYwMC4gV2hhdCB3YXMgdGhlIHByb2ZpdCBtYXJnaW4gKHByb2ZpdCBhcyBhIHBlcmNlbnRhZ2Ugb2YgcmV2ZW51ZSk/', 'base64'), 'UTF8'), NULL, ('[]')::jsonb, NULL, ('[]')::jsonb, ('hard')::assessment_difficulty, 'metrics', '{}'::text[], 45, true)
   on conflict (external_key) do update set question_type = excluded.question_type, question_text = excluded.question_text, instructions = excluded.instructions, media = excluded.media, correct_answer = excluded.correct_answer, score_config = excluded.score_config, difficulty = excluded.difficulty, category = excluded.category, tags = excluded.tags, time_limit_seconds = excluded.time_limit_seconds, required = excluded.required;
 delete from question_options where question_id = (select id from questions where external_key = 'metrics-20');
 insert into question_options (question_id, label, value, image_url, is_correct, "order", score_config) values
   ((select id from questions where external_key = 'metrics-20'), '20%', 'a', NULL, NULL, 0, ('[]')::jsonb),
-  ((select id from questions where external_key = 'metrics-20'), '23%', 'b', NULL, true, 1, ('[{"dimensionKey":"numerical","points":1},{"dimensionKey":"data-interpretation","points":1}]')::jsonb),
+  ((select id from questions where external_key = 'metrics-20'), '23%', 'b', NULL, true, 1, (convert_from(decode('W3siZGltZW5zaW9uS2V5IjoibnVtZXJpY2FsIiwicG9pbnRzIjoxfSx7ImRpbWVuc2lvbktleSI6ImRhdGEtaW50ZXJwcmV0YXRpb24iLCJwb2ludHMiOjF9XQ==', 'base64'), 'UTF8'))::jsonb),
   ((select id from questions where external_key = 'metrics-20'), '30%', 'c', NULL, NULL, 2, ('[]')::jsonb),
   ((select id from questions where external_key = 'metrics-20'), '15%', 'd', NULL, NULL, 3, ('[]')::jsonb);
 
@@ -214,7 +214,7 @@ insert into result_ranges (assessment_id, dimension_key, min_score, max_score, t
 delete from brain_profile_contribution_rules where assessment_id = (select id from assessments where slug = 'metrics');
 insert into brain_profile_contribution_rules (assessment_id, source_dimension_key, target_brain_profile_dimension_key, weight) values ((select id from assessments where slug = 'metrics'), 'numerical', 'logical', 0.5);
 insert into assessment_versions (assessment_id, version_number, status, settings, published_at)
-  select a.id, coalesce((select max(v.version_number) from assessment_versions v where v.assessment_id = a.id), 0) + 1, 'published'::assessment_status, ('{"allowBackNavigation":true,"randomizeSections":false,"randomizeQuestions":false,"randomizeAnswerOrder":false,"showProgressBar":true,"showInstructionsBetweenSections":true,"autosaveIntervalSeconds":10,"totalTimeLimitSeconds":null}')::jsonb, now()
+  select a.id, coalesce((select max(v.version_number) from assessment_versions v where v.assessment_id = a.id), 0) + 1, 'published'::assessment_status, (convert_from(decode('eyJhbGxvd0JhY2tOYXZpZ2F0aW9uIjp0cnVlLCJyYW5kb21pemVTZWN0aW9ucyI6ZmFsc2UsInJhbmRvbWl6ZVF1ZXN0aW9ucyI6ZmFsc2UsInJhbmRvbWl6ZUFuc3dlck9yZGVyIjpmYWxzZSwic2hvd1Byb2dyZXNzQmFyIjp0cnVlLCJzaG93SW5zdHJ1Y3Rpb25zQmV0d2VlblNlY3Rpb25zIjp0cnVlLCJhdXRvc2F2ZUludGVydmFsU2Vjb25kcyI6MTAsInRvdGFsVGltZUxpbWl0U2Vjb25kcyI6bnVsbH0=', 'base64'), 'UTF8'))::jsonb, now()
   from assessments a where a.slug = 'metrics';
 update assessments set current_version_id = (select v.id from assessment_versions v where v.assessment_id = assessments.id order by v.version_number desc limit 1) where slug = 'metrics';
 insert into assessment_sections (assessment_version_id, name, description, instructions, time_limit_seconds, randomize_questions, weight, "order") values ((select current_version_id from assessments where slug = 'metrics'), 'Mental Arithmetic', 'Quick calculation without a calculator.', 'Solve each problem as quickly and accurately as you can.', 20, false, 1, 1);
@@ -222,12 +222,12 @@ insert into assessment_sections (assessment_version_id, name, description, instr
 insert into assessment_sections (assessment_version_id, name, description, instructions, time_limit_seconds, randomize_questions, weight, "order") values ((select current_version_id from assessments where slug = 'metrics'), 'Ratios & Proportions', 'Scaling quantities and comparing rates.', 'Solve each ratio or proportion problem.', 30, false, 1, 3);
 insert into assessment_sections (assessment_version_id, name, description, instructions, time_limit_seconds, randomize_questions, weight, "order") values ((select current_version_id from assessments where slug = 'metrics'), 'Number Sequences', 'Identifying the rule governing a sequence of numbers.', 'Determine the pattern and select the next number.', 30, false, 1, 4);
 insert into assessment_sections (assessment_version_id, name, description, instructions, time_limit_seconds, randomize_questions, weight, "order") values ((select current_version_id from assessments where slug = 'metrics'), 'Data Interpretation', 'Reading and reasoning about numbers presented in tables.', 'Study the data, then answer the question.', 45, false, 1, 5);
-insert into scoring_rules (assessment_version_id, dimension_key, formula, section_weights, normalization, penalty_per_incorrect) values ((select current_version_id from assessments where slug = 'metrics'), 'numerical', ('sum')::scoring_formula, NULL, ('{"min":0,"max":20}')::jsonb, NULL);
-insert into scoring_rules (assessment_version_id, dimension_key, formula, section_weights, normalization, penalty_per_incorrect) values ((select current_version_id from assessments where slug = 'metrics'), 'arithmetic', ('sum')::scoring_formula, NULL, ('{"min":0,"max":4}')::jsonb, NULL);
-insert into scoring_rules (assessment_version_id, dimension_key, formula, section_weights, normalization, penalty_per_incorrect) values ((select current_version_id from assessments where slug = 'metrics'), 'percentages', ('sum')::scoring_formula, NULL, ('{"min":0,"max":4}')::jsonb, NULL);
-insert into scoring_rules (assessment_version_id, dimension_key, formula, section_weights, normalization, penalty_per_incorrect) values ((select current_version_id from assessments where slug = 'metrics'), 'ratios', ('sum')::scoring_formula, NULL, ('{"min":0,"max":4}')::jsonb, NULL);
-insert into scoring_rules (assessment_version_id, dimension_key, formula, section_weights, normalization, penalty_per_incorrect) values ((select current_version_id from assessments where slug = 'metrics'), 'sequences', ('sum')::scoring_formula, NULL, ('{"min":0,"max":4}')::jsonb, NULL);
-insert into scoring_rules (assessment_version_id, dimension_key, formula, section_weights, normalization, penalty_per_incorrect) values ((select current_version_id from assessments where slug = 'metrics'), 'data-interpretation', ('sum')::scoring_formula, NULL, ('{"min":0,"max":4}')::jsonb, NULL);
+insert into scoring_rules (assessment_version_id, dimension_key, formula, section_weights, normalization, penalty_per_incorrect) values ((select current_version_id from assessments where slug = 'metrics'), 'numerical', ('sum')::scoring_formula, NULL, (convert_from(decode('eyJtaW4iOjAsIm1heCI6MjB9', 'base64'), 'UTF8'))::jsonb, NULL);
+insert into scoring_rules (assessment_version_id, dimension_key, formula, section_weights, normalization, penalty_per_incorrect) values ((select current_version_id from assessments where slug = 'metrics'), 'arithmetic', ('sum')::scoring_formula, NULL, (convert_from(decode('eyJtaW4iOjAsIm1heCI6NH0=', 'base64'), 'UTF8'))::jsonb, NULL);
+insert into scoring_rules (assessment_version_id, dimension_key, formula, section_weights, normalization, penalty_per_incorrect) values ((select current_version_id from assessments where slug = 'metrics'), 'percentages', ('sum')::scoring_formula, NULL, (convert_from(decode('eyJtaW4iOjAsIm1heCI6NH0=', 'base64'), 'UTF8'))::jsonb, NULL);
+insert into scoring_rules (assessment_version_id, dimension_key, formula, section_weights, normalization, penalty_per_incorrect) values ((select current_version_id from assessments where slug = 'metrics'), 'ratios', ('sum')::scoring_formula, NULL, (convert_from(decode('eyJtaW4iOjAsIm1heCI6NH0=', 'base64'), 'UTF8'))::jsonb, NULL);
+insert into scoring_rules (assessment_version_id, dimension_key, formula, section_weights, normalization, penalty_per_incorrect) values ((select current_version_id from assessments where slug = 'metrics'), 'sequences', ('sum')::scoring_formula, NULL, (convert_from(decode('eyJtaW4iOjAsIm1heCI6NH0=', 'base64'), 'UTF8'))::jsonb, NULL);
+insert into scoring_rules (assessment_version_id, dimension_key, formula, section_weights, normalization, penalty_per_incorrect) values ((select current_version_id from assessments where slug = 'metrics'), 'data-interpretation', ('sum')::scoring_formula, NULL, (convert_from(decode('eyJtaW4iOjAsIm1heCI6NH0=', 'base64'), 'UTF8'))::jsonb, NULL);
 insert into assessment_questions (assessment_version_id, section_id, question_id, "order", weight) values
   ((select current_version_id from assessments where slug = 'metrics'), (select id from assessment_sections where assessment_version_id = (select current_version_id from assessments where slug = 'metrics') and name = 'Mental Arithmetic'), (select id from questions where external_key = 'metrics-01'), 0, 1),
   ((select current_version_id from assessments where slug = 'metrics'), (select id from assessment_sections where assessment_version_id = (select current_version_id from assessments where slug = 'metrics') and name = 'Mental Arithmetic'), (select id from questions where external_key = 'metrics-02'), 1, 1),
