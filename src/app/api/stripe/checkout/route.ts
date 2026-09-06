@@ -2,21 +2,27 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireUser } from "@/lib/auth/current-user";
 import { createClient } from "@/lib/supabase/server";
 import { getStripeClient } from "@/lib/stripe/client";
-import { PRICING } from "@/lib/stripe/pricing";
+import { PRICING, STRIPE_SINGLE_REPORT_PRODUCT_ID } from "@/lib/stripe/pricing";
 
 type CheckoutType = "single" | "collection" | "collection_plus_love";
 
 /**
  * Creates a Stripe Checkout Session for one of three purchase types:
- *  - "single": unlocks one assessment's results ($1.99). Takes either an
- *    `attemptId` (from a just-completed results page) or an `assessmentId`
- *    (from the pricing page, buying ahead of taking it) — either resolves
- *    to the same assessment-level entitlement (see `hasReportAccess`).
+ *  - "single": unlocks one assessment's results ($1.99, same amount for
+ *    every assessment). Takes either an `attemptId` (from a just-completed
+ *    results page) or an `assessmentId` (from the pricing page, buying
+ *    ahead of taking it) — either resolves to the same assessment-level
+ *    entitlement (see `hasReportAccess`). Billed against the pre-created
+ *    Stripe Product STRIPE_SINGLE_REPORT_PRODUCT_ID rather than an ad-hoc
+ *    product — Checkout will show that product's own name/description
+ *    (set in the Stripe Dashboard) rather than the assessment's title; the
+ *    actual assessment title is still recorded in session metadata.
  *  - "collection": unlocks every assessment's results, forever ($18.99).
  *  - "collection_plus_love": the same, plus Perfect Love (perfectlove.site)
  *    access ($39.99) — see README "Monetization" for the fulfillment caveat.
- * Prices are passed inline via `price_data`, so nothing needs to be
- * pre-created in the Stripe Dashboard beyond the API keys themselves.
+ * "collection" and "collection_plus_love" still pass their price inline via
+ * `price_data.product_data`, so nothing needs to be pre-created in the
+ * Stripe Dashboard for those two beyond the API keys themselves.
  */
 export async function POST(request: NextRequest) {
   const stripe = getStripeClient();
@@ -103,11 +109,7 @@ export async function POST(request: NextRequest) {
           price_data: {
             currency: "usd",
             unit_amount: PRICING.singleReport.amountCents,
-            product_data: {
-              name: `${title} — full report unlock`,
-              description:
-                "Unlocks your complete results for this assessment: dimension breakdown, AI interpretation, and downloadable report.",
-            },
+            product: STRIPE_SINGLE_REPORT_PRODUCT_ID,
           },
         },
       ],
@@ -115,6 +117,7 @@ export async function POST(request: NextRequest) {
         userId: user.id,
         type: "single",
         assessmentId,
+        assessmentTitle: title,
         resultId: resultId ?? "",
       },
       success_url: `${siteUrl}${returnPath}?checkout_session_id={CHECKOUT_SESSION_ID}`,
