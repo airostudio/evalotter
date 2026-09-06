@@ -9,125 +9,1076 @@
   "difficulty": "medium",
   "estimatedDurationMinutes": 15,
   "access": "free",
-  "sourceNote": "Ported from airostudio/logical-reasoning (lib/testQuestions.ts). 15 real questions total (6 abstract-pattern, 9 deductive) — short of the catalogue's nominal ~20, not padded with invented ones. The 6 abstract-pattern questions reference real SVG art at public/images/patterns/pattern-{1..6}.svg in the source repo; questionText describes each pattern in words. Porting the actual SVGs as question media is a follow-up.",
-
+  "sourceNote": "Ported from airostudio/logical-reasoning (lib/testQuestions.ts). 15 real questions total (6 abstract-pattern, 9 deductive) — short of the catalogue's nominal ~20, not padded with invented ones. The 6 abstract-pattern questions carry the source repo's real SVG artwork (public/images/patterns/pattern-{1..6}.svg), embedded inline as base64 data URIs so no external asset hosting is needed.",
   "sections": [
-    { "key": "abstract-reasoning", "name": "Abstract Pattern Reasoning", "description": "Visual and numeric pattern-recognition questions where you identify the next item in a sequence based on shape, color, rotation, quantity, or spectrum progression.", "instructions": "Study each pattern sequence carefully and select the option that correctly continues the pattern.", "timeLimitSeconds": null, "weight": 0.4, "order": 1 },
-    { "key": "deductive-reasoning", "name": "Deductive Reasoning", "description": "Verbal logic questions testing your ability to draw valid conclusions from given premises, including syllogisms and identification of logical fallacies.", "instructions": "Read each set of statements carefully and choose the conclusion that logically follows (or correctly identifies that it cannot be determined).", "timeLimitSeconds": null, "weight": 0.6, "order": 2 }
+    {
+      "key": "abstract-reasoning",
+      "name": "Abstract Pattern Reasoning",
+      "description": "Visual and numeric pattern-recognition questions where you identify the next item in a sequence based on shape, color, rotation, quantity, or spectrum progression.",
+      "instructions": "Study each pattern sequence carefully and select the option that correctly continues the pattern.",
+      "timeLimitSeconds": null,
+      "weight": 0.4,
+      "order": 1
+    },
+    {
+      "key": "deductive-reasoning",
+      "name": "Deductive Reasoning",
+      "description": "Verbal logic questions testing your ability to draw valid conclusions from given premises, including syllogisms and identification of logical fallacies.",
+      "instructions": "Read each set of statements carefully and choose the conclusion that logically follows (or correctly identifies that it cannot be determined).",
+      "timeLimitSeconds": null,
+      "weight": 0.6,
+      "order": 2
+    }
   ],
-
   "scoringDimensions": [
-    { "key": "logical", "label": "Logical Reasoning", "description": "Overall composite measure of logical reasoning ability, combining abstract pattern recognition and deductive inference performance.", "contributesToBrainProfile": true, "brainProfileDimensionKey": "logical", "order": 1 },
-    { "key": "pattern-detection", "label": "Pattern Detection", "description": "Ability to recognize and extrapolate visual and numeric patterns.", "contributesToBrainProfile": false, "order": 2 },
-    { "key": "deduction", "label": "Deductive Inference", "description": "Ability to draw valid conclusions from premises, including recognizing invalid inferences.", "contributesToBrainProfile": false, "order": 3 }
+    {
+      "key": "logical",
+      "label": "Logical Reasoning",
+      "description": "Overall composite measure of logical reasoning ability, combining abstract pattern recognition and deductive inference performance.",
+      "contributesToBrainProfile": true,
+      "brainProfileDimensionKey": "logical",
+      "order": 1
+    },
+    {
+      "key": "pattern-detection",
+      "label": "Pattern Detection",
+      "description": "Ability to recognize and extrapolate visual and numeric patterns.",
+      "contributesToBrainProfile": false,
+      "order": 2
+    },
+    {
+      "key": "deduction",
+      "label": "Deductive Inference",
+      "description": "Ability to draw valid conclusions from premises, including recognizing invalid inferences.",
+      "contributesToBrainProfile": false,
+      "order": 3
+    }
   ],
-
   "scoringRules": [
-    { "dimensionKey": "logical", "formula": "sum", "normalization": { "min": 0, "max": 15 } },
-    { "dimensionKey": "pattern-detection", "formula": "sum", "normalization": { "min": 0, "max": 6 } },
-    { "dimensionKey": "deduction", "formula": "sum", "normalization": { "min": 0, "max": 9 } }
+    {
+      "dimensionKey": "logical",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 15
+      }
+    },
+    {
+      "dimensionKey": "pattern-detection",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 6
+      }
+    },
+    {
+      "dimensionKey": "deduction",
+      "formula": "sum",
+      "normalization": {
+        "min": 0,
+        "max": 9
+      }
+    }
   ],
-
   "resultRanges": [
-    { "dimensionKey": "overall", "minScore": 0, "maxScore": 30, "title": "Developing", "description": "Basic logical reasoning abilities. Pattern recognition and deductive inference are still forming, with frequent difficulty distinguishing valid conclusions from plausible-sounding but unsupported ones.", "recommendations": ["Practice simple pattern-completion puzzles daily to build sequence recognition", "Study the difference between valid syllogisms and common fallacies like affirming the consequent", "Work through logic puzzles slowly, writing out each premise before concluding"], "order": 1 },
-    { "dimensionKey": "overall", "minScore": 31, "maxScore": 50, "title": "Average", "description": "Moderate logical reasoning abilities. You can solve straightforward pattern and deduction problems but struggle with multi-step chains or subtler invalid-inference traps.", "recommendations": ["Practice multi-step syllogisms involving three or more premises", "Time yourself on pattern sequences to build speed alongside accuracy", "Focus on distinguishing 'must be true' from 'might be true' conclusions"], "order": 2 },
-    { "dimensionKey": "overall", "minScore": 51, "maxScore": 70, "title": "Strong", "description": "Good logical reasoning abilities. You solve most pattern-recognition and deductive problems with consistent accuracy, occasionally missing more subtle or multi-layered items.", "recommendations": ["Challenge yourself with abstract reasoning puzzles that combine two changing attributes at once", "Practice conditional logic chains (if-then-therefore) with nested conditions", "Seek out advanced syllogism sets that include invalid-argument distractors"], "order": 3 },
-    { "dimensionKey": "overall", "minScore": 71, "maxScore": 85, "title": "Very Strong", "description": "Strong logical reasoning abilities. You excel at identifying patterns and drawing valid conclusions, handling most deductive traps and multi-attribute sequences correctly.", "recommendations": ["Tackle competition-style logic puzzles and advanced abstract reasoning sets", "Explore formal logic notation to deepen understanding of validity vs. soundness"], "order": 4 },
-    { "dimensionKey": "overall", "minScore": 86, "maxScore": 100, "title": "Exceptional", "description": "Outstanding logical reasoning abilities. You demonstrate superior pattern recognition and deductive thinking skills, consistently identifying valid conclusions and complex sequence rules.", "recommendations": ["Pursue advanced study in formal logic, discrete mathematics, or algorithmic problem solving", "Apply your reasoning strengths to real-world analytical or strategic decision-making roles"], "order": 5 }
+    {
+      "dimensionKey": "overall",
+      "minScore": 0,
+      "maxScore": 30,
+      "title": "Developing",
+      "description": "Basic logical reasoning abilities. Pattern recognition and deductive inference are still forming, with frequent difficulty distinguishing valid conclusions from plausible-sounding but unsupported ones.",
+      "recommendations": [
+        "Practice simple pattern-completion puzzles daily to build sequence recognition",
+        "Study the difference between valid syllogisms and common fallacies like affirming the consequent",
+        "Work through logic puzzles slowly, writing out each premise before concluding"
+      ],
+      "order": 1
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 31,
+      "maxScore": 50,
+      "title": "Average",
+      "description": "Moderate logical reasoning abilities. You can solve straightforward pattern and deduction problems but struggle with multi-step chains or subtler invalid-inference traps.",
+      "recommendations": [
+        "Practice multi-step syllogisms involving three or more premises",
+        "Time yourself on pattern sequences to build speed alongside accuracy",
+        "Focus on distinguishing 'must be true' from 'might be true' conclusions"
+      ],
+      "order": 2
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 51,
+      "maxScore": 70,
+      "title": "Strong",
+      "description": "Good logical reasoning abilities. You solve most pattern-recognition and deductive problems with consistent accuracy, occasionally missing more subtle or multi-layered items.",
+      "recommendations": [
+        "Challenge yourself with abstract reasoning puzzles that combine two changing attributes at once",
+        "Practice conditional logic chains (if-then-therefore) with nested conditions",
+        "Seek out advanced syllogism sets that include invalid-argument distractors"
+      ],
+      "order": 3
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 71,
+      "maxScore": 85,
+      "title": "Very Strong",
+      "description": "Strong logical reasoning abilities. You excel at identifying patterns and drawing valid conclusions, handling most deductive traps and multi-attribute sequences correctly.",
+      "recommendations": [
+        "Tackle competition-style logic puzzles and advanced abstract reasoning sets",
+        "Explore formal logic notation to deepen understanding of validity vs. soundness"
+      ],
+      "order": 4
+    },
+    {
+      "dimensionKey": "overall",
+      "minScore": 86,
+      "maxScore": 100,
+      "title": "Exceptional",
+      "description": "Outstanding logical reasoning abilities. You demonstrate superior pattern recognition and deductive thinking skills, consistently identifying valid conclusions and complex sequence rules.",
+      "recommendations": [
+        "Pursue advanced study in formal logic, discrete mathematics, or algorithmic problem solving",
+        "Apply your reasoning strengths to real-world analytical or strategic decision-making roles"
+      ],
+      "order": 5
+    }
   ],
-
-  "brainProfileContributions": [{ "sourceDimensionKey": "logical", "targetBrainProfileDimensionKey": "logical", "weight": 1 }],
-
+  "brainProfileContributions": [
+    {
+      "sourceDimensionKey": "logical",
+      "targetBrainProfileDimensionKey": "logical",
+      "weight": 1
+    }
+  ],
   "questions": [
-    { "key": "logical-01", "sectionKey": "abstract-reasoning", "order": 1, "difficulty": "medium", "questionType": "pattern_question", "questionText": "Study the pattern sequence. Which shape comes next? The sequence repeats circle → square → triangle with colors blue → red → green in that cycle. [SVG: public/images/patterns/pattern-1.svg in source repo]", "required": true, "options": [
-      { "label": "Triangle (Green)", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "pattern-detection", "points": 1 }] },
-      { "label": "Circle (Blue)", "value": "1", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Square (Red)", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Pentagon (Yellow)", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-02", "sectionKey": "abstract-reasoning", "order": 2, "difficulty": "medium", "questionType": "pattern_question", "questionText": "Identify the next shape in the sequence. The number of sides increases by 1 each time: shapes shown have 3, 4, 5, and 6 sides in sequence. [SVG: public/images/patterns/pattern-2.svg in source repo]", "required": true, "options": [
-      { "label": "Octagon", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Heptagon (7 sides)", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "pattern-detection", "points": 1 }] },
-      { "label": "Circle", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Pentagon", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-03", "sectionKey": "abstract-reasoning", "order": 3, "difficulty": "medium", "questionType": "pattern_question", "questionText": "The arrow rotates 90° clockwise each step, completing a full circle over 4 steps. Which direction comes next? [SVG: public/images/patterns/pattern-3.svg in source repo]", "required": true, "options": [
-      { "label": "Arrow Up", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "pattern-detection", "points": 1 }] },
-      { "label": "Arrow Down", "value": "1", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Arrow Right", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Arrow Left", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-04", "sectionKey": "abstract-reasoning", "order": 4, "difficulty": "medium", "questionType": "pattern_question", "questionText": "Observe the pattern where quantities double: dot groups shown as 1, 2, 4, 8 in sequence. What comes next? [SVG: public/images/patterns/pattern-4.svg in source repo]", "required": true, "options": [
-      { "label": "12 dots", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "16 dots", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "pattern-detection", "points": 1 }] },
-      { "label": "10 dots", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "8 dots", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-05", "sectionKey": "abstract-reasoning", "order": 5, "difficulty": "medium", "questionType": "pattern_question", "questionText": "Shapes alternate between filled and outlined while increasing in size (circles shown small→large, filled/outline alternating). What's next? [SVG: public/images/patterns/pattern-5.svg in source repo]", "required": true, "options": [
-      { "label": "Extra Large Filled Circle", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Extra Large Outline Circle", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "pattern-detection", "points": 1 }] },
-      { "label": "Small Filled Circle", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Medium Outline Circle", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-06", "sectionKey": "abstract-reasoning", "order": 6, "difficulty": "medium", "questionType": "pattern_question", "questionText": "Colors progress through the spectrum: red, orange, yellow, green, blue shown in sequence. Which color comes next? [SVG: public/images/patterns/pattern-6.svg in source repo]", "required": true, "options": [
-      { "label": "Purple", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Indigo", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "pattern-detection", "points": 1 }] },
-      { "label": "Red", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Pink", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-07", "sectionKey": "deductive-reasoning", "order": 7, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "All managers are employees. Sarah is a manager. Therefore:", "required": true, "options": [
-      { "label": "Sarah is an employee", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
-      { "label": "Sarah is not an employee", "value": "1", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "All employees are managers", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Some employees are not managers", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-08", "sectionKey": "deductive-reasoning", "order": 8, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "If it rains, the ground gets wet. The ground is wet. Therefore:", "required": true, "options": [
-      { "label": "It definitely rained", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "It might have rained, but there could be other causes", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
-      { "label": "It did not rain", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "The ground is always wet", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-09", "sectionKey": "deductive-reasoning", "order": 9, "difficulty": "hard", "questionType": "multiple_choice", "questionText": "No cats are dogs. All dogs are mammals. Therefore:", "required": true, "options": [
-      { "label": "No cats are mammals", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Some mammals are not cats", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
-      { "label": "All mammals are dogs", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "No mammals are cats", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-10", "sectionKey": "deductive-reasoning", "order": 10, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "Either John went to the store or he went home. John did not go to the store. Therefore:", "required": true, "options": [
-      { "label": "John might be at home", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "John went home", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
-      { "label": "John went to both places", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "John went nowhere", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-11", "sectionKey": "deductive-reasoning", "order": 11, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "If you study hard, you will pass the exam. Maria passed the exam. Therefore:", "required": true, "options": [
-      { "label": "Maria studied hard", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Maria might have studied hard, or she might be naturally talented", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
-      { "label": "Maria did not study hard", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Everyone who passes studied hard", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-12", "sectionKey": "deductive-reasoning", "order": 12, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "All birds have feathers. Penguins are birds. Therefore:", "required": true, "options": [
-      { "label": "Penguins can fly", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Penguins have feathers", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
-      { "label": "All feathered animals are birds", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Penguins are not birds", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-13", "sectionKey": "deductive-reasoning", "order": 13, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "If a number is divisible by 10, it is divisible by 5. The number 30 is divisible by 10. Therefore:", "required": true, "options": [
-      { "label": "30 is divisible by 5", "value": "0", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
-      { "label": "30 is not divisible by 5", "value": "1", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "All numbers divisible by 5 are divisible by 10", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "30 is divisible by 3 only", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-14", "sectionKey": "deductive-reasoning", "order": 14, "difficulty": "medium", "questionType": "multiple_choice", "questionText": "Some teachers are strict. Ms. Johnson is a teacher. Therefore:", "required": true, "options": [
-      { "label": "Ms. Johnson is strict", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Ms. Johnson might or might not be strict", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
-      { "label": "Ms. Johnson is not strict", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "All teachers are strict", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]},
-    { "key": "logical-15", "sectionKey": "deductive-reasoning", "order": 15, "difficulty": "easy", "questionType": "multiple_choice", "questionText": "All squares are rectangles. All rectangles have four sides. Therefore:", "required": true, "options": [
-      { "label": "All four-sided shapes are squares", "value": "0", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "All squares have four sides", "value": "1", "isCorrect": true, "scoreConfig": [{ "dimensionKey": "logical", "points": 1 }, { "dimensionKey": "deduction", "points": 1 }] },
-      { "label": "No rectangles are squares", "value": "2", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] },
-      { "label": "Some squares don't have four sides", "value": "3", "isCorrect": false, "scoreConfig": [{ "dimensionKey": "logical", "points": 0 }] }
-    ]}
+    {
+      "key": "logical-01",
+      "sectionKey": "abstract-reasoning",
+      "order": 1,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Study the pattern sequence. Which shape comes next? The sequence repeats circle → square → triangle with colors blue → red → green in that cycle.",
+      "required": true,
+      "options": [
+        {
+          "label": "Triangle (Green)",
+          "value": "0",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "pattern-detection",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Circle (Blue)",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Square (Red)",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Pentagon (Yellow)",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ],
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZDEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojM0I4MkY2O3N0b3Atb3BhY2l0eToxIiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMxRDRFRDg7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkMiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNFRjQ0NDQ7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I0I5MUMxQztzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQzIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzEwQjk4MTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDQ3ODU3O3N0b3Atb3BhY2l0eToxIiAvPgogICAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyIgeD0iLTUwJSIgeT0iLTUwJSIgd2lkdGg9IjIwMCUiIGhlaWdodD0iMjAwJSI+CiAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMyIvPgogICAgICAgICAgICA8ZmVPZmZzZXQgZHg9IjAiIGR5PSIyIiByZXN1bHQ9Im9mZnNldGJsdXIiLz4KICAgICAgICAgICAgPGZlQ29tcG9uZW50VHJhbnNmZXI+CiAgICAgICAgICAgICAgPGZlRnVuY0EgdHlwZT0ibGluZWFyIiBzbG9wZT0iMC4zIi8+CiAgICAgICAgICAgIDwvZmVDb21wb25lbnRUcmFuc2Zlcj4KICAgICAgICAgICAgPGZlTWVyZ2U+CiAgICAgICAgICAgICAgPGZlTWVyZ2VOb2RlLz4KICAgICAgICAgICAgICA8ZmVNZXJnZU5vZGUgaW49IlNvdXJjZUdyYXBoaWMiLz4KICAgICAgICAgICAgPC9mZU1lcmdlPgogICAgICAgICAgPC9maWx0ZXI+CiAgICAgICAgPC9kZWZzPgogICAgICAgIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjhGQUZDIi8+CgogICAgICAgIDwhLS0gQ2lyY2xlIChCbHVlKSAtLT4KICAgICAgICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxNTAiIHI9IjQwIiBmaWxsPSJ1cmwoI2dyYWQxKSIgZmlsdGVyPSJ1cmwoI3NoYWRvdykiLz4KCiAgICAgICAgPCEtLSBTcXVhcmUgKFJlZCkgLS0+CiAgICAgICAgPHJlY3QgeD0iMjEwIiB5PSIxMTAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgZmlsbD0idXJsKCNncmFkMikiIGZpbHRlcj0idXJsKCNzaGFkb3cpIi8+CgogICAgICAgIDwhLS0gVHJpYW5nbGUgKEdyZWVuKSAtLT4KICAgICAgICA8cG9seWdvbiBwb2ludHM9IjM5MCwxMTAgNDMwLDE5MCAzNTAsMTkwIiBmaWxsPSJ1cmwoI2dyYWQzKSIgZmlsdGVyPSJ1cmwoI3NoYWRvdykiLz4KCiAgICAgICAgPCEtLSBDaXJjbGUgKEJsdWUpIC0tPgogICAgICAgIDxjaXJjbGUgY3g9IjUyMCIgY3k9IjE1MCIgcj0iNDAiIGZpbGw9InVybCgjZ3JhZDEpIiBmaWx0ZXI9InVybCgjc2hhZG93KSIvPgoKICAgICAgICA8IS0tIFNxdWFyZSAoUmVkKSAtLT4KICAgICAgICA8cmVjdCB4PSI2MTAiIHk9IjExMCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSJ1cmwoI2dyYWQyKSIgZmlsdGVyPSJ1cmwoI3NoYWRvdykiLz4KCiAgICAgICAgPCEtLSBRdWVzdGlvbiBNYXJrIC0tPgogICAgICAgIDx0ZXh0IHg9Ijc1MCIgeT0iMTcwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCAtYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjYwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzZCNzI4MCI+PzwvdGV4dD4KICAgICAgPC9zdmc+",
+          "alt": "Sequence of shapes: blue circle, red square, green triangle, blue circle, red square, then a question mark."
+        }
+      ]
+    },
+    {
+      "key": "logical-02",
+      "sectionKey": "abstract-reasoning",
+      "order": 2,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Identify the next shape in the sequence. The number of sides increases by 1 each time: shapes shown have 3, 4, 5, and 6 sides in sequence.",
+      "required": true,
+      "options": [
+        {
+          "label": "Octagon",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Heptagon (7 sides)",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "pattern-detection",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Circle",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Pentagon",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ],
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icHVycGxlLWdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojQTg1NUY3O3N0b3Atb3BhY2l0eToxIiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM3QzNBRUQ7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICAgICAgPGZpbHRlciBpZD0ic2hhZG93MiIgeD0iLTUwJSIgeT0iLTUwJSIgd2lkdGg9IjIwMCUiIGhlaWdodD0iMjAwJSI+CiAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMyIvPgogICAgICAgICAgICA8ZmVPZmZzZXQgZHg9IjAiIGR5PSIyIiByZXN1bHQ9Im9mZnNldGJsdXIiLz4KICAgICAgICAgICAgPGZlQ29tcG9uZW50VHJhbnNmZXI+CiAgICAgICAgICAgICAgPGZlRnVuY0EgdHlwZT0ibGluZWFyIiBzbG9wZT0iMC4zIi8+CiAgICAgICAgICAgIDwvZmVDb21wb25lbnRUcmFuc2Zlcj4KICAgICAgICAgICAgPGZlTWVyZ2U+CiAgICAgICAgICAgICAgPGZlTWVyZ2VOb2RlLz4KICAgICAgICAgICAgICA8ZmVNZXJnZU5vZGUgaW49IlNvdXJjZUdyYXBoaWMiLz4KICAgICAgICAgICAgPC9mZU1lcmdlPgogICAgICAgICAgPC9maWx0ZXI+CiAgICAgICAgPC9kZWZzPgogICAgICAgIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjhGQUZDIi8+CgogICAgICAgIDwhLS0gVHJpYW5nbGUgKDMgc2lkZXMpIC0tPgogICAgICAgIDxwb2x5Z29uIHBvaW50cz0iODAsMTEwIDEyMCwxOTAgNDAsMTkwIiBmaWxsPSJ1cmwoI3B1cnBsZS1ncmFkKSIgZmlsdGVyPSJ1cmwoI3NoYWRvdzIpIi8+CiAgICAgICAgPHRleHQgeD0iNzUiIHk9IjIzMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZCNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MzwvdGV4dD4KCiAgICAgICAgPCEtLSBTcXVhcmUgKDQgc2lkZXMpIC0tPgogICAgICAgIDxyZWN0IHg9IjE4MCIgeT0iMTEwIiB3aWR0aD0iODAiIGhlaWdodD0iODAiIGZpbGw9InVybCgjcHVycGxlLWdyYWQpIiBmaWx0ZXI9InVybCgjc2hhZG93MikiLz4KICAgICAgICA8dGV4dCB4PSIyMjAiIHk9IjIzMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZCNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDwvdGV4dD4KCiAgICAgICAgPCEtLSBQZW50YWdvbiAoNSBzaWRlcykgLS0+CiAgICAgICAgPHBvbHlnb24gcG9pbnRzPSIzNjAsMTEwIDM5NSwxNDAgMzgwLDE4NSAzMjAsMTg1IDMwNSwxNDAiIGZpbGw9InVybCgjcHVycGxlLWdyYWQpIiBmaWx0ZXI9InVybCgjc2hhZG93MikiLz4KICAgICAgICA8dGV4dCB4PSIzNTAiIHk9IjIzMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZCNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTwvdGV4dD4KCiAgICAgICAgPCEtLSBIZXhhZ29uICg2IHNpZGVzKSAtLT4KICAgICAgICA8cG9seWdvbiBwb2ludHM9IjQ4MCwxMTAgNTMwLDEzMCA1MzAsMTcwIDQ4MCwxOTAgNDMwLDE3MCA0MzAsMTMwIiBmaWxsPSJ1cmwoI3B1cnBsZS1ncmFkKSIgZmlsdGVyPSJ1cmwoI3NoYWRvdzIpIi8+CiAgICAgICAgPHRleHQgeD0iNDgwIiB5PSIyMzAiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM2QjcyODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjY8L3RleHQ+CgogICAgICAgIDwhLS0gUXVlc3Rpb24gTWFyayAtLT4KICAgICAgICA8dGV4dCB4PSI2NTAiIHk9IjE3MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI2MCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiM2QjcyODAiPj88L3RleHQ+CiAgICAgIDwvc3ZnPg==",
+          "alt": "Sequence of polygons with increasing side counts labelled 3, 4, 5, 6, then a question mark."
+        }
+      ]
+    },
+    {
+      "key": "logical-03",
+      "sectionKey": "abstract-reasoning",
+      "order": 3,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "The arrow rotates 90° clockwise each step, completing a full circle over 4 steps. Which direction comes next?",
+      "required": true,
+      "options": [
+        {
+          "label": "Arrow Up",
+          "value": "0",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "pattern-detection",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Arrow Down",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Arrow Right",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Arrow Left",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ],
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ib3JhbmdlLWdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojRjk3MzE2O3N0b3Atb3BhY2l0eToxIiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNFQTU4MEM7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICAgICAgPGZpbHRlciBpZD0ic2hhZG93MyI+CiAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlQWxwaGEiIHN0ZERldmlhdGlvbj0iMyIvPgogICAgICAgICAgICA8ZmVPZmZzZXQgZHg9IjAiIGR5PSIyIi8+CiAgICAgICAgICAgIDxmZUNvbXBvbmVudFRyYW5zZmVyPgogICAgICAgICAgICAgIDxmZUZ1bmNBIHR5cGU9ImxpbmVhciIgc2xvcGU9IjAuMyIvPgogICAgICAgICAgICA8L2ZlQ29tcG9uZW50VHJhbnNmZXI+CiAgICAgICAgICAgIDxmZU1lcmdlPgogICAgICAgICAgICAgIDxmZU1lcmdlTm9kZS8+CiAgICAgICAgICAgICAgPGZlTWVyZ2VOb2RlIGluPSJTb3VyY2VHcmFwaGljIi8+CiAgICAgICAgICAgIDwvZmVNZXJnZT4KICAgICAgICAgIDwvZmlsdGVyPgogICAgICAgIDwvZGVmcz4KICAgICAgICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI0Y4RkFGQyIvPgoKICAgICAgICA8IS0tIFVwIEFycm93IC0tPgogICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDgwLCAxNTApIiBmaWx0ZXI9InVybCgjc2hhZG93MykiPgogICAgICAgICAgPHBvbHlnb24gcG9pbnRzPSIwLC00MCAyMCwtMTAgMTAsLTEwIDEwLDQwIC0xMCw0MCAtMTAsLTEwIC0yMCwtMTAiIGZpbGw9InVybCgjb3JhbmdlLWdyYWQpIi8+CiAgICAgICAgPC9nPgoKICAgICAgICA8IS0tIFJpZ2h0IEFycm93IC0tPgogICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIzMCwgMTUwKSByb3RhdGUoOTApIiBmaWx0ZXI9InVybCgjc2hhZG93MykiPgogICAgICAgICAgPHBvbHlnb24gcG9pbnRzPSIwLC00MCAyMCwtMTAgMTAsLTEwIDEwLDQwIC0xMCw0MCAtMTAsLTEwIC0yMCwtMTAiIGZpbGw9InVybCgjb3JhbmdlLWdyYWQpIi8+CiAgICAgICAgPC9nPgoKICAgICAgICA8IS0tIERvd24gQXJyb3cgLS0+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzgwLCAxNTApIHJvdGF0ZSgxODApIiBmaWx0ZXI9InVybCgjc2hhZG93MykiPgogICAgICAgICAgPHBvbHlnb24gcG9pbnRzPSIwLC00MCAyMCwtMTAgMTAsLTEwIDEwLDQwIC0xMCw0MCAtMTAsLTEwIC0yMCwtMTAiIGZpbGw9InVybCgjb3JhbmdlLWdyYWQpIi8+CiAgICAgICAgPC9nPgoKICAgICAgICA8IS0tIExlZnQgQXJyb3cgLS0+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTMwLCAxNTApIHJvdGF0ZSgyNzApIiBmaWx0ZXI9InVybCgjc2hhZG93MykiPgogICAgICAgICAgPHBvbHlnb24gcG9pbnRzPSIwLC00MCAyMCwtMTAgMTAsLTEwIDEwLDQwIC0xMCw0MCAtMTAsLTEwIC0yMCwtMTAiIGZpbGw9InVybCgjb3JhbmdlLWdyYWQpIi8+CiAgICAgICAgPC9nPgoKICAgICAgICA8IS0tIFF1ZXN0aW9uIE1hcmsgLS0+CiAgICAgICAgPHRleHQgeD0iNjgwIiB5PSIxNzAiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iNjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjNkI3MjgwIj4/PC90ZXh0PgogICAgICA8L3N2Zz4=",
+          "alt": "Sequence of arrows rotating 90 degrees clockwise: up, right, down, left, then a question mark."
+        }
+      ]
+    },
+    {
+      "key": "logical-04",
+      "sectionKey": "abstract-reasoning",
+      "order": 4,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Observe the pattern where quantities double: dot groups shown as 1, 2, 4, 8 in sequence. What comes next?",
+      "required": true,
+      "options": [
+        {
+          "label": "12 dots",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "16 dots",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "pattern-detection",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "10 dots",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "8 dots",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ],
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iY3lhbi1ncmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzA2QjZENDtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDg5MUIyO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICAgIDxmaWx0ZXIgaWQ9InNoYWRvdzQiPgogICAgICAgICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUFscGhhIiBzdGREZXZpYXRpb249IjIiLz4KICAgICAgICAgICAgPGZlT2Zmc2V0IGR4PSIwIiBkeT0iMSIvPgogICAgICAgICAgICA8ZmVDb21wb25lbnRUcmFuc2Zlcj4KICAgICAgICAgICAgICA8ZmVGdW5jQSB0eXBlPSJsaW5lYXIiIHNsb3BlPSIwLjMiLz4KICAgICAgICAgICAgPC9mZUNvbXBvbmVudFRyYW5zZmVyPgogICAgICAgICAgICA8ZmVNZXJnZT4KICAgICAgICAgICAgICA8ZmVNZXJnZU5vZGUvPgogICAgICAgICAgICAgIDxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPgogICAgICAgICAgICA8L2ZlTWVyZ2U+CiAgICAgICAgICA8L2ZpbHRlcj4KICAgICAgICA8L2RlZnM+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGOEZBRkMiLz4KCiAgICAgICAgPCEtLSAxIGRvdCAtLT4KICAgICAgICA8Y2lyY2xlIGN4PSI4MCIgY3k9IjE1MCIgcj0iMTUiIGZpbGw9InVybCgjY3lhbi1ncmFkKSIgZmlsdGVyPSJ1cmwoI3NoYWRvdzQpIi8+CgogICAgICAgIDwhLS0gMiBkb3RzIC0tPgogICAgICAgIDxjaXJjbGUgY3g9IjIwNSIgY3k9IjE1MCIgcj0iMTUiIGZpbGw9InVybCgjY3lhbi1ncmFkKSIgZmlsdGVyPSJ1cmwoI3NoYWRvdzQpIi8+CiAgICAgICAgPGNpcmNsZSBjeD0iMjQ1IiBjeT0iMTUwIiByPSIxNSIgZmlsbD0idXJsKCNjeWFuLWdyYWQpIiBmaWx0ZXI9InVybCgjc2hhZG93NCkiLz4KCiAgICAgICAgPCEtLSA0IGRvdHMgLS0+CiAgICAgICAgPGNpcmNsZSBjeD0iMzQwIiBjeT0iMTM1IiByPSIxNSIgZmlsbD0idXJsKCNjeWFuLWdyYWQpIiBmaWx0ZXI9InVybCgjc2hhZG93NCkiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIzODAiIGN5PSIxMzUiIHI9IjE1IiBmaWxsPSJ1cmwoI2N5YW4tZ3JhZCkiIGZpbHRlcj0idXJsKCNzaGFkb3c0KSIvPgogICAgICAgIDxjaXJjbGUgY3g9IjM0MCIgY3k9IjE2NSIgcj0iMTUiIGZpbGw9InVybCgjY3lhbi1ncmFkKSIgZmlsdGVyPSJ1cmwoI3NoYWRvdzQpIi8+CiAgICAgICAgPGNpcmNsZSBjeD0iMzgwIiBjeT0iMTY1IiByPSIxNSIgZmlsbD0idXJsKCNjeWFuLWdyYWQpIiBmaWx0ZXI9InVybCgjc2hhZG93NCkiLz4KCiAgICAgICAgPCEtLSA4IGRvdHMgLS0+CiAgICAgICAgPGNpcmNsZSBjeD0iNDc1IiBjeT0iMTMwIiByPSIxMiIgZmlsbD0idXJsKCNjeWFuLWdyYWQpIiBmaWx0ZXI9InVybCgjc2hhZG93NCkiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI1MTAiIGN5PSIxMzAiIHI9IjEyIiBmaWxsPSJ1cmwoI2N5YW4tZ3JhZCkiIGZpbHRlcj0idXJsKCNzaGFkb3c0KSIvPgogICAgICAgIDxjaXJjbGUgY3g9IjU0NSIgY3k9IjEzMCIgcj0iMTIiIGZpbGw9InVybCgjY3lhbi1ncmFkKSIgZmlsdGVyPSJ1cmwoI3NoYWRvdzQpIi8+CiAgICAgICAgPGNpcmNsZSBjeD0iNTgwIiBjeT0iMTMwIiByPSIxMiIgZmlsbD0idXJsKCNjeWFuLWdyYWQpIiBmaWx0ZXI9InVybCgjc2hhZG93NCkiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0NzUiIGN5PSIxNzAiIHI9IjEyIiBmaWxsPSJ1cmwoI2N5YW4tZ3JhZCkiIGZpbHRlcj0idXJsKCNzaGFkb3c0KSIvPgogICAgICAgIDxjaXJjbGUgY3g9IjUxMCIgY3k9IjE3MCIgcj0iMTIiIGZpbGw9InVybCgjY3lhbi1ncmFkKSIgZmlsdGVyPSJ1cmwoI3NoYWRvdzQpIi8+CiAgICAgICAgPGNpcmNsZSBjeD0iNTQ1IiBjeT0iMTcwIiByPSIxMiIgZmlsbD0idXJsKCNjeWFuLWdyYWQpIiBmaWx0ZXI9InVybCgjc2hhZG93NCkiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI1ODAiIGN5PSIxNzAiIHI9IjEyIiBmaWxsPSJ1cmwoI2N5YW4tZ3JhZCkiIGZpbHRlcj0idXJsKCNzaGFkb3c0KSIvPgoKICAgICAgICA8IS0tIFF1ZXN0aW9uIE1hcmsgLS0+CiAgICAgICAgPHRleHQgeD0iNzAwIiB5PSIxNzAiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iNjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjNkI3MjgwIj4/PC90ZXh0PgogICAgICA8L3N2Zz4=",
+          "alt": "Sequence of dot groups doubling in count: 1 dot, 2 dots, 4 dots, 8 dots, then a question mark."
+        }
+      ]
+    },
+    {
+      "key": "logical-05",
+      "sectionKey": "abstract-reasoning",
+      "order": 5,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Shapes alternate between filled and outlined while increasing in size (circles shown small→large, filled/outline alternating). What's next?",
+      "required": true,
+      "options": [
+        {
+          "label": "Extra Large Filled Circle",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Extra Large Outline Circle",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "pattern-detection",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Small Filled Circle",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Medium Outline Circle",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ],
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icGluay1ncmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6I0VDNDg5OTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojREIyNzc3O3N0b3Atb3BhY2l0eToxIiAvPgogICAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICAgIDxmaWx0ZXIgaWQ9InNoYWRvdzUiPgogICAgICAgICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUFscGhhIiBzdGREZXZpYXRpb249IjMiLz4KICAgICAgICAgICAgPGZlT2Zmc2V0IGR4PSIwIiBkeT0iMiIvPgogICAgICAgICAgICA8ZmVDb21wb25lbnRUcmFuc2Zlcj4KICAgICAgICAgICAgICA8ZmVGdW5jQSB0eXBlPSJsaW5lYXIiIHNsb3BlPSIwLjMiLz4KICAgICAgICAgICAgPC9mZUNvbXBvbmVudFRyYW5zZmVyPgogICAgICAgICAgICA8ZmVNZXJnZT4KICAgICAgICAgICAgICA8ZmVNZXJnZU5vZGUvPgogICAgICAgICAgICAgIDxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPgogICAgICAgICAgICA8L2ZlTWVyZ2U+CiAgICAgICAgICA8L2ZpbHRlcj4KICAgICAgICA8L2RlZnM+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGOEZBRkMiLz4KCiAgICAgICAgPCEtLSBTbWFsbCBGaWxsZWQgLS0+CiAgICAgICAgPGNpcmNsZSBjeD0iODAiIGN5PSIxNTAiIHI9IjI1IiBmaWxsPSJ1cmwoI3BpbmstZ3JhZCkiIGZpbHRlcj0idXJsKCNzaGFkb3c1KSIvPgoKICAgICAgICA8IS0tIE1lZGl1bSBPdXRsaW5lIC0tPgogICAgICAgIDxjaXJjbGUgY3g9IjIzMCIgY3k9IjE1MCIgcj0iMzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNwaW5rLWdyYWQpIiBzdHJva2Utd2lkdGg9IjQiIGZpbHRlcj0idXJsKCNzaGFkb3c1KSIvPgoKICAgICAgICA8IS0tIExhcmdlIEZpbGxlZCAtLT4KICAgICAgICA8Y2lyY2xlIGN4PSI0MDAiIGN5PSIxNTAiIHI9IjQ1IiBmaWxsPSJ1cmwoI3BpbmstZ3JhZCkiIGZpbHRlcj0idXJsKCNzaGFkb3c1KSIvPgoKICAgICAgICA8IS0tIFF1ZXN0aW9uIE1hcmsgLS0+CiAgICAgICAgPHRleHQgeD0iNjAwIiB5PSIxNzAiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWkiIGZvbnQtc2l6ZT0iNjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjNkI3MjgwIj4/PC90ZXh0PgogICAgICA8L3N2Zz4=",
+          "alt": "Sequence of circles alternating filled and outlined while growing in size, then a question mark."
+        }
+      ]
+    },
+    {
+      "key": "logical-06",
+      "sectionKey": "abstract-reasoning",
+      "order": 6,
+      "difficulty": "medium",
+      "questionType": "pattern_question",
+      "questionText": "Colors progress through the spectrum: red, orange, yellow, green, blue shown in sequence. Which color comes next?",
+      "required": true,
+      "options": [
+        {
+          "label": "Purple",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Indigo",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "pattern-detection",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Red",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Pink",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ],
+      "media": [
+        {
+          "type": "svg",
+          "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgICAgICA8ZGVmcz4KICAgICAgICAgIDxmaWx0ZXIgaWQ9InNoYWRvdzYiPgogICAgICAgICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUFscGhhIiBzdGREZXZpYXRpb249IjMiLz4KICAgICAgICAgICAgPGZlT2Zmc2V0IGR4PSIwIiBkeT0iMiIvPgogICAgICAgICAgICA8ZmVDb21wb25lbnRUcmFuc2Zlcj4KICAgICAgICAgICAgICA8ZmVGdW5jQSB0eXBlPSJsaW5lYXIiIHNsb3BlPSIwLjMiLz4KICAgICAgICAgICAgPC9mZUNvbXBvbmVudFRyYW5zZmVyPgogICAgICAgICAgICA8ZmVNZXJnZT4KICAgICAgICAgICAgICA8ZmVNZXJnZU5vZGUvPgogICAgICAgICAgICAgIDxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPgogICAgICAgICAgICA8L2ZlTWVyZ2U+CiAgICAgICAgICA8L2ZpbHRlcj4KICAgICAgICA8L2RlZnM+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGOEZBRkMiLz4KCiAgICAgICAgPCEtLSBSZWQgLS0+CiAgICAgICAgPGNpcmNsZSBjeD0iODAiIGN5PSIxNTAiIHI9IjM1IiBmaWxsPSIjRUY0NDQ0IiBmaWx0ZXI9InVybCgjc2hhZG93NikiLz4KCiAgICAgICAgPCEtLSBPcmFuZ2UgLS0+CiAgICAgICAgPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTUwIiByPSIzNSIgZmlsbD0iI0Y5NzMxNiIgZmlsdGVyPSJ1cmwoI3NoYWRvdzYpIi8+CgogICAgICAgIDwhLS0gWWVsbG93IC0tPgogICAgICAgIDxjaXJjbGUgY3g9IjMyMCIgY3k9IjE1MCIgcj0iMzUiIGZpbGw9IiNFQUIzMDgiIGZpbHRlcj0idXJsKCNzaGFkb3c2KSIvPgoKICAgICAgICA8IS0tIEdyZWVuIC0tPgogICAgICAgIDxjaXJjbGUgY3g9IjQ0MCIgY3k9IjE1MCIgcj0iMzUiIGZpbGw9IiMxMEI5ODEiIGZpbHRlcj0idXJsKCNzaGFkb3c2KSIvPgoKICAgICAgICA8IS0tIEJsdWUgLS0+CiAgICAgICAgPGNpcmNsZSBjeD0iNTYwIiBjeT0iMTUwIiByPSIzNSIgZmlsbD0iIzNCODJGNiIgZmlsdGVyPSJ1cmwoI3NoYWRvdzYpIi8+CgogICAgICAgIDwhLS0gUXVlc3Rpb24gTWFyayAtLT4KICAgICAgICA8dGV4dCB4PSI3MDAiIHk9IjE3MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSI2MCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiM2QjcyODAiPj88L3RleHQ+CiAgICAgIDwvc3ZnPg==",
+          "alt": "Sequence of colour swatches through the spectrum: red, orange, yellow, green, blue, then a question mark."
+        }
+      ]
+    },
+    {
+      "key": "logical-07",
+      "sectionKey": "deductive-reasoning",
+      "order": 7,
+      "difficulty": "easy",
+      "questionType": "multiple_choice",
+      "questionText": "All managers are employees. Sarah is a manager. Therefore:",
+      "required": true,
+      "options": [
+        {
+          "label": "Sarah is an employee",
+          "value": "0",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deduction",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Sarah is not an employee",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "All employees are managers",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Some employees are not managers",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "logical-08",
+      "sectionKey": "deductive-reasoning",
+      "order": 8,
+      "difficulty": "medium",
+      "questionType": "multiple_choice",
+      "questionText": "If it rains, the ground gets wet. The ground is wet. Therefore:",
+      "required": true,
+      "options": [
+        {
+          "label": "It definitely rained",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "It might have rained, but there could be other causes",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deduction",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "It did not rain",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "The ground is always wet",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "logical-09",
+      "sectionKey": "deductive-reasoning",
+      "order": 9,
+      "difficulty": "hard",
+      "questionType": "multiple_choice",
+      "questionText": "No cats are dogs. All dogs are mammals. Therefore:",
+      "required": true,
+      "options": [
+        {
+          "label": "No cats are mammals",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Some mammals are not cats",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deduction",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "All mammals are dogs",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "No mammals are cats",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "logical-10",
+      "sectionKey": "deductive-reasoning",
+      "order": 10,
+      "difficulty": "easy",
+      "questionType": "multiple_choice",
+      "questionText": "Either John went to the store or he went home. John did not go to the store. Therefore:",
+      "required": true,
+      "options": [
+        {
+          "label": "John might be at home",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "John went home",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deduction",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "John went to both places",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "John went nowhere",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "logical-11",
+      "sectionKey": "deductive-reasoning",
+      "order": 11,
+      "difficulty": "medium",
+      "questionType": "multiple_choice",
+      "questionText": "If you study hard, you will pass the exam. Maria passed the exam. Therefore:",
+      "required": true,
+      "options": [
+        {
+          "label": "Maria studied hard",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Maria might have studied hard, or she might be naturally talented",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deduction",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Maria did not study hard",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Everyone who passes studied hard",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "logical-12",
+      "sectionKey": "deductive-reasoning",
+      "order": 12,
+      "difficulty": "easy",
+      "questionType": "multiple_choice",
+      "questionText": "All birds have feathers. Penguins are birds. Therefore:",
+      "required": true,
+      "options": [
+        {
+          "label": "Penguins can fly",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Penguins have feathers",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deduction",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "All feathered animals are birds",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Penguins are not birds",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "logical-13",
+      "sectionKey": "deductive-reasoning",
+      "order": 13,
+      "difficulty": "easy",
+      "questionType": "multiple_choice",
+      "questionText": "If a number is divisible by 10, it is divisible by 5. The number 30 is divisible by 10. Therefore:",
+      "required": true,
+      "options": [
+        {
+          "label": "30 is divisible by 5",
+          "value": "0",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deduction",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "30 is not divisible by 5",
+          "value": "1",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "All numbers divisible by 5 are divisible by 10",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "30 is divisible by 3 only",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "logical-14",
+      "sectionKey": "deductive-reasoning",
+      "order": 14,
+      "difficulty": "medium",
+      "questionType": "multiple_choice",
+      "questionText": "Some teachers are strict. Ms. Johnson is a teacher. Therefore:",
+      "required": true,
+      "options": [
+        {
+          "label": "Ms. Johnson is strict",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Ms. Johnson might or might not be strict",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deduction",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "Ms. Johnson is not strict",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "All teachers are strict",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "logical-15",
+      "sectionKey": "deductive-reasoning",
+      "order": 15,
+      "difficulty": "easy",
+      "questionType": "multiple_choice",
+      "questionText": "All squares are rectangles. All rectangles have four sides. Therefore:",
+      "required": true,
+      "options": [
+        {
+          "label": "All four-sided shapes are squares",
+          "value": "0",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "All squares have four sides",
+          "value": "1",
+          "isCorrect": true,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 1
+            },
+            {
+              "dimensionKey": "deduction",
+              "points": 1
+            }
+          ]
+        },
+        {
+          "label": "No rectangles are squares",
+          "value": "2",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "label": "Some squares don't have four sides",
+          "value": "3",
+          "isCorrect": false,
+          "scoreConfig": [
+            {
+              "dimensionKey": "logical",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    }
   ]
 }
