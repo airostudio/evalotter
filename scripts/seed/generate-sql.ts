@@ -78,7 +78,13 @@ const DEFAULT_SETTINGS = {
 function s(v: unknown): string {
   if (v === null || v === undefined) return "NULL";
   const str = String(v);
-  if (!/['";]/.test(str) && !str.includes("--")) return `'${str}'`;
+  // Short, obviously-safe tokens (slugs, enum names, dimension keys) stay
+  // readable. EVERYTHING else — all prose, all JSON, all data URIs — is
+  // base64. Prose is encoded even when it looks harmless, because the
+  // failure mode is a client desyncing upstream and then reading prose as
+  // SQL: "Push into distribution-of-three items" became INSERT INTO
+  // distribution. If no prose exists in the file, no prose can be executed.
+  if (/^[A-Za-z0-9 _.\-/@]{0,40}$/.test(str)) return `'${str}'`;
   const b64 = Buffer.from(str, "utf8").toString("base64");
   return `convert_from(decode('${b64}', 'base64'), 'UTF8')`;
 }
