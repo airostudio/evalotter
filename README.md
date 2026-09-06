@@ -45,15 +45,22 @@ but nothing is playable end-to-end until a real database is connected:
 5. Seed the catalogue: `npm run seed:validate` (static checks, no DB) then
    `npm run seed` (writes to the connected project — see **Seed data** below).
    No network route to the Supabase host (locked-down CI, restricted egress)?
-   Paste `supabase/seed_data.part{1..5}of5.sql` into the Supabase SQL editor
-   instead, **in order** — they are generated from the same JSON by
-   `npx tsx scripts/seed/generate-sql.ts supabase/seed_data.sql 5`, and are
-   equivalent to `npm run seed` and equally re-runnable. Order is
-   load-bearing: categories, then every question, then the assessments that
-   link them (the flagship reuses other assessments' questions), so a later
-   part will fail if an earlier one was skipped. Each part is its own
-   transaction. Regenerate whenever seed data changes (pass a different
-   number to split differently, or omit it for one big file).
+   Paste the generated SQL into the Supabase SQL editor instead. Preferred:
+   `supabase/seed/NN-<slug>.sql` — one file per assessment, run in filename
+   order, so a failure points at exactly one test and any single test can be
+   reloaded on its own. `supabase/seed_data.part{1..5}of5.sql` is the same
+   content in 5 larger chunks. Both come from
+   `npx tsx scripts/seed/generate-sql.ts --per-test supabase/seed` /
+   `... generate-sql.ts supabase/seed_data.sql 5`, are equivalent to
+   `npm run seed`, and are equally re-runnable. Order matters only because
+   the flagship profile reuses other assessments' questions, so it is
+   numbered last. Regenerate whenever seed data changes.
+
+   The generator deliberately emits no raw `;` inside string literals (they
+   become `chr(59)` concatenations) and no `DO $$` blocks, because the
+   Supabase SQL editor splits scripts on `;` without understanding SQL
+   quoting — seed content is full of `data:image/svg+xml;base64,...` URIs and
+   prose semicolons, which shredded an earlier version of this file.
 
 ## Architecture
 
