@@ -12,14 +12,18 @@ import { DimensionBarChart } from "@/components/charts/DimensionBarChart";
 import { ShareToggle } from "@/components/results/ShareToggle";
 import { PalmistryResult } from "@/components/results/PalmistryResult";
 import { ResultsPaywall } from "@/components/results/ResultsPaywall";
-import { LockedOverlay } from "@/components/results/LockedOverlay";
+import { LockedSection } from "@/components/results/LockedSection";
 
-// Renders the exact same real data whether unlocked or not — locking only
-// ever adds a blur + overlay via LockedOverlay, never substitutes different
-// content. Nothing fake is ever rendered.
-function Gate({ unlocked, label, children }: { unlocked: boolean; label: string; children: ReactNode }) {
-  return unlocked ? <>{children}</> : <LockedOverlay label={label}>{children}</LockedOverlay>;
-}
+/**
+ * Paid sections are not fetched and not rendered unless the report is
+ * unlocked. The previous approach rendered every real value and blurred it
+ * with CSS, which meant the complete paid report was sitting in the HTML of
+ * every visitor — one removed class, or View Source, and it was free.
+ *
+ * Locked users still see an honest outline of what the report contains
+ * (how many dimensions were measured, whether an AI interpretation exists),
+ * because that shape is not the product; the numbers and the prose are.
+ */
 
 interface PageProps {
   params: Promise<{ attemptId: string }>;
@@ -98,29 +102,61 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
 
   const unlocked = await hasReportAccess(supabase, user.id, attempt.assessment_id);
 
-  const { data: dimensionRows } = await supabase
-    .from("result_dimensions")
-    .select("*, result_ranges:range_id(*)")
-    .eq("result_id", result.id);
+  // Everything below is paid. When locked we deliberately fetch only counts,
+  // so no score, label, recommendation or interpretation text ever reaches
+  // the response body.
+  const [dimensionCount, hasInterpretation, previousCount] = unlocked
+    ? [0, false, 0]
+    : await Promise.all([
+        supabase
+          .from("result_dimensions")
+          .select("id", { count: "exact", head: true })
+          .eq("result_id", result.id)
+          .then((r) => r.count ?? 0),
+        supabase
+          .from("ai_interpretations")
+          .select("id", { count: "exact", head: true })
+          .eq("result_id", result.id)
+          .eq("status", "completed")
+          .then((r) => (r.count ?? 0) > 0),
+        supabase
+          .from("assessment_results")
+          .select("id", { count: "exact", head: true })
+          .eq("assessment_id", attempt.assessment_id)
+          .eq("user_id", user.id)
+          .neq("id", result.id)
+          .then((r) => r.count ?? 0),
+      ]);
+
+  const { data: dimensionRows } = unlocked
+    ? await supabase
+        .from("result_dimensions")
+        .select("*, result_ranges:range_id(*)")
+        .eq("result_id", result.id)
+    : { data: null };
 
   const dimensions = dimensionRows ?? [];
 
-  const { data: interpretation } = await supabase
-    .from("ai_interpretations")
-    .select("*")
-    .eq("result_id", result.id)
-    .eq("status", "completed")
-    .order("created_at", { ascending: false })
-    .maybeSingle();
+  const { data: interpretation } = unlocked
+    ? await supabase
+        .from("ai_interpretations")
+        .select("*")
+        .eq("result_id", result.id)
+        .eq("status", "completed")
+        .order("created_at", { ascending: false })
+        .maybeSingle()
+    : { data: null };
 
-  const { data: previousResults } = await supabase
-    .from("assessment_results")
-    .select("id, overall_score, created_at")
-    .eq("assessment_id", attempt.assessment_id)
-    .eq("user_id", user.id)
-    .neq("id", result.id)
-    .order("created_at", { ascending: false })
-    .limit(5);
+  const { data: previousResults } = unlocked
+    ? await supabase
+        .from("assessment_results")
+        .select("id, overall_score, created_at")
+        .eq("assessment_id", attempt.assessment_id)
+        .eq("user_id", user.id)
+        .neq("id", result.id)
+        .order("created_at", { ascending: false })
+        .limit(5)
+    : { data: null };
 
   const radarData = dimensions.map((d) => ({ dimension: d.label, score: Number(d.score) }));
   const barData = dimensions.map((d) => ({ label: d.label, score: Number(d.score) }));
@@ -132,25 +168,41 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
       </span>
       <h1 className="mt-2 font-display text-3xl text-paper-100 sm:text-4xl">Your results</h1>
 
-      <div className="mt-10 flex flex-col items-center gap-4 rounded-xl2 border border-ink-700 bg-ink-800/50 p-10 text-center shadow-panel">
-        <Gate unlocked={unlocked} label="Unlock your score">
-          <ScoreRing score={Number(result.overall_score)} />
-          {result.result_ranges?.title && (
-            <span className="mt-4 block rounded-full bg-signal-cyan/10 px-4 py-1.5 text-sm font-medium text-signal-cyan">
-              {result.result_ranges.title}
-            </span>
-          )}
-          {result.result_ranges?.description && (
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-paper-100/65">
-              {result.result_ranges.description}
-            </p>
-          )}
-        </Gate>
+      <div className="mt-10">
+        {unlocked ? (
+          <div className="flex flex-col items-center gap-4 rounded-xl2 border border-ink-700 bg-ink-800/50 p-10 text-center shadow-panel">
+            <ScoreRing score={Number(result.overall_score)} />
+            {result.result_ranges?.title && (
+              <span className="mt-4 block rounded-full bg-signal-cyan/10 px-4 py-1.5 text-sm font-medium text-signal-cyan">
+                {result.result_ranges.title}
+              </span>
+            )}
+            {result.result_ranges?.description && (
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-paper-100/65">
+                {result.result_ranges.description}
+              </p>
+            )}
+          </div>
+        ) : (
+          <LockedSection
+            label="Your score"
+            detail="Your answers are scored and saved. Unlock this report to see the score and what it means."
+          />
+        )}
       </div>
 
-      {dimensions.length > 0 && (
+      {!unlocked && dimensionCount > 0 && (
         <div className="mt-10">
-          <Gate unlocked={unlocked} label="Unlock dimension breakdown">
+          <LockedSection
+            label="Dimension breakdown"
+            detail={`${dimensionCount} ${dimensionCount === 1 ? "dimension was" : "dimensions were"} measured in this assessment.`}
+          />
+        </div>
+      )}
+
+      {unlocked && dimensions.length > 0 && (
+        <div className="mt-10">
+          <>
             <div className="grid gap-6 md:grid-cols-2">
               <div className="rounded-xl2 border border-ink-700 bg-ink-800/40 p-6">
                 <h2 className="mb-2 text-sm font-medium text-paper-100/70">Dimension breakdown</h2>
@@ -161,13 +213,13 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
                 <DimensionBarChart data={barData} />
               </div>
             </div>
-          </Gate>
+          </>
         </div>
       )}
 
-      {dimensions.some((d) => d.result_ranges?.recommendations?.length) && (
+      {unlocked && dimensions.some((d) => d.result_ranges?.recommendations?.length) && (
         <div className="mt-10">
-          <Gate unlocked={unlocked} label="Unlock strengths & development areas">
+          <>
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <h2 className="text-sm font-medium text-paper-100/70">Strengths</h2>
@@ -194,13 +246,22 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
                 </ul>
               </div>
             </div>
-          </Gate>
+          </>
         </div>
       )}
 
-      {interpretation && (
+      {!unlocked && hasInterpretation && (
         <div className="mt-10">
-          <Gate unlocked={unlocked} label="Unlock AI interpretation">
+          <LockedSection
+            label="AI interpretation"
+            detail="A written interpretation of your results has been generated for this report."
+          />
+        </div>
+      )}
+
+      {unlocked && interpretation && (
+        <div className="mt-10">
+          <>
             <div className="rounded-xl2 border border-signal-cyan/30 bg-signal-cyan/[0.04] p-6">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-signal-cyan" />
@@ -244,11 +305,20 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
                 by it.
               </p>
             </div>
-          </Gate>
+          </>
         </div>
       )}
 
-      {previousResults && previousResults.length > 0 && (
+      {!unlocked && previousCount > 0 && (
+        <div className="mt-10">
+          <LockedSection
+            label="Previous attempts"
+            detail={`You have taken this assessment ${previousCount === 1 ? "once" : `${previousCount} times`} before.`}
+          />
+        </div>
+      )}
+
+      {unlocked && previousResults && previousResults.length > 0 && (
         <div className="mt-10">
           <h2 className="text-sm font-medium text-paper-100/70">Previous attempts</h2>
           <ul className="mt-3 flex flex-col gap-2">

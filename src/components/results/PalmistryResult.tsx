@@ -1,6 +1,6 @@
 import { ShieldCheck } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { LockedOverlay } from "./LockedOverlay";
+import { LockedSection } from "./LockedSection";
 
 interface PalmistrySubmissionRow {
   id: string;
@@ -55,9 +55,35 @@ export async function PalmistryResult({
         <p>For entertainment and self-reflection only — not a scientific or clinical analysis.</p>
       </div>
 
-      {(() => {
-        const reading = (
-          <>
+      {!unlocked ? (
+        /* The reading itself is the product. Not built, not sent — the user's
+           own uploaded palm photos still show, since those are theirs. */
+        <>
+          <div className="mt-8 flex justify-center gap-4">
+            {leftUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={leftUrl} alt="Left palm" className="h-40 w-40 rounded-xl2 border border-ink-600 object-cover" />
+            )}
+            {rightUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={rightUrl} alt="Right palm" className="h-40 w-40 rounded-xl2 border border-ink-600 object-cover" />
+            )}
+          </div>
+          <div className="mt-8">
+            <LockedSection
+              label="Your reading"
+              detail={
+                submission.status === "analyzed"
+                  ? "Your reading has been prepared. Unlock it to read it in full."
+                  : "Your reading is still being prepared."
+              }
+            />
+          </div>
+        </>
+      ) : (
+        (() => {
+          const reading = (
+            <>
             <div className="mt-8 flex justify-center gap-4">
               {leftUrl && (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -93,10 +119,11 @@ export async function PalmistryResult({
               </div>
             )}
           </>
-        );
+          );
 
-        return unlocked ? reading : <LockedOverlay label="Unlock your reading">{reading}</LockedOverlay>;
-      })()}
+          return reading;
+        })()
+      )}
     </div>
   );
 }

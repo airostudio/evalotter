@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { requireUser } from "@/lib/auth/current-user";
+import { hasReportAccess } from "@/lib/access/entitlements";
 import { generateAssessmentReportPdf } from "@/lib/reports/generate-assessment-report";
 
 export async function GET(_req: Request, { params }: { params: Promise<{ resultId: string }> }) {
@@ -17,6 +18,14 @@ export async function GET(_req: Request, { params }: { params: Promise<{ resultI
 
   if (error || !result) {
     return NextResponse.json({ error: "Result not found" }, { status: 404 });
+  }
+
+  // Owning the result is not the same as having paid for it. The UI only
+  // shows the download link when unlocked, but hiding a link is not access
+  // control — this endpoint was previously reachable directly and returned
+  // the complete report to anyone signed in.
+  if (!(await hasReportAccess(supabase, user.id, result.assessment_id))) {
+    return NextResponse.json({ error: "This report has not been unlocked" }, { status: 403 });
   }
 
   const { data: dimensionRows } = await supabase

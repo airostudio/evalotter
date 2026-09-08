@@ -2,10 +2,21 @@ import { NextResponse } from "next/server";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { createClient } from "@/lib/supabase/server";
 import { requireUser } from "@/lib/auth/current-user";
+import { hasFullCollectionAccess } from "@/lib/access/entitlements";
 
 export async function GET() {
   const user = await requireUser();
   const supabase = await createClient();
+
+  // The Brain Profile is the cross-assessment composite the full collection
+  // sells. This endpoint had no entitlement check at all, so any signed-in
+  // user could fetch the whole thing as a PDF.
+  if (!(await hasFullCollectionAccess(supabase, user.id))) {
+    return NextResponse.json(
+      { error: "The Brain Profile report requires the full collection" },
+      { status: 403 }
+    );
+  }
 
   const [{ data: profile }, { data: dims }] = await Promise.all([
     supabase.from("user_brain_profiles").select("*").eq("user_id", user.id).maybeSingle(),

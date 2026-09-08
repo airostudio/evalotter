@@ -5,7 +5,7 @@ import { Lock } from "lucide-react";
  * Stands in for a cross-assessment figure the user has not bought yet.
  *
  * Deliberately renders no score at all rather than a blurred real one: the
- * results page's LockedOverlay blurs genuine content that is still present
+ * the old results-page overlay blurred genuine content that was still present
  * in the HTML, which is a presentation trick, not an entitlement check. The
  * composite score never reaches the page unless it has been paid for.
  */

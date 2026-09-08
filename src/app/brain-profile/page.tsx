@@ -5,12 +5,28 @@ import { requireUser } from "@/lib/auth/current-user";
 import { RadarChartCard } from "@/components/charts/RadarChartCard";
 import { ScoreRing } from "@/components/charts/ScoreRing";
 import { CATALOGUE } from "@/config/catalogue";
+import { hasFullCollectionAccess } from "@/lib/access/entitlements";
+import { BrainProfileUpsell } from "@/components/brain-profile/BrainProfileUpsell";
 
 export const metadata = { title: "My Brain Profile" };
 
 export default async function BrainProfilePage() {
   const user = await requireUser();
   const supabase = await createClient();
+
+  // The Brain Profile IS the full-collection product. Nothing below is
+  // fetched or rendered without it — the dashboard gates the same composite,
+  // and leaving this page open would have made that gate decorative.
+  const fullAccess = await hasFullCollectionAccess(supabase, user.id);
+
+  const { count: completedCount } = await supabase
+    .from("assessment_results")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", user.id);
+
+  if (!fullAccess) {
+    return <BrainProfileUpsell completed={completedCount ?? 0} total={CATALOGUE.length} />;
+  }
 
   const [{ data: profile }, { data: dims }, { data: achievements }] = await Promise.all([
     supabase.from("user_brain_profiles").select("*").eq("user_id", user.id).maybeSingle(),
