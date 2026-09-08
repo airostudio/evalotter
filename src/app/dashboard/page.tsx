@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { ArrowRight, PlayCircle, Sparkles, Trophy } from "lucide-react";
+import { ArrowRight, Lock, PlayCircle, Sparkles, Trophy } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireUser } from "@/lib/auth/current-user";
 import { ScoreRing } from "@/components/charts/ScoreRing";
 import { CATALOGUE } from "@/config/catalogue";
 import { PerfectLoveCodeCard } from "@/components/dashboard/PerfectLoveCodeCard";
+import { hasFullCollectionAccess, hasReportAccess } from "@/lib/access/entitlements";
+import { LockedStat } from "@/components/dashboard/LockedStat";
 
 export default async function DashboardPage() {
   const user = await requireUser();
@@ -14,7 +16,7 @@ export default async function DashboardPage() {
     supabase.from("user_brain_profiles").select("*").eq("user_id", user.id).maybeSingle(),
     supabase
       .from("assessment_results")
-      .select("id, overall_score, created_at, assessments(title, slug)")
+      .select("id, attempt_id, assessment_id, overall_score, created_at, assessments(title, slug)")
       .eq("user_id", user.id)
       .order("created_at", { ascending: false })
       .limit(5),
@@ -42,9 +44,27 @@ export default async function DashboardPage() {
     .not("score", "is", null)
     .order("score", { ascending: false });
 
-  const strongest = dims?.[0];
+  // The EvalOtter Score and the Brain Profile dimensions behind "strongest
+  // capability" are cross-assessment aggregates — the thing the full
+  // collection actually sells. A single-report unlock buys that one report,
+  // not the composite, so neither is shown without the full package.
+  const fullAccess = await hasFullCollectionAccess(supabase, user.id);
+
+  // Each per-assessment score follows that assessment's own entitlement, the
+  // same rule the results page applies. Showing the raw number here would
+  // hand over exactly what the single-report unlock is selling.
+  const results = recentResults ?? [];
+  const unlockedByResult = new Map<string, boolean>(
+    await Promise.all(
+      results.map(
+        async (r) => [r.id, await hasReportAccess(supabase, user.id, r.assessment_id)] as const
+      )
+    )
+  );
+
+  const strongest = fullAccess ? dims?.[0] : undefined;
   const completedSlugs = new Set(
-    (recentResults ?? []).map((r) => (r.assessments as { slug?: string } | null)?.slug).filter(Boolean)
+    results.map((r) => (r.assessments as { slug?: string } | null)?.slug).filter(Boolean)
   );
   const recommended = CATALOGUE.find((a) => !completedSlugs.has(a.slug));
 
@@ -58,7 +78,14 @@ export default async function DashboardPage() {
       <div className="mt-10 grid gap-6 md:grid-cols-3">
         <div className="flex flex-col items-center justify-center rounded-xl2 border border-ink-700 bg-ink-800/50 p-8 text-center shadow-panel">
           <p className="mb-4 text-xs uppercase tracking-widest text-paper-100/40">EvalOtter Score</p>
-          <ScoreRing score={profile?.evalotter_score ? Number(profile.evalotter_score) : 0} />
+          {fullAccess ? (
+            <ScoreRing score={profile?.evalotter_score ? Number(profile.evalotter_score) : 0} />
+          ) : (
+            <LockedStat
+              label="Your composite score across every assessment"
+              cta="Unlock the full collection"
+            />
+          )}
         </div>
 
         <div className="flex flex-col justify-center gap-4 rounded-xl2 border border-ink-700 bg-ink-800/50 p-8 shadow-panel">
@@ -68,13 +95,22 @@ export default async function DashboardPage() {
               {profile?.assessments_completed ?? 0} / {profile?.assessments_total ?? CATALOGUE.length}
             </p>
           </div>
-          {strongest && (
+          {strongest ? (
             <div>
               <p className="text-xs uppercase tracking-widest text-paper-100/40">Strongest capability</p>
               <p className="mt-1 flex items-center gap-1.5 text-lg text-paper-100">
                 <Trophy className="h-4 w-4 text-signal-cyan" /> {strongest.label} ({Math.round(Number(strongest.score))})
               </p>
             </div>
+          ) : (
+            (dims?.length ?? 0) > 0 && (
+              <div>
+                <p className="text-xs uppercase tracking-widest text-paper-100/40">Strongest capability</p>
+                <p className="mt-1 flex items-center gap-1.5 text-sm text-paper-100/45">
+                  <Lock className="h-3.5 w-3.5" /> Included with the full collection
+                </p>
+              </div>
+            )
           )}
         </div>
 
@@ -116,24 +152,35 @@ export default async function DashboardPage() {
             </Link>
           </div>
           <div className="mt-4 flex flex-col gap-2">
-            {(recentResults ?? []).length === 0 && (
+            {results.length === 0 && (
               <p className="rounded-xl2 border border-ink-700 bg-ink-800/30 p-6 text-sm text-paper-100/50">
                 Complete your first assessment to see results here.
               </p>
             )}
-            {(recentResults ?? []).map((r) => (
-              <Link
-                key={r.id}
-                href={`/results/${r.id}`}
-                className="focus-ring flex items-center justify-between rounded-xl2 border border-ink-700 bg-ink-800/30 px-5 py-3.5 text-sm transition-colors hover:border-ink-500"
-              >
-                <span className="text-paper-100/80">{(r.assessments as { title?: string } | null)?.title}</span>
-                <span className="flex items-center gap-3 text-paper-100/40">
-                  {new Date(r.created_at).toLocaleDateString()}
-                  <strong className="text-paper-100">{Math.round(Number(r.overall_score))}</strong>
-                </span>
-              </Link>
-            ))}
+            {results.map((r) => {
+              const unlocked = unlockedByResult.get(r.id) ?? false;
+              return (
+                <Link
+                  key={r.id}
+                  // The route resolves an ATTEMPT id, not a result id — linking
+                  // r.id here 404'd every completed result.
+                  href={`/results/${r.attempt_id}`}
+                  className="focus-ring flex items-center justify-between rounded-xl2 border border-ink-700 bg-ink-800/30 px-5 py-3.5 text-sm transition-colors hover:border-ink-500"
+                >
+                  <span className="text-paper-100/80">{(r.assessments as { title?: string } | null)?.title}</span>
+                  <span className="flex items-center gap-3 text-paper-100/40">
+                    {new Date(r.created_at).toLocaleDateString()}
+                    {unlocked ? (
+                      <strong className="text-paper-100">{Math.round(Number(r.overall_score))}</strong>
+                    ) : (
+                      <span className="flex items-center gap-1 rounded-full border border-ink-600 px-2.5 py-1 text-[11px] text-paper-100/50">
+                        <Lock className="h-3 w-3" /> Unlock
+                      </span>
+                    )}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
 
