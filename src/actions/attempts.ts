@@ -7,6 +7,7 @@ import { requireUser } from "@/lib/auth/current-user";
 import { getAssessmentEngine } from "@/lib/assessment-engine/registry";
 import { registerBuiltInAssessmentEngines } from "@/lib/assessment-engine/engines";
 import { getAssessmentWithVersionById } from "@/lib/assessment-engine/queries";
+import { ensureProfileExists } from "@/lib/auth/ensure-profile";
 import { mapResponse } from "@/lib/assessment-engine/mappers";
 import { updateBrainProfileForResult } from "@/lib/scoring/brain-profile";
 import { maybeGrantAchievements } from "@/lib/scoring/achievements";
@@ -18,6 +19,18 @@ registerBuiltInAssessmentEngines();
 /** Finds an in-progress attempt to resume, or starts a fresh one. Redirects into the runner. */
 export async function startOrResumeAttemptAction(assessmentSlug: string) {
   const user = await requireUser();
+
+  // assessment_attempts.user_id is a foreign key to profiles(id). An account
+  // whose profile row was never created (signup predating the
+  // on_auth_user_created trigger, or any failure of it) can sign in but
+  // cannot start an assessment — the insert below dies with a 23503 and the
+  // user just sees "A server error occurred". Repair the gap instead.
+  await ensureProfileExists({
+    id: user.id,
+    email: user.email,
+    fullName: user.profile?.fullName ?? null,
+  });
+
   const supabase = await createClient();
 
   const { data: assessment, error: assessmentError } = await supabase
