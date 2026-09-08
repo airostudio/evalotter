@@ -865,10 +865,9 @@ export const ASSESSMENT_DETAILS: Record<string, AssessmentDetail> = {
     ],
     "questionTypes": [
       "likert_scale",
-      "multiple_choice",
-      "slider"
+      "multiple_choice"
     ],
-    "sourceNote": "Ported verbatim from airostudio/Emotional-Intelligence (public/js/test-questions.js) — 40 real questions across the 9 real EQ facets. A few items reference face images or an original slider mechanic not directly portable as multiple_choice/likert_scale text; those are noted per-question via 'instructions'/'scoringNotes' rather than silently dropped."
+    "sourceNote": "Ported from airostudio/Emotional-Intelligence (public/js/test-questions.js) across the 9 EQ facets it covers (EQ-i 2.0 and MSCEIT framings). 36 items are the source repo's own. Four Perceiving Emotions items are original EvalOtter replacements: the source versions depended on facial-expression images that were never part of the port, leaving them unanswerable (one asked the taker to choose between \"Face A\"-\"Face D\" with no faces shown), and one was a slider whose score rose with the value rather than with accuracy. The replacements present the same perceptual cues in text, in the situational-judgement form used by measures such as the STEU/STEM, and are graded deterministically. No items are reproduced from any copyrighted instrument."
   },
   "executive-function-profiling": {
     "sections": [

@@ -9,12 +9,12 @@
   "difficulty": "medium",
   "estimatedDurationMinutes": 12,
   "access": "free",
-  "sourceNote": "Ported verbatim from airostudio/Memory-Recall-Test (public/js/app.js) \u2014 a plain HTML/JS app. All study lists, the story text, and object/emoji items are real. sage-orientation's correct day-of-week depends on runtime state in the source app and is left without a fixed answer here. memory_recall/memory_recognition scoring: islt-shopping-list and skt-object-recall are now memory_recognition (study phase then a recognition grid, answered as multiple_select, scored via the existing option-based path); adas-word-recall stays memory_recall (free recall), scored by a dedicated engine branch comparing typed entries against its options' ground-truth values. All 24 questions in this assessment now score correctly.",
+  "sourceNote": "Ported verbatim from airostudio/Memory-Recall-Test (public/js/app.js) — a plain HTML/JS app. All study lists, the story text, and object/emoji items are real. sage-orientation's correct day-of-week depends on runtime state in the source app and is left without a fixed answer here. memory_recall/memory_recognition scoring: islt-shopping-list and skt-object-recall are now memory_recognition (study phase then a recognition grid, answered as multiple_select, scored via the existing option-based path); adas-word-recall stays memory_recall (free recall), scored by a dedicated engine branch comparing typed entries against its options' ground-truth values. All 24 questions in this assessment now score correctly.",
   "sections": [
     {
       "key": "islt",
       "name": "ISLT Shopping List",
-      "description": "International Shopping List Test \u2014 participants study a 12-item shopping list, then attempt to recognize the items from a mixed grid of targets and distractors.",
+      "description": "International Shopping List Test — participants study a 12-item shopping list, then attempt to recognize the items from a mixed grid of targets and distractors.",
       "instructions": "You will see 12 shopping list items for 30 seconds. Study them carefully. Afterward, select the items you remember from a grid of 20 items (12 targets + 8 distractors).",
       "timeLimitSeconds": 30,
       "weight": 0.2,
@@ -23,7 +23,7 @@
     {
       "key": "adas",
       "name": "ADAS-Cog Word Recall",
-      "description": "Alzheimer's Disease Assessment Scale-Cognitive word list test \u2014 10 words are shown sequentially, then freely recalled by typing.",
+      "description": "Alzheimer's Disease Assessment Scale-Cognitive word list test — 10 words are shown sequentially, then freely recalled by typing.",
       "instructions": "10 words will be displayed one at a time, 3 seconds each. After all words have been shown, type as many as you can remember, in any order.",
       "timeLimitSeconds": 30,
       "weight": 0.2,
@@ -32,7 +32,7 @@
     {
       "key": "lm",
       "name": "Logical Memory Test",
-      "description": "Wechsler-style Logical Memory subtest \u2014 a short news-style story is read, then comprehension/recall questions are answered about its details.",
+      "description": "Wechsler-style Logical Memory subtest — a short news-style story is read, then comprehension/recall questions are answered about its details.",
       "instructions": "Read the story 'The Brave Firefighter' carefully. You have 45 seconds. Afterward, answer 5 multiple-choice questions about details from the story.",
       "timeLimitSeconds": 45,
       "weight": 0.2,
@@ -41,7 +41,7 @@
     {
       "key": "skt",
       "name": "SKT Speed Test",
-      "description": "Syndrom-Kurztest-inspired speed naming and object recognition task \u2014 8 objects are named as quickly as possible, then recognized from a mixed grid.",
+      "description": "Syndrom-Kurztest-inspired speed naming and object recognition task — 8 objects are named as quickly as possible, then recognized from a mixed grid.",
       "instructions": "You will be shown 8 objects one at a time. Select the correct name for each as quickly as possible. Afterward, identify which objects you saw from a mixed grid of 14 (8 targets + 6 distractors).",
       "timeLimitSeconds": null,
       "weight": 0.2,
@@ -124,7 +124,7 @@
       "minScore": 31,
       "maxScore": 50,
       "title": "Average",
-      "description": "You recalled a moderate share of shopping list items, word list items, and story details \u2014 performance consistent with typical everyday memory demands but with room to strengthen retention.",
+      "description": "You recalled a moderate share of shopping list items, word list items, and story details — performance consistent with typical everyday memory demands but with room to strengthen retention.",
       "recommendations": [
         "Use association techniques (linking new items to familiar images) to boost recall",
         "Revisit and rehearse new information within a few hours of learning it",
@@ -163,7 +163,7 @@
       "minScore": 86,
       "maxScore": 100,
       "title": "Exceptional",
-      "description": "You achieved near-perfect recall and recognition across shopping list, word list, story detail, and object memory tasks \u2014 performance in the top tier of this assessment.",
+      "description": "You achieved near-perfect recall and recognition across shopping list, word list, story detail, and object memory tasks — performance in the top tier of this assessment.",
       "recommendations": [
         "Explore competitive or advanced memory training (e.g., memory championship techniques)",
         "Use your strong recall ability to support learning in other high-value areas of life",
@@ -779,7 +779,7 @@
       "key": "skt-naming-1",
       "sectionKey": "skt",
       "questionType": "timed_choice",
-      "questionText": "\ud83c\udfe0 What is this object called?",
+      "questionText": "🏠 What is this object called?",
       "instructions": "Answer as quickly as possible; response time is recorded and contributes to the speed score.",
       "difficulty": "easy",
       "required": true,
@@ -820,7 +820,7 @@
       "key": "skt-naming-2",
       "sectionKey": "skt",
       "questionType": "timed_choice",
-      "questionText": "\ud83d\ude97 What is this object called?",
+      "questionText": "🚗 What is this object called?",
       "difficulty": "easy",
       "required": true,
       "options": [
@@ -860,7 +860,7 @@
       "key": "skt-naming-3",
       "sectionKey": "skt",
       "questionType": "timed_choice",
-      "questionText": "\u2702\ufe0f What is this object called?",
+      "questionText": "✂️ What is this object called?",
       "difficulty": "easy",
       "required": true,
       "options": [
@@ -900,7 +900,7 @@
       "key": "skt-naming-4",
       "sectionKey": "skt",
       "questionType": "timed_choice",
-      "questionText": "\u231a What is this object called?",
+      "questionText": "⌚ What is this object called?",
       "difficulty": "easy",
       "required": true,
       "options": [
@@ -940,7 +940,7 @@
       "key": "skt-naming-5",
       "sectionKey": "skt",
       "questionType": "timed_choice",
-      "questionText": "\ud83d\udcf1 What is this object called?",
+      "questionText": "📱 What is this object called?",
       "difficulty": "easy",
       "required": true,
       "options": [
@@ -980,7 +980,7 @@
       "key": "skt-naming-6",
       "sectionKey": "skt",
       "questionType": "timed_choice",
-      "questionText": "\ud83d\udd11 What is this object called?",
+      "questionText": "🔑 What is this object called?",
       "difficulty": "easy",
       "required": true,
       "options": [
@@ -1020,7 +1020,7 @@
       "key": "skt-naming-7",
       "sectionKey": "skt",
       "questionType": "timed_choice",
-      "questionText": "\ud83d\udc53 What is this object called?",
+      "questionText": "👓 What is this object called?",
       "difficulty": "easy",
       "required": true,
       "options": [
@@ -1060,7 +1060,7 @@
       "key": "skt-naming-8",
       "sectionKey": "skt",
       "questionType": "timed_choice",
-      "questionText": "\ud83d\udcda What is this object called?",
+      "questionText": "📚 What is this object called?",
       "difficulty": "easy",
       "required": true,
       "options": [
@@ -1262,9 +1262,9 @@
       "sectionKey": "sage",
       "questionType": "multiple_choice",
       "questionText": "What day of the week is it today?",
-      "instructions": "In the source app the correct answer is computed dynamically as the current day of week at test time, not a fixed answer \u2014 the admin/runtime layer needs to set correctAnswer per attempt rather than at seed time.",
+      "instructions": "Answer from memory, without checking a calendar or clock.",
       "difficulty": "easy",
-      "required": true,
+      "required": false,
       "options": [
         {
           "label": "Monday",
@@ -1467,7 +1467,7 @@
       "key": "sage-visual",
       "sectionKey": "sage",
       "questionType": "multiple_choice",
-      "questionText": "How many triangles are in this shape? \u25b3\u25b3\u25b3\u25b3",
+      "questionText": "How many triangles are in this shape? △△△△",
       "difficulty": "medium",
       "required": true,
       "options": [
