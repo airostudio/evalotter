@@ -8,6 +8,41 @@ import { createClient } from "@/lib/supabase/server";
 const emailSchema = z.string().email();
 const passwordSchema = z.string().min(8, "Password must be at least 8 characters");
 
+/**
+ * Turns a Supabase auth error into something a visitor can act on.
+ *
+ * These messages were previously passed through verbatim, so a signup that
+ * tripped the email quota told the user "email rate limit exceeded" — true,
+ * but it reads as a fault in their own account and gives them nothing to do.
+ * Supabase's built-in email service allows only 2 messages per hour and is
+ * documented as unsuitable for production; a project without custom SMTP
+ * configured will hit this constantly.
+ *
+ * Unrecognised errors still surface their original text rather than a
+ * generic apology — an unexpected message we can read is worth more than a
+ * polished one that hides what happened.
+ */
+function friendlyAuthError(message: string): string {
+  const m = message.toLowerCase();
+
+  if (m.includes("rate limit") || m.includes("too many requests")) {
+    return "We've sent too many emails in a short time. Please wait a few minutes and try again — your account details were not lost.";
+  }
+  if (m.includes("already registered") || m.includes("already been registered")) {
+    return "An account already exists for that email address. Try logging in, or reset your password.";
+  }
+  if (m.includes("invalid login credentials")) {
+    return "Incorrect email or password.";
+  }
+  if (m.includes("email not confirmed")) {
+    return "Please confirm your email address first — check your inbox for the confirmation link.";
+  }
+  if (m.includes("password")) {
+    return message;
+  }
+  return message;
+}
+
 export type AuthActionState = { error: string | null };
 
 export async function signUpAction(
@@ -33,7 +68,7 @@ export async function signUpAction(
     },
   });
 
-  if (error) return { error: error.message };
+  if (error) return { error: friendlyAuthError(error.message) };
 
   redirect("/dashboard");
 }
@@ -74,7 +109,7 @@ export async function loginWithMagicLinkAction(
     options: { emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard` },
   });
 
-  if (error) return { error: error.message };
+  if (error) return { error: friendlyAuthError(error.message) };
   return { error: null };
 }
 
@@ -90,7 +125,7 @@ export async function requestPasswordResetAction(
     redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/login/reset-password`,
   });
 
-  if (error) return { error: error.message };
+  if (error) return { error: friendlyAuthError(error.message) };
   return { error: null };
 }
 
@@ -104,7 +139,7 @@ export async function updatePasswordAction(
   const supabase = await createClient();
   const { error } = await supabase.auth.updateUser({ password: password.data });
 
-  if (error) return { error: error.message };
+  if (error) return { error: friendlyAuthError(error.message) };
   redirect("/dashboard");
 }
 
