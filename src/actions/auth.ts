@@ -43,7 +43,7 @@ function friendlyAuthError(message: string): string {
   return message;
 }
 
-export type AuthActionState = { error: string | null };
+export type AuthActionState = { error: string | null; emailConfirmationSent?: boolean };
 
 export async function signUpAction(
   _prevState: AuthActionState,
@@ -59,16 +59,23 @@ export async function signUpAction(
   if (!ageConfirmed) return { error: "You must confirm you are at least 18 years old to create an account." };
 
   const supabase = await createClient();
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email: email.data,
     password: password.data,
     options: {
       data: { full_name: fullName, age_confirmed: true },
-      emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`,
+      // Must land on the callback, not straight on /dashboard: the link
+      // carries a ?code= that has to be exchanged for a session first.
+      emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback?next=/dashboard`,
     },
   });
 
   if (error) return { error: friendlyAuthError(error.message) };
+
+  // With "Confirm email" enabled, signUp returns no session — the user is
+  // not logged in yet and must follow the emailed link. Redirecting to
+  // /dashboard here would just bounce them to /login with no explanation.
+  if (!data.session) return { error: null, emailConfirmationSent: true };
 
   redirect("/dashboard");
 }
@@ -106,7 +113,7 @@ export async function loginWithMagicLinkAction(
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithOtp({
     email: email.data,
-    options: { emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard` },
+    options: { emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback?next=/dashboard` },
   });
 
   if (error) return { error: friendlyAuthError(error.message) };
@@ -122,7 +129,7 @@ export async function requestPasswordResetAction(
 
   const supabase = await createClient();
   const { error } = await supabase.auth.resetPasswordForEmail(email.data, {
-    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/login/reset-password`,
+    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback?next=/login/reset-password`,
   });
 
   if (error) return { error: friendlyAuthError(error.message) };
