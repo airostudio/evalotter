@@ -1,6 +1,9 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
 import type { UserRole } from "@/types";
+import { isAdminRole } from "@/lib/auth/roles";
+
+export { isAdminRole };
 
 /**
  * Admin access, tied to email addresses.
@@ -31,9 +34,7 @@ export function isAllowlistedAdminEmail(email: string | null | undefined): boole
   return adminEmails().includes(email.trim().toLowerCase());
 }
 
-export function isAdminRole(role: UserRole | null | undefined): boolean {
-  return role === "admin" || role === "super_admin";
-}
+
 
 /**
  * Promotes an allowlisted address that is not yet an admin. Called on

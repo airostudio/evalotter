@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { ShieldCheck } from "lucide-react";
 import type { AuthedUser } from "@/lib/auth/current-user";
+import { isAdminRole } from "@/lib/auth/roles";
 import { logoutAction } from "@/actions/auth";
 import { BrandMark, BrandWordmark } from "./BrandMark";
 
@@ -11,6 +13,11 @@ const NAV_LINKS = [
 ];
 
 export function SiteHeader({ user }: { user: AuthedUser | null }) {
+  // Shown only to admins. This hides the entrance, it does not guard it —
+  // /admin re-checks the role in its own layout, and everything under it
+  // reads through the service-role client, so the real boundary is there.
+  const showAdmin = isAdminRole(user?.profile?.role);
+
   return (
     <header className="sticky top-0 z-40 border-b border-ink-700/80 bg-ink-950/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
@@ -40,6 +47,15 @@ export function SiteHeader({ user }: { user: AuthedUser | null }) {
               >
                 Dashboard
               </Link>
+              {showAdmin && (
+                <Link
+                  href="/admin"
+                  title="Admin area"
+                  className="focus-ring hidden items-center gap-1.5 rounded-xl2 border border-signal-cyan/40 bg-signal-cyan/10 px-4 py-2 text-sm text-signal-cyan transition-colors hover:border-signal-cyan/70 sm:inline-flex"
+                >
+                  <ShieldCheck className="h-3.5 w-3.5" /> Admin
+                </Link>
+              )}
               <form action={logoutAction}>
                 <button
                   type="submit"
