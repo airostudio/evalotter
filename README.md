@@ -40,6 +40,30 @@ but nothing is playable end-to-end until a real database is connected:
    environment — a missing/misconfigured Supabase config used to crash
    every route via `MIDDLEWARE_INVOCATION_FAILED`; it now fails open, but
    auth and assessment-taking still need real credentials to work).
+
+   Use the **current** Supabase key format, from Dashboard → Settings →
+   API Keys → "Publishable and secret API keys":
+
+   | Variable | Key |
+   |---|---|
+   | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `sb_publishable_…` |
+   | `SUPABASE_SERVICE_ROLE_KEY` | `sb_secret_…` |
+
+   The legacy `eyJ…` anon/service_role JWTs still work but are deprecated
+   (end of 2026) and **can no longer be rotated** — if one leaks, the fix
+   is to issue new-format keys and deactivate the legacy pair, not to
+   reissue it. Never put an `sb_secret_` key in a `NEXT_PUBLIC_` variable:
+   that ships your RLS-bypassing credential to every browser.
+
+   `NEXT_PUBLIC_*` values are **inlined at build time**. Changing one in a
+   hosting dashboard has no effect until you rebuild — a stale build
+   presenting a deactivated key is what produces Supabase's
+   `AuthApiError: Unregistered API key` (401).
+
+   Run `npm run doctor` to check all of the above at once: it validates
+   every variable, confirms Supabase accepts the key, and reports whether
+   the catalogue is actually seeded. It is read-only and safe against
+   production.
 4. Regenerate `src/lib/supabase/database.types.ts` from the real schema:
    `npx supabase gen types typescript --project-id <ref> > src/lib/supabase/database.types.ts`
 5. Seed the catalogue: `npm run seed:validate` (static checks, no DB) then

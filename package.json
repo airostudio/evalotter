@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "seed:validate": "tsx scripts/seed/validate.ts",
     "seed": "tsx scripts/seed/run.ts",
-    "catalogue:details": "tsx scripts/catalogue/generate-details.ts"
+    "catalogue:details": "tsx scripts/catalogue/generate-details.ts",
+    "doctor": "tsx --env-file=.env.local scripts/doctor/run.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.120.0",
