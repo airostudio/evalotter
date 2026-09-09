@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { syncAdminFromAllowlist } from "@/lib/admin/access";
 
 const emailSchema = z.string().email();
 const passwordSchema = z.string().min(8, "Password must be at least 8 characters");
@@ -98,6 +99,12 @@ export async function loginAction(
   });
 
   if (error) return { error: "Incorrect email or password." };
+
+  // Bootstrap: an address in ADMIN_EMAILS becomes an admin on sign-in, so
+  // the first admin does not require hand-editing the database. Never
+  // demotes, and the promotion is written to the audit log.
+  const { data: authed } = await supabase.auth.getUser();
+  if (authed.user) await syncAdminFromAllowlist(authed.user.id, authed.user.email);
 
   revalidatePath("/", "layout");
   redirect(next);

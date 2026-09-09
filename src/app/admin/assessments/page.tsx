@@ -35,7 +35,7 @@ export default async function AdminAssessmentsPage() {
               <tr key={r.id}>
                 <Td>
                   <Link
-                    href={`/assessments/${r.slug}`}
+                    href={`/admin/assessments/${r.slug}`}
                     className="focus-ring rounded text-paper-100 hover:text-signal-cyan"
                   >
                     {r.title}

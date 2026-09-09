@@ -267,3 +267,142 @@ export async function getRecentAttempts(limit = 25) {
     .limit(limit);
   return data ?? [];
 }
+
+// ---------------------------------------------------------------------------
+// Drill-downs
+// ---------------------------------------------------------------------------
+
+/** Audit trail, newest first. */
+export async function getAuditLog(limit = 200) {
+  const db = createAdminClient();
+  const { data } = await db
+    .from("admin_activity")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  return data ?? [];
+}
+
+/** Everyone holding elevated access, for the access-control panel. */
+export async function listPrivilegedUsers() {
+  const db = createAdminClient();
+  const { data } = await db
+    .from("profiles")
+    .select("id, display_name, full_name, role, created_at")
+    .in("role", ["editor", "admin", "super_admin"])
+    .order("role", { ascending: false });
+  return data ?? [];
+}
+
+/**
+ * Per-question statistics for one assessment: how often each item is
+ * answered correctly, and how long it takes. This is what tells you an item
+ * is broken — a 0% or 100% correct rate means it is measuring nothing, and
+ * that is how the unanswerable EI face questions would have been caught.
+ */
+export async function getAssessmentQuestionStats(slug: string) {
+  const db = createAdminClient();
+
+  const { data: assessment } = await db
+    .from("assessments")
+    .select("id, title, slug, current_version_id, status, access, difficulty")
+    .eq("slug", slug)
+    .maybeSingle();
+  if (!assessment?.current_version_id) return null;
+
+  const { data: links } = await db
+    .from("assessment_questions")
+    .select("order, section_id, questions(id, external_key, question_text, question_type), assessment_sections:section_id(name)")
+    .eq("assessment_version_id", assessment.current_version_id)
+    .order("order");
+
+  const questionIds = (links ?? [])
+    .map((l) => {
+      const embed = l.questions as unknown;
+      const one = (Array.isArray(embed) ? embed[0] : embed) as { id?: string } | null;
+      return one?.id;
+    })
+    .filter((v): v is string => Boolean(v));
+
+  const { data: correctOptions } = await db
+    .from("question_options")
+    .select("question_id, id")
+    .in("question_id", questionIds.length ? questionIds : ["00000000-0000-0000-0000-000000000000"])
+    .eq("is_correct", true);
+
+  const correctByQuestion = new Map<string, Set<string>>();
+  for (const o of correctOptions ?? []) {
+    if (!correctByQuestion.has(o.question_id)) correctByQuestion.set(o.question_id, new Set());
+    correctByQuestion.get(o.question_id)!.add(o.id);
+  }
+
+  const { data: responses } = await db
+    .from("assessment_responses")
+    .select("question_id, answer, response_time_ms")
+    .in("question_id", questionIds.length ? questionIds : ["00000000-0000-0000-0000-000000000000"]);
+
+  const agg = new Map<string, { answered: number; correct: number; totalMs: number; timed: number }>();
+  for (const r of responses ?? []) {
+    const a = agg.get(r.question_id) ?? { answered: 0, correct: 0, totalMs: 0, timed: 0 };
+    a.answered += 1;
+    const chosen = (r.answer as { optionId?: string } | null)?.optionId;
+    if (chosen && correctByQuestion.get(r.question_id)?.has(chosen)) a.correct += 1;
+    if (r.response_time_ms) {
+      a.totalMs += Number(r.response_time_ms);
+      a.timed += 1;
+    }
+    agg.set(r.question_id, a);
+  }
+
+  const questions = (links ?? []).map((l) => {
+    const embed = l.questions as unknown;
+    const q = (Array.isArray(embed) ? embed[0] : embed) as {
+      id: string; external_key: string; question_text: string; question_type: string;
+    };
+    const a = agg.get(q.id) ?? { answered: 0, correct: 0, totalMs: 0, timed: 0 };
+    return {
+      id: q.id,
+      key: q.external_key,
+      text: q.question_text,
+      type: q.question_type,
+      section: (() => {
+        const sec = l.assessment_sections as unknown;
+        const one = (Array.isArray(sec) ? sec[0] : sec) as { name?: string } | null;
+        return one?.name ?? null;
+      })(),
+      scorable: correctByQuestion.has(q.id),
+      answered: a.answered,
+      correct: a.correct,
+      correctRate: a.answered > 0 ? a.correct / a.answered : null,
+      avgSeconds: a.timed > 0 ? Math.round(a.totalMs / a.timed / 100) / 10 : null,
+    };
+  });
+
+  return { assessment, questions };
+}
+
+/** AI interpretation health — volume, failures, and what they cost to retry. */
+export async function getAiHealth() {
+  const db = createAdminClient();
+  const [{ count: total }, { count: failed }, { data: recent }] = await Promise.all([
+    db.from("ai_interpretations").select("id", { count: "exact", head: true }),
+    db.from("ai_interpretations").select("id", { count: "exact", head: true }).neq("status", "completed"),
+    db
+      .from("ai_interpretations")
+      .select("id, status, created_at, result_id")
+      .order("created_at", { ascending: false })
+      .limit(20),
+  ]);
+  return { total: total ?? 0, failed: failed ?? 0, recent: recent ?? [] };
+}
+
+/** Palmistry submissions — sensitive images, so this lists metadata only. */
+export async function getPalmistryQueue(limit = 50) {
+  const db = createAdminClient();
+  const { data } = await db
+    .from("palmistry_submissions")
+    .select("id, user_id, status, created_at, attempt_id")
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  return data ?? [];
+}

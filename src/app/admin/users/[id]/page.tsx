@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getUserDetail } from "@/lib/admin/queries";
+import { getCurrentUser } from "@/lib/auth/current-user";
+import { RoleControl } from "@/components/admin/RoleControl";
 import { Badge, Empty, Panel, Stat, Table, Td, date, dateTime, money } from "@/components/admin/ui";
 
 export const metadata: Metadata = { title: "Admin · User" };
@@ -9,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 export default async function AdminUserDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const u = await getUserDetail(id);
+  const [u, actor] = await Promise.all([getUserDetail(id), getCurrentUser()]);
   if (!u) notFound();
 
   const title = (r: { assessments?: { title?: string } | null }) => r.assessments?.title ?? "—";
@@ -28,7 +30,16 @@ export default async function AdminUserDetailPage({ params }: { params: Promise<
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <Stat label="Role" value={<Badge value={u.profile.role} />} />
+        <Stat
+          label="Role"
+          value={
+            <RoleControl
+              userId={u.profile.id}
+              currentRole={u.profile.role}
+              canGrantSuperAdmin={actor?.profile?.role === "super_admin"}
+            />
+          }
+        />
         <Stat label="Joined" value={date(u.profile.created_at)} sub={`Last seen ${date(u.lastSignInAt)}`} />
         <Stat label="Lifetime spend" value={u.spendCents > 0 ? money(u.spendCents) : "—"} />
         <Stat
