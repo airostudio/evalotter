@@ -48,7 +48,7 @@ export async function hasReportAccess(
 }
 
 /**
- * Whether a user currently has Driftwater (the sleep add-on).
+ * Whether a user currently has DriftOff (the sleep add-on).
  *
  * "Currently" is doing real work here. A subscription row lingers after
  * cancellation — Stripe keeps serving until the period ends, and the row

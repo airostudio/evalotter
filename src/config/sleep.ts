@@ -1,9 +1,8 @@
 /**
- * Driftwater — EvalOtter's optional sleep-audio add-on.
- *
- * Driftwater, with three strands: Stillwater, Night Ferry and Slow Tide.
- * All five names are ours — none is taken from any existing sleep product,
- * and no registered mark appears anywhere in this feature.
+ * DriftOff — EvalOtter's optional sleep-audio add-on, with three strands:
+ * RestStill (soundscapes), NightWords (sleep stories) and SlowTide (slow
+ * music). All four names are ours: none is taken from any existing sleep
+ * product, and no registered mark appears anywhere in this feature.
  *
  * Every user-visible string lives in this file, so any of them can be
  * renamed in one edit. CLEAR THEM WITH A TRADEMARK SEARCH BEFORE LAUNCH:
@@ -21,7 +20,7 @@
  */
 
 export const SLEEP_BRAND = {
-  name: "Driftwater",
+  name: "DriftOff",
   parent: "EvalOtter",
   tagline: "Sleep sounds, stories and music for better nights.",
   /** One sentence, used in metadata and cards. */
@@ -70,7 +69,7 @@ export interface SleepCollection {
 export const SLEEP_COLLECTIONS: SleepCollection[] = [
   {
     key: "soundscapes",
-    name: "Stillwater",
+    name: "RestStill",
     kind: "Soundscapes",
     tagline: "Steady sound, all night",
     description:
@@ -79,7 +78,7 @@ export const SLEEP_COLLECTIONS: SleepCollection[] = [
   },
   {
     key: "stories",
-    name: "Night Ferry",
+    name: "NightWords",
     kind: "Sleep stories",
     tagline: "Somewhere else to put your mind",
     description:
@@ -88,7 +87,7 @@ export const SLEEP_COLLECTIONS: SleepCollection[] = [
   },
   {
     key: "music",
-    name: "Slow Tide",
+    name: "SlowTide",
     kind: "Slow music",
     tagline: "Music with the edges taken off",
     description:
@@ -127,7 +126,7 @@ export const SLEEP_FEATURES: { title: string; body: string }[] = [
 export const SLEEP_RATIONALE = {
   heading: "Why this sits next to your Brain Profile",
   body:
-    "EvalOtter measures memory, attention and processing speed. Sleep affects all three — which is why a poor night shows up in a score long before it shows up anywhere else. Driftwater is offered because rest is the part of cognitive performance most people can actually change, not because listening to it will move your numbers.",
+    "EvalOtter measures memory, attention and processing speed. Sleep affects all three — which is why a poor night shows up in a score long before it shows up anywhere else. DriftOff is offered because rest is the part of cognitive performance most people can actually change, not because listening to it will move your numbers.",
   disclaimer:
-    "Driftwater is for rest and relaxation. It is not a medical device or a treatment for insomnia or any other condition, it makes no therapeutic claims, and it does not contribute to your EvalOtter score. If sleeplessness is affecting your health, please speak to a qualified clinician.",
+    "DriftOff is for rest and relaxation. It is not a medical device or a treatment for insomnia or any other condition, it makes no therapeutic claims, and it does not contribute to your EvalOtter score. If sleeplessness is affecting your health, please speak to a qualified clinician.",
 } as const;

@@ -31,7 +31,7 @@ export default async function AdminFinancialsPage() {
         />
       </div>
 
-      <Panel title="Driftwater subscriptions">
+      <Panel title="DriftOff subscriptions">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Stat label="Paying" value={subs.paying} sub={`${subs.trialing} on trial`} />
           <Stat label="Monthly recurring" value={money(subs.mrrCents)} sub="paying subscribers only" />

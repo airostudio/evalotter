@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { href: "/assessments", label: "Assessments" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/methodology", label: "Methodology" },
-  { href: "/sleep", label: "Driftwater" },
+  { href: "/sleep", label: "DriftOff" },
   { href: "/pricing", label: "Pricing" },
 ];
 

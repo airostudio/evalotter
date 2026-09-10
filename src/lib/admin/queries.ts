@@ -407,7 +407,7 @@ export async function getPalmistryQueue(limit = 50) {
   return data ?? [];
 }
 
-/** Driftwater subscription health — the recurring revenue stream. */
+/** DriftOff subscription health — the recurring revenue stream. */
 export async function getSubscriptionStats() {
   const db = createAdminClient();
   const { data } = await db

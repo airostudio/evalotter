@@ -5,7 +5,7 @@ import Link from "next/link";
 import { SLEEP_BRAND, SLEEP_PRICING } from "@/config/sleep";
 
 /**
- * Starts a Driftwater subscription. Signed-out visitors are sent to sign up
+ * Starts a DriftOff subscription. Signed-out visitors are sent to sign up
  * first rather than into a checkout that cannot attach to an account —
  * a subscription needs a user to belong to.
  */

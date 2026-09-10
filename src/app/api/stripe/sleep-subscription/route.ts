@@ -6,7 +6,7 @@ import { hasSleepAccess } from "@/lib/access/entitlements";
 import { SLEEP_BRAND, SLEEP_PRICING } from "@/config/sleep";
 
 /**
- * Opens a Stripe Checkout session for a Driftwater subscription.
+ * Opens a Stripe Checkout session for a DriftOff subscription.
  *
  * Recurring, unlike every other checkout on the platform — those are
  * one-time payments. The trial is configured on the subscription rather

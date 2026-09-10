@@ -6,7 +6,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
  * Mirrors a Stripe subscription into the `subscriptions` table.
  *
  * Stripe is the source of truth for billing; this row exists so the app can
- * answer "does this user have Driftwater right now" without a round trip on
+ * answer "does this user have DriftOff right now" without a round trip on
  * every page load. It is written from webhook events only.
  *
  * Idempotent on stripe_subscription_id (unique index added in 0014), so a

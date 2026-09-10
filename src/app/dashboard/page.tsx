@@ -187,7 +187,7 @@ export default async function DashboardPage() {
 
         <div className="rounded-xl2 border border-ink-700 bg-ink-800/30 p-6">
           <h2 className="flex items-center gap-2 font-display text-lg text-paper-100">
-            <Moon className="h-4 w-4 text-signal-cyan" /> Driftwater
+            <Moon className="h-4 w-4 text-signal-cyan" /> DriftOff
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-paper-100/60">
             {sleepAccess
@@ -198,7 +198,7 @@ export default async function DashboardPage() {
             href="/sleep"
             className="focus-ring mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-signal-cyan hover:opacity-80"
           >
-            {sleepAccess ? "Open Driftwater" : "Try it free"} <ArrowRight className="h-3.5 w-3.5" />
+            {sleepAccess ? "Open DriftOff" : "Try it free"} <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
