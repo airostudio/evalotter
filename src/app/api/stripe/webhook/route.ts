@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getStripeClient } from "@/lib/stripe/client";
+import { recordSubscriptionFromStripe } from "@/lib/access/record-subscription";
 import { recordPurchaseFromSession } from "@/lib/access/record-purchase";
 
 /**
@@ -33,8 +34,33 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
+  // A subscription checkout is settled through the subscription events
+  // below, not here: at checkout.session.completed a trialing subscription
+  // has taken no payment yet, and its period end is only known from the
+  // subscription object itself.
   if (event.type === "checkout.session.completed") {
-    await recordPurchaseFromSession(event.data.object);
+    const session = event.data.object;
+    if (session.mode === "subscription") {
+      const subscriptionId =
+        typeof session.subscription === "string" ? session.subscription : session.subscription?.id;
+      if (subscriptionId) {
+        const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+        await recordSubscriptionFromStripe(subscription);
+      }
+    } else {
+      await recordPurchaseFromSession(session);
+    }
+  }
+
+  // Covers the whole lifecycle: trial converting to paid, a renewal, a
+  // failed payment, and cancellation. Without these the row would freeze at
+  // whatever it was on day one and a cancelled user would keep access.
+  if (
+    event.type === "customer.subscription.created" ||
+    event.type === "customer.subscription.updated" ||
+    event.type === "customer.subscription.deleted"
+  ) {
+    await recordSubscriptionFromStripe(event.data.object);
   }
 
   return NextResponse.json({ received: true });

@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, Lock, PlayCircle, Sparkles, Trophy } from "lucide-react";
+import { ArrowRight, Lock, Moon, PlayCircle, Sparkles, Trophy } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireUser } from "@/lib/auth/current-user";
 import { ScoreRing } from "@/components/charts/ScoreRing";
 import { CATALOGUE } from "@/config/catalogue";
 import { PerfectLoveCodeCard } from "@/components/dashboard/PerfectLoveCodeCard";
-import { hasFullCollectionAccess, hasReportAccess } from "@/lib/access/entitlements";
+import { hasFullCollectionAccess, hasReportAccess, hasSleepAccess } from "@/lib/access/entitlements";
 import { LockedStat } from "@/components/dashboard/LockedStat";
 
 export default async function DashboardPage() {
@@ -49,6 +49,7 @@ export default async function DashboardPage() {
   // collection actually sells. A single-report unlock buys that one report,
   // not the composite, so neither is shown without the full package.
   const fullAccess = await hasFullCollectionAccess(supabase, user.id);
+  const sleepAccess = await hasSleepAccess(supabase, user.id);
 
   // Each per-assessment score follows that assessment's own entitlement, the
   // same rule the results page applies. Showing the raw number here would
@@ -182,6 +183,23 @@ export default async function DashboardPage() {
               );
             })}
           </div>
+        </div>
+
+        <div className="rounded-xl2 border border-ink-700 bg-ink-800/30 p-6">
+          <h2 className="flex items-center gap-2 font-display text-lg text-paper-100">
+            <Moon className="h-4 w-4 text-signal-cyan" /> Driftwater
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-paper-100/60">
+            {sleepAccess
+              ? "Your sleep library is active. Soundscapes, sleep stories and slow music for tonight."
+              : "Sleep sounds, stories and music — an optional add-on, free for 7 days."}
+          </p>
+          <Link
+            href="/sleep"
+            className="focus-ring mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-signal-cyan hover:opacity-80"
+          >
+            {sleepAccess ? "Open Driftwater" : "Try it free"} <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
 
         <div>

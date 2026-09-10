@@ -406,3 +406,36 @@ export async function getPalmistryQueue(limit = 50) {
     .limit(limit);
   return data ?? [];
 }
+
+/** Driftwater subscription health — the recurring revenue stream. */
+export async function getSubscriptionStats() {
+  const db = createAdminClient();
+  const { data } = await db
+    .from("subscriptions")
+    .select("plan, status, current_period_end, created_at, user_id")
+    .in("plan", ["sleep_monthly", "sleep_annual"])
+    .order("created_at", { ascending: false });
+
+  const rows = data ?? [];
+  const live = rows.filter((r) => r.status === "active" || r.status === "trialing");
+  const trialing = live.filter((r) => r.status === "trialing").length;
+  const paying = live.filter((r) => r.status === "active");
+
+  // Monthly recurring revenue from paying subscribers only — a trial has
+  // not paid anything yet and counting it would overstate the number.
+  const mrrCents = paying.reduce(
+    (sum, r) => sum + (r.plan === "sleep_annual" ? Math.round(17900 / 12) : 1649),
+    0
+  );
+
+  return {
+    total: rows.length,
+    live: live.length,
+    trialing,
+    paying: paying.length,
+    canceled: rows.filter((r) => r.status === "canceled").length,
+    pastDue: rows.filter((r) => r.status === "past_due").length,
+    mrrCents,
+    recent: rows.slice(0, 25),
+  };
+}
