@@ -1,3 +1,5 @@
+import { CHART_PRIMARY, CHART_TRACK } from "./palette";
+
 export function ScoreRing({ score, size = 160 }: { score: number; size?: number }) {
   const stroke = 10;
   const radius = (size - stroke) / 2;
@@ -6,7 +8,7 @@ export function ScoreRing({ score, size = 160 }: { score: number; size?: number 
 
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} role="img" aria-label={`Score ${score} out of 100`}>
-      <circle cx={size / 2} cy={size / 2} r={radius} stroke="#20293d" strokeWidth={stroke} fill="none" />
+      <circle cx={size / 2} cy={size / 2} r={radius} stroke={CHART_TRACK} strokeWidth={stroke} fill="none" />
       <circle
         cx={size / 2}
         cy={size / 2}
@@ -22,8 +24,8 @@ export function ScoreRing({ score, size = 160 }: { score: number; size?: number 
       />
       <defs>
         <linearGradient id="scoreGradient" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#7c5cff" />
-          <stop offset="100%" stopColor="#5ce1e6" />
+          <stop offset="0%" stopColor={CHART_PRIMARY} />
+          <stop offset="100%" stopColor="#137a75" />
         </linearGradient>
       </defs>
       <text x="50%" y="48%" textAnchor="middle" className="fill-paper-100" fontSize={size * 0.26} fontWeight={600}>

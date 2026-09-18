@@ -184,7 +184,7 @@ export function AssessmentRunner({ assessment, attempt, responses }: AssessmentR
         >
           <div>
             {question.instructions && (
-              <p className="mb-2 text-xs uppercase tracking-wide text-signal-cyan/80">
+              <p className="mb-2 text-xs uppercase tracking-wide text-signal-teal/80">
                 {question.instructions}
               </p>
             )}
@@ -221,7 +221,7 @@ export function AssessmentRunner({ assessment, attempt, responses }: AssessmentR
           type="button"
           onClick={goNext}
           disabled={!canAdvance || isPending}
-          className="focus-ring flex min-h-[48px] min-w-[140px] items-center justify-center gap-2 rounded-xl2 bg-signal-violet px-6 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+          className="focus-ring flex min-h-[48px] min-w-[140px] items-center justify-center gap-2 rounded-xl2 bg-signal-blue px-6 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {isPending ? (
             <Loader2 className="h-4 w-4 animate-spin" />

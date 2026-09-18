@@ -84,13 +84,13 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
       <nav className="mb-8 text-sm">
-        <Link href="/assessments" className="focus-ring rounded text-paper-100/50 hover:text-signal-cyan">
+        <Link href="/assessments" className="focus-ring rounded text-paper-100/50 hover:text-signal-teal">
           ← All assessments
         </Link>
       </nav>
 
       <div className="flex items-start justify-between gap-4">
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl2 bg-signal-violet/15 text-signal-violet">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl2 bg-signal-blue/15 text-signal-blue">
           <AssessmentIcon icon={icon} className="h-7 w-7" />
         </span>
         {access === "premium" && (
@@ -119,8 +119,8 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
           supporting detail a visitor reads only if they want it. */}
       <div id="start">
         {comingSoon ? (
-          <div className="mt-10 rounded-xl2 border border-signal-cyan/25 bg-signal-cyan/5 p-5">
-            <p className="flex items-center gap-2 text-sm font-medium text-signal-cyan">
+          <div className="mt-10 rounded-xl2 border border-signal-teal/25 bg-signal-teal/5 p-5">
+            <p className="flex items-center gap-2 text-sm font-medium text-signal-teal">
               <Sparkles className="h-4 w-4" /> In development
             </p>
             <p className="mt-2 text-sm leading-relaxed text-paper-100/60">
@@ -129,7 +129,7 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
             </p>
             <Link
               href="/assessments"
-              className="focus-ring mt-4 inline-flex min-h-[44px] items-center rounded-xl2 border border-ink-600 px-5 text-sm font-medium text-paper-100 hover:border-signal-cyan/60 hover:text-signal-cyan"
+              className="focus-ring mt-4 inline-flex min-h-[44px] items-center rounded-xl2 border border-ink-600 px-5 text-sm font-medium text-paper-100 hover:border-signal-teal/60 hover:text-signal-teal"
             >
               Browse available assessments
             </Link>
@@ -143,7 +143,7 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
             </p>
             <Link
               href="/assessments"
-              className="focus-ring mt-4 inline-flex min-h-[44px] items-center rounded-xl2 border border-ink-600 px-5 text-sm font-medium text-paper-100 hover:border-signal-cyan/60 hover:text-signal-cyan"
+              className="focus-ring mt-4 inline-flex min-h-[44px] items-center rounded-xl2 border border-ink-600 px-5 text-sm font-medium text-paper-100 hover:border-signal-teal/60 hover:text-signal-teal"
             >
               Browse other assessments
             </Link>
@@ -152,7 +152,7 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
               href={`/login?next=/assessments/${slug}`}
-              className="focus-ring flex min-h-[48px] items-center rounded-xl2 bg-signal-violet px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              className="focus-ring flex min-h-[48px] items-center rounded-xl2 bg-signal-blue px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               Log in to start
             </Link>
@@ -164,7 +164,7 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
           <form action={startOrResumeAttemptAction.bind(null, slug)} className="mt-10">
             <button
               type="submit"
-              className="focus-ring flex min-h-[48px] items-center rounded-xl2 bg-signal-violet px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              className="focus-ring flex min-h-[48px] items-center rounded-xl2 bg-signal-blue px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               Start assessment
             </button>
@@ -176,7 +176,7 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
 
       {slug === "palmistry" && (
         <div className="mt-8 flex gap-3 rounded-xl2 border border-ink-600 bg-ink-800/40 p-4 text-sm text-paper-100/60">
-          <ShieldCheck className="h-5 w-5 shrink-0 text-signal-cyan" />
+          <ShieldCheck className="h-5 w-5 shrink-0 text-signal-teal" />
           <p>
             Palmistry is offered for entertainment and self-reflection. It is not a scientifically
             validated diagnosis, and it never contributes to your EvalOtter cognitive score.
@@ -194,7 +194,7 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
                   <p className="mt-1.5 text-sm leading-relaxed text-paper-100/55">{d.description}</p>
                 )}
                 {d.contributesToBrainProfile && (
-                  <p className="mt-2.5 text-[11px] uppercase tracking-wider text-signal-cyan/70">
+                  <p className="mt-2.5 text-[11px] uppercase tracking-wider text-signal-teal/70">
                     Feeds your Brain Profile
                   </p>
                 )}
@@ -276,7 +276,7 @@ export default async function AssessmentDetailPage({ params }: PageProps) {
         <div className="mt-12 border-t border-ink-700 pt-8">
           <a
             href="#start"
-            className="focus-ring inline-flex min-h-[48px] items-center rounded-xl2 border border-ink-600 px-7 text-sm font-medium text-paper-100 hover:border-signal-cyan/60 hover:text-signal-cyan"
+            className="focus-ring inline-flex min-h-[48px] items-center rounded-xl2 border border-ink-600 px-7 text-sm font-medium text-paper-100 hover:border-signal-teal/60 hover:text-signal-teal"
           >
             Back to start ↑
           </a>

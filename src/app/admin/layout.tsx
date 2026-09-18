@@ -35,7 +35,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <span className="text-xs uppercase tracking-widest text-signal-cyan/80">Admin</span>
+          <span className="text-xs uppercase tracking-widest text-signal-teal/80">Admin</span>
           <h1 className="mt-1 font-display text-3xl text-paper-100">Control room</h1>
         </div>
         <p className="text-xs text-paper-100/40">

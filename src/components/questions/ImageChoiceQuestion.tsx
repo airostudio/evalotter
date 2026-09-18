@@ -26,7 +26,7 @@ export function ImageChoiceQuestion({ question, value, onChange }: QuestionCompo
             className={clsx(
               "focus-ring flex aspect-square flex-col items-center justify-center gap-2 rounded-xl2 border p-3 transition-colors",
               isSelected
-                ? "border-signal-cyan/70 bg-signal-cyan/10"
+                ? "border-signal-teal/70 bg-signal-teal/10"
                 : "border-ink-600 bg-ink-800/60 hover:border-ink-500"
             )}
           >

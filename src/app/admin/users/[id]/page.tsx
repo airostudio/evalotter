@@ -19,7 +19,7 @@ export default async function AdminUserDetailPage({ params }: { params: Promise<
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <Link href="/admin/users" className="focus-ring rounded text-xs text-signal-cyan hover:underline">
+        <Link href="/admin/users" className="focus-ring rounded text-xs text-signal-teal hover:underline">
           ← All users
         </Link>
         <h2 className="mt-2 font-display text-2xl text-paper-100">
@@ -80,7 +80,7 @@ export default async function AdminUserDetailPage({ params }: { params: Promise<
                 <Td>
                   <Link
                     href={`/results/${r.attempt_id}`}
-                    className="focus-ring rounded text-xs text-signal-cyan hover:underline"
+                    className="focus-ring rounded text-xs text-signal-teal hover:underline"
                   >
                     Open report
                   </Link>

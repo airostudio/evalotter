@@ -31,12 +31,12 @@ export function SequenceQuestion({ question, value, onChange }: QuestionComponen
               className={clsx(
                 "focus-ring relative flex h-16 items-center justify-center rounded-xl2 border text-[15px] font-medium transition-colors",
                 isSelected
-                  ? "border-signal-cyan/70 bg-signal-cyan/10 text-paper-100"
+                  ? "border-signal-teal/70 bg-signal-teal/10 text-paper-100"
                   : "border-ink-600 bg-ink-800/60 text-paper-100/85 hover:border-ink-500"
               )}
             >
               {isSelected && (
-                <span className="absolute -top-2 -left-2 flex h-6 w-6 items-center justify-center rounded-full bg-signal-cyan text-xs font-bold text-ink-950">
+                <span className="absolute -top-2 -left-2 flex h-6 w-6 items-center justify-center rounded-full bg-signal-teal text-xs font-bold text-ink-950">
                   {position + 1}
                 </span>
               )}

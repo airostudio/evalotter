@@ -26,7 +26,7 @@ export function PerfectLoveCodeCard({ code, redeemed }: { code: string; redeemed
           aria-label="Copy code"
           className="focus-ring flex h-10 w-10 shrink-0 items-center justify-center rounded-xl2 border border-ink-600 text-paper-100/70 hover:border-ink-500"
         >
-          {copied ? <Check className="h-4 w-4 text-signal-cyan" /> : <Copy className="h-4 w-4" />}
+          {copied ? <Check className="h-4 w-4 text-signal-teal" /> : <Copy className="h-4 w-4" />}
         </button>
       </div>
       {redeemed ? (
@@ -38,7 +38,7 @@ export function PerfectLoveCodeCard({ code, redeemed }: { code: string; redeemed
             href={PERFECT_LOVE_SITE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-signal-cyan hover:underline"
+            className="inline-flex items-center gap-1 text-signal-teal hover:underline"
           >
             perfectlove.site <ExternalLink className="h-3 w-3" />
           </a>{" "}

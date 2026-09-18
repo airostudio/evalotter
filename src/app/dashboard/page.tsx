@@ -99,7 +99,7 @@ export default async function DashboardPage() {
             <div>
               <p className="text-xs uppercase tracking-widest text-paper-100/40">Strongest capability</p>
               <p className="mt-1 flex items-center gap-1.5 text-lg text-paper-100">
-                <Trophy className="h-4 w-4 text-signal-cyan" /> {strongest.label} ({Math.round(Number(strongest.score))})
+                <Trophy className="h-4 w-4 text-signal-teal" /> {strongest.label} ({Math.round(Number(strongest.score))})
               </p>
             </div>
           ) : (
@@ -121,7 +121,7 @@ export default async function DashboardPage() {
               <p className="text-lg text-paper-100">{(inProgress.assessments as { title?: string } | null)?.title}</p>
               <Link
                 href={`/assessments/${(inProgress.assessments as { slug?: string } | null)?.slug}`}
-                className="focus-ring flex items-center gap-1.5 text-sm font-medium text-signal-cyan hover:opacity-80"
+                className="focus-ring flex items-center gap-1.5 text-sm font-medium text-signal-teal hover:opacity-80"
               >
                 <PlayCircle className="h-4 w-4" /> Resume
               </Link>
@@ -132,7 +132,7 @@ export default async function DashboardPage() {
               <p className="text-lg text-paper-100">{recommended.title}</p>
               <Link
                 href={`/assessments/${recommended.slug}`}
-                className="focus-ring flex items-center gap-1.5 text-sm font-medium text-signal-cyan hover:opacity-80"
+                className="focus-ring flex items-center gap-1.5 text-sm font-medium text-signal-teal hover:opacity-80"
               >
                 <Sparkles className="h-4 w-4" /> Start now
               </Link>
@@ -147,7 +147,7 @@ export default async function DashboardPage() {
         <div>
           <div className="flex items-center justify-between">
             <h2 className="font-display text-xl text-paper-100">Recent results</h2>
-            <Link href="/results" className="focus-ring flex items-center gap-1 text-sm text-signal-cyan hover:opacity-80">
+            <Link href="/results" className="focus-ring flex items-center gap-1 text-sm text-signal-teal hover:opacity-80">
               View all <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
@@ -191,7 +191,7 @@ export default async function DashboardPage() {
           </p>
           <Link
             href="/brain-profile"
-            className="focus-ring mt-4 inline-flex min-h-[44px] items-center gap-2 rounded-xl2 bg-signal-violet px-6 text-sm font-medium text-white transition-opacity hover:opacity-90"
+            className="focus-ring mt-4 inline-flex min-h-[44px] items-center gap-2 rounded-xl2 bg-signal-blue px-6 text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
             Open Brain Profile <ArrowRight className="h-4 w-4" />
           </Link>

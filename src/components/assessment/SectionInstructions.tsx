@@ -39,7 +39,7 @@ export function SectionInstructions({
       <button
         type="button"
         onClick={onContinue}
-        className="focus-ring mt-10 min-h-[48px] rounded-xl2 bg-signal-violet px-8 text-sm font-medium text-white transition-opacity hover:opacity-90"
+        className="focus-ring mt-10 min-h-[48px] rounded-xl2 bg-signal-blue px-8 text-sm font-medium text-white transition-opacity hover:opacity-90"
       >
         Begin
       </button>

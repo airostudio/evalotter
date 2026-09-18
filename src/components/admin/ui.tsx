@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Otter } from "@/components/brand/Otter";
 
 export function money(cents: number, currency = "usd") {
   return new Intl.NumberFormat("en-US", {
@@ -71,18 +72,23 @@ export function Td({ children, className = "" }: { children: ReactNode; classNam
 }
 
 export function Empty({ children }: { children: ReactNode }) {
-  return <p className="px-5 py-8 text-center text-sm text-paper-100/40">{children}</p>;
+  return (
+    <div className="flex flex-col items-center gap-3 px-5 py-10 text-center">
+      <Otter size={44} mood="sleepy" />
+      <p className="max-w-sm text-sm leading-relaxed text-paper-100/50">{children}</p>
+    </div>
+  );
 }
 
 const BADGE: Record<string, string> = {
-  completed: "border-green-500/40 bg-green-500/10 text-green-300",
-  in_progress: "border-amber-500/40 bg-amber-500/10 text-amber-300",
+  completed: "border-green-500/40 bg-green-500/10 text-signal-green",
+  in_progress: "border-amber-500/40 bg-amber-500/10 text-signal-amber",
   abandoned: "border-ink-600 bg-ink-800 text-paper-100/50",
-  redeemed: "border-green-500/40 bg-green-500/10 text-green-300",
-  issued: "border-amber-500/40 bg-amber-500/10 text-amber-300",
-  published: "border-green-500/40 bg-green-500/10 text-green-300",
-  admin: "border-signal-violet/50 bg-signal-violet/15 text-signal-violet",
-  super_admin: "border-signal-violet/50 bg-signal-violet/15 text-signal-violet",
+  redeemed: "border-green-500/40 bg-green-500/10 text-signal-green",
+  issued: "border-amber-500/40 bg-amber-500/10 text-signal-amber",
+  published: "border-green-500/40 bg-green-500/10 text-signal-green",
+  admin: "border-signal-blue/50 bg-signal-blue/15 text-signal-blue",
+  super_admin: "border-signal-blue/50 bg-signal-blue/15 text-signal-blue",
 };
 
 export function Badge({ value }: { value: string }) {

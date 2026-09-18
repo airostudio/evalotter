@@ -72,7 +72,7 @@ export function PalmistryCapture({ assessment, attempt }: AssessmentRendererProp
   if (step === "consent") {
     return (
       <div className="mx-auto flex min-h-[70vh] max-w-lg flex-col items-center justify-center px-4 py-10 text-center">
-        <ShieldCheck className="mb-4 h-8 w-8 text-signal-cyan" />
+        <ShieldCheck className="mb-4 h-8 w-8 text-signal-teal" />
         <h2 className="font-display text-2xl text-paper-100">Your Palmistry photos</h2>
         <p className="mt-4 text-sm leading-relaxed text-paper-100/70">
           Palmistry is provided for entertainment and self-reflection only and is not scientifically
@@ -91,7 +91,7 @@ export function PalmistryCapture({ assessment, attempt }: AssessmentRendererProp
             type="checkbox"
             checked={consented}
             onChange={(e) => setConsented(e.target.checked)}
-            className="mt-1 h-4 w-4 rounded border-ink-500 bg-ink-800 accent-signal-cyan"
+            className="mt-1 h-4 w-4 rounded border-ink-500 bg-ink-800 accent-signal-teal"
           />
           I consent to EvalOtter processing my palm photographs to generate my Palmistry reading.
         </label>
@@ -99,7 +99,7 @@ export function PalmistryCapture({ assessment, attempt }: AssessmentRendererProp
           type="button"
           disabled={!consented}
           onClick={() => setStep("left-palm")}
-          className="focus-ring mt-8 min-h-[48px] rounded-xl2 bg-signal-violet px-8 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
+          className="focus-ring mt-8 min-h-[48px] rounded-xl2 bg-signal-blue px-8 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
         >
           Continue
         </button>
@@ -119,7 +119,7 @@ export function PalmistryCapture({ assessment, attempt }: AssessmentRendererProp
           Lay your hand flat, palm facing up, in good light. Fit your whole palm inside the guide.
         </p>
 
-        <div className="relative mt-8 flex h-72 w-72 items-center justify-center rounded-full border-2 border-dashed border-signal-cyan/40 bg-ink-800/40">
+        <div className="relative mt-8 flex h-72 w-72 items-center justify-center rounded-full border-2 border-dashed border-signal-teal/40 bg-ink-800/40">
           {preview ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={preview} alt={`${side} palm`} className="h-full w-full rounded-full object-cover" />
@@ -149,7 +149,7 @@ export function PalmistryCapture({ assessment, attempt }: AssessmentRendererProp
             type="button"
             disabled={!preview}
             onClick={() => setStep(side === "left" ? "right-palm" : "questions")}
-            className="focus-ring flex min-h-[48px] items-center gap-2 rounded-xl2 bg-signal-violet px-6 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
+            className="focus-ring flex min-h-[48px] items-center gap-2 rounded-xl2 bg-signal-blue px-6 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
           >
             <Check className="h-4 w-4" /> Use this photo
           </button>
@@ -187,12 +187,12 @@ export function PalmistryCapture({ assessment, attempt }: AssessmentRendererProp
               <ThumbWithRemove src={rightPreview} onRemove={() => setRightPreview(null)} label="Right" />
             </div>
           )}
-          {error && <p className="text-sm text-red-300">{error}</p>}
+          {error && <p className="text-sm text-signal-rose">{error}</p>}
           <button
             type="button"
             onClick={handleSubmit}
             disabled={isPending}
-            className="focus-ring min-h-[48px] rounded-xl2 bg-signal-violet px-8 text-sm font-medium text-white disabled:opacity-40"
+            className="focus-ring min-h-[48px] rounded-xl2 bg-signal-blue px-8 text-sm font-medium text-white disabled:opacity-40"
           >
             Submit for reading
           </button>
@@ -203,7 +203,7 @@ export function PalmistryCapture({ assessment, attempt }: AssessmentRendererProp
 
   return (
     <div className="flex min-h-[70vh] flex-col items-center justify-center gap-4 text-paper-100/70">
-      <Loader2 className="h-6 w-6 animate-spin text-signal-cyan" />
+      <Loader2 className="h-6 w-6 animate-spin text-signal-teal" />
       Reading your palms…
     </div>
   );

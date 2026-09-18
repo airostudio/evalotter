@@ -17,7 +17,7 @@ export function TrueFalseQuestion({ value, onChange }: QuestionComponentProps) {
           className={clsx(
             "focus-ring min-h-[56px] flex-1 rounded-xl2 border px-6 text-[15px] font-medium transition-colors",
             selected === opt.val
-              ? "border-signal-cyan/70 bg-signal-cyan/10 text-paper-100"
+              ? "border-signal-teal/70 bg-signal-teal/10 text-paper-100"
               : "border-ink-600 bg-ink-800/60 text-paper-100/85 hover:border-ink-500"
           )}
         >

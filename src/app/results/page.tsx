@@ -40,7 +40,7 @@ export default async function ResultsIndexPage() {
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
       <Link
         href="/dashboard"
-        className="focus-ring flex w-fit items-center gap-1.5 rounded text-sm text-paper-100/50 hover:text-signal-cyan"
+        className="focus-ring flex w-fit items-center gap-1.5 rounded text-sm text-paper-100/50 hover:text-signal-teal"
       >
         <ArrowLeft className="h-3.5 w-3.5" /> Dashboard
       </Link>
@@ -55,7 +55,7 @@ export default async function ResultsIndexPage() {
       {results.length === 0 ? (
         <Link
           href="/assessments"
-          className="focus-ring mt-8 inline-flex min-h-[48px] items-center rounded-xl2 bg-signal-violet px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          className="focus-ring mt-8 inline-flex min-h-[48px] items-center rounded-xl2 bg-signal-blue px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
         >
           Browse assessments
         </Link>

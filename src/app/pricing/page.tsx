@@ -64,14 +64,14 @@ export default async function PricingPage() {
                 <PricingBuyButton
                   type="single"
                   assessmentId={a.id}
-                  className="focus-ring shrink-0 rounded-xl2 border border-ink-600 px-4 py-2 text-sm font-medium text-paper-100 hover:border-signal-cyan/50"
+                  className="focus-ring shrink-0 rounded-xl2 border border-ink-600 px-4 py-2 text-sm font-medium text-paper-100 hover:border-signal-teal/50"
                 >
                   ${singlePrice}
                 </PricingBuyButton>
               ) : (
                 <Link
                   href={`/assessments/${a.slug}`}
-                  className="focus-ring shrink-0 rounded-xl2 border border-ink-600 px-4 py-2 text-sm font-medium text-paper-100 hover:border-signal-cyan/50"
+                  className="focus-ring shrink-0 rounded-xl2 border border-ink-600 px-4 py-2 text-sm font-medium text-paper-100 hover:border-signal-teal/50"
                 >
                   Take it free
                 </Link>
@@ -82,8 +82,8 @@ export default async function PricingPage() {
       </div>
 
       <div className="mx-auto mt-16 grid max-w-4xl gap-6 px-4 pb-20 sm:px-6 md:grid-cols-2">
-        <div className="flex flex-col rounded-xl2 border border-signal-cyan/60 bg-ink-800/60 p-7 shadow-panel">
-          <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-signal-cyan/10 px-3 py-1 text-xs font-medium text-signal-cyan">
+        <div className="flex flex-col rounded-xl2 border border-signal-teal/60 bg-ink-800/60 p-7 shadow-panel">
+          <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-signal-teal/10 px-3 py-1 text-xs font-medium text-signal-teal">
             <Sparkles className="h-3 w-3" /> Best value
           </span>
           <h2 className="mt-3 font-display text-lg text-paper-100">Full collection</h2>
@@ -98,13 +98,13 @@ export default async function PricingPage() {
           <ul className="mt-5 flex flex-1 flex-col gap-2.5">
             {["Every current and future assessment", "Full dimension breakdowns & AI interpretation", "Downloadable PDF reports", "No subscription, pay once"].map((f) => (
               <li key={f} className="flex items-start gap-2 text-sm text-paper-100/70">
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-signal-cyan" /> {f}
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-signal-teal" /> {f}
               </li>
             ))}
           </ul>
           <PricingBuyButton
             type="collection"
-            className="focus-ring mt-7 flex min-h-[46px] items-center justify-center rounded-xl2 bg-signal-violet text-sm font-medium text-white transition-opacity hover:opacity-90"
+            className="focus-ring mt-7 flex min-h-[46px] items-center justify-center rounded-xl2 bg-signal-blue text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
             Unlock everything — ${collectionPrice}
           </PricingBuyButton>
@@ -122,7 +122,7 @@ export default async function PricingPage() {
               href={PERFECT_LOVE_SITE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-signal-cyan hover:underline"
+              className="inline-flex items-center gap-1 text-signal-teal hover:underline"
             >
               Perfect Love <ExternalLink className="h-3 w-3" />
             </a>
@@ -131,7 +131,7 @@ export default async function PricingPage() {
           <ul className="mt-5 flex flex-1 flex-col gap-2.5">
             {["Everything in Full collection", "Perfect Love astrology platform access", "One checkout, one price"].map((f) => (
               <li key={f} className="flex items-start gap-2 text-sm text-paper-100/70">
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-signal-cyan" /> {f}
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-signal-teal" /> {f}
               </li>
             ))}
           </ul>

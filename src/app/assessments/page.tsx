@@ -43,7 +43,7 @@ export default async function AssessmentsPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
       <div className="max-w-2xl">
-        <span className="text-xs uppercase tracking-widest text-signal-cyan/80">Catalogue</span>
+        <span className="text-xs uppercase tracking-widest text-signal-teal/80">Catalogue</span>
         <h1 className="mt-3 font-display text-4xl text-paper-100">Every assessment, in one place</h1>
         <p className="mt-4 text-paper-100/60">
           Filter by category to find the right assessment, or start with the EvalOtter Intelligence

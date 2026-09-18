@@ -32,7 +32,7 @@ export function ShareToggle({ resultId, initialShared }: { resultId: string; ini
         disabled={isPending}
         className="focus-ring flex min-h-[44px] items-center gap-2 rounded-xl2 border border-ink-600 px-5 text-sm text-paper-100 hover:border-ink-500"
       >
-        {shared ? <Check className="h-4 w-4 text-signal-cyan" /> : <Share2 className="h-4 w-4" />}
+        {shared ? <Check className="h-4 w-4 text-signal-teal" /> : <Share2 className="h-4 w-4" />}
         {shared ? "Shared publicly" : "Share result"}
       </button>
 
@@ -60,7 +60,7 @@ export function ShareToggle({ resultId, initialShared }: { resultId: string; ini
                   setConfirming(false);
                   setShare(true);
                 }}
-                className="focus-ring min-h-[40px] rounded-xl2 bg-signal-violet px-4 text-sm font-medium text-white hover:opacity-90"
+                className="focus-ring min-h-[40px] rounded-xl2 bg-signal-blue px-4 text-sm font-medium text-white hover:opacity-90"
               >
                 Share result
               </button>

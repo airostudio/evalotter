@@ -1,4 +1,5 @@
 "use client";
+import { CHART_AXIS_TEXT, CHART_GRID, CHART_PRIMARY } from "./palette";
 
 import {
   Radar,
@@ -14,20 +15,20 @@ export interface RadarDatum {
   score: number;
 }
 
-export function RadarChartCard({ data, color = "#5ce1e6" }: { data: RadarDatum[]; color?: string }) {
+export function RadarChartCard({ data, color = CHART_PRIMARY }: { data: RadarDatum[]; color?: string }) {
   return (
     <div className="h-72 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart data={data} outerRadius="72%">
-          <PolarGrid stroke="#262b36" />
+          <PolarGrid stroke={CHART_GRID} />
           <PolarAngleAxis
             dataKey="dimension"
-            tick={{ fill: "#e8eaf0", fontSize: 12, opacity: 0.75 }}
+            tick={{ fill: CHART_AXIS_TEXT, fontSize: 12, opacity: 0.8 }}
           />
           <PolarRadiusAxis
             angle={30}
             domain={[0, 100]}
-            tick={{ fill: "#e8eaf0", fontSize: 10, opacity: 0.35 }}
+            tick={{ fill: CHART_AXIS_TEXT, fontSize: 10, opacity: 0.4 }}
             axisLine={false}
           />
           <Radar

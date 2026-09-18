@@ -66,11 +66,13 @@ export default function HomePage() {
     <div>
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-ink-700/60">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_-10%,rgba(124,92,255,0.18),transparent_45%),radial-gradient(circle_at_85%_10%,rgba(92,225,230,0.12),transparent_40%)]" />
+        {/* A barely-there warm wash so the hero is not a flat slab of cream.
+            Low enough to read as paper rather than as a coloured panel. */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_-10%,rgba(19,122,117,0.07),transparent_48%),radial-gradient(circle_at_88%_4%,rgba(60,111,176,0.06),transparent_44%)]" />
         <div className="relative mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 sm:py-32">
           <FadeIn>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-600 px-3 py-1 text-xs text-paper-100/60">
-              <Sparkles className="h-3.5 w-3.5 text-signal-cyan" /> Ten assessments. One evolving profile.
+              <Sparkles className="h-3.5 w-3.5 text-signal-teal" /> Ten assessments. One evolving profile.
             </span>
           </FadeIn>
           <FadeIn delay={0.08}>
@@ -88,7 +90,7 @@ export default function HomePage() {
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
                 href="/assessments"
-                className="focus-ring flex min-h-[52px] items-center gap-2 rounded-xl2 bg-signal-violet px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
+                className="focus-ring flex min-h-[52px] items-center gap-2 rounded-xl2 bg-signal-blue px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
               >
                 Explore Assessments <ArrowRight className="h-4 w-4" />
               </Link>
@@ -107,7 +109,7 @@ export default function HomePage() {
       <section className="border-b border-ink-700/60 bg-ink-900/40">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:items-center">
           <FadeIn>
-            <span className="text-xs uppercase tracking-widest text-signal-cyan/80">Flagship assessment</span>
+            <span className="text-xs uppercase tracking-widest text-signal-teal/80">Flagship assessment</span>
             <h2 className="mt-3 font-display text-3xl text-paper-100">{featured.title}</h2>
             <p className="mt-4 max-w-lg text-paper-100/65">{featured.shortDescription}</p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm text-paper-100/50">
@@ -119,7 +121,7 @@ export default function HomePage() {
             </div>
             <Link
               href={`/assessments/${featured.slug}`}
-              className="focus-ring mt-8 inline-flex min-h-[48px] items-center gap-2 rounded-xl2 bg-signal-violet px-6 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              className="focus-ring mt-8 inline-flex min-h-[48px] items-center gap-2 rounded-xl2 bg-signal-blue px-6 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               Take the EvalOtter Profile <ArrowRight className="h-4 w-4" />
             </Link>
@@ -164,7 +166,7 @@ export default function HomePage() {
           <div className="mt-10 text-center">
             <Link
               href="/assessments"
-              className="focus-ring inline-flex items-center gap-1.5 text-sm font-medium text-signal-cyan hover:opacity-80"
+              className="focus-ring inline-flex items-center gap-1.5 text-sm font-medium text-signal-teal hover:opacity-80"
             >
               View the full catalogue <ArrowRight className="h-4 w-4" />
             </Link>
@@ -181,7 +183,7 @@ export default function HomePage() {
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((step, i) => (
               <FadeIn key={step.title} delay={i * 0.06}>
-                <span className="font-display text-3xl text-signal-cyan/70">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-display text-3xl text-signal-teal/70">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-3 text-paper-100">{step.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-paper-100/55">{step.body}</p>
               </FadeIn>
@@ -199,7 +201,7 @@ export default function HomePage() {
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {WHY_DIFFERENT.map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.08}>
-                <item.icon className="h-6 w-6 text-signal-violet" />
+                <item.icon className="h-6 w-6 text-signal-blue" />
                 <h3 className="mt-4 text-paper-100">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-paper-100/55">{item.body}</p>
               </FadeIn>
@@ -221,7 +223,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/methodology"
-              className="focus-ring mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-signal-cyan hover:opacity-80"
+              className="focus-ring mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-signal-teal hover:opacity-80"
             >
               Read our methodology <ArrowRight className="h-4 w-4" />
             </Link>
@@ -267,7 +269,7 @@ export default function HomePage() {
               >
                 <summary className="focus-ring flex cursor-pointer list-none items-center justify-between text-sm font-medium text-paper-100">
                   {faq.q}
-                  <CheckCircle2 className="h-4 w-4 text-paper-100/20 transition-colors group-open:text-signal-cyan" />
+                  <CheckCircle2 className="h-4 w-4 text-paper-100/20 transition-colors group-open:text-signal-teal" />
                 </summary>
                 <p className="mt-3 text-sm leading-relaxed text-paper-100/60">{faq.a}</p>
               </details>
@@ -285,7 +287,7 @@ export default function HomePage() {
             </h2>
             <Link
               href="/assessments"
-              className="focus-ring mt-8 inline-flex min-h-[52px] items-center gap-2 rounded-xl2 bg-signal-violet px-8 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              className="focus-ring mt-8 inline-flex min-h-[52px] items-center gap-2 rounded-xl2 bg-signal-blue px-8 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               Explore Assessments <ArrowRight className="h-4 w-4" />
             </Link>

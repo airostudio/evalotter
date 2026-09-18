@@ -47,11 +47,11 @@ export async function PalmistryResult({
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
-      <span className="text-xs uppercase tracking-widest text-signal-cyan/80">{assessmentTitle}</span>
+      <span className="text-xs uppercase tracking-widest text-signal-teal/80">{assessmentTitle}</span>
       <h1 className="mt-2 font-display text-3xl text-paper-100 sm:text-4xl">Your reading</h1>
 
       <div className="mt-4 flex gap-3 rounded-xl2 border border-ink-600 bg-ink-800/40 p-4 text-sm text-paper-100/60">
-        <ShieldCheck className="h-5 w-5 shrink-0 text-signal-cyan" />
+        <ShieldCheck className="h-5 w-5 shrink-0 text-signal-teal" />
         <p>For entertainment and self-reflection only — not a scientific or clinical analysis.</p>
       </div>
 

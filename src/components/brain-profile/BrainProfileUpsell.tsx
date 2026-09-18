@@ -10,7 +10,7 @@ import { Lock } from "lucide-react";
 export function BrainProfileUpsell({ completed, total }: { completed: number; total: number }) {
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6">
-      <span className="text-xs uppercase tracking-widest text-signal-cyan/80">My Brain Profile</span>
+      <span className="text-xs uppercase tracking-widest text-signal-teal/80">My Brain Profile</span>
       <h1 className="mt-2 font-display text-4xl text-paper-100">The complete picture of how you think</h1>
 
       <div className="mt-10 flex flex-col items-center gap-4 rounded-xl2 border border-dashed border-ink-600 bg-ink-800/20 px-6 py-12">
@@ -31,13 +31,13 @@ export function BrainProfileUpsell({ completed, total }: { completed: number; to
         <div className="mt-2 flex flex-wrap justify-center gap-3">
           <Link
             href="/pricing"
-            className="focus-ring flex min-h-[48px] items-center rounded-xl2 bg-signal-violet px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
+            className="focus-ring flex min-h-[48px] items-center rounded-xl2 bg-signal-blue px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
             Unlock the full collection
           </Link>
           <Link
             href="/assessments"
-            className="focus-ring flex min-h-[48px] items-center rounded-xl2 border border-ink-600 px-6 text-sm font-medium text-paper-100 hover:border-signal-cyan/60 hover:text-signal-cyan"
+            className="focus-ring flex min-h-[48px] items-center rounded-xl2 border border-ink-600 px-6 text-sm font-medium text-paper-100 hover:border-signal-teal/60 hover:text-signal-teal"
           >
             Browse assessments
           </Link>

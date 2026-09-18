@@ -18,7 +18,7 @@ export function LockedStat({ label, cta }: { label: string; cta: string }) {
       <p className="max-w-[15rem] text-sm leading-relaxed text-paper-100/50">{label}</p>
       <Link
         href="/pricing"
-        className="focus-ring rounded text-sm font-medium text-signal-cyan hover:opacity-80"
+        className="focus-ring rounded text-sm font-medium text-signal-teal hover:opacity-80"
       >
         {cta}
       </Link>

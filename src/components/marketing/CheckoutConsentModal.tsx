@@ -30,7 +30,7 @@ export function CheckoutConsentModal({
             type="checkbox"
             checked={acknowledged}
             onChange={(e) => setAcknowledged(e.target.checked)}
-            className="mt-0.5 h-4 w-4 shrink-0 rounded border-ink-500 bg-ink-800 accent-signal-cyan"
+            className="mt-0.5 h-4 w-4 shrink-0 rounded border-ink-500 bg-ink-800 accent-signal-teal"
           />
           I request immediate supply of my purchased digital assessment and report. Where applicable
           law provides a cancellation or withdrawal period, I expressly request that performance
@@ -52,7 +52,7 @@ export function CheckoutConsentModal({
             type="button"
             disabled={!acknowledged}
             onClick={onConfirm}
-            className="focus-ring min-h-[40px] rounded-xl2 bg-signal-violet px-4 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
+            className="focus-ring min-h-[40px] rounded-xl2 bg-signal-blue px-4 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
           >
             Continue to payment
           </button>

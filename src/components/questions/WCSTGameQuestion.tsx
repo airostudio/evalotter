@@ -217,7 +217,7 @@ export function WCSTGameQuestion({ onChange }: QuestionComponentProps) {
             type="button"
             onClick={() => chooseKey(i)}
             disabled={busyState}
-            className="focus-ring flex h-16 w-16 shrink-0 items-center justify-center rounded-xl2 border border-ink-600 bg-ink-800/60 hover:border-signal-cyan/50 disabled:opacity-60 sm:h-24 sm:w-24"
+            className="focus-ring flex h-16 w-16 shrink-0 items-center justify-center rounded-xl2 border border-ink-600 bg-ink-800/60 hover:border-signal-teal/50 disabled:opacity-60 sm:h-24 sm:w-24"
           >
             <CardShape shape={key.shape} color={key.color} count={key.count} />
           </button>
@@ -236,7 +236,7 @@ export function WCSTGameQuestion({ onChange }: QuestionComponentProps) {
           {currentCard && <CardShape shape={currentCard.shape} color={currentCard.color} count={currentCard.count} />}
         </div>
         {feedback && (
-          <span className={clsx("text-sm font-medium", feedback === "correct" ? "text-green-400" : "text-red-400")}>
+          <span className={clsx("text-sm font-medium", feedback === "correct" ? "text-signal-green" : "text-signal-rose")}>
             {feedback === "correct" ? "Correct" : "Incorrect"}
           </span>
         )}

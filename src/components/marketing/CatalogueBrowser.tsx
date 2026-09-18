@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { clsx } from "clsx";
 import { AssessmentCard } from "./AssessmentCard";
+import { EmptyState } from "@/components/ui/EmptyState";
 import type { CatalogueAssessment } from "@/config/catalogue";
 
 export function CatalogueBrowser({
@@ -34,7 +35,7 @@ export function CatalogueBrowser({
             className={clsx(
               "focus-ring rounded-full border px-4 py-2 text-sm transition-colors",
               activeCategory === key
-                ? "border-signal-cyan/70 bg-signal-cyan/10 text-paper-100"
+                ? "border-signal-teal/70 bg-signal-teal/10 text-paper-100"
                 : "border-ink-600 text-paper-100/60 hover:border-ink-500"
             )}
           >
@@ -50,7 +51,13 @@ export function CatalogueBrowser({
       </div>
 
       {filtered.length === 0 && (
-        <p className="mt-12 text-center text-paper-100/50">No assessments in this category yet.</p>
+        <div className="mt-8">
+          <EmptyState
+            title="Nothing in this category yet"
+            body="More assessments are on the way. Try another category in the meantime."
+            mood="sleepy"
+          />
+        </div>
       )}
     </div>
   );

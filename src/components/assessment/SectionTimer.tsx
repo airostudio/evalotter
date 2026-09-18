@@ -34,7 +34,7 @@ export function SectionTimer({ seconds, onExpire }: { seconds: number; onExpire:
     <div
       className={clsx(
         "mb-6 flex items-center gap-1.5 self-end rounded-full border px-3 py-1.5 text-sm tabular-nums",
-        isUrgent ? "border-red-400/50 text-red-300" : "border-ink-600 text-paper-100/60"
+        isUrgent ? "border-red-400/50 text-signal-rose" : "border-ink-600 text-paper-100/60"
       )}
       role="timer"
       aria-live="polite"

@@ -14,7 +14,7 @@ export function RatingScaleQuestion({ value, onChange }: QuestionComponentProps)
           className={clsx(
             "focus-ring flex h-11 w-11 items-center justify-center rounded-full border text-sm font-medium transition-colors",
             selected === n
-              ? "border-signal-cyan/70 bg-signal-cyan/10 text-paper-100"
+              ? "border-signal-teal/70 bg-signal-teal/10 text-paper-100"
               : "border-ink-600 bg-ink-800/60 text-paper-100/70 hover:border-ink-500"
           )}
         >

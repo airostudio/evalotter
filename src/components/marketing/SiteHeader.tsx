@@ -51,7 +51,7 @@ export function SiteHeader({ user }: { user: AuthedUser | null }) {
                 <Link
                   href="/admin"
                   title="Admin area"
-                  className="focus-ring hidden items-center gap-1.5 rounded-xl2 border border-signal-cyan/40 bg-signal-cyan/10 px-4 py-2 text-sm text-signal-cyan transition-colors hover:border-signal-cyan/70 sm:inline-flex"
+                  className="focus-ring hidden items-center gap-1.5 rounded-xl2 border border-signal-teal/40 bg-signal-teal/10 px-4 py-2 text-sm text-signal-teal transition-colors hover:border-signal-teal/70 sm:inline-flex"
                 >
                   <ShieldCheck className="h-3.5 w-3.5" /> Admin
                 </Link>
@@ -75,7 +75,7 @@ export function SiteHeader({ user }: { user: AuthedUser | null }) {
               </Link>
               <Link
                 href="/signup"
-                className="focus-ring inline-flex min-h-[40px] items-center rounded-xl2 bg-signal-violet px-4 text-sm font-medium text-white transition-opacity hover:opacity-90"
+                className="focus-ring inline-flex min-h-[40px] items-center rounded-xl2 bg-signal-blue px-4 text-sm font-medium text-white transition-opacity hover:opacity-90"
               >
                 Get started
               </Link>

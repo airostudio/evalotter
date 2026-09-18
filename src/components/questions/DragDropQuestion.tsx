@@ -43,7 +43,7 @@ export function DragDropQuestion({ question, value, onChange }: QuestionComponen
               className={clsx(
                 "focus-ring rounded-full border px-4 py-2 text-sm transition-colors",
                 activeItem === item
-                  ? "border-signal-cyan bg-signal-cyan/10 text-paper-100"
+                  ? "border-signal-teal bg-signal-teal/10 text-paper-100"
                   : "border-ink-600 bg-ink-800/60 text-paper-100/85 hover:border-ink-500"
               )}
             >
@@ -65,7 +65,7 @@ export function DragDropQuestion({ question, value, onChange }: QuestionComponen
               {Object.entries(placements)
                 .filter(([, z]) => z === zone)
                 .map(([item]) => (
-                  <span key={item} className="rounded-full bg-signal-cyan/10 px-3 py-1 text-xs text-signal-cyan">
+                  <span key={item} className="rounded-full bg-signal-teal/10 px-3 py-1 text-xs text-signal-teal">
                     {item}
                   </span>
                 ))}

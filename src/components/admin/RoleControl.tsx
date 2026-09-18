@@ -58,13 +58,13 @@ export function RoleControl({
               }
             })
           }
-          className="focus-ring rounded-xl2 border border-ink-600 px-4 py-2 text-sm text-paper-100 transition-colors hover:border-signal-cyan/60 disabled:cursor-not-allowed disabled:opacity-40"
+          className="focus-ring rounded-xl2 border border-ink-600 px-4 py-2 text-sm text-paper-100 transition-colors hover:border-signal-teal/60 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {pending ? "Saving…" : "Apply"}
         </button>
       </div>
-      {error && <p className="text-xs text-red-300">{error}</p>}
-      {done && <p className="text-xs text-signal-cyan">Role updated and recorded in the audit log.</p>}
+      {error && <p className="text-xs text-signal-rose">{error}</p>}
+      {done && <p className="text-xs text-signal-teal">Role updated and recorded in the audit log.</p>}
     </div>
   );
 }

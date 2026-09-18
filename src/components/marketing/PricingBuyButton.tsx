@@ -51,7 +51,7 @@ export function PricingBuyButton({ type, assessmentId, children, className }: Pr
       <button type="button" onClick={() => setShowConsent(true)} disabled={loading} className={className}>
         {loading ? "…" : children}
       </button>
-      {error && <p className="text-center text-xs text-red-300">{error}</p>}
+      {error && <p className="text-center text-xs text-signal-rose">{error}</p>}
       {showConsent && (
         <CheckoutConsentModal
           onCancel={() => setShowConsent(false)}

@@ -43,7 +43,7 @@ export default async function AdminOverviewPage() {
       <Panel
         title="Recent activity"
         action={
-          <Link href="/admin/activity" className="focus-ring rounded text-xs text-signal-cyan hover:underline">
+          <Link href="/admin/activity" className="focus-ring rounded text-xs text-signal-teal hover:underline">
             View all
           </Link>
         }
@@ -63,7 +63,7 @@ export default async function AdminOverviewPage() {
                 <Td>
                   <Link
                     href={`/admin/users/${a.user_id}`}
-                    className="focus-ring rounded font-mono text-xs text-signal-cyan hover:underline"
+                    className="focus-ring rounded font-mono text-xs text-signal-teal hover:underline"
                   >
                     {a.user_id.slice(0, 8)}…
                   </Link>

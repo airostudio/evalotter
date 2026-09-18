@@ -53,7 +53,7 @@ export function ResultsPaywall({ attemptId, assessmentTitle, confirmFailed }: Re
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="focus-ring mt-6 flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl2 border border-signal-cyan/40 bg-signal-cyan/[0.06] px-5 text-sm font-medium text-signal-cyan hover:bg-signal-cyan/[0.1]"
+          className="focus-ring mt-6 flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl2 border border-signal-teal/40 bg-signal-teal/[0.06] px-5 text-sm font-medium text-signal-teal hover:bg-signal-teal/[0.1]"
         >
           <Lock className="h-4 w-4" /> Unlock full results
         </button>
@@ -84,8 +84,8 @@ export function ResultsPaywall({ attemptId, assessmentTitle, confirmFailed }: Re
               </button>
 
               <div className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-signal-cyan" />
-                <span className="text-xs uppercase tracking-widest text-signal-cyan/80">Results ready</span>
+                <Sparkles className="h-4 w-4 text-signal-teal" />
+                <span className="text-xs uppercase tracking-widest text-signal-teal/80">Results ready</span>
               </div>
               <h2 className="mt-2 font-display text-xl text-paper-100">
                 Your {assessmentTitle} results are in
@@ -95,7 +95,7 @@ export function ResultsPaywall({ attemptId, assessmentTitle, confirmFailed }: Re
               </p>
 
               {error && (
-                <p className="mt-4 rounded-xl2 border border-red-500/30 bg-red-500/[0.06] px-3 py-2 text-xs text-red-300">
+                <p className="mt-4 rounded-xl2 border border-red-500/30 bg-red-500/[0.06] px-3 py-2 text-xs text-signal-rose">
                   {error}
                 </p>
               )}
@@ -120,9 +120,9 @@ export function ResultsPaywall({ attemptId, assessmentTitle, confirmFailed }: Re
                   type="button"
                   onClick={() => setPendingType("collection")}
                   disabled={loadingType !== null}
-                  className="focus-ring relative flex min-h-[64px] flex-col justify-center rounded-xl2 border border-signal-cyan/60 bg-signal-cyan/[0.06] px-5 text-left hover:bg-signal-cyan/[0.1] disabled:opacity-50"
+                  className="focus-ring relative flex min-h-[64px] flex-col justify-center rounded-xl2 border border-signal-teal/60 bg-signal-teal/[0.06] px-5 text-left hover:bg-signal-teal/[0.1] disabled:opacity-50"
                 >
-                  <span className="absolute -top-2.5 left-4 rounded-full bg-signal-cyan px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-ink-900">
+                  <span className="absolute -top-2.5 left-4 rounded-full bg-signal-teal px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-ink-900">
                     Best value
                   </span>
                   <span className="flex items-center justify-between">
@@ -130,7 +130,7 @@ export function ResultsPaywall({ attemptId, assessmentTitle, confirmFailed }: Re
                       <span className="block text-sm font-medium text-paper-100">Full collection</span>
                       <span className="block text-xs text-paper-100/50">Every assessment, unlocked forever</span>
                     </span>
-                    <span className="font-display text-lg text-signal-cyan">
+                    <span className="font-display text-lg text-signal-teal">
                       {loadingType === "collection" ? "…" : "$18.99"}
                     </span>
                   </span>

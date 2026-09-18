@@ -45,7 +45,7 @@ export function MemoryRecognitionQuestion({ question, value, onChange }: Questio
           {studyItems.map((item) => (
             <li
               key={item.id}
-              className="rounded-full border border-signal-cyan/40 bg-signal-cyan/10 px-5 py-2.5 text-[15px] text-paper-100"
+              className="rounded-full border border-signal-teal/40 bg-signal-teal/10 px-5 py-2.5 text-[15px] text-paper-100"
             >
               {item.label}
             </li>
@@ -78,7 +78,7 @@ export function MemoryRecognitionQuestion({ question, value, onChange }: Questio
               className={clsx(
                 "focus-ring rounded-xl2 border px-4 py-3 text-left text-[14px] transition-colors",
                 isSelected
-                  ? "border-signal-cyan/70 bg-signal-cyan/10 text-paper-100"
+                  ? "border-signal-teal/70 bg-signal-teal/10 text-paper-100"
                   : "border-ink-600 bg-ink-800/60 text-paper-100/85 hover:border-ink-500"
               )}
             >

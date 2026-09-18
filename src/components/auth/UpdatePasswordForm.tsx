@@ -22,12 +22,12 @@ export function UpdatePasswordForm() {
         />
       </label>
 
-      {state.error && <p className="text-sm text-red-300">{state.error}</p>}
+      {state.error && <p className="text-sm text-signal-rose">{state.error}</p>}
 
       <button
         type="submit"
         disabled={isPending}
-        className="focus-ring mt-2 flex min-h-[48px] items-center justify-center rounded-xl2 bg-signal-violet text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+        className="focus-ring mt-2 flex min-h-[48px] items-center justify-center rounded-xl2 bg-signal-blue text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
       >
         {isPending ? "Updating…" : "Update password"}
       </button>

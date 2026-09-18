@@ -49,7 +49,7 @@ export default function HowItWorksPage() {
 
         <Link
           href="/assessments"
-          className="focus-ring mt-12 inline-flex min-h-[48px] items-center gap-2 rounded-xl2 bg-signal-violet px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          className="focus-ring mt-12 inline-flex min-h-[48px] items-center gap-2 rounded-xl2 bg-signal-blue px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
         >
           Explore assessments <ArrowRight className="h-4 w-4" />
         </Link>

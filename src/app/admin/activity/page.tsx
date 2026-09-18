@@ -27,7 +27,7 @@ export default async function AdminActivityPage() {
               <Td>
                 <Link
                   href={`/admin/users/${a.user_id}`}
-                  className="focus-ring rounded font-mono text-xs text-signal-cyan hover:underline"
+                  className="focus-ring rounded font-mono text-xs text-signal-teal hover:underline"
                 >
                   {a.user_id.slice(0, 8)}…
                 </Link>

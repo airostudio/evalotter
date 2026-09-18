@@ -134,13 +134,13 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
             href={`/assessments/${attempt.assessments?.slug ?? ""}`}
-            className="focus-ring flex min-h-[48px] items-center rounded-xl2 bg-signal-violet px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
+            className="focus-ring flex min-h-[48px] items-center rounded-xl2 bg-signal-blue px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
             Take it again
           </Link>
           <Link
             href="/results"
-            className="focus-ring flex min-h-[48px] items-center rounded-xl2 border border-ink-600 px-6 text-sm font-medium text-paper-100 hover:border-signal-cyan/60"
+            className="focus-ring flex min-h-[48px] items-center rounded-xl2 border border-ink-600 px-6 text-sm font-medium text-paper-100 hover:border-signal-teal/60"
           >
             All results
           </Link>
@@ -212,7 +212,7 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-      <span className="text-xs uppercase tracking-widest text-signal-cyan/80">
+      <span className="text-xs uppercase tracking-widest text-signal-teal/80">
         {attempt.assessments?.title}
       </span>
       <h1 className="mt-2 font-display text-3xl text-paper-100 sm:text-4xl">Your results</h1>
@@ -222,7 +222,7 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
           <div className="flex flex-col items-center gap-4 rounded-xl2 border border-ink-700 bg-ink-800/50 p-10 text-center shadow-panel">
             <ScoreRing score={Number(result.overall_score)} />
             {result.result_ranges?.title && (
-              <span className="mt-4 block rounded-full bg-signal-cyan/10 px-4 py-1.5 text-sm font-medium text-signal-cyan">
+              <span className="mt-4 block rounded-full bg-signal-teal/10 px-4 py-1.5 text-sm font-medium text-signal-teal">
                 {result.result_ranges.title}
               </span>
             )}
@@ -311,9 +311,9 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
       {unlocked && interpretation && (
         <div className="mt-10">
           <>
-            <div className="rounded-xl2 border border-signal-cyan/30 bg-signal-cyan/[0.04] p-6">
+            <div className="rounded-xl2 border border-signal-teal/30 bg-signal-teal/[0.04] p-6">
               <div className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-signal-cyan" />
+                <Sparkles className="h-4 w-4 text-signal-teal" />
                 <h2 className="text-sm font-medium text-paper-100/70">AI interpretation</h2>
               </div>
               <p className="mt-3 text-[15px] leading-relaxed text-paper-100/85">{interpretation.summary}</p>
@@ -330,7 +330,7 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
                   <ul className="mt-2 flex flex-col gap-1.5">
                     {interpretation.recommendations!.map((r: string, i: number) => (
                       <li key={i} className="flex gap-2 text-sm text-paper-100/75">
-                        <span className="text-signal-cyan/60">→</span> {r}
+                        <span className="text-signal-teal/60">→</span> {r}
                       </li>
                     ))}
                   </ul>
@@ -340,7 +340,7 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
               {interpretation.suggested_next_assessment_slug && (
                 <Link
                   href={`/assessments/${interpretation.suggested_next_assessment_slug}`}
-                  className="focus-ring mt-5 inline-flex min-h-[40px] items-center gap-1.5 rounded-xl2 border border-ink-600 px-4 text-sm text-paper-100 hover:border-signal-cyan/50"
+                  className="focus-ring mt-5 inline-flex min-h-[40px] items-center gap-1.5 rounded-xl2 border border-ink-600 px-4 text-sm text-paper-100 hover:border-signal-teal/50"
                 >
                   Suggested next: {interpretation.suggested_next_assessment_slug.replace(/-/g, " ")} →
                 </Link>

@@ -26,7 +26,7 @@ export function AssessmentStartGate({ formAction }: { formAction: (formData: For
             type="checkbox"
             checked={understood}
             onChange={(e) => setUnderstood(e.target.checked)}
-            className="mt-1 h-4 w-4 rounded border-ink-500 bg-ink-800 accent-signal-cyan"
+            className="mt-1 h-4 w-4 rounded border-ink-500 bg-ink-800 accent-signal-teal"
           />
           I understand the nature and limitations of this assessment.
         </label>
@@ -35,7 +35,7 @@ export function AssessmentStartGate({ formAction }: { formAction: (formData: For
         <button
           type="submit"
           disabled={!understood}
-          className="focus-ring flex min-h-[48px] items-center rounded-xl2 bg-signal-violet px-7 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+          className="focus-ring flex min-h-[48px] items-center rounded-xl2 bg-signal-blue px-7 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
         >
           Start assessment
         </button>

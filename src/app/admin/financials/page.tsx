@@ -76,7 +76,7 @@ export default async function AdminFinancialsPage() {
                 <Td>
                   <Link
                     href={`/admin/users/${p.user_id}`}
-                    className="focus-ring rounded font-mono text-xs text-signal-cyan hover:underline"
+                    className="focus-ring rounded font-mono text-xs text-signal-teal hover:underline"
                   >
                     {p.user_id.slice(0, 8)}…
                   </Link>

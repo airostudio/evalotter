@@ -30,7 +30,7 @@ export default async function AdminAssessmentDetailPage({
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <Link href="/admin/assessments" className="focus-ring rounded text-xs text-signal-cyan hover:underline">
+        <Link href="/admin/assessments" className="focus-ring rounded text-xs text-signal-teal hover:underline">
           ← All assessments
         </Link>
         <h2 className="mt-2 font-display text-2xl text-paper-100">{assessment.title}</h2>

@@ -17,7 +17,7 @@ export function SignupForm() {
     return (
       <div className="flex flex-col gap-4 rounded-xl2 border border-ink-600 bg-ink-800/40 p-6">
         <div className="flex items-center gap-2">
-          <MailCheck className="h-5 w-5 text-signal-cyan" />
+          <MailCheck className="h-5 w-5 text-signal-teal" />
           <h2 className="font-display text-lg text-paper-100">Check your email</h2>
         </div>
         <p className="text-sm leading-relaxed text-paper-100/65">
@@ -29,7 +29,7 @@ export function SignupForm() {
         </p>
         <Link
           href="/login"
-          className="focus-ring text-sm font-medium text-signal-cyan hover:opacity-80"
+          className="focus-ring text-sm font-medium text-signal-teal hover:opacity-80"
         >
           Back to log in
         </Link>
@@ -75,24 +75,24 @@ export function SignupForm() {
           name="ageConfirmed"
           type="checkbox"
           required
-          className="mt-0.5 h-4 w-4 rounded border-ink-500 bg-ink-800 accent-signal-cyan"
+          className="mt-0.5 h-4 w-4 rounded border-ink-500 bg-ink-800 accent-signal-teal"
         />
         I confirm that I am at least 18 years old.
       </label>
 
-      {state.error && <p className="text-sm text-red-300">{state.error}</p>}
+      {state.error && <p className="text-sm text-signal-rose">{state.error}</p>}
 
       <button
         type="submit"
         disabled={isPending}
-        className="focus-ring mt-2 flex min-h-[48px] items-center justify-center rounded-xl2 bg-signal-violet text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+        className="focus-ring mt-2 flex min-h-[48px] items-center justify-center rounded-xl2 bg-signal-blue text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
       >
         {isPending ? "Creating account…" : "Create account"}
       </button>
 
       <p className="text-center text-xs text-paper-100/50">
         Already have an account?{" "}
-        <Link href="/login" className="focus-ring text-paper-100 hover:text-signal-cyan">
+        <Link href="/login" className="focus-ring text-paper-100 hover:text-signal-teal">
           Log in
         </Link>
       </p>

@@ -60,7 +60,7 @@ export default async function AdminUsersPage({
                 <Td>
                   <Link
                     href={`/admin/users/${u.id}`}
-                    className="focus-ring rounded text-xs text-signal-cyan hover:underline"
+                    className="focus-ring rounded text-xs text-signal-teal hover:underline"
                   >
                     Drill down
                   </Link>

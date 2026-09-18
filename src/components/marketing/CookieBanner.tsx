@@ -87,7 +87,7 @@ export function CookieBanner() {
           <button
             type="button"
             onClick={() => choose("accepted")}
-            className="focus-ring min-h-[40px] rounded-xl2 bg-signal-violet px-4 text-xs font-medium text-white hover:opacity-90"
+            className="focus-ring min-h-[40px] rounded-xl2 bg-signal-blue px-4 text-xs font-medium text-white hover:opacity-90"
           >
             Accept optional cookies
           </button>

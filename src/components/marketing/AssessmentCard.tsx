@@ -16,11 +16,11 @@ export function AssessmentCard({ assessment, status = "not_started", latestScore
       className={`group flex flex-col rounded-xl2 border border-ink-700 bg-ink-800/50 p-6 shadow-panel transition-colors hover:border-ink-500 ${assessment.comingSoon ? "opacity-70" : ""}`}
     >
       <div className="flex items-start justify-between">
-        <span className="flex h-11 w-11 items-center justify-center rounded-xl2 bg-signal-violet/15 text-signal-violet">
+        <span className="flex h-11 w-11 items-center justify-center rounded-xl2 bg-signal-blue/15 text-signal-blue">
           <AssessmentIcon icon={assessment.icon} className="h-5 w-5" />
         </span>
         {assessment.comingSoon ? (
-          <span className="rounded-full border border-signal-cyan/30 bg-signal-cyan/10 px-2.5 py-1 text-[11px] font-medium text-signal-cyan">
+          <span className="rounded-full border border-signal-teal/30 bg-signal-teal/10 px-2.5 py-1 text-[11px] font-medium text-signal-teal">
             Coming soon
           </span>
         ) : (
@@ -69,7 +69,7 @@ export function AssessmentCard({ assessment, status = "not_started", latestScore
       ) : (
         <Link
           href={`/assessments/${assessment.slug}`}
-          className="focus-ring mt-5 flex min-h-[44px] items-center justify-center rounded-xl2 border border-ink-600 text-sm font-medium text-paper-100 transition-colors group-hover:border-signal-cyan/60 group-hover:text-signal-cyan"
+          className="focus-ring mt-5 flex min-h-[44px] items-center justify-center rounded-xl2 border border-ink-600 text-sm font-medium text-paper-100 transition-colors group-hover:border-signal-teal/60 group-hover:text-signal-teal"
         >
           {status === "completed" ? "View results" : status === "in_progress" ? "Continue" : "Start assessment"}
         </Link>

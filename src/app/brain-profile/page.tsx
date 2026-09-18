@@ -51,7 +51,7 @@ export default async function BrainProfilePage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
-      <span className="text-xs uppercase tracking-widest text-signal-cyan/80">My Brain Profile</span>
+      <span className="text-xs uppercase tracking-widest text-signal-teal/80">My Brain Profile</span>
       <h1 className="mt-2 font-display text-4xl text-paper-100">The complete picture of how you think</h1>
 
       <div className="mt-10 grid gap-6 md:grid-cols-[auto_1fr]">
@@ -77,7 +77,7 @@ export default async function BrainProfilePage() {
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
         {profile?.strongest_dimension_key && (
           <div className="flex items-center gap-3 rounded-xl2 border border-ink-700 bg-ink-800/30 p-5">
-            <TrendingUp className="h-5 w-5 text-signal-cyan" />
+            <TrendingUp className="h-5 w-5 text-signal-teal" />
             <div>
               <p className="text-xs text-paper-100/40">Strongest</p>
               <p className="text-paper-100">
@@ -111,7 +111,7 @@ export default async function BrainProfilePage() {
                 </div>
                 <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-ink-700">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-signal-blue to-signal-cyan"
+                    className="h-full rounded-full bg-gradient-to-r from-signal-blue to-signal-teal"
                     style={{ width: `${Math.min(100, Number(d.score))}%` }}
                   />
                 </div>
@@ -130,7 +130,7 @@ export default async function BrainProfilePage() {
                 key={i}
                 className="flex items-center gap-2 rounded-full border border-ink-600 bg-ink-800/40 px-4 py-2 text-sm text-paper-100/80"
               >
-                <Trophy className="h-4 w-4 text-signal-cyan" />
+                <Trophy className="h-4 w-4 text-signal-teal" />
                 {(a.achievements as { title?: string } | null)?.title}
               </div>
             ))}
@@ -147,7 +147,7 @@ export default async function BrainProfilePage() {
         </a>
         <Link
           href="/assessments"
-          className="focus-ring flex min-h-[44px] items-center gap-2 rounded-xl2 bg-signal-violet px-5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          className="focus-ring flex min-h-[44px] items-center gap-2 rounded-xl2 bg-signal-blue px-5 text-sm font-medium text-white transition-opacity hover:opacity-90"
         >
           Complete more assessments
         </Link>

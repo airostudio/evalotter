@@ -27,14 +27,14 @@ export function LikertScaleQuestion({ value, onChange }: QuestionComponentProps)
               className={clsx(
                 "focus-ring flex h-14 flex-col items-center justify-center rounded-xl2 border transition-colors",
                 isSelected
-                  ? "border-signal-cyan/70 bg-signal-cyan/10"
+                  ? "border-signal-teal/70 bg-signal-teal/10"
                   : "border-ink-600 bg-ink-800/60 hover:border-ink-500"
               )}
             >
               <span
                 className={clsx(
                   "h-3 w-3 rounded-full",
-                  isSelected ? "bg-signal-cyan" : "bg-ink-500"
+                  isSelected ? "bg-signal-teal" : "bg-ink-500"
                 )}
               />
             </button>

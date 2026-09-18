@@ -47,7 +47,7 @@ export function MemoryRecallQuestion({ question, value, onChange }: QuestionComp
           {studyItems.map((item) => (
             <li
               key={item.id}
-              className="rounded-full border border-signal-cyan/40 bg-signal-cyan/10 px-5 py-2.5 text-[15px] text-paper-100"
+              className="rounded-full border border-signal-teal/40 bg-signal-teal/10 px-5 py-2.5 text-[15px] text-paper-100"
             >
               {item.label}
             </li>

@@ -60,7 +60,7 @@ export function ImageUploadQuestion({ value, onChange, onUpload }: ImageUploadQu
           type="button"
           onClick={() => inputRef.current?.click()}
           disabled={uploading}
-          className="focus-ring flex h-40 w-full max-w-sm flex-col items-center justify-center gap-2 rounded-xl2 border border-dashed border-ink-500 bg-ink-800/40 text-paper-100/70 transition-colors hover:border-signal-cyan/60"
+          className="focus-ring flex h-40 w-full max-w-sm flex-col items-center justify-center gap-2 rounded-xl2 border border-dashed border-ink-500 bg-ink-800/40 text-paper-100/70 transition-colors hover:border-signal-teal/60"
         >
           <UploadCloud className="h-6 w-6" />
           <span className="text-sm">{uploading ? "Uploading…" : hasValue ? "Uploaded — tap to replace" : "Tap to upload a photo"}</span>

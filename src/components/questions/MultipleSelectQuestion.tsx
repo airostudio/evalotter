@@ -25,14 +25,14 @@ export function MultipleSelectQuestion({ question, value, onChange }: QuestionCo
             className={clsx(
               "focus-ring flex min-h-[56px] items-center rounded-xl2 border px-5 py-4 text-left text-[15px] leading-snug transition-colors",
               isSelected
-                ? "border-signal-cyan/70 bg-signal-cyan/10 text-paper-100"
+                ? "border-signal-teal/70 bg-signal-teal/10 text-paper-100"
                 : "border-ink-600 bg-ink-800/60 text-paper-100/85 hover:border-ink-500 hover:bg-ink-700/60"
             )}
           >
             <span
               className={clsx(
                 "mr-3 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border",
-                isSelected ? "border-signal-cyan bg-signal-cyan" : "border-ink-500"
+                isSelected ? "border-signal-teal bg-signal-teal" : "border-ink-500"
               )}
             >
               {isSelected && <span className="h-2 w-2 rounded-sm bg-ink-950" />}

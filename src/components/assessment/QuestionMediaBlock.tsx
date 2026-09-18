@@ -81,7 +81,7 @@ function AudioStimulus({ url, alt }: { url: string; alt?: string }) {
       <button
         type="button"
         onClick={speak}
-        className="focus-ring flex min-h-[52px] items-center gap-2 rounded-xl2 border border-signal-cyan/40 bg-signal-cyan/[0.06] px-6 text-sm font-medium text-signal-cyan hover:bg-signal-cyan/[0.1]"
+        className="focus-ring flex min-h-[52px] items-center gap-2 rounded-xl2 border border-signal-teal/40 bg-signal-teal/[0.06] px-6 text-sm font-medium text-signal-teal hover:bg-signal-teal/[0.1]"
       >
         <Volume2 className={playing ? "h-4 w-4 animate-pulse" : "h-4 w-4"} />
         {playing ? "Playing…" : "Play again"}

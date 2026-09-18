@@ -40,14 +40,14 @@ export function MatchingQuestion({ question, value, onChange }: QuestionComponen
               className={clsx(
                 "focus-ring rounded-xl2 border px-4 py-3 text-left text-sm transition-colors",
                 isActive
-                  ? "border-signal-cyan bg-signal-cyan/10 text-paper-100"
+                  ? "border-signal-teal bg-signal-teal/10 text-paper-100"
                   : isMatched
                     ? "border-ink-500 bg-ink-700/60 text-paper-100/70"
                     : "border-ink-600 bg-ink-800/60 text-paper-100/85 hover:border-ink-500"
               )}
             >
               {left}
-              {isMatched && <span className="ml-2 text-xs text-signal-cyan">→ {pairs[left]}</span>}
+              {isMatched && <span className="ml-2 text-xs text-signal-teal">→ {pairs[left]}</span>}
             </button>
           );
         })}

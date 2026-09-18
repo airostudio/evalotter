@@ -11,7 +11,7 @@ export function SliderQuestion({ value, onChange }: QuestionComponentProps) {
         max={100}
         value={current}
         onChange={(e) => onChange({ type: "slider", value: Number(e.target.value) })}
-        className="focus-ring h-2 w-full cursor-pointer appearance-none rounded-full bg-ink-600 accent-signal-cyan"
+        className="focus-ring h-2 w-full cursor-pointer appearance-none rounded-full bg-ink-600 accent-signal-teal"
       />
       <div className="text-center text-2xl font-display text-paper-100">{current}</div>
     </div>

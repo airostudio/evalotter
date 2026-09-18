@@ -23,7 +23,7 @@ export default async function AdminAccessPage() {
                 <Td><Badge value={p.role} /></Td>
                 <Td className="whitespace-nowrap">{date(p.created_at)}</Td>
                 <Td>
-                  <Link href={`/admin/users/${p.id}`} className="focus-ring rounded text-xs text-signal-cyan hover:underline">
+                  <Link href={`/admin/users/${p.id}`} className="focus-ring rounded text-xs text-signal-teal hover:underline">
                     Manage
                   </Link>
                 </Td>
