@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Download, Trophy, TrendingDown, TrendingUp } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { requireUser } from "@/lib/auth/current-user";
+import { requireUserPage } from "@/lib/auth/current-user";
 import { RadarChartCard } from "@/components/charts/RadarChartCard";
 import { ScoreRing } from "@/components/charts/ScoreRing";
 import { CATALOGUE } from "@/config/catalogue";
@@ -11,7 +11,7 @@ import { BrainProfileUpsell } from "@/components/brain-profile/BrainProfileUpsel
 export const metadata = { title: "My Brain Profile" };
 
 export default async function BrainProfilePage() {
-  const user = await requireUser();
+  const user = await requireUserPage("/brain-profile");
   const supabase = await createClient();
 
   // The Brain Profile IS the full-collection product. Nothing below is

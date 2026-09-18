@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowLeft, Lock } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { requireUser } from "@/lib/auth/current-user";
+import { requireUserPage } from "@/lib/auth/current-user";
 import { hasFullCollectionAccess, hasReportAccess } from "@/lib/access/entitlements";
 
 export const metadata: Metadata = { title: "My Results" };
@@ -16,7 +16,7 @@ export const dynamic = "force-dynamic";
  * page: a per-assessment score is shown only where that report is unlocked.
  */
 export default async function ResultsIndexPage() {
-  const user = await requireUser();
+  const user = await requireUserPage("/results");
   const supabase = await createClient();
 
   const { data } = await supabase

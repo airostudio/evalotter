@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { notFound, redirect } from "next/navigation";
 import { Download, RefreshCw, Sparkles } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { requireUser } from "@/lib/auth/current-user";
+import { requireUserPage } from "@/lib/auth/current-user";
 import { hasReportAccess } from "@/lib/access/entitlements";
 import { confirmCheckoutSessionAction } from "@/actions/checkout";
 import { ScoreRing } from "@/components/charts/ScoreRing";
@@ -33,7 +33,7 @@ interface PageProps {
 export default async function ResultPage({ params, searchParams }: PageProps) {
   const { attemptId } = await params;
   const { checkout_session_id: checkoutSessionId } = await searchParams;
-  const user = await requireUser();
+  const user = await requireUserPage(`/results/${attemptId}`);
   const supabase = await createClient();
 
   // Redirect from Stripe Checkout: confirm the purchase immediately (the

@@ -1,4 +1,5 @@
 import "server-only";
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import type { Profile, UserRole } from "@/types";
 
@@ -76,10 +77,41 @@ export async function getCurrentUser(): Promise<AuthedUser | null> {
   }
 }
 
+/**
+ * For API routes and server actions: throws when unauthenticated.
+ *
+ * Pages should use requireUserPage instead — a thrown error renders the
+ * 500 page, which is the wrong answer to "you are not logged in".
+ */
 export async function requireUser(): Promise<AuthedUser> {
   const user = await getCurrentUser();
   if (!user) throw new Error("Authentication required");
   return user;
+}
+
+/**
+ * For pages: sends an unauthenticated visitor to log in, and brings them
+ * back afterwards.
+ *
+ * The middleware normally redirects before a protected page renders, so
+ * this looks redundant — but the middleware deliberately fails OPEN when
+ * Supabase is slow or unreachable (hardened after live 504s), and a page
+ * calling requireUser() then threw, turning a transient database problem
+ * into a 500 for anyone sitting on /dashboard. Production logged exactly
+ * that: "[middleware] Supabase session check failed: Supabase call timed
+ * out after 5000ms".
+ *
+ * Redirecting here means the worst case is being asked to log in again,
+ * not an error page.
+ */
+export async function requireUserPage(next?: string): Promise<AuthedUser> {
+  const user = await getCurrentUser();
+  if (user) return user;
+
+  // Only ever a path on this origin, so the parameter cannot bounce
+  // someone off-site after login.
+  const safeNext = next && next.startsWith("/") && !next.startsWith("//") ? next : null;
+  redirect(safeNext ? `/login?next=${encodeURIComponent(safeNext)}` : "/login");
 }
 
 export async function requireRole(roles: UserRole[]): Promise<AuthedUser> {

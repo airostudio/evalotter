@@ -1,6 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { requireUser } from "@/lib/auth/current-user";
+import { requireUserPage } from "@/lib/auth/current-user";
 import { getAssessmentWithVersionById } from "@/lib/assessment-engine/queries";
 import { mapResponse } from "@/lib/assessment-engine/mappers";
 import { registerBuiltInAssessmentEngines } from "@/lib/assessment-engine/engines";
@@ -16,7 +16,7 @@ interface PageProps {
 export default async function TakeAssessmentPage({ params, searchParams }: PageProps) {
   const { slug } = await params;
   const { attempt: attemptId } = await searchParams;
-  const user = await requireUser();
+  const user = await requireUserPage(`/assessments/${slug}/take`);
 
   if (!attemptId) redirect(`/assessments/${slug}`);
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Lock, Moon, PlayCircle, Sparkles, Trophy } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { requireUser } from "@/lib/auth/current-user";
+import { requireUserPage } from "@/lib/auth/current-user";
 import { ScoreRing } from "@/components/charts/ScoreRing";
 import { CATALOGUE } from "@/config/catalogue";
 import { PerfectLoveCodeCard } from "@/components/dashboard/PerfectLoveCodeCard";
@@ -9,7 +9,7 @@ import { hasFullCollectionAccess, hasReportAccess, hasSleepAccess } from "@/lib/
 import { LockedStat } from "@/components/dashboard/LockedStat";
 
 export default async function DashboardPage() {
-  const user = await requireUser();
+  const user = await requireUserPage("/dashboard");
   const supabase = await createClient();
 
   const [{ data: profile }, { data: recentResults }, { data: inProgress }, { data: perfectLoveCode }] = await Promise.all([
