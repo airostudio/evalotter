@@ -58,9 +58,31 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
     .select("*, assessments(title, slug, engine_type)")
     .eq("id", attemptId)
     .eq("user_id", user.id)
-    .single();
+    .maybeSingle();
 
-  if (!attempt) notFound();
+  if (!attempt) {
+    // This route has always resolved an ATTEMPT id, but the dashboard used
+    // to link it with a RESULT id, so every link shared or bookmarked
+    // before that was fixed carries the wrong one and would 404 forever.
+    // If the id names one of this user's results, send them to the real URL
+    // rather than a dead end.
+    const { data: byResultId } = await supabase
+      .from("assessment_results")
+      .select("attempt_id")
+      .eq("id", attemptId)
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if (byResultId?.attempt_id) redirect(`/results/${byResultId.attempt_id}`);
+    notFound();
+  }
+
+  // An attempt that was never finished has no result to show. Sending the
+  // user back to the assessment is the useful answer; a 404 tells them
+  // their own unfinished test does not exist.
+  if (attempt.status !== "completed" && attempt.assessments?.engine_type !== "vision_analysis") {
+    redirect(`/assessments/${attempt.assessments?.slug ?? ""}`);
+  }
 
   if (attempt.assessments?.engine_type === "vision_analysis") {
     const { data: submission } = await supabase
@@ -98,7 +120,34 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
     .eq("user_id", user.id)
     .maybeSingle();
 
-  if (!result) notFound();
+  // The attempt is complete but carries no scored result. That is not a
+  // missing page — it means scoring did not finish — so say so rather than
+  // implying the user's completed assessment never happened.
+  if (!result) {
+    return (
+      <div className="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6">
+        <h1 className="font-display text-3xl text-paper-100">We couldn&apos;t load this result</h1>
+        <p className="mt-4 leading-relaxed text-paper-100/65">
+          Your answers for {attempt.assessments?.title ?? "this assessment"} were saved, but the
+          scored result hasn&apos;t been produced. Nothing you did is lost.
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Link
+            href={`/assessments/${attempt.assessments?.slug ?? ""}`}
+            className="focus-ring flex min-h-[48px] items-center rounded-xl2 bg-signal-violet px-7 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          >
+            Take it again
+          </Link>
+          <Link
+            href="/results"
+            className="focus-ring flex min-h-[48px] items-center rounded-xl2 border border-ink-600 px-6 text-sm font-medium text-paper-100 hover:border-signal-cyan/60"
+          >
+            All results
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   const unlocked = await hasReportAccess(supabase, user.id, attempt.assessment_id);
 
